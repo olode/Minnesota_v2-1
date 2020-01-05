@@ -1,0 +1,24 @@
+//- =========================================================================
+	File Name: color-palette-brown.jade
+	Description:  Bootstrap 4 Brown Color Palette
+	--------------------------------------------------------------------------
+	Item Name: Robust - Responsive Admin Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+	==========================================================================
+
+extends template
+
+block pageVars
+	- var pageTitle   = "Brown Color Page"
+	- var pageSubTitle = "Brown Color Options"
+	- var description  = "Brown Color Palette with background & border color."
+	- var activeMenu  = "color-palette-brown"
+
+block breadcrumbs
+	+breadcrumbs([{url:"index.html",name:"Home"},{url:"#",name:"Color System"}, {name:"Brown Palette"}])
+
+//- Include page content in page block
+append content
+	include ../contents/color-palette-brown.html
