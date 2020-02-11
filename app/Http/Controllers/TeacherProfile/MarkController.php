@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\StudentProfile;
+namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class MarkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student-profile.students.index');
-
+        return view('teacher-profile.marks.index');
     }
 
     /**
@@ -25,7 +24,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        // return view('profiles.students.index');
+        return view('teacher-profile.marks.create');
 
     }
 
@@ -48,7 +47,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('teacher-profile.marks.show');
+
     }
 
     /**
@@ -85,32 +85,29 @@ class StudentController extends Controller
         //
     }
 
-    public function studentPlan()
-    {
-        
-        return view('student-profile.students.plan');
-    }
-
-
-    public function studentSemesters()
-    {
-        
-        return view('student-profile.students.semesters');
-    }
     
-    public function studentShowMarks()
+    public function addHomeworkMarks()
     {
-        
-        return view('student-profile.students.show-marks');
+        return view('teacher-profile.marks.add-homework-marks');
+
     }
 
-    public function studentShowMaterials()
+    public function addAttendanceMarks()
     {
-        
-        return view('student-profile.students.show-materials');
-    }
-    
-    
+        return view('teacher-profile.marks.add-attendance-marks');
 
+    }
+
+    public function addMidExamMarks()
+    {
+        return view('teacher-profile.marks.add-mid-exam-marks');
+
+    }
+
+    public function addFinalExamMarks()
+    {
+        return view('teacher-profile.marks.add-final-exam-marks');
+
+    }
     
 }

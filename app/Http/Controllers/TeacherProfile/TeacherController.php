@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\StudentProfile;
+namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student-profile.students.index');
-
+        return view('teacher-profile.teachres.index');
     }
 
     /**
@@ -25,8 +24,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        // return view('profiles.students.index');
-
+        //
     }
 
     /**
@@ -84,33 +82,4 @@ class StudentController extends Controller
     {
         //
     }
-
-    public function studentPlan()
-    {
-        
-        return view('student-profile.students.plan');
-    }
-
-
-    public function studentSemesters()
-    {
-        
-        return view('student-profile.students.semesters');
-    }
-    
-    public function studentShowMarks()
-    {
-        
-        return view('student-profile.students.show-marks');
-    }
-
-    public function studentShowMaterials()
-    {
-        
-        return view('student-profile.students.show-materials');
-    }
-    
-    
-
-    
 }
