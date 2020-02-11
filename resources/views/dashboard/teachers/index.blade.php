@@ -5,115 +5,13 @@
  <!-- Column selectors table -->
  <section id="column-selectors">
           <div class="row">
-           <!-- Form repeater section start -->
-       
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title" id="repeat-form">البحث عن المعلمين</h4>
-                  <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-content collapse show">
-                  <div class="card-body">
-                    <div class="repeater-default">
-                      <div data-repeater-list="car">
-                        <div data-repeater-item>
-                          <form class="form row">
-                            
-                          <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفرع</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفرع</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                           
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المرحلة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المرحلة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر القسم </label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر القسم</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفصل</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفصل</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المادة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المادة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                              <button data-repeater-create class="btn btn-primary">
-                              بحث<i class="ft-search"></i> 
-                              </button>
-                            </div>
-                          </form>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-      
         <!-- // Form repeater section end -->
 
 
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">عرض معلومات المعلمين</h4>
+                  <h4 class="card-title">عرض معلومات الطلاب</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -130,144 +28,68 @@
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
+                          <th>الرقم التعريفي</th>
                           <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
-                          <th> عدد المواد</th>
                           <th>رقم الجواز</th>
+                          <th>حالة الطالب</th>
                           <th>الاعدادت</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
+                      @foreach ($teachers as $teacher)
                         <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
+                          <td>{{$teacher->id}}</td>
+                          <td>{{ $teacher->firstName }} {{ $teacher->secondName }} {{ $teacher->lastName }}</td>
+                          <td>
+                            @if ($teacher->qualification === '1') {{"ثانوي"}} @endif
+                            @if ($teacher->qualification === '2') {{"دبلوم"}} @endif
+                            @if ($teacher->qualification === '3') {{"بكالوريوس"}} @endif
+                            @if ($teacher->qualification === '4') {{"ماجستير"}} @endif
+                            @if ($teacher->qualification === '5') {{"دكتورا"}} @endif
+                          </td>
+                          <td>{{$teacher->phoneNumber}}</td>
+                          <td>{{$teacher->passportNumber}}</td>
+                          <td>
+                            @if ($teacher->status === 1)
+                            <form action="{{ route('teacher.unactive', $teacher->id) }}" method="post">
+                              {{ csrf_field() }}
+                                <input style="border-radius: 25px;" class="btn btn-dark" type="submit" value="الغاء التفعيل">
+                              </form> 
+                            @else
+                               <form action="{{ route('teacher.active', $teacher->id) }}" method="post">
+                                 {{ csrf_field() }}
+                                <input style="border-radius: 25px;" class="btn btn-success" type="submit" value="تفعيل">   
+                              </form> 
+                            @endif
+                          </td>
+                          <td>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.show', $teacher->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
+                           </form>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.edit', $teacher->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                           </form>
+                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.destroy', $teacher->id) }}" method="post">
+                            @method('DELETE')
+                            {{ csrf_field() }}  
+                           <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
+                         </form>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td> سعد احمد  علي </td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>١</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٣</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        
+                      @endforeach
                       </tbody>
                       <tfoot>
                         <tr>
-                          <<th>الاسم</th>
+                          <th>الرقم الجامعي</th>
+                          <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
-                          <th>عدد المواد</th>
                           <th>رقم الجواز</th>
+                          <th>حالة الطالب</th>
                           <th>الاعدادت</th>
                         </tr>
                       </tfoot>

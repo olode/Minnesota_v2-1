@@ -24,26 +24,29 @@
                     <div class="card-text">
                                         
                     </div>
-                    <form class="form form-horizontal form-bordered">
+                    <form action="{{route('branche.store')}}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
+                      @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات الفرع</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="اسم الفرع"
-                            name="fname">
+                            name="name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني الخاص بالفرع</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني الخاص بالفرع" name="email">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني الخاص بالفرع" 
+                            name="emailOfBranch">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف الخاص بالفرع</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف الخاص بالفرع" name="phone">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف الخاص بالفرع"
+                             name="phoneNumber">
                           </div>
                         </div>
                  
@@ -51,35 +54,46 @@
                           <label class="col-md-3 label-control" for="projectinput2">المنطقة</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="المنطقة"
-                            name="2endname">
+                            name="location">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الدولة</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الدولة"
-                            name="3endname">
+                            name="country">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اسم مدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="اسم مدير الفرع"
-                            name="lname">
+                            name="mangerFullName">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">هاتف مدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="هاتف مدير الفرع"
-                            name="lname">
+                            name="mangerPhoneNumber">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">البريد الالكتروني الخاص بمدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="البريد الالكتروني الخاص بمدير الفرع"
-                            name="lname">
+                            name="mangerEmail">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">حالة الفرع</label>
+                          <div class="col-md-9">
+                              <label for=""></label>
+                              <select class="select" name="status" id="">
+                                <option selected>اختر الحالة</option>
+                                <option value="0">غير مفعل</option>
+                                <option value="1">مفعل</option>
+                              </select>
                           </div>
                         </div>
                        

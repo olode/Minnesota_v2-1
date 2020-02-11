@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Image;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -48,10 +50,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'secondName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
+            'email'=>['required', 'string', 'email', 'max:255'],
+            'phoneNumber'=>['required', 'string', 'max:255'],
+            'avatar'=>[],
+            'password'=>['required'],
+            'branche_id'=>['required', 'integer', 'max:255'],
+            'status'=>['required', 'integer', 'max:255'],
         ]);
     }
 
@@ -63,10 +72,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+
+        //dd($data);
+
+        $avatarneme = '';
+        if(request()->hasFile('avatar')){
+
+            $avatar = request()->file('avatar');
+            $filename = time() .'.'. $avatar->getClientOriginalExtension();
+            Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
+            $avatarneme = $filename;
+
+        }
+
+        //dd($data);
+         User::create([
+            'firstName' => $data['firstName'],
+            'secondName' => $data['secondName'],
+            'lastName' => $data['lastName'],
+            'email'=> $data['email'],
+            'phoneNumber'=> $data['phoneNumber'],
+            'avatar'=> $avatarneme,
+            'branche_id'=> $data['branche_id'],
+            'status'=> $data['status'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        $users = User::all();
+        
+        return view('auth.index', compact('users'));
     }
 }

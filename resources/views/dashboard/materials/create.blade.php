@@ -24,20 +24,47 @@
                     <div class="card-text">
                                         
                     </div>
-                    <form class="form form-horizontal form-bordered">
+                    <form action="{{ route('material.store') }}" method="POST"  class="form form-horizontal form-bordered">
+                      @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات المادة</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم </label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="الإسم "
-                            name="fname">
+                            name="name">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">نبذة عن المادة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="نبذة عن المادة" name="phone">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="نبذة عن المادة" 
+                            name="info">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">إجمالي الدرجات</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="إجمالي الدرجات" 
+                            name="maxMark">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">عدد الطلاب المسموح بهم</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="عدد الطلاب" 
+                            name="maxStudentNumber">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
+                          <div class="col-md-9">
+                              <select  class="form-control" name="specialization_id" id="">
+                                <option selected >اختر التخصص</option>
+                                @foreach ($datas as $data)
+                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                              </select>
                           </div>
                         </div>
                       </div>

@@ -6,7 +6,7 @@
           <li class="nav-item">
             <a class="navbar-brand" href="index.html">
               <img class="brand-logo" alt="robust admin logo" src="{{asset('dashboard/app-assets/images/logo/logo-dark-sm.png')}}">
-              <h3 class="brand-text">Robust Admin</h3>
+              <h3 class="brand-text">الجامعة الإسلامية بولاية منيسوتا</h3>
             </a>
           </li>
           <li class="nav-item d-md-none">

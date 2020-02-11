@@ -24,65 +24,98 @@
                     <div class="card-text">
                                         
                     </div>
-                    <form class="form form-horizontal form-bordered">
+                    <form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
+                      @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات شخصية</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="الإسم الاول"
-                            name="fname">
+                            name="firstName">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
-                            name="2endname">
+                            name="secondName">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثالث"
-                            name="3endname">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput2">اسم العائلة</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="اسم العائلة"
-                            name="lname">
+                            name="lastName">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="العنوان" name="address">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="العنوان" 
+                            name="location">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" name="email">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
+                            name="email">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" name="phone">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phoneNumber">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
+                            name="password">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
+                          <div class="col-md-9">
+                            <input type="file" id="projectinput4" class="form-control"  
+                            name="avatar">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">اختر التخصص</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="specialization_id" class="form-control">
+                              <option value="none" selected="" disabled="">التخصص</option>
+                              @foreach ($specailizations as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="status" class="form-control">
+                              <option value="none" selected="" disabled="">الحالة</option>
+                              <option value="0">غير مفعل</option>
+                              <option value="1">مفعول</option>
+                            </select>
                           </div>
                         </div>
                         <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
+                            <select id="projectinput6" name="qualification" class="form-control">
                               <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                              <option value="1">ثانوي</option>
+                              <option value="2">دبلوم</option>
+                              <option value="3">بكالوريوس</option>
+                              <option value="4">ماجستير</option>
+                              <option value="5">دكتورا</option>
                             </select>
                           </div>
                         </div>
@@ -90,7 +123,7 @@
                           <label class="col-md-3 label-control">صورة لأخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" id="file">
+                              <input type="file" id="file" name="imageOfQualification" >
                               <span class="file-custom"></span>
                             </label>
                           </div>
@@ -98,24 +131,19 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" name="idNumber">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                            name="passportNumber">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control">صورة الجواز</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" id="file">
+                              <input type="file" id="file" name="imageOfPassport" >
                               <span class="file-custom"></span>
                             </label>
                           </div>
                         </div>
-                        <!-- <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput9">About Project</label>
-                          <div class="col-md-9">
-                            <textarea id="projectinput9" rows="5" class="form-control" name="comment" placeholder="About Project"></textarea>
-                          </div>
-                        </div> -->
                       </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">
