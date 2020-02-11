@@ -24,11 +24,47 @@ Route::get('c-panel', function () {
 
 
 
-Route::resource('students','Dashboard\StudentController');
-Route::resource('teachers','Dashboard\TeacherController');
-Route::resource('branches','Dashboard\BrancheController');
-Route::resource('sections','Dashboard\SectionController');
-Route::resource('materials','Dashboard\MaterialController');
+//Route::Post(bran/{id}/active, 'Dashboard\BrancheController@active');
+
+
+Route::resource('user', 'UserController');
+Route::post('uactive/{uactive}', 'UserController@active')->name('user.active');
+Route::post('uunactive/{uunactive}', 'UserController@unactive')->name('user.unactive');
+
+
+Route::resource('branche', 'Dashboard\BrancheController');
+Route::post('active/{active}', 'Dashboard\BrancheController@active')->name('branche.active');
+Route::post('unactive/{unactive}', 'Dashboard\BrancheController@unactive')->name('branche.unactive');
+Route::resource('section', 'Dashboard\SectionController');
+Route::resource('specialization', 'Dashboard\SpecializationController');
+Route::post('sactive/{sactive}', 'Dashboard\SpecializationController@active')->name('specialization.active');
+Route::post('sunactive/{sunactive}', 'Dashboard\SpecializationController@unactive')->name('specialization.unactive');
+Route::resource('specializationplan', 'Dashboard\SpecializationPlanController');
+Route::resource('material', 'Dashboard\MaterialController');
+Route::resource('stage', 'Dashboard\StageController');
+
+
+
+
+Route::resource('studentmark', 'Dashboard\StudentMarkController');
+Route::resource('studentmaterial', 'Dashboard\StudentMaterialController');
+Route::resource('student', 'Dashboard\StudentController');
+Route::post('stuactive/{stuactive}', 'Dashboard\StudentController@active')->name('student.active');
+Route::post('stuunactive/{stuunactive}', 'Dashboard\StudentController@unactive')->name('student.unactive');
+
+
+
+Route::resource('teacher', 'Dashboard\TeacherController');
+Route::post('tuactive/{tuactive}', 'Dashboard\TeacherController@active')->name('teacher.active');
+Route::post('tuunactive/{tuunactive}', 'Dashboard\TeacherController@unactive')->name('teacher.unactive');
+
+
+Route::resource('teachermaterial', 'Dashboard\TeacherMateriasController');
+Route::resource('marktype', 'Dashboard\MarkTypeController');
+Route::resource('schedule', 'Dashboard\ScheduleController');
+
+
+
 
 
 Route::resource('student-profile','StudentProfile\StudentController');
@@ -44,8 +80,7 @@ Route::get('student-login',function(){
 })->name('student-login');
 
 
-
-Route::resource('teacher-profile','TeacherProfile\TeacherController');
+/**Route::resource('teacher-profile','TeacherProfile\TeacherController');
 
 
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
@@ -69,6 +104,8 @@ Route::get('add-homework-marks','TeacherProfile\MarkController@addHomeworkMarks'
 Route::get('add-attendance-marks','TeacherProfile\MarkController@addAttendanceMarks')->name('add-attendance-marks');
 Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')->name('add-mid-exam-marks');
 Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMarks')->name('add-final-exam-marks');
+
+**/
 
 Auth::routes();
 

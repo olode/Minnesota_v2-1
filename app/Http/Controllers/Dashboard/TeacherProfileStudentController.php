@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\TeacherProfile;
-
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\Dashboard;
+use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NewsAnnouncementController extends Controller
+class TeacherProfileStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class NewsAnnouncementController extends Controller
      */
     public function index()
     {
-        return view('teacher-profile.news-announcements.index');
+        return view('teacher-profile.teacher-profile-students.index');
 
     }
 
@@ -25,7 +24,7 @@ class NewsAnnouncementController extends Controller
      */
     public function create()
     {
-        return view('teacher-profile.news-announcements.create');
+        return view('teacher-profile.teacher-profile-students.create');
 
     }
 
@@ -84,4 +83,13 @@ class NewsAnnouncementController extends Controller
     {
         //
     }
+    
+    public function assignCourse()
+    {
+        return view('teacher-profile.teacher-profile-students.assign-course-student');
+
+    }
+
+
+
 }

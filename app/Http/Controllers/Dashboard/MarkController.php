@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\TeacherProfile;
-
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\Dashboard;
+use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TeacherProfileStudentController extends Controller
+class MarkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class TeacherProfileStudentController extends Controller
      */
     public function index()
     {
-        return view('teacher-profile.teacher-profile-students.index');
-
+        return view('teacher-profile.marks.index');
     }
 
     /**
@@ -25,7 +23,7 @@ class TeacherProfileStudentController extends Controller
      */
     public function create()
     {
-        return view('teacher-profile.teacher-profile-students.create');
+        return view('teacher-profile.marks.create');
 
     }
 
@@ -48,7 +46,8 @@ class TeacherProfileStudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('teacher-profile.marks.show');
+
     }
 
     /**
@@ -84,13 +83,30 @@ class TeacherProfileStudentController extends Controller
     {
         //
     }
+
     
-    public function assignCourse()
+    public function addHomeworkMarks()
     {
-        return view('teacher-profile.teacher-profile-students.assign-course-student');
+        return view('teacher-profile.marks.add-homework-marks');
 
     }
 
+    public function addAttendanceMarks()
+    {
+        return view('teacher-profile.marks.add-attendance-marks');
 
+    }
 
+    public function addMidExamMarks()
+    {
+        return view('teacher-profile.marks.add-mid-exam-marks');
+
+    }
+
+    public function addFinalExamMarks()
+    {
+        return view('teacher-profile.marks.add-final-exam-marks');
+
+    }
+    
 }

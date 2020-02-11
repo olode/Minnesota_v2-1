@@ -24,14 +24,15 @@
                     <div class="card-text">
                                         
                     </div>
-                    <form class="form form-horizontal form-bordered">
+                    <form  action="{{ route('section.store') }}" method="POST" class="form form-horizontal form-bordered">
+                      @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات القسم</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">اسم القسم</label>
+                          <label class="col-md-3 label-control" for="projectinput1">اسم التخصص</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="اسم القسم"
-                            name="fname">
+                            name="name">
                           </div>
                         </div>
                         
@@ -39,11 +40,21 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">نبذة عن القسم</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="نبذة عن القسم"
-                            name="lname">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="نبذة عن القسم"name="info">
                           </div>
                         </div>
                        
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="">اختر المرحلة</label>
+                          <div class="col-md-9">
+                          <select class="form-control" name="stage_id" id="">
+                            <option value="" selected></option>
+                            @foreach ($stages as $stage)
+                            <option value="{{ $stage->id }}" >{{ $stage->name }}</option>
+                            @endforeach
+                          </select>
+                          </div>
+                        </div>
                       </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">

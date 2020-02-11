@@ -7,104 +7,6 @@
           <div class="row">
            <!-- Form repeater section start -->
        
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title" id="repeat-form">البحث عن المواد الدراسية</h4>
-                  <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-content collapse show">
-                  <div class="card-body">
-                    <div class="repeater-default">
-                      <div data-repeater-list="car">
-                        <div data-repeater-item>
-                          <form class="form row">
-                            
-                          <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفرع</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفرع</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                           
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المرحلة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المرحلة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر القسم </label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر القسم</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفصل</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفصل</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المادة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المادة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                              <button data-repeater-create class="btn btn-primary">
-                              بحث<i class="ft-search"></i> 
-                              </button>
-                            </div>
-                          </form>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
       
         <!-- // Form repeater section end -->
@@ -129,114 +31,42 @@
                     <p class="card-text text-center"></p>
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
-                          <th>المادة</th>
-                          <th>رمز المادة</th>
-                          <th>الفروع</th>
-                          <th>عدد الطلاب</th>
-                          <th>عدد المعلين</th>
-                          <th>نبذة عن المادة</th>
+                          <th>رمز المقرر</th>
+                          <th>اسم المقرر</th>
+                          <th>وصف المقرر</th>
+                          <th>الدرجة النهائية</th>
+                          <th>القسم</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
+                      @foreach ($data as $material)
                       <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>مبادئ المالية</td>
-                          <td>مب ٢</td>
-                          <td>الفرع الاول والثاني</td>
-                          <td>٩٠</td>
-                          <td>١٠</td>
-                          <td>كلام عن المادة وكذا يعني</td>
-                          <td></td>
-                        </tr>
+                        <td>{{ $material->id }}</td>
+                        <td>{{ $material->name }}</td>
+                        <td> {{ $material->info }}</td>
+                        <td> {{ $material->maxMark }} </td>
+                        <td>{{ $material['specialization']->name }}</td>
+                        <td>
+                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.edit', $material->id) }}" method="get">
+                            {{ csrf_field() }}
+                           <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                         </form>
+                         <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.destroy', $material->id) }}" method="post">
+                          @method('DELETE')
+                          {{ csrf_field() }}  
+                         <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
+                       </form>
+                      </td>
+                      </tr>
+                      @endforeach
                       </tbody>
                       <tfoot>
-                          <th>المادة</th>
-                          <th>رمز المادة</th>
-                          <th>الفروع</th>
-                          <th>عدد الطلاب</th>
-                          <th>عدد المعلين</th>
-                          <th>نبذة عن المادة</th>
-                          <th>الاعدادت</th>
+                        <th>رمز المقرر</th>
+                        <th>اسم المقرر</th>
+                        <th>وصف المقرر</th>
+                        <th>الدرجة النهائية</th>
+                        <th>القسم</th>
+                        <th>الاعدادت</th>
                       </tfoot>
                     </table>
                   </div>

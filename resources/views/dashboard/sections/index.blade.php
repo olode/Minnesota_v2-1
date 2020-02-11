@@ -32,94 +32,27 @@
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
+                      @foreach ($sections as $section)
                         <tr>
-                          <td>ادارة أعمال</td>
+                          <td>{{ $section->name }}</td>
                           <td>٥٠</td>
                           <td>٦</td>
                           <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
+                          <td>{{ $section->info }}</td>
+                          
+                          <td>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('section.edit', $section->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                           </form>
+                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('section.destroy', $section->id) }}" method="post">
+                            @method('DELETE')
+                            {{ csrf_field() }}  
+                           <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
+                         </form>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>ادارة أعمال</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
-                          <td>يعني كلام عن قسم ادارة الاعمال</td>
-                          <td></td>
-                        </tr>
+                      @endforeach
                       </tbody>
                       <tfoot>
                           <th>الاسم</th>

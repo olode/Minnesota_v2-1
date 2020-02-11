@@ -5,108 +5,6 @@
  <!-- Column selectors table -->
  <section id="column-selectors">
           <div class="row">
-           <!-- Form repeater section start -->
-       
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title" id="repeat-form">البحث عن الطلاب</h4>
-                  <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-content collapse show">
-                  <div class="card-body">
-                    <div class="repeater-default">
-                      <div data-repeater-list="car">
-                        <div data-repeater-item>
-                          <form class="form row">
-                            
-                          <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفرع</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفرع</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                           
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المرحلة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المرحلة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر القسم </label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر القسم</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر الفصل</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر الفصل</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر المادة</label>
-                              <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المادة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                              <button data-repeater-create class="btn btn-primary">
-                              بحث<i class="ft-search"></i> 
-                              </button>
-                            </div>
-                          </form>
-                          <hr>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-      
         <!-- // Form repeater section end -->
 
 
@@ -130,357 +28,68 @@
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
+                          <th>الرقم الجامعي</th>
                           <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>
+                          <th>حالة الطالب</th>
                           <th>الاعدادت</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
+                      @foreach ($students as $student)
                         <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
+                          <td>{{$student->id}}</td>
+                          <td>{{ $student->firstName }} {{ $student->secondName }} {{ $student->lastName }}</td>
+                          <td>
+                            @if ($student->qualification === '1') {{"ثانوي"}} @endif
+                            @if ($student->qualification === '2') {{"دبلوم"}} @endif
+                            @if ($student->qualification === '3') {{"بكالوريوس"}} @endif
+                            @if ($student->qualification === '4') {{"ماجستير"}} @endif
+                            @if ($student->qualification === '5') {{"دكتورا"}} @endif
+                          </td>
+                          <td>{{$student->phoneNumber}}</td>
+                          <td>{{$student->passportNumber}}</td>
+                          <td>
+                            @if ($student->status === 1)
+                            <form action="{{ route('student.unactive', $student->id) }}" method="post">
+                              {{ csrf_field() }}
+                                <input style="border-radius: 25px;" class="btn btn-dark" type="submit" value="الغاء التفعيل">
+                              </form> 
+                            @else
+                               <form action="{{ route('student.active', $student->id) }}" method="post">
+                                 {{ csrf_field() }}
+                                <input style="border-radius: 25px;" class="btn btn-success" type="submit" value="تفعيل">   
+                              </form> 
+                            @endif
+                          </td>
+                          <td>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('student.show', $student->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
+                           </form>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('student.edit', $student->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                           </form>
+                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('student.destroy', $student->id) }}" method="post">
+                            @method('DELETE')
+                            {{ csrf_field() }}  
+                           <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
+                         </form>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٧٥٦٤٤٦٤٥</td>
-                          <td>١١١١١١١</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٧٦٥٦٧٥٦٧</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>بكرعلي سعد </td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>بكالوريوس</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td></td>
-                        </tr>
+                      @endforeach
                       </tbody>
                       <tfoot>
                         <tr>
-                          <<th>الاسم</th>
+                          <th>الرقم الجامعي</th>
+                          <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>
+                          <th>حالة الطالب</th>
                           <th>الاعدادت</th>
                         </tr>
                       </tfoot>
