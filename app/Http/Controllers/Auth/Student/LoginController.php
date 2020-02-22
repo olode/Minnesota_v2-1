@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth\Student;
 
 use App\Http\Controllers\Controller;
+// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -38,10 +40,7 @@ class LoginController extends Controller
     }
 
 
-    public function loginTeacherPortal(){
-
-        return view('auth.login-teacher-portal');
-    }
+ 
     public function loginStudentPortal(){
 
         return view('auth.login-student-portal');

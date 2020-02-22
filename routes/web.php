@@ -123,3 +123,23 @@ Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMar
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+/*********************************************/
+/*********************************************/
+/**********the start of login part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
+
+Route::get('login-teacher-portal', 'Auth\Teacher\LoginController@loginTeacherPortal');
+Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPortal');
+
+
+/*********************************************/
+/*********************************************/
+/**********the end of login part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
