@@ -69,7 +69,7 @@ class StudentController extends Controller
 
             $avatar = request()->file('avatar');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
-            Image::make($avatar)->save(public_path('/uploads/avatars/students/' . $filename));
+            Image::make($avatar)->save(public_path('/uploads/students/avatars/' . $filename));
             $avatarneme = $filename;
 
         }
@@ -78,7 +78,7 @@ class StudentController extends Controller
 
             $qualifications = request()->file('imageOfQualification');
             $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
-            Image::make($qualifications)->save(public_path('/uploads/avatars/qualifications/' . $qualificationsname));
+            Image::make($qualifications)->save(public_path('/uploads/students/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
         }
@@ -87,7 +87,7 @@ class StudentController extends Controller
 
             $passport = request()->file('imageOfPassport');
             $passportname = time() .'.'. $passport->getClientOriginalExtension();
-            Image::make($passport)->save(public_path('/uploads/avatars/passports/' . $passportname));
+            Image::make($passport)->save(public_path('/uploads/students/passports/' . $passportname));
             $passportneme = $passportname;
 
         }
@@ -122,7 +122,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Student::findOrfail($id);
+        return view('dashboard.students/show', compact('data'));
     }
 
     /**
@@ -173,6 +174,33 @@ class StudentController extends Controller
         ]);
       return redirect()->back();
         
+      }
+
+      public function downloadAvatar($id)
+      {
+        $file = Student::findOrfail($id);
+        $d1 = $file->avatar;
+        $pathToFile = public_path(). "/uploads/students/avatars/" .$d1;
+        //dd($pathToFile);
+        return response()->download($pathToFile);
+      }
+
+      public function downloadQualification($id)
+      {
+        $file = Student::findOrfail($id);
+        $d1 = $file->imageOfQualification;
+        $pathToFile = public_path(). "/uploads/students/qualifications/" .$d1;
+        //dd($pathToFile);
+        return response()->download($pathToFile);
+      }
+
+      public function downloadPassport($id)
+      {
+        $file = Student::findOrfail($id);
+        $d1 = $file->imageOfPassport;
+        $pathToFile = public_path(). "/uploads/students/passports/" .$d1;
+        //dd($pathToFile);
+        return response()->download($pathToFile);
       }
 
 

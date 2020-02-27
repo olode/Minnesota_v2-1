@@ -19,8 +19,8 @@ class StudentMarkController extends Controller
    */
   public function index()
   {
-    $student = StudentMark::all();
-    return view('dashboard.students_marks/index');
+    $students = StudentMark::all();
+    return view('dashboard.students_marks/index', compact('students'));
   }
 
   /**
@@ -82,7 +82,12 @@ class StudentMarkController extends Controller
    */
   public function edit($id)
   {
-    
+    //dd($id);
+    $studentmark = StudentMark::findOrfail($id);
+    $students = Student::all();
+    $marks = MarkType::all();
+    $materials = StudentMaterial::all();
+    return view('dashboard.students_marks/edit', compact('studentmark', 'students', 'marks', 'materials'));
   }
 
   /**
@@ -91,9 +96,13 @@ class StudentMarkController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
-    
+    $data = StudentMark::findOrFail($id);
+
+    $data->update($request->all());
+
+    return redirect('/studentmark');
   }
 
   /**
@@ -104,7 +113,8 @@ class StudentMarkController extends Controller
    */
   public function destroy($id)
   {
-    
+    StudentMark::destroy($id);
+    return redirect()->back();
   }
   
 }

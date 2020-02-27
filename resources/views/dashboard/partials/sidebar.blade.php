@@ -120,7 +120,7 @@
               <span data-i18n="nav.category.layouts">التعيينات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('material.index')}}"><i class="icon-book-open"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة المواد</span></a>
+            <li class=" nav-item"><a href="{{route('material.index')}}"><i class="icon-book-open"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة التعيينات</span></a>
               <ul class="menu-content">
                 <li><a class="menu-item" href="{{route('teachermaterial.create')}}" data-i18n="nav.dash.project">تعيين مواد لمعلم</a>
                 </li>
@@ -128,6 +128,9 @@
                 <li><a class="menu-item" href="{{route('teachermaterial.index')}}" data-i18n="nav.dash.project">عرض مواد لمعلم</a>
                 </li>
                 <li><a class="menu-item" href="{{route('studentmaterial.create')}}" data-i18n="nav.dash.project">تعيين مواد لطالب</a>
+                </li>
+                </li>
+                <li><a class="menu-item" href="{{route('studentmaterial.index')}}" data-i18n="nav.dash.project">عرض مواد الطالب</a>
                 </li>
               </ul>
             </li>

@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">اضافة درجة طالب</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">تعديل درجة طالب</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -24,14 +24,15 @@
                     <div class="card-text">
                                         
                     </div>
-                    <form  action="{{ route('studentmark.store') }}" method="POST" class="form form-horizontal form-bordered">
+                    <form  action="{{ route('studentmark.update', $studentmark->id) }}" method="POST" class="form form-horizontal form-bordered">
+                      @method('PUT')
                       @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> درجة الطالب</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> تعديل الدرجة</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الدرجة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="الدرجة النهائية"
+                            <input type="text" value="{{ $studentmark->student_mark }}" id="projectinput2" class="form-control" placeholder="الدرجة النهائية"
                             name="student_mark">
                           </div>
                         </div>
@@ -39,9 +40,8 @@
                             <label class="col-md-3 label-control"  for="">اسم الدرجة</label>
                             <div class="col-md-9">
                               <select class="form-control" name="mark_types_id" id="">
-                                  <option></option>
                                   @foreach ($marks as $mark)
-                                      <option class="form-control" value="{{$mark->id}}">{{$mark->name}}</option>
+                                      <option class="form-control"  @if ($mark->id === $studentmark->mark_types_id) {{ "selected='' disabled=''" }} @endif  value="{{$mark->id}}">{{$mark->name}}</option>
                                   @endforeach
                               </select>
                             </div>
@@ -51,9 +51,8 @@
                             <label class="col-md-3 label-control"  for="">المادة</label>
                             <div class="col-md-9">
                               <select class="form-control" name="student_material_id" id="">
-                                  <option></option>
                                   @foreach ($materials as $material)
-                                      <option class="form-control" value="{{$material->id}}">{{$material->id}}</option>
+                                      <option class="form-control" @if ($material->id === $studentmark->student_material_id) {{ "selected='' disabled=''" }} @endif value="{{$material->id}}">{{$material['teacher_material']->material->name}}</option>
                                   @endforeach
                               </select>
                             </div>
@@ -63,9 +62,9 @@
                             <label class="col-md-3 label-control"  for="">اسم الطالب</label>
                             <div class="col-md-9">
                               <select class="form-control" name="student_id" id="">
-                                  <option></option>
+                                  <option value="{{ $studentmark->student_id }}" ></option>
                                   @foreach ($students as $student)
-                                      <option class="form-control" value="{{$student->id}}">{{$student->firstName}} {{$student->secondName}} {{$student->lastName}}  (  الرقم الجامعي{{$student->id}} )  </option>
+                                      <option @if ($student->id === $studentmark->student_id) {{ "selected='' disabled=''" }} @endif class="form-control" value="{{$student->id}}">{{$student->firstName}} {{$student->secondName}} {{$student->lastName}}  (  الرقم الجامعي{{$student->id}} )  </option>
                                   @endforeach
                               </select>
                             </div>

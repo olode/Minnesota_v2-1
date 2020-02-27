@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">تعيين مادة</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">تعيين مادة لطالب</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -27,7 +27,7 @@
                     <form  action="{{ route('studentmaterial.store') }}" method="POST" class="form form-horizontal form-bordered">
                       @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات </h4>
+                        <h4 class="form-section"><i class="ft-user"></i> معلومات التعيين </h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control"  for="">اسم الطالب</label>
                           <div class="col-md-9">

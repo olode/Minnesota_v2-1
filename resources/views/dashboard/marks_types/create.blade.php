@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">اضافة قسم جديد</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">اضافة بيانات درجة جديدة</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -27,7 +27,7 @@
                     <form  action="{{ route('marktype.store') }}" method="POST" class="form form-horizontal form-bordered">
                       @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> معلومات الدرجة</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم الدرجة</label>
                           <div class="col-md-9">

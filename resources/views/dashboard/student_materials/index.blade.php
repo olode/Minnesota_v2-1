@@ -8,7 +8,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">عرض معلومات الأقسام</h4>
+                  <h4 class="card-title">عرض معلومات التعيينات</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -25,7 +25,7 @@
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
                           <th>رمز الطالب</th>
-                          <th>رمز المادة</th>
+                          <th>اسم المادة</th>
                           <th>العام الدراسي</th>
                           <th>الاعدادت</th>
                       </thead>
@@ -33,7 +33,7 @@
                       @foreach ($studentmaterials as $studentmaterial)
                         <tr>
                           <td>{{ $studentmaterial->student_id }}</td>
-                          <td>{{ $studentmaterial->teacher_material_id }}</td>
+                          <td>{{ $studentmaterial['teacher_material']->material->name }}</td>
                           <td>{{ $studentmaterial->yearOfAdd }}</td>
                           
                           <td>

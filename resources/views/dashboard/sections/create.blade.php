@@ -27,9 +27,9 @@
                     <form  action="{{ route('section.store') }}" method="POST" class="form form-horizontal form-bordered">
                       @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> معلومات القسم</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">اسم التخصص</label>
+                          <label class="col-md-3 label-control" for="projectinput1">اسم القسم</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="اسم القسم"
                             name="name">
