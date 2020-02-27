@@ -13,16 +13,17 @@
                     <div class="p-1">
                       <img src="../../../app-assets/images/logo/logo-dark.png" alt="branding logo">
                       <p></p>
-                      <p>تسجيل دخول</p>
+                      <p>تسجيل دخول </p>
                     </div>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                    <span> جامعة منيسوتا </span>
+                    <span> بوابة الطالب </span>
                   </h6>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form class="form-horizontal form-simple" action="index.html" novalidate>
+                    <form class="form-horizontal form-simple" method="POST" action="{{route('student-login')}}" novalidate>
+                      @csrf
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username"
                         required>

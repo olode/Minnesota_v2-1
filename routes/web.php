@@ -88,7 +88,15 @@ Route::get('student-login',function(){
 })->name('student-login');
 
 
-/**Route::resource('teacher-profile','TeacherProfile\TeacherController');
+/*********************************************/
+/*********************************************/
+/**********the start of teacher part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
+
+
+Route::resource('teacher-profile','TeacherProfile\TeacherController');
 
 
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
@@ -113,8 +121,33 @@ Route::get('add-attendance-marks','TeacherProfile\MarkController@addAttendanceMa
 Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')->name('add-mid-exam-marks');
 Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMarks')->name('add-final-exam-marks');
 
-**/
+/*********************************************/
+/*********************************************/
+/**********the end of teacher part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+/*********************************************/
+/*********************************************/
+/**********the start of login part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
+
+Route::get('login-teacher-portal', 'Auth\Teacher\LoginController@loginTeacherPortal');
+Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPortal');
+
+
+/*********************************************/
+/*********************************************/
+/**********the end of login part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/

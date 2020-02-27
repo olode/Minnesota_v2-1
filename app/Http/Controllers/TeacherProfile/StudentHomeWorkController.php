@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\StudentProfile;
+namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class StudentHomeWorkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student-profile.students.index');
-
+        return view('teacher-profile.homeworks.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +23,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        // return view('profiles.students.index');
+        return view('teacher-profile.homeworks.create');
 
     }
 
@@ -85,32 +83,10 @@ class StudentController extends Controller
         //
     }
 
-    public function studentPlan()
+    public function followUpHomework()
     {
-        
-        return view('student-profile.students.plan');
-    }
+        return view('teacher-profile.homeworks.follow-up-homework');
 
-
-    public function studentSemesters()
-    {
-        
-        return view('student-profile.students.semesters');
     }
-    
-    public function studentShowMarks()
-    {
-        
-        return view('student-profile.students.show-marks');
-    }
-
-    public function studentShowMaterials()
-    {
-        
-        return view('student-profile.students.show-materials');
-    }
-    
-    
-
     
 }
