@@ -27,7 +27,7 @@
                     <form method="POST" action="{{ route('stage.store') }}" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                         @csrf
                         <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات المادة</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> معلومات المرحلة</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم المرحلة </label>
                           <div class="col-md-9">

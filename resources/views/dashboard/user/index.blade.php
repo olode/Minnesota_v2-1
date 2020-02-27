@@ -39,7 +39,7 @@
                       <tbody style="text-align: center;">
                          @foreach ($users as $user)
                             <tr>
-                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/avatars/{{ $user->avatar }}" alt=""></td>
+                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar }}" alt=""></td>
                                 <td>{{ $user->firstName }}</td>
                                 <td>{{ $user->secondName }}</td>
                                 <td>{{ $user->lastName }}</td>

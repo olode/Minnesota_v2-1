@@ -81,7 +81,7 @@ class UserController extends Controller
 
             $avatar = request()->file('avatar');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
-            Image::make($avatar)->save(public_path('/uploads/avatars/users/' . $filename));
+            Image::make($avatar)->save(public_path('/uploads/users/avatars/' . $filename));
             $avatarneme = $filename;
 
         }

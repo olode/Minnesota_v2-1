@@ -51,12 +51,20 @@ Route::resource('studentmaterial', 'Dashboard\StudentMaterialController');
 Route::resource('student', 'Dashboard\StudentController');
 Route::post('stuactive/{stuactive}', 'Dashboard\StudentController@active')->name('student.active');
 Route::post('stuunactive/{stuunactive}', 'Dashboard\StudentController@unactive')->name('student.unactive');
-
+Route::get('student/download/avatar/{id}', 'Dashboard\StudentController@downloadAvatar')->name('avatar.download');
+Route::get('student/download/qualification/{id}', 'Dashboard\StudentController@downloadQualification')->name('qualification.download');
+Route::get('student/download/passport/{id}', 'Dashboard\StudentController@downloadPassport')->name('passport.download');
 
 
 Route::resource('teacher', 'Dashboard\TeacherController');
 Route::post('tuactive/{tuactive}', 'Dashboard\TeacherController@active')->name('teacher.active');
 Route::post('tuunactive/{tuunactive}', 'Dashboard\TeacherController@unactive')->name('teacher.unactive');
+Route::post('stuunactive/{stuunactive}', 'Dashboard\TeacherController@unactive')->name('student.unactive');
+Route::get('teacher/download/tavatar/{id}', 'Dashboard\TeacherController@downloadAvatar')->name('avatar.teacher');
+Route::get('teacher/download/tqualification/{id}', 'Dashboard\TeacherController@downloadQualification')->name('qualification.teacher');
+Route::get('teacher/download/tpassport/{id}', 'Dashboard\TeacherController@downloadPassport')->name('passport.teacher');
+
+
 
 
 Route::resource('teachermaterial', 'Dashboard\TeacherMateriasController');
