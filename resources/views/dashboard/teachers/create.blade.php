@@ -85,7 +85,7 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
+                          <label class="col-md-3 label-control" for="projectinput6">حالة الدكتور</label>
                           <div class="col-md-9">
                             <select id="projectinput6" name="status" class="form-control">
                               <option value="none" selected="" disabled="">الحالة</option>

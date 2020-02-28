@@ -89,10 +89,6 @@
                             <p class="data">{{ $data->passportNumber }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">التخصص</h3>
-                            <p class="data">اضافة العلاقة</p>
-                        </div>
-                        <div class="col col-md-2">
                             <h3 class="heads">حالة الطالب</h3>
                             <p class="data">
                                 @if ($data->status === 1)
@@ -103,9 +99,13 @@
                             </p>
                         </div>
                         <div class="col col-md-2">
+                            <h3 class=""></h3>
+                            <p class=""></p>
+                        </div>
+                        <div class="col col-md-2">
                             <h3 class="heads">صورة الطالب</h3>
                             <div style="width: 100%; height: 245px; background-size: contain;">
-                                <img src="/uploads/teachers/avatars/{{$data->avatar}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/teachers/avatars/{{$data->avatar}}" onContextMenu="return false" onDragStart="return false" galleryimg="no" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('avatar.teacher', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل الصورة الشخصية</button>
@@ -118,7 +118,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة جواز السفر</h3>
                             <div style="width: 100%; height: 445px;  background-size: contain;">
-                                <img src="/uploads/teachers/passports/{{$data->imageOfPassport}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/teachers/passports/{{$data->imageOfPassport}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('qualification.teacher', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل نسخة جواز السفر للطالب</button>
@@ -127,7 +127,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة المؤهل الدراسي</h3>
                             <div style="width: 100%; height: 445px; background-image:url(''); background-size: contain; ">
-                                <img src="/uploads/teachers/qualifications/{{$data->imageOfQualification}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/teachers/qualifications/{{$data->imageOfQualification}}" onContextMenu="return false" onDragStart="return false" galleryimg="no" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('passport.teacher', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل المؤهل العلمي للطالب</button>

@@ -105,7 +105,7 @@
                         <div class="col col-md-2">
                             <h3 class="heads">صورة الطالب</h3>
                             <div style="width: 100%; height: 245px; background-size: contain;">
-                                <img src="/uploads/students/avatars/{{$data->avatar}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/students/avatars/{{$data->avatar}}"  onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('avatar.download', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل الصورة الشخصية</button>
@@ -118,7 +118,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة جواز السفر</h3>
                             <div style="width: 100%; height: 445px; background-size: contain;">
-                                <img src="/uploads/students/passports/{{$data->imageOfPassport}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/students/passports/{{$data->imageOfPassport}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('qualification.download', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل نسخة جواز السفر للطالب</button>
@@ -127,7 +127,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة المؤهل الدراسي</h3>
                             <div style="width: 100%; height: 445px; background-size: contain; ">
-                                <img src="/uploads/students/qualifications/{{$data->imageOfQualification}}" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/students/qualifications/{{$data->imageOfQualification}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('passport.download', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل المؤهل العلمي للطالب</button>
