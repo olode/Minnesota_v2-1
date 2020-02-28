@@ -136,7 +136,7 @@
             </li>
 
 
-            <li class=" navigation-header">
+            {{--  <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الاعلانات والتنبيهات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -147,7 +147,7 @@
                 <li><a class="menu-item" href="dashboard-project.html" data-i18n="nav.dash.project">اضافة</a>
                 </li>
               </ul>
-            </li>
+            </li>  --}}
 
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts"></span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
