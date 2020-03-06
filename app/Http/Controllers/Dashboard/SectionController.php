@@ -14,6 +14,20 @@ class SectionController extends Controller
    *
    * @return Response
    */
+
+  public function getAjaxSections($stage_id)
+  {
+      $sections = Section::Select('id', 'name')->Where('stage_id', $stage_id)->get();
+
+      if($sections == null){
+
+        $sections = 'null';
+      }
+
+      return  compact('sections');
+  }
+
+
   public function index()
   {
     $sections = Section::all();

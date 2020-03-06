@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Branch;
 use App\Models\Section;
 use App\Models\Specialization;
 
@@ -27,8 +28,8 @@ class SpecializationController extends Controller
    */
   public function create()
   {
-    $sections = Section::all();
-    return view('dashboard.specializations/create', compact('sections'));
+    $branches = Branch::Select('id', 'name')->Where('status', 1)->get();
+    return view('dashboard.specializations/create', compact('branches'));
   }
 
   /**

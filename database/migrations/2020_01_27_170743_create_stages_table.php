@@ -12,7 +12,7 @@ class CreateStagesTable extends Migration {
             $table->timestamps();
             $table->string('name');
             $table->string('info');
-			$table->integer('branche_id')->unsigned();
+			$table->integer('branch_id')->unsigned();
 		});
 	}
 
