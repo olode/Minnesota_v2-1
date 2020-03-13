@@ -34,6 +34,7 @@
                           <th>رمز المقرر</th>
                           <th>اسم المقرر</th>
                           <th>وصف المقرر</th>
+                          <th>العدد المسموح من الطلاب</th>
                           <th>الدرجة النهائية</th>
                           <th>القسم</th>
                           <th>الاعدادت</th>
@@ -41,10 +42,11 @@
                       <tbody>
                       @foreach ($data as $material)
                       <tr>
-                        <td>{{ $material->id }}</td>
+                        <td>{{ $material->special_material_id }}</td>
                         <td>{{ $material->name }}</td>
                         <td> {{ $material->info }}</td>
-                        <td> {{ $material->maxMark }} </td>
+                        <td> {{ $material->max_mark }} </td>
+                        <td> {{ $material->max_students_number }} </td>
                         <td>{{ $material['specialization']->name }}</td>
                         <td>
                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.edit', $material->id) }}" method="get">
@@ -64,6 +66,7 @@
                         <th>رمز المقرر</th>
                         <th>اسم المقرر</th>
                         <th>وصف المقرر</th>
+                        <th>العدد المسموح من الطلاب</th>
                         <th>الدرجة النهائية</th>
                         <th>القسم</th>
                         <th>الاعدادت</th>

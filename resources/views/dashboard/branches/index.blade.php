@@ -42,13 +42,13 @@
                       @foreach ($branches as $branche)
                         <tr>
                           <td>{{ $branche->name }}</td>
-                          <td>{{ $branche->emailOfBranch }}</td>
-                          <td>{{ $branche->phoneNumber }}</td>
+                          <td>{{ $branche->email_of_branch }}</td>
+                          <td>{{ $branche->phone_number }}</td>
                           <td>{{ $branche->location }}</td>
                           <td>{{ $branche->country }}</td>
-                          <td>{{ $branche->mangerFullName }}</td>
-                          <td>{{ $branche->mangerPhoneNumber }}</td>
-                          <td>{{ $branche->mangerEmail }}</td>
+                          <td>{{ $branche->manger_full_name }}</td>
+                          <td>{{ $branche->manger_phone_number }}</td>
+                          <td>{{ $branche->manger_email }}</td>
                           <td>
                             @if ($branche->status === 1)
                             <form action="{{ route('branche.unactive', $branche->id) }}" method="post">

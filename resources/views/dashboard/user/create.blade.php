@@ -31,21 +31,21 @@
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="الإسم الاول"
-                            name="firstName">
+                            name="first_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
-                            name="secondName">
+                            name="second_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اسم العائلة</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="اسم العائلة"
-                            name="lastName">
+                            name="last_name">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -57,7 +57,8 @@
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" name="phoneNumber">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
                           </div>
                         </div>
 
@@ -77,7 +78,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="branche_id" class="form-control">
+                            <select id="projectinput6" name="branch_id" class="form-control">
                               <option value="" selected="" disabled="">اختر الفرع</option>
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}">{{ $branche->name }}</option> 

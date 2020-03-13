@@ -40,8 +40,8 @@
                       <tbody>
                       @foreach ($teachers as $teacher)
                         <tr>
-                          <td>{{$teacher->id}}</td>
-                          <td>{{ $teacher->firstName }} {{ $teacher->secondName }} {{ $teacher->lastName }}</td>
+                          <td>{{$teacher->special_teacher_id}}</td>
+                          <td>{{ $teacher->first_name }} {{ $teacher->second_name }} {{ $teacher->last_name }}</td>
                           <td>
                             @if ($teacher->qualification === '1') {{"ثانوي"}} @endif
                             @if ($teacher->qualification === '2') {{"دبلوم"}} @endif
@@ -49,8 +49,8 @@
                             @if ($teacher->qualification === '4') {{"ماجستير"}} @endif
                             @if ($teacher->qualification === '5') {{"دكتورا"}} @endif
                           </td>
-                          <td>{{$teacher->phoneNumber}}</td>
-                          <td>{{$teacher->passportNumber}}</td>
+                          <td>{{$teacher->phone_number}}</td>
+                          <td>{{$teacher->passport_number}}</td>
                           <td>
                             @if ($teacher->status === 1)
                             <form action="{{ route('teacher.unactive', $teacher->id) }}" method="post">

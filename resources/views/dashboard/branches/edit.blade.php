@@ -39,15 +39,15 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني الخاص بالفرع</label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $data->emailOfBranch }}" id="projectinput3" class="form-control" 
-                            name="emailOfBranch">
+                            <input type="text"  value="{{ $data->email_of_branch }}" id="projectinput3" class="form-control" 
+                            name="email_of_branch">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف الخاص بالفرع</label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $data->phoneNumber }}" id="projectinput4" class="form-control" 
-                             name="phoneNumber">
+                            <input type="text"  value="{{ $data->phone_number }}" id="projectinput4" class="form-control" 
+                             name="phone_number">
                           </div>
                         </div>
                  
@@ -68,22 +68,22 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اسم مدير الفرع</label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $data->mangerPhoneNumber }}" id="projectinput2" class="form-control"
-                            name="mangerFullName">
+                            <input type="text"  value="{{ $data->manger_full_name }}" id="projectinput2" class="form-control"
+                            name="manger_full_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">هاتف مدير الفرع</label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $data->mangerPhoneNumber }}" id="projectinput2" class="form-control" 
-                            name="mangerPhoneNumber">
+                            <input type="text"  value="{{ $data->manger_phone_number }}" id="projectinput2" class="form-control" 
+                            name="manger_phone_number">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">البريد الالكتروني الخاص بمدير الفرع</label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $data->mangerEmail }}" id="projectinput2" class="form-control" 
-                            name="mangerEmail">
+                            <input type="text"  value="{{ $data->manger_email }}" id="projectinput2" class="form-control" 
+                            name="manger_email">
                           </div>
                         </div>
                        

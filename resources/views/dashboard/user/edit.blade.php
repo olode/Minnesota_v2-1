@@ -31,22 +31,22 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $data->firstName }}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
-                            name="firstName">
+                            <input type="text" value="{{ $data->first_name }}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
+                            name="first_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $data->secondName }}" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
-                            name="secondName">
+                            <input type="text" value="{{ $data->second_name }}" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
+                            name="second_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اسم العائلة</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $data->lastName }}" id="projectinput2" class="form-control" placeholder="اسم العائلة"
-                            name="lastName">
+                            <input type="text" value="{{ $data->last_name }}" id="projectinput2" class="form-control" placeholder="اسم العائلة"
+                            name="last_name">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -58,7 +58,8 @@
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $data->phoneNumber }}" id="projectinput4" class="form-control" placeholder="رقم الهاتف" name="phoneNumber">
+                            <input type="text" value="{{ $data->phone_number }}" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
                           </div>
                         </div>
 
@@ -71,7 +72,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="branche_id" class="form-control">
+                            <select id="projectinput6" name="branch_id" class="form-control">
                               <option value="" selected="" disabled="">اختر الفرع</option>
                               <option value=""></option>
                               <option value="1">الفرع الثالث</option>

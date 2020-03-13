@@ -32,22 +32,22 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->firstName }}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
-                            name="firstName">
+                            <input type="text" value="{{ $student->first_name }}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
+                            name="first_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->secondName }}"  id="projectinput2" class="form-control" placeholder="الإسم الثاني"
-                            name="secondName">
+                            <input type="text" value="{{ $student->second_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثاني"
+                            name="second_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->lastName }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
-                            name="lastName">
+                            <input type="text" value="{{ $student->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            name="last_name">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -67,8 +67,8 @@
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->phoneNumber }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phoneNumber">
+                            <input type="text" value="{{ $student->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -117,7 +117,7 @@
                           <label class="col-md-3 label-control">صورة لأخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file"  value="{{ $student->imageOfQualification }}"  id="file" name="imageOfQualification" >
+                              <input type="file"  value="{{ $student->qualification_image }}"  id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
                           </div>
@@ -125,15 +125,15 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->passportNumber }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passportNumber">
+                            <input type="text" value="{{ $student->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control">صورة الجواز</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" value="{{ $student->imageOfPassport }}"  id="file" name="imageOfPassport" >
+                              <input type="file" value="{{ $student->passport_image }}"  id="file" name="passport_image" >
                               <span class="file-custom"></span>
                             </label>
                           </div>

@@ -7,6 +7,11 @@ use App\Models\Branch;
 class BrancheController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
   /**
    * Display a listing of the resource.
    *
@@ -37,15 +42,15 @@ class BrancheController extends Controller
   {
     //dd($request->all());
     $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'emailOfBranch' => ['required', 'string', 'max:255'],
-      'phoneNumber' => ['required', 'string', 'max:255'],
-      'location' => ['required', 'string', 'max:255'],
-      'country' => ['required', 'string', 'max:255'],
-      'mangerFullName' => ['required', 'string', 'max:255'],
-      'mangerPhoneNumber' => ['required', 'string', 'max:255'],
-      'mangerEmail' => ['required', 'string', 'max:255'],
-      'status' => ['required', 'integer'],
+      'name'                 => ['required', 'string', 'max:255'],
+      'email_of_branch'      => ['required', 'string', 'max:255'],
+      'phone_number'         => ['required', 'string', 'max:255'],
+      'location'             => ['required', 'string', 'max:255'],
+      'country'              => ['required', 'string', 'max:255'],
+      'manger_full_name'     => ['required', 'string', 'max:255'],
+      'manger_phone_number'  => ['required', 'string', 'max:255'],
+      'manger_email'         => ['required', 'string', 'max:255'],
+      'status'               => ['required', 'integer'],
     ]);
 
     Branch::create($request->all());

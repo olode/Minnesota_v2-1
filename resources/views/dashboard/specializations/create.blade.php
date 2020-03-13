@@ -77,7 +77,7 @@
                           <label class="col-md-3 label-control" for="projectinput2">العدد المسموح للطلاب في القسم</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="عدد الطلاب"
-                            name="maxStudentNumber">
+                            name="max_student_number">
                           </div>
                         </div>
                         <div class="form-group row">

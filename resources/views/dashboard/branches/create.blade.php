@@ -39,14 +39,14 @@
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني الخاص بالفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني الخاص بالفرع" 
-                            name="emailOfBranch">
+                            name="email_of_branch">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف الخاص بالفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف الخاص بالفرع"
-                             name="phoneNumber">
+                             name="phone_number">
                           </div>
                         </div>
                  
@@ -68,21 +68,21 @@
                           <label class="col-md-3 label-control" for="projectinput2">اسم مدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="اسم مدير الفرع"
-                            name="mangerFullName">
+                            name="manger_full_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">هاتف مدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="هاتف مدير الفرع"
-                            name="mangerPhoneNumber">
+                            name="manger_phone_number">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">البريد الالكتروني الخاص بمدير الفرع</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="البريد الالكتروني الخاص بمدير الفرع"
-                            name="mangerEmail">
+                            name="manger_email">
                           </div>
                         </div>
                         <div class="form-group row">

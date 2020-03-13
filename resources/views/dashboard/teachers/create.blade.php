@@ -32,21 +32,21 @@
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="الإسم الاول"
-                            name="firstName">
+                            name="first_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
-                            name="secondName">
+                            name="second_name">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثالث"
-                            name="lastName">
+                            name="last_name">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -67,7 +67,7 @@
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phoneNumber">
+                            name="phone_number">
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -112,7 +112,7 @@
                           <label class="col-md-3 label-control">صورة لأخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" id="file" name="imageOfQualification" >
+                              <input type="file" id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
                           </div>
@@ -121,14 +121,14 @@
                           <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passportNumber">
+                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control">صورة الجواز</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
-                              <input type="file" id="file" name="imageOfPassport" >
+                              <input type="file" id="file" name="passport_image" >
                               <span class="file-custom"></span>
                             </label>
                           </div>

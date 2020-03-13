@@ -18,9 +18,7 @@ Route::get('/', function () {
 
 
 
-Route::get('c-panel', function () {
-    return view('dashboard.index');
-})->name('c-panel');
+Route::get('c-panel', 'HomeController@index')->name('c-panel');
 
 
 
@@ -111,6 +109,7 @@ Route::get('follow-up-homework','TeacherProfile\StudentHomeWorkController@follow
 
 Route::resource('lectures','TeacherProfile\LectureAttendanceController');
 Route::get('lecture-attendance','TeacherProfile\LectureAttendanceController@studentAttendance')->name('lecture-attendance');
+Route::get('lecture/download/about/{id}', 'TeacherProfile\LectureAttendanceController@downloadAbout')->name('about.download');
 
 
 Route::resource('marks','TeacherProfile\MarkController');

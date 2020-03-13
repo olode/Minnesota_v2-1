@@ -10,6 +10,10 @@ use Auth;
 
 class TeacherController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   /**
    * Display a listing of the resource.
@@ -39,25 +43,25 @@ class TeacherController extends Controller
    */
   public function store(Request $request)
   {
-    $idNumber = mt_rand(100000, 999999);
+    $idNumber = "IUM" . mt_rand(100000, 999999) . "T";
         
         //dd($request->all());
         $request->validate([
 
-            'id' => ['integer', 'max:255'],
-            'firstName' => ['string', 'max:255'],
-            'secondName' => ['string', 'max:255'],
-            'lastName' => ['string', 'max:255'],
-            'location' => ['string', 'max:255'],
-            'email' => ['string', 'max:255'],
-            'phoneNumber' => ['string', 'max:255'],
-            'password' => ['string', 'max:255'],
-            'avatar' => [],
-            'qualification' => ['string', 'max:255'],
-            'imageOfQualification' => [],
-            'passportNumber' => ['string', 'max:255'],
-            'imageOfPassport' => [],
-            'status' => ['integer', 'max:255'],
+            'special_teacher_id'         => ['string', 'max:255'],
+            'first_name'                 => ['string', 'max:255'],
+            'second_name'                => ['string', 'max:255'],
+            'last_name'                  => ['string', 'max:255'],
+            'location'                   => ['string', 'max:255'],
+            'email'                      => ['string', 'max:255'],
+            'phone_number'               => ['string', 'max:255'],
+            'password'                   => ['string', 'max:255'],
+            'avatar'                     => [],
+            'qualification'              => ['string', 'max:255'],
+            'qualification_image'        => [],
+            'passport_number'            => ['string', 'max:255'],
+            'passport_image'             => [],
+            'status'                     => ['integer', 'max:255'],
         ]);
 
 
@@ -70,18 +74,18 @@ class TeacherController extends Controller
 
         }
 
-        if(request()->hasFile('imageOfQualification')){
+        if(request()->hasFile('qualification_image')){
 
-            $qualifications = request()->file('imageOfQualification');
+            $qualifications = request()->file('qualification_image');
             $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
             Image::make($qualifications)->save(public_path('/uploads/teachers/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
         }
 
-        if(request()->hasFile('imageOfPassport')){
+        if(request()->hasFile('passport_image')){
 
-            $passport = request()->file('imageOfPassport');
+            $passport = request()->file('passport_image');
             $passportname = time() .'.'. $passport->getClientOriginalExtension();
             Image::make($passport)->save(public_path('/uploads/teachers/passports/' . $passportname));
             $passportneme = $passportname;
@@ -89,20 +93,20 @@ class TeacherController extends Controller
         }
         
         Teacher::create([
-            'id' => $idNumber,
-            'firstName' => $request['firstName'],
-            'secondName' => $request['secondName'],
-            'lastName' => $request['lastName'],
-            'location' => $request['location'],
-            'email' => $request['email'],
-            'phoneNumber' => $request['phoneNumber'],
-            'password' => Hash::make($request['password']),
-            'avatar' => $avatarneme,
-            'qualification' => $request['qualification'],
-            'imageOfQualification' => $qualificationsneme,
-            'passportNumber' => $request['passportNumber'],
-            'imageOfPassport' => $passportneme,
-            'status' => $request['status'],
+            'special_teacher_id'             => $idNumber,
+            'first_name'                     => $request['first_name'],
+            'second_name'                    => $request['second_name'],
+            'last_name'                      => $request['last_name'],
+            'location'                       => $request['location'],
+            'email'                          => $request['email'],
+            'phone_number'                   => $request['phone_number'],
+            'password'                       => Hash::make($request['password']),
+            'avatar'                         => $avatarneme,
+            'qualification'                  => $request['qualification'],
+            'qualification_image'            => $qualificationsneme,
+            'passport_number'                => $request['passport_number'],
+            'passport_image'                 => $passportneme,
+            'status'                         => $request['status'],
         ]);
         
         

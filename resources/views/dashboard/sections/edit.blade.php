@@ -51,7 +51,7 @@
                           <select class="form-control" name="stage_id" id="">
                             <option value="" selected></option>
                             @foreach ($stages as $stage)
-                            <option @if ($section->stage_id === $stage->id) {{"type='hidden'"}} @endif  value="{{ $stage->id }}" >{{ $stage->name }}</option>
+                            <option @if ($section->stage_id === $stage->id) {{"selected='' disabled=''"}} @endif  value="{{ $stage->id }}" >{{ $stage->name }}</option>
                             @endforeach
                           </select>
                           </div>

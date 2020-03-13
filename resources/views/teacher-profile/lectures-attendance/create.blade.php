@@ -18,42 +18,20 @@
                   <!-- Both borders end-->
    
 
-                  <form class="form form-horizontal form-bordered">
+                  <form action="{{ route('lectures.store') }}" class="form form-horizontal form-bordered" method="POST" enctype="multipart/form-data">
+                    @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="icon-notebook"></i>تفاصيل المحاضرة</h4>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">المرحلة</label>
-                          <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">المرحلة</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">القسم</label>
-                          <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
-                            </select>
-                          </div>
-                        </div>
+                        
+                        
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">المادة</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
+                            <select id="projectinput6" name="material_id" class="form-control">
                               <option value="none" selected="" disabled="">المادة</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                              @foreach ($materials as $material)
+                                <option value="{{ $material->id }}">{{ $material['material']->name }} - ( {{ $material['material']->specialization->name }} ) - ( {{ $material['material']->specialization->section->name }} ) </option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -61,40 +39,41 @@
                           <label class="col-md-3 label-control" for="projectinput2">ترتيب المحاضرة كتابتاُ</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="ترتيب المحاضرة كتابتاُ"
-                            name="lname">
+                            name="articleArrangement">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">ترتيب المحاضرة رقماً</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="ترتيب المحاضرة رقماً"
-                            name="lname">
+                            name="articleArrangementNumber">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">تاريخ المحاضرة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="تاريخ التسليم"
-                            name="lname">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="تاريخ المحاضرة"
+                            name="date">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">عنوان المحاضرة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="عنوان التكليف"
-                            name="lname">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="عنوان المحاضرة"
+                            name="tittle">
                           </div>
                         </div>
                         <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput9">نبذة عن المحاضرة</label>
+                          <label class="col-md-3 label-control" for="projectinput9">ملف المحاضرة</label>
                           <div class="col-md-9">
-                            <textarea id="projectinput9" rows="5" class="form-control" name="comment" placeholder="تفاصيل  التكليف"></textarea>
+                            <input type="file" id="projectinput2" class="form-control" 
+                            name="about">
                           </div>
                         </div>
                       </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">
-                          <i class="fa fa-check-square-o"></i> حفظ
+                          <i class="fa fa-check-square-o"></i> نشر المحاضرة
                         </button>
                       </div>
                     </form>

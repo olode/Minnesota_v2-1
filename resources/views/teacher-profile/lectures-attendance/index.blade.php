@@ -22,110 +22,54 @@
                   <table class="table table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
-                          <th>عنوان المحاضرة</th>
-                          <th>المرحلة</th>
-                          <th>القسم</th>
                           <th>المادة</th>
+                          <th>عنوان المحاضرة</th>
+                          <th>ترتيب المحاضرة</th>
+                          <th>المرحلة الدراسية</th>
+                          <th>القسم</th>
                           <th>التاريخ</th>
+                          <th>التفاصيل</th>
                           <th>الاعدادت</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
+                      @foreach ($lectures as $lecture)
                         <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
+                          <td>{{ $lecture['material']->material->name }}</td>
+                          <td>{{ $lecture->tittle }}</td>
+                          <td>{{ $lecture->articleArrangement }} - ( {{ $lecture->articleArrangementNumber }} )</td>
+                          <td>{{ $lecture['material']->material->specialization->section->stage->name }}</td>
+                          <td>{{ $lecture['material']->material->specialization->section->name }}</td>
+                          <td>{{ $lecture->date }}</td>
+                          <td>
+                            <form action="{{ route('about.download', $lecture->id ) }}" method="get">
+                              @csrf
+                              <button class="btn btn-success" type="submit">تحميل ملف المحاضرة</button>
+                            </form>
+                          </td>
+                          <td>
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('lectures.edit', $lecture->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="" class="btn btn-warning" type="submit">تعديل المحاضرة</button>  
+                              </form>
+                              <form style="display: ruby-base; margin-left: 5px;" action="{{ route('lectures.destroy', $lecture->id ) }}" method="post">
+                                @method('DELETE')
+                                {{ csrf_field() }}  
+                              <button style="" class="btn btn-danger" type="submit">حذف المحاضرة</button>
+                            </form>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
+                      @endforeach
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>الاسم</th>
-                          <th>المؤهل</th>
-                          <th>رقم الهاتف</th>
-                          <th>رقم الجواز</th>
+                          <th>المادة</th>
+                          <th>عنوان المحاضرة</th>
+                          <th>ترتيب المحاضرة</th>
+                          <th>المرحلة الدراسية</th>
+                          <th>القسم</th>
+                          <th>التاريخ</th>
+                          <th>التفاصيل</th>
                           <th>الاعدادت</th>
                         </tr>
                       </tfoot>
