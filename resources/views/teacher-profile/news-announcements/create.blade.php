@@ -18,10 +18,11 @@
                   <!-- Both borders end-->
    
 
-                  <form class="form form-horizontal form-bordered">
+                  <form action="{{ route('news-announcements.store') }}" method="POST" class="form form-horizontal form-bordered">
+                    @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-mic"></i> معلومات الخبر او التنبية</h4>
-                        <div class="form-group row">
+                        {{--  <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">المرحلة</label>
                           <div class="col-md-9">
                             <select id="projectinput6" name="interested" class="form-control">
@@ -44,16 +45,15 @@
                               <option value="branding">ماجستير</option>
                             </select>
                           </div>
-                        </div>
+                        </div>  --}}
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">المادة</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                            <select id="projectinput6" name="teacher_material_id" class="form-control">
+                              <option value="none" selected="" disabled="">اختر المادة المراد إشعارها</option>
+                              @foreach ($materials as $material)
+                                <option value="{{ $material->id }}">{{ $material['material']->name }} - ( {{ $material['material']->specialization->name }} ) - ( {{ $material['material']->specialization->section->name }} ) </option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -61,14 +61,14 @@
                           <label class="col-md-3 label-control" for="projectinput2">عنوان التنبيه او الخبر</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="عنوان التنبيه او الخبر"
-                            name="lname">
+                            name="tittle">
                           </div>
                         </div>
                      
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput9">تفاصيل الخبر او التنبيه</label>
                           <div class="col-md-9">
-                            <textarea id="projectinput9" rows="5" class="form-control" name="comment" placeholder="تفاصيل الخبر او التنبيه"></textarea>
+                            <textarea id="projectinput9" rows="5" class="form-control" name="text" placeholder="تفاصيل الخبر او التنبيه"></textarea>
                           </div>
                         </div>
                       </div>

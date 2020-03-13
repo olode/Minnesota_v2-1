@@ -4,6 +4,9 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\TeacherMaterias;
+use App\Models\NewsAnnouncements;
+use Illuminate\Support\Facades\DB;
 
 class NewsAnnouncementController extends Controller
 {
@@ -14,7 +17,14 @@ class NewsAnnouncementController extends Controller
      */
     public function index()
     {
-        return view('teacher-profile.news-announcements.index');
+        return $news = DB::table('news_announcements')
+        ->join('teacher_materials', 'teacher_materials.id', 'news_announcements.teacher_material_id')
+        ->join('materials', 'materials.id', 'teacher_materials.material_id') 
+        ->where('teacher_id', '=', 674180)       
+        ->get();
+        
+        //dd($datas);
+        return view('teacher-profile.news-announcements.index', compact('news'));
 
     }
 
@@ -25,7 +35,8 @@ class NewsAnnouncementController extends Controller
      */
     public function create()
     {
-        return view('teacher-profile.news-announcements.create');
+        $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+        return view('teacher-profile.news-announcements.create', compact('materials'));
 
     }
 
@@ -37,7 +48,19 @@ class NewsAnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+
+            'teacher_material_id'          => ['required', 'integer', 'max:255'],
+            'tittle'                       => ['required', 'string', 'max:255'],
+            'text'                         => ['required', 'string', 'max:255'],
+
+        ]);
+
+        //dd($request->all());
+        NewsAnnouncements::create($request->all());
+        return redirect('/news-announcements');
+
     }
 
     /**

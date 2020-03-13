@@ -9,7 +9,7 @@ class TeacherMaterias extends Model
 
     protected $table = 'teacher_materials';
     public $timestamps = true;
-    protected $fillable = array('teacher_id', 'material_id', 'yearOfAdd');
+    protected $fillable = array('teacher_id', 'material_id', 'year_of_add');
 
     public function teacher()
     {

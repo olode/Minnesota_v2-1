@@ -8,6 +8,10 @@ use App\Models\TeacherMaterias;
 
 class MarkTypeController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   /**
    * Display a listing of the resource.

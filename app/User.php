@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstName', 'secondName', 'lastName', 'email', 'phoneNumber', 'avatar', 'password', 'branche_id', 'status',
+        'special_user_id', 'first_name', 'second_name', 'last_name', 'email', 'phone_number', 'avatar', 'password', 'branch_id', 'status',
     ];
 
     /**
@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-public function branche()
+public function branch()
     {
         return $this->belongsTo('App\Models\Branche');
     }

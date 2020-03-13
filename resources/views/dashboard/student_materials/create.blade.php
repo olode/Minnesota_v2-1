@@ -34,7 +34,7 @@
                             <select class="form-control" name="student_id" id="">
                                 <option></option>
                                 @foreach ($students as $student)
-                                    <option class="form-control" value="{{$student->id}}">{{$student->firstName}} {{$student->secondName}} {{$student->lastName}}</option>
+                                    <option class="form-control" value="{{$student->id}}">{{$student->first_name}} {{$student->second_name}} {{$student->last_name}}</option>
                                 @endforeach
                             </select>
                           </div>
@@ -54,7 +54,7 @@
                             <label class="col-md-3 label-control" for="projectinput2">اختر السنة الدراسية</label>
                             <div class="col-md-9">
                               <div class="form-group">
-                                <select class="form-control" name="yearOfAdd" id="">
+                                <select class="form-control" name="year_of_add" id="">
                                   <option selected >اختر السنة</option>
                                   <option value="1441">1441</option>
                                   <option value="1442" >1442</option>

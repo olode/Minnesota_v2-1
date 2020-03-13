@@ -29,94 +29,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
+                        @foreach ($news as $data)
                         <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
+                          <td>{{ $data->tittle }}</td>
+                          <td>{{ $data->tittle }}</td>
+                          <td>{{ $data->specialization_id['section']->name }}</td>
+                          <td>{{ $data->name }}</td>
+                          <td>{{ $data->created_at }}</td>
                           <td></td>
                         </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
+                        @endforeach
                       </tbody>
                       <tfoot>
                         <tr>

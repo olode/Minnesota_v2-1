@@ -24,7 +24,7 @@
                     <p class="card-text text-center"></p>
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
-                          <th>رمز الطالب</th>
+                          <th>اسم الطالب</th>
                           <th>اسم المادة</th>
                           <th>العام الدراسي</th>
                           <th>الاعدادت</th>
@@ -32,9 +32,9 @@
                       <tbody>
                       @foreach ($studentmaterials as $studentmaterial)
                         <tr>
-                          <td>{{ $studentmaterial->student_id }}</td>
+                          <td>{{ $studentmaterial['student']->first_name }} {{ $studentmaterial['student']->second_name }} {{ $studentmaterial['student']->last_name }}</td>
                           <td>{{ $studentmaterial['teacher_material']->material->name }}</td>
-                          <td>{{ $studentmaterial->yearOfAdd }}</td>
+                          <td>{{ $studentmaterial->year_of_add }}</td>
                           
                           <td>
                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmaterial.destroy', $studentmaterial->id) }}" method="post">

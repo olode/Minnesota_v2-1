@@ -9,6 +9,11 @@ use App\Models\Specialization;
 class SpecializationController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
   /**
    * Display a listing of the resource.
    *
@@ -40,11 +45,11 @@ class SpecializationController extends Controller
   {
    
     $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'info' => ['required', 'string', 'max:255'],
-      'maxStudentNumber' => ['required', 'string', 'max:255'],
-      'section_id' => ['required', 'integer', 'max:255'],
-      'status' => ['required', 'integer', 'max:255'],
+      'name'                 => ['required', 'string', 'max:255'],
+      'info'                 => ['required', 'string', 'max:255'],
+      'max_student_number'   => ['required', 'string', 'max:255'],
+      'section_id'           => ['required', 'integer', 'max:255'],
+      'status'               => ['required', 'integer', 'max:255'],
     ]);
 
     Specialization::create($request->all());
@@ -122,7 +127,9 @@ class SpecializationController extends Controller
    */
   public function destroy($id)
   {
-    
+    Specialization::destroy($id);
+
+    return redirect()->back();
   }
   
 }

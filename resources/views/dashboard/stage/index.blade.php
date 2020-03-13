@@ -34,7 +34,7 @@
                         <tr>
                           <td>{{ $stage->name }}</td>
                           <td>{{ $stage->info }}</td>
-                          <td>{{ $stage['branche']->name }}</td>
+                          <td>{{ $stage['branch']->name }}</td>
                           
                           <td>
                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('stage.destroy', $stage->id) }}" method="post">

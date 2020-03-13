@@ -13,6 +13,11 @@ use App\Models\Branche;
 class UserController extends Controller 
 {
 
+  
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
   /**
    * Display a listing of the resource.
    *
@@ -61,20 +66,22 @@ class UserController extends Controller
    */
   public function store(Request $request)
   {
-    //dd(request()->all());
+    $id = "IUM" . mt_rand(100000, 999999) . "U";
+    //dd($id);
     $request->validate( [
-          'firstName' => ['required', 'string', 'max:255'],
-          'secondName' => ['required', 'string', 'max:255'],
-          'lastName' => ['required', 'string', 'max:255'],
-          'email'=>['required', 'string', 'email', 'max:255'],
-          'phoneNumber'=>['required', 'string', 'max:255'],
-          'avatar'=>[],
-          'password'=>['required'],
-          'branche_id'=>['required', 'integer', 'max:255'],
-          'status'=>['required', 'integer', 'max:255'],
+          'special_user_id'    => ['string', 'max:255'],
+          'first_name'         => ['required', 'string', 'max:255'],
+          'second_name'        => ['required', 'string', 'max:255'],
+          'last_name'          => ['required', 'string', 'max:255'],
+          'email'              => ['required', 'string', 'email', 'max:255'],
+          'phone_number'        => ['required', 'string', 'max:255'],
+          'avatar'             => [],
+          'password'           => ['required'],
+          'branch_id'          => ['required', 'integer', 'max:255'],
+          'status'             => ['required', 'integer', 'max:255'],
       ]);
 
-        //dd($data);
+        //dd($idNumber);
 
         $avatarneme = '';
         if(request()->hasFile('avatar')){
@@ -86,17 +93,18 @@ class UserController extends Controller
 
         }
 
-        //dd($data);
+        //dd($idNumber);
          User::create([
-            'firstName' => $request['firstName'],
-            'secondName' => $request['secondName'],
-            'lastName' => $request['lastName'],
-            'email'=> $request['email'],
-            'phoneNumber'=> $request['phoneNumber'],
-            'avatar'=> $avatarneme,
-            'branche_id'=> $request['branche_id'],
-            'status'=> $request['status'],
-            'password' => Hash::make($request['password']),
+            'special_user_id'       => $id,
+            'first_name'            => $request['first_name'],
+            'second_name'           => $request['second_name'],
+            'last_name'             => $request['last_name'],
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phone_number'],
+            'avatar'                => $avatarneme,
+            'branch_id'             => $request['branch_id'],
+            'status'                => $request['status'],
+            'password'              => Hash::make($request['password']),
         ]);
         
         return redirect('/user');
@@ -161,6 +169,7 @@ class UserController extends Controller
   return redirect()->back();
     
   }
+
 
   /**
    * Remove the specified resource from storage.

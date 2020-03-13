@@ -9,6 +9,11 @@ use App\Models\Branche;
 class StageController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
   /**
    * Display a listing of the resource.
    *
@@ -40,17 +45,17 @@ class StageController extends Controller
   {
 
     $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'info' => ['required', 'string', 'max:255'],
-      'branche_id' => ['required', 'integer', 'max:255'],
+      'name'         => ['required', 'string', 'max:255'],
+      'info'         => ['required', 'string', 'max:255'],
+      'branch_id'    => ['required', 'integer', 'max:255'],
     ]);
 
     //dd($request->all());
 
     Stage::create([
-      'name' => $request['name'],
-      'info' => $request['info'],
-      'branche_id' => $request['branche_id']
+      'name'           => $request['name'],
+      'info'           => $request['info'],
+      'branch_id'      => $request['branch_id']
     ]);
 
     return redirect('/stage');

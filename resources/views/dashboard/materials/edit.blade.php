@@ -46,15 +46,15 @@
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">إجمالي الدرجات</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $material->maxMark }}"  id="projectinput4" class="form-control" placeholder="إجمالي الدرجات" 
-                            name="maxMark">
+                            <input type="text" value="{{ $material->max_mark }}"  id="projectinput4" class="form-control" placeholder="إجمالي الدرجات" 
+                            name="max_mark">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">عدد الطلاب المسموح بهم</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $material->maxStudentNumber }}" id="projectinput4" class="form-control" placeholder="عدد الطلاب" 
-                            name="maxStudentNumber">
+                            <input type="text" value="{{ $material->max_students_number }}" id="projectinput4" class="form-control" placeholder="عدد الطلاب" 
+                            name="max_students_number">
                           </div>
                         </div>
                         <div class="form-group row last">

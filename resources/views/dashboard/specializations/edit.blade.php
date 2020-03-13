@@ -47,15 +47,8 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">العدد المسموح للطلاب في القسم</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $special->maxStudentNumber }}"  id="projectinput2" class="form-control" placeholder="عدد الطلاب"
-                            name="maxStudentNumber">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1"> العام الدراسي</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $special->yearOfAdd }}"  id="projectinput1" class="form-control" placeholder="العام الدراسي"
-                            name="yearOfAdd">
+                            <input type="text" value="{{ $special->max_student_number }}"  id="projectinput2" class="form-control" placeholder="عدد الطلاب"
+                            name="max_student_number">
                           </div>
                         </div>
                         <div class="form-group row">

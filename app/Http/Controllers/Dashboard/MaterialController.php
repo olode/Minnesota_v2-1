@@ -7,6 +7,10 @@ use App\Models\Material;
 use App\Models\Specialization;
 class MaterialController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   /**
    * Display a listing of the resource.
@@ -38,17 +42,26 @@ class MaterialController extends Controller
    */
   public function store(Request $request)
   {
+    $idNumber = "IUM" . mt_rand(100000, 999999) . "M";
     //dd($request->all());
     $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'info' => ['required', 'string', 'max:255'],
-      'maxMark' => ['required', 'string', 'max:255'],
-      'maxStudentNumber' =>['required', 'integer', 'max:255'],
-      'specialization_id' =>['required', 'integer', 'max:255'],
+      'special_material_id'       => ['string', 'max:255'],
+      'name'                      => ['required', 'string', 'max:255'],
+      'info'                      => ['required', 'string', 'max:255'],
+      'max_mark'                  => ['required', 'string', 'max:255'],
+      'max_students_number'       => ['required', 'integer', 'max:255'],
+      'specialization_id'         => ['required', 'integer', 'max:255'],
     ]);
 
     //dd($data);
-    Material::create($request->all());
+    Material::create([
+      'special_material_id'       => $idNumber,
+      'name'                      => $request['name'],
+      'info'                      => $request['info'],
+      'max_mark'                  => $request['max_mark'],
+      'max_students_number'       => $request['max_students_number'],
+      'specialization_id'         => $request['specialization_id'],
+    ]);
 
   return redirect('/material');
 

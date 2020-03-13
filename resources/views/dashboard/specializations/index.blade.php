@@ -27,7 +27,6 @@
                           <th>الاسم</th>
                           <th>نبذة عن التخصص</th>
                           <th>العدد المسموح للطلاب</th>
-                          <th>السنة الدراسية</th>
                           <th>القسم</th>
                           <th>حالة القسم</th>
                           <th>الاعدادت</th>
@@ -37,8 +36,7 @@
                       <tr>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->info }}</td>
-                        <td>{{ $data->maxStudentNumber }}</td>
-                        <td>{{ $data->yearOfAdd }}</td>
+                        <td>{{ $data->max_student_number }}</td>
                         <td>{{ $data['section']->name }}</td>
                         <td>
                           @if ($data->status === 1)
@@ -71,7 +69,6 @@
                         <th>الاسم</th>
                         <th>نبذة عن التخصص</th>
                         <th>العدد المسموح للطلاب</th>
-                        <th>السنة الدراسية</th>
                         <th>القسم</th>
                         <th>حالة القسم</th>
                         <th>الاعدادت</th>>
