@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Branch;
+use App\Models\Stage;
 use App\Models\Section;
 use App\Models\Specialization;
 
@@ -48,8 +49,10 @@ class SpecializationController extends Controller
    */
   public function create()
   {
+    $sections = Section::all();
+    $stages   = Stage::all();
     $branches = Branch::Select('id', 'name')->Where('status', 1)->get();
-    return view('dashboard.specializations/create', compact('branches'));
+    return view('dashboard.specializations/create', compact('branches', 'stages', 'sections'));
   }
 
   /**
@@ -66,6 +69,8 @@ class SpecializationController extends Controller
       'max_student_number'   => ['required', 'string', 'max:255'],
       'section_id'           => ['required', 'integer', 'max:255'],
       'status'               => ['required', 'integer', 'max:255'],
+      'stage_id'           => ['required', 'integer', 'max:255'],
+      'branch_id'           => ['required', 'integer', 'max:255'],
     ]);
 
     Specialization::create($request->all());
@@ -95,7 +100,9 @@ class SpecializationController extends Controller
   {
     $special = Specialization::findOrfail($id);
     $sections = Section::all();
-    return view('dashboard.specializations/edit', compact('sections', 'special'));
+    $stages   = Stage::all();
+    $branches = Branch::Select('id', 'name')->Where('status', 1)->get();
+    return view('dashboard.specializations/edit', compact('sections', 'special', 'stages', 'branches'));
   }
 
   /**
