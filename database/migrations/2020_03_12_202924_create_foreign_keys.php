@@ -63,11 +63,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
-		Schema::table('mark_types', function(Blueprint $table) {
-			$table->foreign('student_mark')->references('id')->on('student_marks')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
+		// Schema::table('mark_types', function(Blueprint $table) {
+		// 	$table->foreign('student_mark')->references('id')->on('student_marks')
+		// 				->onDelete('cascade')
+		// 				->onUpdate('cascade');
+		// });
 		Schema::table('mark_types', function(Blueprint $table) {
 			$table->foreign('material_id')->references('id')->on('teacher_materials')
 						->onDelete('cascade')
@@ -155,9 +155,9 @@ class CreateForeignKeys extends Migration {
 		Schema::table('student_materials', function(Blueprint $table) {
 			$table->dropForeign('student_materials_student_id_foreign');
 		});
-		Schema::table('mark_types', function(Blueprint $table) {
-			$table->dropForeign('mark_types_student_mark_foreign');
-		});
+		// Schema::table('mark_types', function(Blueprint $table) {
+		// 	$table->dropForeign('mark_types_student_mark_foreign');
+		// });
 		Schema::table('mark_types', function(Blueprint $table) {
 			$table->dropForeign('mark_types_material_id_foreign');
 		});

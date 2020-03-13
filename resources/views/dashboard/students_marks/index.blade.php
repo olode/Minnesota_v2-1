@@ -33,7 +33,7 @@
                       <tbody>
                       @foreach ($students as $student)
                         <tr>
-                          <td>{{ $student['student']->firstName}} {{ $student['student']->secondName}} {{ $student['student']->lastName}}</td>
+                          <td>{{ $student['student']->first_name}} {{ $student['student']->second_name}} {{ $student['student']->last_name}}</td>
                           <td>{{ $student['student_material']->teacher_material->material->name }}</td>
                           <td>يجب طباعت الناتج من جدول اخر</td>
                           <td>{{ $student->student_mark }}</td>

@@ -32,7 +32,7 @@
                           <div class="col-md-9">
                             <div class="form-group">
                               <select class="form-control" name="branch_id" id="branch">
-                                <option value='اختر' selected >اختر الفرع</option>
+                                <option value="" selected="" disabled="" >اختر الفرع</option>
                                 @foreach ($branches as $branch)
                                   <option value="{{ $branch->id }}" >{{ $branch->name }}</option>
                                 @endforeach
@@ -45,6 +45,10 @@
                           <div class="col-md-9">
                             <div class="form-group">
                               <select class="form-control" name="stage_id" id="stage">
+                                <option value="noun" selected="" disabled="" >اختر المرحلة</option>
+                                @foreach ($stages as $stage)
+                                    <option value="{{ $stage->id }}">{{ $stage->name }}</option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
@@ -54,6 +58,10 @@
                           <div class="col-md-9">
                             <div class="form-group">
                               <select class="form-control" name="section_id" id="section">
+                                <option value="" selected="" disabled="" >اختر القسم</option>
+                                @foreach ($sections as $section)
+                                  <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
@@ -85,7 +93,7 @@
                           <div class="col-md-9">
                             <div class="form-group">
                               <select class="form-control" name="status" id="">
-                                <option selected >اختر الحالة</option>
+                                <option selected="" disabled="" >اختر الحالة</option>
                                 <option value="0">غير مفعل</option>
                                 <option value="1" >مفعل</option>
                               </select>

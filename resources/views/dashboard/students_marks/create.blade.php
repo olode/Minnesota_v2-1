@@ -39,7 +39,7 @@
                             <label class="col-md-3 label-control"  for="">اسم الدرجة</label>
                             <div class="col-md-9">
                               <select class="form-control" name="mark_types_id" id="">
-                                  <option></option>
+                                  <option value="" selected="" disabled="" >اسم الدرجة</option>
                                   @foreach ($marks as $mark)
                                       <option class="form-control" value="{{$mark->id}}">{{$mark->name}}</option>
                                   @endforeach
@@ -51,9 +51,9 @@
                             <label class="col-md-3 label-control"  for="">المادة</label>
                             <div class="col-md-9">
                               <select class="form-control" name="student_material_id" id="">
-                                  <option></option>
+                                  <option value="" selected="" disabled="" >اختر المادة</option>
                                   @foreach ($materials as $material)
-                                      <option class="form-control" value="{{$material->id}}">{{$material->id}}</option>
+                                      <option class="form-control" value="{{$material->id}}">{{$material['teacher_material']->material->name}}</option>
                                   @endforeach
                               </select>
                             </div>
@@ -63,9 +63,9 @@
                             <label class="col-md-3 label-control"  for="">اسم الطالب</label>
                             <div class="col-md-9">
                               <select class="form-control" name="student_id" id="">
-                                  <option></option>
+                                  <option value="" selected="" disabled="" >اختر الطالب</option>
                                   @foreach ($students as $student)
-                                      <option class="form-control" value="{{$student->id}}">{{$student->firstName}} {{$student->secondName}} {{$student->lastName}}  (  الرقم الجامعي{{$student->id}} )  </option>
+                                      <option class="form-control" value="{{$student->id}}">{{$student->first_name}} {{$student->second_name}} {{$student->last_name}}  (  الرقم الجامعي {{$student->special_student_id}} )  </option>
                                   @endforeach
                               </select>
                             </div>
