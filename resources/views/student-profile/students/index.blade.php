@@ -27,33 +27,33 @@
                         <th>رمز المادة</th>
                         <th>الدكتور</th>
                         <th>موعد المحاضرة</th>
-                        <th>رابط القاعة</th>
+                        <th>تفاصيل المادة</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
+                        <td>السبت</td>
+                        <td>القانون</td>
+                        <td>ق١</td>
+                        <td>حسام</td>
+                        <td>9:50</td>
+                        <td><button class="badge badge-success">عرض</button></td>
                       </tr>
                       <tr>
-                        <td>Mary</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Moe</td>
+                        <td>الاثنين</td>
+                        <td>حساب</td>
+                        <td>ح٢٢</td>
+                        <td>فهد</td>
+                        <td>10:00</td>
+                        <td><button class="badge badge-success">عرض</button></td>
                       </tr>
                       <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
+                        <td>الاربعاء</td>
+                        <td>الادراة</td>
+                        <td>در٢</td>
+                        <td>ابكر</td>
+                        <td>8:00</td>
+                        <td><button class="badge badge-success">عرض</button></td>
                       </tr>
                     </tbody>
                   </table>

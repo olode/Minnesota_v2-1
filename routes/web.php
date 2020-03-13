@@ -169,7 +169,8 @@ Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPor
 
 Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
 Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
-
+Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
+Route::get('get-material/{specialization_id}', 'Dashboard\MaterialController@getAjaxMaterial');
 
 
 /*********************************************/

@@ -15,6 +15,21 @@ class SpecializationController extends Controller
    *
    * @return Response
    */
+
+  
+
+  public function getAjaxSpecializations($section_id)
+  {
+      $specializations = Specialization::Select('id', 'name')->Where('section_id', $section_id)->get();
+
+      if($specializations == null){
+
+        $specializations = 'null';
+      }
+
+      return  compact('specializations');
+  }
+
   public function index()
   {
     $datas = Specialization::all();

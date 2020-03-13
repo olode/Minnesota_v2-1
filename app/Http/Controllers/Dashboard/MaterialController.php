@@ -13,6 +13,19 @@ class MaterialController extends Controller
    *
    * @return Response
    */
+   public function getAjaxMaterial($specialization_id)
+   {
+       $materials = Material::Select('id', 'name')->Where('specialization_id', $specialization_id)->get();
+ 
+       if($materials == null){
+ 
+         $materials = 'null';
+       }
+ 
+       return  compact('materials');
+   }
+
+
   public function index()
   {
     $data = Material::all();

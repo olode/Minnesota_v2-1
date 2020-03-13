@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('dashboard.students.filter')
  <!-- Column selectors table -->
  <section id="column-selectors">
           <div class="row">
