@@ -2,6 +2,7 @@
 <script src="{{asset('dashboard/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
+
   <script type="text/javascript" src="{{asset('dashboard/app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
   <script type="text/javascript" src="{{asset('dashboard/app-assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('dashboard/app-assets/vendors/js/ui/headroom.min.js')}}"></script>
@@ -46,3 +47,4 @@
   <script src="{{asset('dashboard/app-assets/js/scripts/tables/datatables-extensions/datatable-button/datatable-html5.js')}}"
   type="text/javascript"></script>
   <!-- END DATA TABLE-->
+@yield('js')

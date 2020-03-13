@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Branche;
+use App\Models\Branch;
 class BrancheController extends Controller 
 {
 
@@ -19,7 +19,7 @@ class BrancheController extends Controller
    */
   public function index()
   {
-    $branches = Branche::all();
+    $branches = Branch::all();
     return view('dashboard.branches.index',compact('branches'));
   }
 
@@ -53,7 +53,7 @@ class BrancheController extends Controller
       'status'               => ['required', 'integer'],
     ]);
 
-    Branche::create($request->all());
+    Branch::create($request->all());
     return redirect('/branche');
   }
 
@@ -76,7 +76,7 @@ class BrancheController extends Controller
    */
   public function edit($id)
   {
-    $data = Branche::findOrfail($id);
+    $data = Branch::findOrfail($id);
     return view('dashboard.branches/edit', compact('data'));
   }
 
@@ -88,7 +88,7 @@ class BrancheController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $branche = Branche::findOrfail($id);
+    $branche = Branch::findOrfail($id);
     $branche->update($request->all());
     
     return redirect('/branche');
@@ -97,7 +97,7 @@ class BrancheController extends Controller
   public function active ($id){
 
     $activity = '1';
-    Branche::whereId($id)->update([
+    Branch::whereId($id)->update([
       'status' => $activity,
     ]);
   return redirect()->back();
@@ -107,7 +107,7 @@ class BrancheController extends Controller
   public function unactive ($id){
 
     $unactivity = '0';
-    Branche::whereId($id)->update([
+    Branch::whereId($id)->update([
       'status' => $unactivity,
     ]);
   return redirect()->back();
@@ -122,7 +122,7 @@ class BrancheController extends Controller
    */
   public function destroy($id)
   {
-    Branche::destroy($id);
+    Branch::destroy($id);
     return redirect()->back();
   }
   

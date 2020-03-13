@@ -13,7 +13,7 @@ class Stage extends Model
 
     public function branch()
     {
-        return $this->belongsTo('App\Models\Branche');
+        return $this->belongsTo('App\Models\Branch');
     }
 
 }
