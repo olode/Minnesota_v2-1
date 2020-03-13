@@ -4,16 +4,32 @@ namespace App\Http\Controllers\Dashboard;
 use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stage;
-use App\Models\Branche;
+use App\Models\Branch;
 
 class StageController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
   /**
    * Display a listing of the resource.
    *
    * @return Response
    */
+
+  public function getAjaxStages($branch_id)
+  {
+    $stages = Stage::Select('id', 'name')->Where('branch_id', $branch_id)->get();
+    if($stages == null){
+      $stages = 'null';
+
+    }
+    return  compact('stages');
+  }
+
   public function index()
   {
     $stages = Stage::all();
@@ -27,7 +43,7 @@ class StageController extends Controller
    */
   public function create()
   {
-    $branches = Branche::all();
+    $branches = Branch::all();
     return view('dashboard.stage/create', compact('branches'));
   }
 
@@ -40,17 +56,17 @@ class StageController extends Controller
   {
 
     $request->validate([
-      'name' => ['required', 'string', 'max:255'],
-      'info' => ['required', 'string', 'max:255'],
-      'branche_id' => ['required', 'integer', 'max:255'],
+      'name'         => ['required', 'string', 'max:255'],
+      'info'         => ['required', 'string', 'max:255'],
+      'branch_id'    => ['required', 'integer', 'max:255'],
     ]);
 
     //dd($request->all());
 
     Stage::create([
-      'name' => $request['name'],
-      'info' => $request['info'],
-      'branche_id' => $request['branche_id']
+      'name'           => $request['name'],
+      'info'           => $request['info'],
+      'branch_id'      => $request['branch_id']
     ]);
 
     return redirect('/stage');

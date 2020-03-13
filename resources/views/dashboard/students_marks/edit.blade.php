@@ -64,7 +64,7 @@
                               <select class="form-control" name="student_id" id="">
                                   <option value="{{ $studentmark->student_id }}" ></option>
                                   @foreach ($students as $student)
-                                      <option @if ($student->id === $studentmark->student_id) {{ "selected='' disabled=''" }} @endif class="form-control" value="{{$student->id}}">{{$student->firstName}} {{$student->secondName}} {{$student->lastName}}  (  الرقم الجامعي{{$student->id}} )  </option>
+                                      <option @if ($student->id === $studentmark->student_id) {{ "selected='' disabled=''" }} @endif class="form-control" value="{{$student->id}}">{{$student->first_name}} {{$student->second_name}} {{$student->last_name}}  (  الرقم الجامعي{{$student->special_student_id}} )  </option>
                                   @endforeach
                               </select>
                             </div>

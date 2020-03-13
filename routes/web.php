@@ -18,9 +18,7 @@ Route::get('/', function () {
 
 
 
-Route::get('c-panel', function () {
-    return view('dashboard.index');
-})->name('c-panel');
+Route::get('c-panel', 'HomeController@index')->name('c-panel');
 
 
 
@@ -111,6 +109,7 @@ Route::get('follow-up-homework','TeacherProfile\StudentHomeWorkController@follow
 
 Route::resource('lectures','TeacherProfile\LectureAttendanceController');
 Route::get('lecture-attendance','TeacherProfile\LectureAttendanceController@studentAttendance')->name('lecture-attendance');
+Route::get('lecture/download/about/{id}', 'TeacherProfile\LectureAttendanceController@downloadAbout')->name('about.download');
 
 
 Route::resource('marks','TeacherProfile\MarkController');
@@ -148,6 +147,33 @@ Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPor
 /*********************************************/
 /*********************************************/
 /**********the end of login part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
+
+
+/*********************************************/
+/*********************************************/
+/**********the start of ajax part**********/
+/*********************************************/
+/*********************************************/
+/*********************************************/
+
+
+// Route::get('get-stages', function(){
+//     $stages = DB::table('stages')->Where('id', )->get();
+
+//     return compact('stages');
+// });
+
+Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
+Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
+
+
+
+/*********************************************/
+/*********************************************/
+/**********the end of ajax part**********/
 /*********************************************/
 /*********************************************/
 /*********************************************/

@@ -43,7 +43,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="branche_id" class="form-control">
+                            <select id="projectinput6" name="branch_id" class="form-control">
                               <option value="" selected="" disabled="">اختر الفرع</option>
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}">{{ $branche->name }}</option> 

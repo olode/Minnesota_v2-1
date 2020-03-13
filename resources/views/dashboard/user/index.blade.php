@@ -26,6 +26,7 @@
                       <thead>
                         <tr>
                           <th>الصورة</th>
+                          <th>الرقم التعريفي</th>
                           <th>الاسم الاول</th>
                           <th>الاسم الثاني</th>
                           <th> الاسم الاخير</th>
@@ -40,12 +41,13 @@
                          @foreach ($users as $user)
                             <tr>
                                 <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar }}" alt=""></td>
-                                <td>{{ $user->firstName }}</td>
-                                <td>{{ $user->secondName }}</td>
-                                <td>{{ $user->lastName }}</td>
+                                <td>{{ $user->special_user_id }}</td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->second_name }}</td>
+                                <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->phoneNumber }}</td>
-                                <td>{{ $user['branche']->name }}</td>   
+                                <td>{{ $user->phone_number }}</td>
+                                <td>{{ $user['branch']->name }}</td>   
                                 <td>
                                   @if ($user->status === 1)
                                   <form action="{{ route('user.unactive', $user->id) }}" method="post">
@@ -62,12 +64,12 @@
                                 <td>
                                   <form style="display: ruby-base; margin-left: 5px;" action="{{ route('user.edit', $user->id) }}" method="get">
                                     {{ csrf_field() }}
-                                   <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل المستخدم</button>  
+                                   <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                                  </form>
                                  <form style="display: ruby-base; margin-left: 5px;" action="{{ route('user.destroy', $user->id) }}" method="post">
                                   @method('DELETE')
                                   {{ csrf_field() }}  
-                                 <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف المستخدم</button>
+                                 <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
                                </form>
                               </td>
                             </tr>
@@ -76,6 +78,7 @@
                       <tfoot>
                         <tr>
                             <th>الصورة</th>
+                            <th>الرقم الأكاديمي</th>
                             <th>الاسم الاول</th>
                             <th>الاسم الثاني</th>
                             <th> الاسم الاخير</th>

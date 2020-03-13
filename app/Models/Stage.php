@@ -11,9 +11,9 @@ class Stage extends Model
     protected $table = 'stages';
     public $timestamps = true;
 
-    public function branche()
+    public function branch()
     {
-        return $this->belongsTo('App\Models\Branche');
+        return $this->belongsTo('App\Models\Branch');
     }
 
 }

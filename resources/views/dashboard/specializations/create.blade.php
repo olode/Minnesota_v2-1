@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.master')
 
 @section('content')
-
  <!-- Basic form layout section start -->
  <section id="basic-form-layouts">
           <div class="row">
@@ -29,6 +28,45 @@
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">اختر الفرع</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <select class="form-control" name="branch_id" id="branch">
+                                <option value="" selected="" disabled="" >اختر الفرع</option>
+                                @foreach ($branches as $branch)
+                                  <option value="{{ $branch->id }}" >{{ $branch->name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">اختر المرحلة</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <select class="form-control" name="stage_id" id="stage">
+                                <option value="noun" selected="" disabled="" >اختر المرحلة</option>
+                                @foreach ($stages as $stage)
+                                    <option value="{{ $stage->id }}">{{ $stage->name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">اختر القسم</label>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <select class="form-control" name="section_id" id="section">
+                                <option value="" selected="" disabled="" >اختر القسم</option>
+                                @foreach ($sections as $section)
+                                  <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم التخصص</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="اسم التخصص"
@@ -47,20 +85,7 @@
                           <label class="col-md-3 label-control" for="projectinput2">العدد المسموح للطلاب في القسم</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="عدد الطلاب"
-                            name="maxStudentNumber">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput2">اختر القسم</label>
-                          <div class="col-md-9">
-                            <div class="form-group">
-                              <select class="form-control" name="section_id" id="">
-                                <option selected >اختر القسم</option>
-                                @foreach ($sections as $section)
-                                <option value="{{ $section->id }}" >{{ $section->name }}</option>
-                                @endforeach
-                              </select>
-                            </div>
+                            name="max_student_number">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -68,7 +93,7 @@
                           <div class="col-md-9">
                             <div class="form-group">
                               <select class="form-control" name="status" id="">
-                                <option selected >اختر الحالة</option>
+                                <option selected="" disabled="" >اختر الحالة</option>
                                 <option value="0">غير مفعل</option>
                                 <option value="1" >مفعل</option>
                               </select>
@@ -91,4 +116,12 @@
           </section>
 
 
+<script>
+
+
+</script>
+
+@endsection
+@section('js')
+<script src="{{asset('dashboard/js/specialization.js')}}" type="text/javascript"></script>
 @endsection

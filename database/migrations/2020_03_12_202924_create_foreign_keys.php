@@ -18,20 +18,30 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
+		Schema::table('specializations', function(Blueprint $table) {
+			$table->foreign('branch_id')->references('id')->on('branches')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('specializations', function(Blueprint $table) {
+			$table->foreign('stage_id')->references('id')->on('stages')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
 		Schema::table('materials', function(Blueprint $table) {
 			$table->foreign('specialization_id')->references('id')->on('specializations')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
 		Schema::table('stages', function(Blueprint $table) {
-			$table->foreign('branche_id')->references('id')->on('branches')
+			$table->foreign('branch_id')->references('id')->on('branches')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
 		Schema::table('teacher_materials', function(Blueprint $table) {
 			$table->foreign('teacher_id')->references('id')->on('teachers')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+						->onDelete('cascade')
+						->onUpdate('cascade');
 		});
 		Schema::table('teacher_materials', function(Blueprint $table) {
 			$table->foreign('material_id')->references('id')->on('materials')
@@ -53,6 +63,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
+		// Schema::table('mark_types', function(Blueprint $table) {
+		// 	$table->foreign('student_mark')->references('id')->on('student_marks')
+		// 				->onDelete('cascade')
+		// 				->onUpdate('cascade');
+		// });
 		Schema::table('mark_types', function(Blueprint $table) {
 			$table->foreign('material_id')->references('id')->on('teacher_materials')
 						->onDelete('cascade')
@@ -84,7 +99,22 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('users', function(Blueprint $table) {
-			$table->foreign('branche_id')->references('id')->on('branches')
+			$table->foreign('branch_id')->references('id')->on('branches')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('lectures', function(Blueprint $table) {
+			$table->foreign('material_id')->references('id')->on('materials')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('attendances', function(Blueprint $table) {
+			$table->foreign('lecture_id')->references('id')->on('lectures')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('news_announcements', function(Blueprint $table) {
+			$table->foreign('teacher_material_id')->references('id')->on('teacher_materials')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
@@ -98,11 +128,17 @@ class CreateForeignKeys extends Migration {
 		Schema::table('specializations', function(Blueprint $table) {
 			$table->dropForeign('specializations_section_id_foreign');
 		});
+		Schema::table('specializations', function(Blueprint $table) {
+			$table->dropForeign('specializations_branch_id_foreign');
+		});
+		Schema::table('specializations', function(Blueprint $table) {
+			$table->dropForeign('specializations_stage_id_foreign');
+		});
 		Schema::table('materials', function(Blueprint $table) {
 			$table->dropForeign('materials_specialization_id_foreign');
 		});
 		Schema::table('stages', function(Blueprint $table) {
-			$table->dropForeign('stages_branche_id_foreign');
+			$table->dropForeign('stages_branch_id_foreign');
 		});
 		Schema::table('teacher_materials', function(Blueprint $table) {
 			$table->dropForeign('teacher_materials_teacher_id_foreign');
@@ -119,6 +155,9 @@ class CreateForeignKeys extends Migration {
 		Schema::table('student_materials', function(Blueprint $table) {
 			$table->dropForeign('student_materials_student_id_foreign');
 		});
+		// Schema::table('mark_types', function(Blueprint $table) {
+		// 	$table->dropForeign('mark_types_student_mark_foreign');
+		// });
 		Schema::table('mark_types', function(Blueprint $table) {
 			$table->dropForeign('mark_types_material_id_foreign');
 		});
@@ -138,7 +177,16 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('schedule_teacher_materials_id_foreign');
 		});
 		Schema::table('users', function(Blueprint $table) {
-			$table->dropForeign('users_branche_id_foreign');
+			$table->dropForeign('users_branch_id_foreign');
+		});
+		Schema::table('lectures', function(Blueprint $table) {
+			$table->dropForeign('lectures_material_id_foreign');
+		});
+		Schema::table('attendances', function(Blueprint $table) {
+			$table->dropForeign('attendances_lecture_id_foreign');
+		});
+		Schema::table('news_announcements', function(Blueprint $table) {
+			$table->dropForeign('news_announcements_teacher_material_id_foreign');
 		});
 	}
 }

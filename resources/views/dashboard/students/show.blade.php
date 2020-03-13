@@ -44,19 +44,19 @@
                         <div class="row" style="margin-bottom:45px">
                         <div class="col col-md-2">
                             <h3 class="heads">الرقم الجامعي</h3>
-                            <p class="data">{{ $data->id }}</p>
+                            <p class="data">{{ $data->special_student_id }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">الاسم الأول</h3>
-                            <p class="data">{{ $data->firstName }}</p>
+                            <p class="data">{{ $data->first_name }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">الاسم الثاني</h3>
-                            <p class="data">{{ $data->secondName }}</p>
+                            <p class="data">{{ $data->second_name }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">الاسم الاخير</h3>
-                            <p class="data">{{ $data->lastName }}</p>
+                            <p class="data">{{ $data->last_name }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">العنوان</h3>
@@ -72,7 +72,7 @@
                       <div class="row" style="margin-bottom:45px">
                         <div class="col col-md-2">
                             <h3 class="heads">رقم الهاتف</h3>
-                            <p class="data">{{ $data->phoneNumber }}</p>
+                            <p class="data">{{ $data->phone_number }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">المؤهل الدراسي</h3>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">رقم الجواز</h3>
-                            <p class="data">{{ $data->passportNumber }}</p>
+                            <p class="data">{{ $data->passport_number }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">التخصص</h3>
@@ -118,7 +118,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة جواز السفر</h3>
                             <div style="width: 100%; height: 445px; background-size: contain;">
-                                <img src="/uploads/students/passports/{{$data->imageOfPassport}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/students/passports/{{$data->passport_image}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('qualification.download', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل نسخة جواز السفر للطالب</button>
@@ -127,7 +127,7 @@
                         <div class="col col-md-6">
                             <h3 class="heads">صورة المؤهل الدراسي</h3>
                             <div style="width: 100%; height: 445px; background-size: contain; ">
-                                <img src="/uploads/students/qualifications/{{$data->imageOfQualification}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
+                                <img src="/uploads/students/qualifications/{{$data->qualification_image}}" onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>
                             <form action="{{ route('passport.download', $data->id) }}" method="get">
                                 <button style="width: 100%; margin-top:5px; height: 50px;" class="btn btn-success" type="submit">تحميل المؤهل العلمي للطالب</button>

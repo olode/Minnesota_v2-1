@@ -4,7 +4,7 @@
         <ul class="nav navbar-nav flex-row">
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/c-panel">
               <img class="brand-logo" alt="robust admin logo" src="{{asset('dashboard/app-assets/images/logo/logo-dark-sm.jpg')}}">
               <h3 class="brand-text">الجامعة الإسلامية بولاية منيسوتا</h3>
             </a>
@@ -121,7 +121,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{asset('dashboard/app-assets/images/portrait/small/avatar-s-19.png')}}"
+                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -137,7 +137,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-busy rounded-circle">
-                          <img src="{{asset('dashboard/app-assets/images/portrait/small/avatar-s-2.png')}}"
+                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -153,7 +153,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{asset('dashboard/app-assets/images/portrait/small/avatar-s-3.png')}}"
+                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -169,7 +169,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-away rounded-circle">
-                          <img src="{{asset('dashboard/app-assets/images/portrait/small/avatar-s-6.png')}}"
+                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -188,15 +188,18 @@
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="avatar avatar-online">
-                  <img src="{{asset('dashboard/app-assets/images/portrait/small/avatar-s-1.png')}}"
+                  <img style="height: 35px;" src="uploads/users/avatars/{{ Auth::user()->avatar }}"
                   alt="avatar"><i></i></span>
-                <span class="user-name">John Doe</span>
+                <span class="user-name">{{ Auth::user()->first_name }}</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
-                <a
-                class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
-                  <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/user/{{ Auth::user()->id }}/edit/"><i class="ft-user"></i> ملفي الشخصي</a>
+                {{-- <a
+                class="dropdown-item" href="#"><i class="ft-mail"></i> البريد</a>
+                  <a class="dropdown-item" href="#"><i class="ft-check-square"></i> جدول المهام</a> --}}
+                  <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <div class="dropdown-divider"></div><button type="submit" class="dropdown-item" ><i class="ft-power"></i> تسجيل خروج</button>
+                  </form>
               </div>
             </li>
           </ul>

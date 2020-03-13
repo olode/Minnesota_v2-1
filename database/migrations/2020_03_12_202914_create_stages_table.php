@@ -9,10 +9,10 @@ class CreateStagesTable extends Migration {
 	{
 		Schema::create('stages', function(Blueprint $table) {
 			$table->increments('id');
-            $table->timestamps();
-            $table->string('name');
-            $table->string('info');
-			$table->integer('branche_id')->unsigned();
+			$table->timestamps();
+			$table->integer('branch_id')->unsigned();
+			$table->string('name');
+			$table->string('info');
 		});
 	}
 

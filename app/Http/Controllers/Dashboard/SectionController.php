@@ -8,12 +8,30 @@ use App\Models\Section;
 
 class SectionController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   /**
    * Display a listing of the resource.
    *
    * @return Response
    */
+
+  public function getAjaxSections($stage_id)
+  {
+      $sections = Section::Select('id', 'name')->Where('stage_id', $stage_id)->get();
+
+      if($sections == null){
+
+        $sections = 'null';
+      }
+
+      return  compact('sections');
+  }
+
+
   public function index()
   {
     $sections = Section::all();

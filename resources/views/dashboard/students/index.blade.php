@@ -40,8 +40,8 @@
                       <tbody>
                       @foreach ($students as $student)
                         <tr>
-                          <td>{{$student->id}}</td>
-                          <td>{{ $student->firstName }} {{ $student->secondName }} {{ $student->lastName }}</td>
+                          <td>{{$student->special_student_id}}</td>
+                          <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->last_name }}</td>
                           <td>
                             @if ($student->qualification === '1') {{"ثانوي"}} @endif
                             @if ($student->qualification === '2') {{"دبلوم"}} @endif
@@ -49,8 +49,8 @@
                             @if ($student->qualification === '4') {{"ماجستير"}} @endif
                             @if ($student->qualification === '5') {{"دكتورا"}} @endif
                           </td>
-                          <td>{{$student->phoneNumber}}</td>
-                          <td>{{$student->passportNumber}}</td>
+                          <td>{{$student->phone_number}}</td>
+                          <td>{{$student->passport_number}}</td>
                           <td>
                             @if ($student->status === 1)
                             <form action="{{ route('student.unactive', $student->id) }}" method="post">

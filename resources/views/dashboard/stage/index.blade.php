@@ -26,7 +26,7 @@
                       <thead>
                           <th>الاسم</th>
                           <th>نبذة عن المرحلة</th>
-                          <th>الغرع</th>
+                          <th>الفرع</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
@@ -34,7 +34,7 @@
                         <tr>
                           <td>{{ $stage->name }}</td>
                           <td>{{ $stage->info }}</td>
-                          <td>{{ $stage['branche']->name }}</td>
+                          <td>{{ $stage['branch']->name }}</td>
                           
                           <td>
                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('stage.destroy', $stage->id) }}" method="post">
@@ -49,7 +49,7 @@
                       <tfoot>
                         <th>الاسم</th>
                         <th>نبذة عن المرحلة</th>
-                        <th>الغرع</th>
+                        <th>الفرع</th>
                         <th>الاعدادت</th>
                       </tfoot>
                     </table>

@@ -27,52 +27,69 @@
                     <form action="{{ route('specialization.update', $special->id) }}" method="POST" class="form form-horizontal form-bordered">
                       @method('PUT')
                         @csrf
-                      <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">اسم التخصص</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $special->name }}" id="projectinput1" class="form-control" placeholder="اسم التخصص"
-                            name="name">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput2">نبذة عن التخصص</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $special->info }}"  id="projectinput2" class="form-control" placeholder="نبذة عن التخصص"
-                            name="info">
-                          </div>
-                        </div>
-
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput2">العدد المسموح للطلاب في القسم</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $special->maxStudentNumber }}"  id="projectinput2" class="form-control" placeholder="عدد الطلاب"
-                            name="maxStudentNumber">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1"> العام الدراسي</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $special->yearOfAdd }}"  id="projectinput1" class="form-control" placeholder="العام الدراسي"
-                            name="yearOfAdd">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput2">اختر القسم</label>
-                          <div class="col-md-9">
-                            <div class="form-group">
-                              <select class="form-control" name="section_id" id="">
-                                <option value="{{$special->section_id}}" selected >اختر القسم</option>
-                                @foreach ($sections as $section)
-                                <option value="{{ $section->id }}" >{{ $section->name }}</option>
-                                @endforeach
-                              </select>
+                        <div class="form-body">
+                          <h4 class="form-section"><i class="ft-user"></i> معلومات التخصص</h4>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">اختر الفرع</label>
+                            <div class="col-md-9">
+                              <div class="form-group">
+                                <select class="form-control" name="branch_id" id="branch">
+                                  @foreach ($branches as $branch)
+                                    <option value="{{ $branch->id }}" @if ($branch->id === $special->branch_id ) selected="" disabled=""  @endif >{{ $branch->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
                             </div>
                           </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">اختر المرحلة</label>
+                            <div class="col-md-9">
+                              <div class="form-group">
+                                <select class="form-control" name="stage_id" id="stage">
+                                  @foreach ($stages as $stage)
+                                      <option value="{{ $stage->id }}"  @if ($stage->id === $special->stage_id ) selected="" disabled=""  @endif  >{{ $stage->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">اختر القسم</label>
+                            <div class="col-md-9">
+                              <div class="form-group">
+                                <select class="form-control" name="section_id" id="section">
+                                  <option value="" selected="" disabled="" >اختر القسم</option>
+                                  @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}"  @if ($section->id === $special->section_id ) selected="" disabled=""  @endif  >{{ $section->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput1">اسم التخصص</label>
+                            <div class="col-md-9">
+                              <input type="text" value="{{ $special->name }}" id="projectinput1" class="form-control" placeholder="اسم التخصص"
+                              name="name">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">نبذة عن التخصص</label>
+                            <div class="col-md-9">
+                              <input type="text" value="{{ $special->info }}"  id="projectinput2" class="form-control" placeholder="نبذة عن التخصص"
+                              name="info">
+                            </div>
+                          </div>
+  
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">العدد المسموح للطلاب في القسم</label>
+                            <div class="col-md-9">
+                              <input type="text" value="{{ $special->max_student_number }}"   id="projectinput2" class="form-control" placeholder="عدد الطلاب"
+                              name="max_student_number">
+                            </div>
+                          </div>
+                         
                         </div>
-                       
-                      </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">
                           <i class="fa fa-check-square-o"></i> حفظ
