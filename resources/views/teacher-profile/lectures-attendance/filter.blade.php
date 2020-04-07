@@ -1,0 +1,129 @@
+<!-- Form repeater section start -->
+       
+<div class="col-12">
+   <div class="card">
+     <div class="card-header">
+       <h4 class="card-title" id="repeat-form">البحث عن الطلاب للتحضير</h4>
+       <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+       <div class="heading-elements">
+         <ul class="list-inline mb-0">
+           <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+           <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+           <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+           <li><a data-action="close"><i class="ft-x"></i></a></li>
+         </ul>
+       </div>
+     </div>
+     <div class="card-content collapse show">
+       <div class="card-body">
+         <div class="repeater-default">
+           <div data-repeater-list="car">
+             <div data-repeater-item>
+               <form class="form row" action="{{ route('lecture-attendance') }}" method="GET">
+                 @csrf
+                 <div class="form-group mb-1 col-sm-12 col-md-2">
+                   <label for="stage">اختر المرحلة</label>
+                   <br>
+                   <select class="form-control" id="stage">
+                    <option value="">اختر المرحلة</option> 
+                    @foreach ($stages as $stage)
+                         <option value="{{ $stage->id }}">{{ $stage->name }}</option>
+                     @endforeach
+                   </select>
+                 </div>
+                 
+                 <div class="form-group mb-1 col-sm-12 col-md-2">
+                   <label for="section">اختر القسم </label>
+                   <br>
+                   <select class="form-control" id="section">
+                     
+                    
+                   </select>
+                 </div>
+
+                 <div class="form-group mb-1 col-sm-12 col-md-2">
+                  <label for="section">اختر التخصص </label>
+                  <br>
+                  <select class="form-control" id="specialization" name="specialization_id">
+                    
+                   
+                  </select>
+                </div>
+
+                 <div class="form-group mb-1 col-sm-12 col-md-2">
+                   <label for="material">اختر المادة </label>
+                   <br>
+                   <select class="form-control" id="material" name="material_id" >
+                     
+                    
+                   </select>
+                 </div>
+
+                 <div class="form-group mb-1 col-sm-12 col-md-2">
+                   <label for="lecture">اختر المحاضرة </label>
+                   <br>
+                   <select class="form-control" id="lecture" name="material_id" >
+                     
+                    
+                   </select>
+                 </div>
+
+                 <div class="form-group col-sm-12 col-md-2 text-center mt-2">
+                   <button data-repeater-create type="submit" class="btn btn-primary">
+                   بحث <i class="ft-search"></i> 
+                   </button>
+                 </div>
+               </form>
+               <hr>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<!--  Form repeater section end -->
+
+<script>
+
+    $("#stage").change(function(){
+      //alert('Walid')
+      
+        stage_id = $(this).val();
+        $("#section").text('');
+        $("#specialization").text('');
+        $("#material").text('');
+        $("#lecture").text('');
+        //console.log(stage_id)
+        $.ajax({
+        
+        url:'/get-section/'+ stage_id,
+        type:'get',
+        dataType:'json',
+        success:function(data){
+
+          if(data.sections.length == 0){
+        
+              $("#section").append('<option > لا توجد اقسام لهذه المرحلة </option>');
+              
+              if($("#stage").val() == 'اختر'){
+                $("#section").text('');
+              }
+        
+          }else{
+        
+              $("#stage").append('<option > اختر المرحلة </option>');
+        
+              $.each(data.sections,function(key, val){
+                $("#section").append('<option value='+val.id+' >' + val.name + '</option>');
+              });
+        
+          }
+        }
+        });
+        });
+        
+        
+            
+    </script>

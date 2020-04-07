@@ -5,6 +5,7 @@ use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Student;
+use App\Models\Branch;
 use App\Models\Specialization;
 use Image;
 use Auth;
@@ -25,7 +26,8 @@ class StudentController extends Controller
     {
         
         $students = Student::all();
-        return view('dashboard.students/index', compact('students'));
+        $branches = Branch::Select('id', 'name')->get();
+        return view('dashboard.students/index', compact('students', 'branches'));
     }
 
     /**

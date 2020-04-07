@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use Image;
 use Auth;
-use App\Models\Branche;
+use App\Models\Branch;
 
 class UserController extends Controller 
 {
@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     protected function create()
     {
-      $branches = Branche::all();
+      $branches = Branch::all();
         return view('dashboard.user.create', compact('branches'));
     }
 

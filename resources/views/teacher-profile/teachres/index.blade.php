@@ -3,7 +3,7 @@
 @section('content')
 
 
-      
+
 <div class="content-detached content-left">
         <div class="content-body">
           <!-- Description -->

@@ -17,9 +17,28 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/c-panel');
+        switch ($guard) {
+            case 'teacher':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('teacher-profile.index');
+                }
+                break;
+            
+            case 'student':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('student-profile.index');
+                }
+                break;
+
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('c-panel');
+                }
+                break;
         }
+
+
+        
 
         return $next($request);
     }

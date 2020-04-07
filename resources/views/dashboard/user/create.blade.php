@@ -91,7 +91,6 @@
                             <div class="col-md-9">
                               <select id="projectinput6" class="form-control" name="status">
                                 <option value="" selected="" disabled="">اختر الحالة</option>
-                                <option value=""></option>
                                 <option value="0">غير مفعل</option>
                                 <option value="1">مفعل</option>
                               </select>

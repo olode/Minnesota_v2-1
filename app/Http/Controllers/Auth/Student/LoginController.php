@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth\Student;
 use App\Http\Controllers\Controller;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -20,14 +22,20 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    //use AuthenticatesUsers;
+
+
+    public function username()
+    {
+        return 'id';
+    }
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,14 +44,36 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
+        $this->middleware('guest:student');
     }
 
 
  
-    public function loginStudentPortal(){
+    public function loginStudentPortal()
+    {
 
         return view('auth.login-student-portal');
+
+    }
+
+    public function studentLogin(Request $request)
+    {
+
+        $this->validate($request, [
+
+            'id'        =>  'required',
+            'password'  =>  'required|min:5',
+
+        ]);
+        
+        $sure = Auth::guard('student')->attempt(['id' => $request->id, 'password' => $request->password]);
+        if ($sure) {
+
+            return redirect()->intended(route('student-profile.index'));
+
+        }
+
+        return redirect()->back()->withInput($request->only('id'));
 
     }
 }
