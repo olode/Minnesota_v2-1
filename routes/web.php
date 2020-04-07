@@ -140,8 +140,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*********************************************/
 /*********************************************/
 
-Route::get('login-teacher-portal', 'Auth\Teacher\LoginController@loginTeacherPortal');
-Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPortal');
+Route::get('login-teacher-portal', 'Auth\Teacher\LoginController@loginTeacherPortal')->name('teacher.login');
+Route::post('login-teacher-portal', 'Auth\Teacher\LoginController@teacherLogin')->name('teacher.login.submit');
+Route::get('login-student-portal', 'Auth\Student\LoginController@loginStudentPortal')->name('student.login');
+Route::post('login-student-portal', 'Auth\Student\LoginController@studentLogin')->name('student.login.submit');
 
 
 /*********************************************/
@@ -171,7 +173,13 @@ Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSection
 Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
 Route::get('get-material/{specialization_id}', 'Dashboard\MaterialController@getAjaxMaterial');
 
+/***************************/
+/*****Student Attendence****/
+/***************************/
 
+//Route::get('get-section/{stage_id}', 'Dashboard\SpecializationController@getAjaxSpecialization');
+//Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
+//Route::get('get-material/{specialization_id}', 'Dashboard\MaterialController@getAjaxMaterial');
 /*********************************************/
 /*********************************************/
 /**********the end of ajax part**********/

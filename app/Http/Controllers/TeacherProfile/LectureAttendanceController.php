@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TeacherMaterias;
 use App\Models\Lecture;
+use App\Models\Stage;
 use App\Models\Attendance;
 use Image;
 use Auth;
@@ -33,6 +34,7 @@ class LectureAttendanceController extends Controller
     {
         
         $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+
         return view('teacher-profile.lectures-attendance.create', compact('materials'));
 
     }
@@ -136,22 +138,22 @@ class LectureAttendanceController extends Controller
 
 
 
-        if (empty($request->all())) {
+        // if (empty($request->all())) {
 
-            $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+        //     $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
 
-            $attendancedata = '';
+        //     $attendancedata = '';
 
-            return view('teacher-profile.lectures-attendance.attendance', compact('materials', 'attendancedata'));
+        //     return view('teacher-profile.lectures-attendance.attendance', compact('materials', , 'attendancedata'));
         
-        }
-        if(!empty($request->material_id))
-        {
+        // }
+        // if(!empty($request->material_id))
+        // {
 
 
-
-            $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
-            return view('teacher-profile.lectures-attendance.attendance', compact('materials', 'attendancedata'));
+            $stages    = Stage::select('id', 'name')->get();
+            // $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+            return view('teacher-profile.lectures-attendance.attendance', compact('materials', 'stages', 'attendancedata'));
             //d($materials);
             //$lectures = Lecture::all();
 
@@ -166,7 +168,7 @@ class LectureAttendanceController extends Controller
             
             // dd($lectureId);
 
-        }
+        // }
 
 
 

@@ -119,6 +119,15 @@ class SpecializationController extends Controller
     return redirect('/specialization');
   }
 
+  
+  public function getAjaxSpecialization($stage_id)
+  {
+    $stages = Specialization::Select('id', 'name')->Where('stage_id', $stage_id)->get();
+    if($stages == null){
+      $stages = 'null';
+
+    }
+  }
 
   public function active ($id){
 
