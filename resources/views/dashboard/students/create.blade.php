@@ -71,6 +71,31 @@
                           </div>
                         </div>
                         <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">تاريخ الميلاد</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
+                            name="birthday">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">الجنسية</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="الجنسية" 
+                            name="nationality">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">الجنس</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="gender" class="form-control">
+                              <option value="none" selected="" disabled="">اختر الجنس</option>
+                              <option value="0">ذكر</option>
+                              <option value="1">أنثى</option>
+                              <option value="2">غير ذلك</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
@@ -85,13 +110,32 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">اختر الفرع</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="branch_id" id="branch" class="form-control">
+                              <option value="none" selected="" disabled="">إختر الفرع</option>
+                              @foreach ($branches as $branch)
+                                  <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">اختر القسم</label>
+                          <div class="col-md-9">
+                            <select id="section" name="section_id" class="form-control">
+                              <option selected="" disabled="">اختر القسم</option>
+                              @foreach ($sections as $section)
+                                  <option value="{{ $section->id }}">{{ $section->name }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اختر التخصص</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="specialization_id" class="form-control">
-                              <option value="none" selected="" disabled="">التخصص</option>
-                              @foreach ($specailizations as $item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                              @endforeach
+                            <select id="specialization" name="specialization_id" class="form-control">
+                              
                             </select>
                           </div>
                         </div>
@@ -117,6 +161,13 @@
                               <option value="4">ماجستير</option>
                               <option value="5">دكتورا</option>
                             </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">نسبة التخرج</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="نسبة التخرج" 
+                            name="graduation_rate">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -157,6 +208,9 @@
             </div>
           </div>
           </section>
-
-
 @endsection
+@section('js')
+<script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
+@endsection
+
+

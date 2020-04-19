@@ -121,7 +121,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-online rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::user()->avatar }}"
+                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -137,7 +137,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-busy rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::user()->avatar }}"
+                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -153,7 +153,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-online rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::user()->avatar }}"
+                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -169,7 +169,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-away rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::user()->avatar }}"
+                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -188,14 +188,14 @@
           <li class="dropdown dropdown-user nav-item">
             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
               <span class="avatar avatar-online">
-                <img style="height: 35px;" src="uploads/teachers/avatars/{{ Auth::user()->avatar }}"
+                <img style="height: 35px;" src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                 alt="avatar"><i></i></span>
-              <span class="user-name">{{ Auth::user()->first_name }}</span>
+              <span class="user-name">{{ Auth::guard('teacher')->user()->first_name }}</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/user/{{ Auth::user()->id }}/edit/"><i class="ft-user"></i> ملفي الشخصي</a>
-              {{-- <a
-              class="dropdown-item" href="#"><i class="ft-mail"></i> البريد</a>
-                <a class="dropdown-item" href="#"><i class="ft-check-square"></i> جدول المهام</a> --}}
+            <div class="dropdown-menu dropdown-menu-right">
+              {{-- <a class="dropdown-item" href="/user/{{ Auth::guard('teacher')->user()->id }}/edit/"><i class="ft-user"></i> ملفي الشخصي</a>
+               <a class="dropdown-item" href="#"><i class="ft-mail"></i> البريد</a>
+                <a class="dropdown-item" href="#"><i class="ft-check-square"></i> جدول المهام</a>  --}}
                 <form action="{{ route('logout') }}" method="post">
                   @csrf
                   <div class="dropdown-divider"></div><button type="submit" class="dropdown-item" ><i class="ft-power"></i> تسجيل خروج</button>

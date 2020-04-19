@@ -124,6 +124,13 @@ class SectionController extends Controller
     Section::destroy($id);
     return redirect()->back();
   }
+
+  public function getSections($stage_id)
+  {
+    $sections = Section::where('stage_id', $stage_id)->pluck('name', 'id');
+    return compact('sections');
+
+  }
   
 }
 

@@ -25,3 +25,4 @@
   <!-- BEGIN Custom CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/css/style-rtl.css')}}">
   <!-- END Custom CSS-->
+

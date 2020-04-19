@@ -88,6 +88,48 @@
                               name="max_student_number">
                             </div>
                           </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">رسوم التخصص</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->fees }}" class="form-control" placeholder="رسوم التخصص"
+                              name="fees">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">عدد مواد التخصص</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->number_of_materials }}" class="form-control" placeholder="عدد مواد التخصص"
+                              name="number_of_materials">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">عدد المواد الإلزامية</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->number_of_mandatory_materials }}" class="form-control" placeholder="عدد المواد"
+                              name="number_of_mandatory_materials">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">عدد المواد الإختيارية</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->number_of_optional_materials }}" class="form-control" placeholder="عدد المواد"
+                              name="number_of_optional_materials">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">عدد المستويات الأعلى للتخرج</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->number_of_higher_levels }}" class="form-control" placeholder="عدد المستويات الأعلى"
+                              name="number_of_higher_levels">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="projectinput2">عدد المستويات الاقل للتخرج</label>
+                            <div class="col-md-9">
+                              <input type="text" id="projectinput2" value="{{ $special->number_of_lower_levels }}" class="form-control" placeholder="عدد المستويات الأقل"
+                              name="number_of_lower_levels">
+                            </div>
+                          </div>
                          
                         </div>
                       <div class="form-actions text-center">

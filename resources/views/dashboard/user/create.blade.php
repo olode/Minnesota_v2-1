@@ -24,7 +24,7 @@
                                         
                     </div>
                     <form class="form form-horizontal form-bordered" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                        {{ csrf_field() }}
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات المستخدم</h4>
                         <div class="form-group row">
@@ -82,6 +82,17 @@
                               <option value="" selected="" disabled="">اختر الفرع</option>
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}">{{ $branche->name }}</option> 
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">الصلاحية</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="role_id" class="form-control">
+                              <option value="" selected="" disabled="">اختر الصلاحية</option>
+                              @foreach ($roles as $role)
+                              <option value="{{$role->id}}" >{{ $role->name }}</option> 
                               @endforeach
                             </select>
                           </div>
