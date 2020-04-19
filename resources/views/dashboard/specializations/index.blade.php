@@ -25,19 +25,19 @@
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
                           <th>الاسم</th>
-                          <th>نبذة عن التخصص</th>
                           <th>العدد المسموح للطلاب</th>
                           <th>القسم</th>
-                          <th>حالة القسم</th>
+                          <th>الفرع التابع له</th>
+                          <th>حالة التخصص</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
                       @foreach ($datas as $data)
                       <tr>
                         <td>{{ $data->name }}</td>
-                        <td>{{ $data->info }}</td>
                         <td>{{ $data->max_student_number }}</td>
                         <td>{{ $data['section']->name }}</td>
+                        <td>{{ $data['section']->stage->branch->name }}</td>
                         <td>
                           @if ($data->status === 1)
                             <form action="{{ route('specialization.unactive', $data->id) }}" method="post">
@@ -52,6 +52,10 @@
                             @endif
                         </td>
                         <td>
+                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('specialization.show', $data->id) }}" method="get">
+                            {{ csrf_field() }}
+                           <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
+                          </form>
                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('specialization.edit', $data->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
@@ -67,10 +71,10 @@
                       </tbody>
                       <tfoot>
                         <th>الاسم</th>
-                        <th>نبذة عن التخصص</th>
                         <th>العدد المسموح للطلاب</th>
                         <th>القسم</th>
-                        <th>حالة القسم</th>
+                        <th>الفرع التابع له</th>
+                        <th>حالة التخصص</th>
                         <th>الاعدادت</th>>
                       </tfoot>
                     </table>

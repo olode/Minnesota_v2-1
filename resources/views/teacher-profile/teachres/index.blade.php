@@ -78,9 +78,9 @@
                   <p></p>
                  
                  
-                                 <!-- Both borders end-->
+                  <!-- Both borders end-->
    
-                                 <div class="table-responsive">
+                  <div class="table-responsive">
                   <table class="table table-bordered mb-0">
                     <thead>
                    
@@ -88,17 +88,17 @@
                     <tbody>
                       <tr>
                         <td>الاسم</td>
-                        <td>ابراهيم ابكر سعد</td>
+                        <td>{{ Auth::guard('teacher')->user()->first_name}} {{ Auth::guard('teacher')->user()->second_name}} {{ Auth::guard('teacher')->user()->last_name}}</td>
                   
                       </tr>
                       <tr>
                         <td>البريد الالكتروني</td>
-                        <td>student@gmail.com</td>
+                        <td>{{ Auth::guard('teacher')->user()->email}}</td>
                       
                       </tr>
                       <tr>
                         <td>رقم الهاتف</td>
-                        <td>0569854568</td>
+                        <td>{{ Auth::guard('teacher')->user()->phone_number}}</td>
                       
                       </tr>
                       <tr>

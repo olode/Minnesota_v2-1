@@ -10,7 +10,7 @@
         <meta name="author" content="">
 
         <title>Elevator - Multipurpose Bootstrap Theme</title>
-
+        <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -80,14 +80,14 @@
                         <div class="menu-item green">
                             <a href="#portfolio-modal" data-toggle="modal">
                                 <i class="fa fa-file-photo-o"></i>
-                                <p>Portfolio</p>
+                                <p>صور الجامعة</p>
                             </a>
                         </div>
                         
                         <div class="menu-item light-red">
                             <a href="#about-modal" data-toggle="modal">
-                                <i class="fa fa-user"></i>
-                                <p>About Us</p>
+                                <i class="fa fa-info"></i>
+                                <p>عن الجامعة</p>
                             </a>
                         </div>
                         
@@ -128,7 +128,7 @@
                                 <div class="menu-item color responsive">
                                     <a href="#service-modal" data-toggle="modal">
                                         <i class="fa fa-area-chart"></i>
-                                        <p>Services</p>
+                                        <p>الأسئلة الشائعة</p>
                                     </a>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                 <div class="menu-item light-orange responsive-2">
                                     <a href="#team-modal" data-toggle="modal">
                                         <i class="fa fa-users"></i>
-                                        <p>Team</p>
+                                        <p>القبول والتسجيل</p>
                                     </a>
                                 </div>
                             </div>
@@ -158,14 +158,14 @@
                         <div class="menu-item color">
                             <a href="#testimonial-modal" data-toggle="modal">
                                 <i class="fa fa-comment-o"></i>
-                                <p>Testimonial</p>
+                                <p>تواصل معنا</p>
                             </a>
                         </div>
                         
                         <div class="menu-item blue">
                             <a href="#news-modal" data-toggle="modal">
-                                <i class="fa fa-mortar-board"></i>
-                                <p>Latest News</p>
+                                <i class="fa fa-bookmark-o"></i>
+                                <p>الإرشادات</p>
                             </a>
                         </div>
                         

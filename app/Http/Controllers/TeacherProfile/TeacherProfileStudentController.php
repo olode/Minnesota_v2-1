@@ -4,9 +4,15 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Stage;
 
 class TeacherProfileStudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:teacher');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -87,7 +93,8 @@ class TeacherProfileStudentController extends Controller
     
     public function assignCourse()
     {
-        return view('teacher-profile.teacher-profile-students.assign-course-student');
+        $stages = Stage::all();
+        return view('teacher-profile.teacher-profile-students.assign-course-student', compact('stages'));
 
     }
 

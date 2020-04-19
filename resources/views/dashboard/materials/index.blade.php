@@ -36,7 +36,10 @@
                           <th>وصف المقرر</th>
                           <th>العدد المسموح من الطلاب</th>
                           <th>الدرجة النهائية</th>
+                          <th>نوع المادة</th>
+                          <th>شرط المادة</th>
                           <th>القسم</th>
+                          <th>التخصص</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
@@ -47,6 +50,15 @@
                         <td> {{ $material->info }}</td>
                         <td> {{ $material->max_mark }} </td>
                         <td> {{ $material->max_students_number }} </td>
+                        <td>
+                          @if ($material->optional === 0) إختياري @endif
+                          @if ($material->optional === 1) إلزامي @endif
+                        </td>
+                        <td> 
+                          @if ($material->requirement === 0) غير متطلب @endif
+                          @if ($material->requirement === 1) متطلب @endif
+                        </td>
+                        <td>{{ $material['specialization']->section->name }}</td>
                         <td>{{ $material['specialization']->name }}</td>
                         <td>
                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.edit', $material->id) }}" method="get">
@@ -68,7 +80,10 @@
                         <th>وصف المقرر</th>
                         <th>العدد المسموح من الطلاب</th>
                         <th>الدرجة النهائية</th>
+                        <th>نوع المادة</th>
+                        <th>شرط المادة</th>
                         <th>القسم</th>
+                        <th>التخصص</th>
                         <th>الاعدادت</th>
                       </tfoot>
                     </table>

@@ -1,6 +1,8 @@
   <!-- BEGIN VENDOR JS-->
   <script src="{{asset('dashboard/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
+
+
   <!-- BEGIN PAGE VENDOR JS-->
   <script type="text/javascript" src="{{asset('dashboard/app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
   <script type="text/javascript" src="{{asset('dashboard/app-assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>

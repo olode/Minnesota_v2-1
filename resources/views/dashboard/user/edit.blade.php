@@ -73,23 +73,22 @@
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
                             <select id="projectinput6" name="branch_id" class="form-control">
-                              <option value="" selected="" disabled="">اختر الفرع</option>
-                              <option value=""></option>
-                              <option value="1">الفرع الثالث</option>
+                              @foreach ($branches as $branche)
+                              <option value="{{$branche->id}}" @if ( $branche->id ===  $data->branch_id )  selected="" disabled="" @endif>{{ $branche->name }}</option> 
+                              @endforeach
                             </select>
                           </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 label-control" for="projectinput6">الحالة</label>
-                            <div class="col-md-9">
-                              <select id="projectinput6" class="form-control" name="status">
-                                <option value="" selected="" disabled="">اختر الحالة</option>
-                                <option value=""></option>
-                                <option value="0">غير مفعل</option>
-                                <option value="1">مفعل</option>
-                              </select>
-                            </div>
+                          <label class="col-md-3 label-control" for="projectinput6">الصلاحية</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="role_id" class="form-control">
+                              @foreach ($roles as $role)
+                              <option value="{{$role->id}}"@if ( $role->id ===  $data->role_id )  selected="" disabled="" @endif> {{ $role->name }} </option> 
+                              @endforeach
+                            </select>
                           </div>
+                        </div>
                       </div>
                       <div class=" text-center">
                         <button type="submit" class="btn btn-primary">

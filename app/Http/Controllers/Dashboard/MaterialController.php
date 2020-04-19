@@ -5,6 +5,7 @@ use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Specialization;
+use App\Models\Section;
 class MaterialController extends Controller 
 {
   public function __construct()
@@ -44,8 +45,8 @@ class MaterialController extends Controller
    */
   public function create()
   {
-    $datas = Specialization::all();
-    return view('dashboard.materials.create', compact('datas'));
+    $sections = Section::Select('id', 'name')->get();
+    return view('dashboard.materials.create', compact('sections'));
   }
 
   /**
@@ -58,12 +59,16 @@ class MaterialController extends Controller
     $idNumber = "IUM" . mt_rand(100000, 999999) . "M";
     //dd($request->all());
     $request->validate([
+
       'special_material_id'       => ['string', 'max:255'],
       'name'                      => ['required', 'string', 'max:255'],
       'info'                      => ['required', 'string', 'max:255'],
       'max_mark'                  => ['required', 'string', 'max:255'],
       'max_students_number'       => ['required', 'integer', 'max:255'],
+      'section_id'                => ['required', 'integer', 'max:255'],
       'specialization_id'         => ['required', 'integer', 'max:255'],
+      'optional'                  => ['required', 'integer', 'max:255'],
+      'requirement'               => ['required', 'integer', 'max:255'],
     ]);
 
     //dd($data);
@@ -73,7 +78,10 @@ class MaterialController extends Controller
       'info'                      => $request['info'],
       'max_mark'                  => $request['max_mark'],
       'max_students_number'       => $request['max_students_number'],
+      'section_id'                => $request['section_id'],
       'specialization_id'         => $request['specialization_id'],
+      'optional'                  => $request['optional'],
+      'requirement'               => $request['requirement'],
     ]);
 
   return redirect('/material');
@@ -100,8 +108,8 @@ class MaterialController extends Controller
   public function edit($id)
   {
     $material = Material::findOrfail($id);
-    $datas = Specialization::all();
-    return view('dashboard.materials/edit', compact('material', 'datas'));
+    $sections = Section::Select('id', 'name')->get();
+    return view('dashboard.materials/edit', compact('material', 'sections'));
   }
 
   /**
