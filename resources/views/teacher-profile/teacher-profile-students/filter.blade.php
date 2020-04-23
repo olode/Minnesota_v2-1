@@ -18,7 +18,6 @@
             <div data-repeater-list="car">
               <div data-repeater-item>
                 <form class="form row">
-             
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر المرحلة</label>
                     <br>
@@ -56,7 +55,6 @@
 <script>
 
   $("#stage").change(function(){
-      
       stage_id = $(this).val();
       $("#specialization").text('');
       $.ajax({
