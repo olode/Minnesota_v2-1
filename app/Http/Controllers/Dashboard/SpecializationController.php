@@ -22,12 +22,22 @@ class SpecializationController extends Controller
    * @return Response
    */
 
-  
+  public function getAjaxSpecializationsFromStageID($stage_id)
+  {
+      $specializations = Specialization::Select('id', 'name')->Where('stage_id', $stage_id)->get();
+      
+      if($specializations == null){
+
+        $specializations = 'null';
+      }
+
+      return  compact('specializations');
+  }
 
   public function getAjaxSpecializations($section_id)
   {
       $specializations = Specialization::Select('id', 'name')->Where('section_id', $section_id)->get();
-
+      
       if($specializations == null){
 
         $specializations = 'null';
@@ -64,13 +74,19 @@ class SpecializationController extends Controller
   {
    
     $request->validate([
-      'name'                 => ['required', 'string', 'max:255'],
-      'info'                 => ['required', 'string', 'max:255'],
-      'max_student_number'   => ['required', 'string', 'max:255'],
-      'section_id'           => ['required', 'integer', 'max:255'],
-      'status'               => ['required', 'integer', 'max:255'],
-      'stage_id'           => ['required', 'integer', 'max:255'],
-      'branch_id'           => ['required', 'integer', 'max:255'],
+      'name'                                      => ['required', 'string', 'max:255'],
+      'info'                                      => ['required', 'string', 'max:255'],
+      'max_student_number'                        => ['required', 'string', 'max:255'],
+      'section_id'                                => ['required', 'integer', 'max:255'],
+      'status'                                    => ['required', 'integer', 'max:255'],
+      'stage_id'                                  => ['required', 'integer', 'max:255'],
+      'branch_id'                                 => ['required', 'integer', 'max:255'],
+      'fees'                                      => ['required', 'string', 'max:255'],
+      'number_of_materials'                       => ['required', 'integer', 'max:255'],
+      'number_of_mandatory_materials'             => ['required', 'integer', 'max:255'],
+      'number_of_optional_materials'              => ['required', 'integer', 'max:255'],
+      'number_of_higher_levels'                   => ['required', 'integer', 'max:255'],
+      'number_of_lower_levels'                    => ['required', 'integer', 'max:255'],
     ]);
 
     Specialization::create($request->all());
@@ -87,7 +103,8 @@ class SpecializationController extends Controller
    */
   public function show($id)
   {
-    
+    $data = Specialization::findOrfail($id);
+    return view('dashboard.specializations/show', compact('data'));
   }
 
   /**

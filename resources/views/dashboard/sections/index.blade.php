@@ -29,6 +29,7 @@
                           <th>عدد المعلمين في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
+                          <th>اسم المرحلة</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
@@ -39,6 +40,7 @@
                           <td>٦</td>
                           <td>٨</td>
                           <td>{{ $section->info }}</td>
+                          <td>{{ $section['stage']->name }}</td>
                           
                           <td>
                             <form style="display: ruby-base; margin-left: 5px;" action="{{ route('section.edit', $section->id) }}" method="get">
@@ -60,6 +62,7 @@
                           <th>عدد المعلمين في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
+                          <th>اسم المرحلة</th>
                           <th>الاعدادت</th>
                       </tfoot>
                     </table>

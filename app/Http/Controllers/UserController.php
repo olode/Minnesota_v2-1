@@ -9,6 +9,7 @@ use App\User;
 use Image;
 use Auth;
 use App\Models\Branch;
+use App\Models\Role;
 
 class UserController extends Controller 
 {
@@ -55,8 +56,9 @@ class UserController extends Controller
      */
     protected function create()
     {
-      $branches = Branch::all();
-        return view('dashboard.user.create', compact('branches'));
+      $roles    = Role::all();
+      $branches = Branch::Select('id', 'name')->Where('status', 1)->get();
+        return view('dashboard.user.create', compact('branches', 'roles'));
     }
 
   /**
@@ -66,6 +68,7 @@ class UserController extends Controller
    */
   public function store(Request $request)
   {
+    
     $id = "IUM" . mt_rand(100000, 999999) . "U";
     //dd($id);
     $request->validate( [
@@ -74,13 +77,14 @@ class UserController extends Controller
           'second_name'        => ['required', 'string', 'max:255'],
           'last_name'          => ['required', 'string', 'max:255'],
           'email'              => ['required', 'string', 'email', 'max:255'],
-          'phone_number'        => ['required', 'string', 'max:255'],
+          'phone_number'       => ['required', 'string', 'max:255'],
           'avatar'             => [],
           'password'           => ['required'],
           'branch_id'          => ['required', 'integer', 'max:255'],
+          'role_id'            => ['required', 'integer', 'max:255'],
           'status'             => ['required', 'integer', 'max:255'],
       ]);
-
+      
         //dd($idNumber);
 
         $avatarneme = '';
@@ -93,6 +97,7 @@ class UserController extends Controller
 
         }
 
+        //dd($request->all());
         //dd($idNumber);
          User::create([
             'special_user_id'       => $id,
@@ -103,6 +108,7 @@ class UserController extends Controller
             'phone_number'          => $request['phone_number'],
             'avatar'                => $avatarneme,
             'branch_id'             => $request['branch_id'],
+            'role_id'               => $request['role_id'],
             'status'                => $request['status'],
             'password'              => Hash::make($request['password']),
         ]);
@@ -130,8 +136,10 @@ class UserController extends Controller
   public function edit($id)
   {
     $data = User::find($id);
+    $roles    = Role::all();
+    $branches = Branch::all();
     //dd($data);
-    return view('dashboard/user/edit', compact('data'));
+    return view('dashboard/user/edit', compact('data', 'branches', 'roles'));
   }
 
   /**

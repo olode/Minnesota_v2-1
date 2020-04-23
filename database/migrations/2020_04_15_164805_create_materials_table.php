@@ -15,7 +15,10 @@ class CreateMaterialsTable extends Migration {
 			$table->string('info');
 			$table->string('max_mark');
 			$table->integer('max_students_number');
+			$table->integer('section_id')->unsigned();
 			$table->integer('specialization_id')->unsigned();
+			$table->integer('optional')->default('0');
+			$table->integer('requirement')->default('0');
 		});
 	}
 

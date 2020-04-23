@@ -33,6 +33,7 @@
                           <th>البريد الالكتروني</th>
                           <th>رقم الهاتف</th>
                           <th>الفرع</th>
+                          <th>نوع الصلاحية</th>
                           <th>الحالة</th>
                           <th>الاعدادت</th>
                         </tr>
@@ -47,7 +48,8 @@
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone_number }}</td>
-                                <td>{{ $user['branch']->name }}</td>   
+                                <td>{{ $user['branch']->name }}</td>
+                                <td>{{ $user['role']->name }}</td>   
                                 <td>
                                   @if ($user->status === 1)
                                   <form action="{{ route('user.unactive', $user->id) }}" method="post">
@@ -85,6 +87,7 @@
                             <th>البريد الالكتروني</th>
                             <th>رقم الهاتف</th>
                             <th>الفرع</th>
+                            <th>نوع الصلاحية</th>
                             <th>الحالة</th>
                             <th>الاعدادت</th>
                           </tr>

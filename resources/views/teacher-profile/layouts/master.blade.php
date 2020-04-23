@@ -28,7 +28,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="content-detached-r
 
       @yield('content')
 
-      @include('teacher-profile.partials.left-sidebar')
+      {{-- @include('teacher-profile.partials.left-sidebar') --}}
 
       
     </div>

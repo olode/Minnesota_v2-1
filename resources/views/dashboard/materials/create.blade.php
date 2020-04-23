@@ -57,17 +57,46 @@
                           </div>
                         </div>
                         <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
+                          <label class="col-md-3 label-control" for="projectinput4">القسم</label>
                           <div class="col-md-9">
-                              <select  class="form-control" name="specialization_id" id="">
-                                <option selected >اختر التخصص</option>
-                                @foreach ($datas as $data)
-                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                              <select  class="form-control" name="section_id" id="section">
+                                <option value="" selected="" disabled="" > اختر القسم</option>
+                                @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
                                 @endforeach
                               </select>
                           </div>
                         </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
+                          <div class="col-md-9">
+                              <select  class="form-control" name="specialization_id" id="specialization">
+                                
+                              </select>
+                          </div>
+                        </div>
                       </div>
+                      <div class="form-group row last">
+                        <label class="col-md-3 label-control" for="projectinput4">اختر نوع المادة</label>
+                        <div class="col-md-9">
+                            <select  class="form-control" name="optional" id="">
+                              <option selected="" disabled="" >اختر</option>
+                              <option value="0">إختياري</option>
+                              <option value="1">إلزامي</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row last">
+                        <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
+                        <div class="col-md-9">
+                            <select  class="form-control" name="requirement" id="">
+                              <option selected="" disabled="" >اختر شرط المادة</option>
+                              <option value="0">غير متطلب</option>
+                              <option value="1">متطلب</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">
                           <i class="fa fa-check-square-o"></i> حفظ
@@ -82,4 +111,8 @@
           </section>
 
 
+@endsection
+
+@section('js')
+<script src="{{asset('dashboard/js/material.js')}}" type="text/javascript"></script>
 @endsection

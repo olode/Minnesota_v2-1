@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'special_user_id', 'first_name', 'second_name', 'last_name', 'email', 'phone_number', 'avatar', 'password', 'branch_id', 'status',
+        'special_user_id', 'first_name', 'second_name', 'last_name', 'email', 'phone_number', 'avatar', 'password', 'branch_id', 'role_id', 'status',
     ];
 
     /**
@@ -40,5 +40,10 @@ class User extends Authenticatable
 public function branch()
     {
         return $this->belongsTo('App\Models\Branch');
+    }
+
+public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
     }
 }

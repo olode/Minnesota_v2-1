@@ -6,10 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TeacherMaterias;
 use App\Models\NewsAnnouncements;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NewsAnnouncementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:teacher');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +22,16 @@ class NewsAnnouncementController extends Controller
      */
     public function index()
     {
-        return $news = DB::table('news_announcements')
-        ->join('teacher_materials', 'teacher_materials.id', 'news_announcements.teacher_material_id')
-        ->join('materials', 'materials.id', 'teacher_materials.material_id') 
-        ->where('teacher_id', '=', 674180)       
-        ->get();
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $ownerType = "2";
+        $news = NewsAnnouncements::where('owner_id', $teacherId)
+        ->where('owner_type', $ownerType)->get();
+        // return $news = DB::table('news_announcements')
+        // ->join('teacher_materials', 'teacher_materials.id', 'news_announcements.teacher_material_id')
+        // ->join('materials', 'materials.id', 'teacher_materials.material_id') 
+        // ->where('teacher_id', '=', $teacherId)       
+        // ->get();
         
-        //dd($datas);
         return view('teacher-profile.news-announcements.index', compact('news'));
 
     }
@@ -35,7 +43,8 @@ class NewsAnnouncementController extends Controller
      */
     public function create()
     {
-        $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
         return view('teacher-profile.news-announcements.create', compact('materials'));
 
     }
@@ -49,6 +58,8 @@ class NewsAnnouncementController extends Controller
     public function store(Request $request)
     {
 
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $ownerType = "2";
         $request->validate([
 
             'teacher_material_id'          => ['required', 'integer', 'max:255'],
@@ -58,7 +69,13 @@ class NewsAnnouncementController extends Controller
         ]);
 
         //dd($request->all());
-        NewsAnnouncements::create($request->all());
+        NewsAnnouncements::create([
+            'teacher_material_id'          => $request['teacher_material_id'],
+            'tittle'                       => $request['tittle'],
+            'text'                         => $request['text'],
+            'owner_id'                     => $teacherId,
+            'owner_type'                   => $ownerType,
+        ]);
         return redirect('/news-announcements');
 
     }
@@ -82,7 +99,11 @@ class NewsAnnouncementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = NewsAnnouncements::findOrfail($id);
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
+        //return redirect('news-announcements/edit/')->with('materials', 'news');
+        return view('teacher-profile.news-announcements/edit', compact('materials', 'news'));
     }
 
     /**
@@ -94,7 +115,10 @@ class NewsAnnouncementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $news = NewsAnnouncements::findOrfail($id);
+        $news->update($request->all());
+
+        return redirect('/news-announcements');
     }
 
     /**
@@ -105,6 +129,7 @@ class NewsAnnouncementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        NewsAnnouncements::destroy($id);
+        return redirect()->back();
     }
 }

@@ -6,6 +6,7 @@
   @include('dashboard.includes.css')
 
 </head>
+
 <body class="vertical-layout vertical-content-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <!-- fixed-top-->

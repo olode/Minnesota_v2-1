@@ -23,8 +23,14 @@ class CreateStudentsTable extends Migration {
 			$table->string('qualification_image');
 			$table->string('passport_number', 200);
 			$table->string('passport_image');
-			$table->integer('specialization_id')->unsigned();
 			$table->integer('status')->default('0');
+			$table->integer('branch_id')->unsigned();
+			$table->integer('section_id')->unsigned();
+			$table->integer('specialization_id')->unsigned();
+			$table->string('birthday');
+			$table->string('nationality');
+			$table->string('gender');
+			$table->string('graduation_rate');
 		});
 	}
 

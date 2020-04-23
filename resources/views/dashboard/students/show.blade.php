@@ -59,20 +59,28 @@
                             <p class="data">{{ $data->last_name }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">العنوان</h3>
-                            <p class="data">{{ $data->location }}</p>
+                            <h3 class="heads">تاريخ الميلاد</h3>
+                            <p class="data">{{ $data->birthday }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">البريد الإلكتروني</h3>
-                            <p class="data">{{ $data->email }}</p>
+                            <h3 class="heads">الجنس</h3>
+                            <p class="data">
+                                @if ($data->gender === '0') {{"ذكر"}} @endif
+                                @if ($data->gender === '1') {{"أنثى"}} @endif
+                                @if ($data->gender === '2') {{"غير ذلك"}} @endif
+                            </p>
                         </div>
                       </div>
 
                       <hr>
-                      <div class="row" style="margin-bottom:45px">
+                        <div class="row" style="margin-bottom:45px">
                         <div class="col col-md-2">
-                            <h3 class="heads">رقم الهاتف</h3>
-                            <p class="data">{{ $data->phone_number }}</p>
+                            <h3 class="heads">الجنسية</h3>
+                            <p class="data">{{ $data->nationality }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">النسبة</h3>
+                            <p class="data">{{ $data->graduation_rate }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">المؤهل الدراسي</h3>
@@ -85,8 +93,32 @@
                             </p>
                         </div>
                         <div class="col col-md-2">
+                            <h3 class="heads">البريد الإلكتروني</h3>
+                            <p class="data">{{ $data->email }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">رقم الهاتف</h3>
+                            <p class="data">{{ $data->phone_number }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">العنوان</h3>
+                            <p class="data">{{ $data->location }}</p>
+                        </div>
+                      </div>
+
+                      <hr>
+                      <div class="row" style="margin-bottom:45px">
+                        <div class="col col-md-2">
                             <h3 class="heads">رقم الجواز</h3>
                             <p class="data">{{ $data->passport_number }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">الفرع</h3>
+                            <p class="data">{{ $data['specialization']->section->stage->branch->name }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">القسم</h3>
+                            <p class="data">{{ $data['specialization']->section->name }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">التخصص</h3>

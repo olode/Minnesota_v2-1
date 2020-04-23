@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Student;
 use App\Models\Branch;
 use App\Models\Specialization;
+use App\Models\Section;
 use Image;
 use Auth;
 
@@ -37,8 +38,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $specailizations = Specialization::all();
-        return view('dashboard.students/create', compact('specailizations'));
+        $branches = Branch::Select('id', 'name')->where('status', 1)->get();
+        $sections = Section::Select('id', 'name')->get();
+        return view('dashboard.students/create', compact('branches', 'sections'));
     }
 
     /**
@@ -67,8 +69,14 @@ class StudentController extends Controller
             'qualification_image'        => [],
             'passport_number'            => ['string', 'max:255'],
             'passport_image'             => [],
+            'branch_id'                  => ['integer', 'max:255'],
+            'section_id'                 => ['integer', 'max:255'],
             'specialization_id'          => ['integer', 'max:255'],
             'status'                     => ['integer', 'max:255'],
+            'birthday'                   => ['string', 'max:255'],
+            'nationality'                => ['string', 'max:255'],
+            'gender'                     => ['string', 'max:255'],
+            'graduation_rate'            => ['string', 'max:255'],
         ]);
 
 
@@ -113,8 +121,14 @@ class StudentController extends Controller
             'qualification_image'      => $qualificationsneme,
             'passport_number'          => $request['passport_number'],
             'passport_image'           => $passportneme,
+            'branch_id'                => $request['branch_id'],
+            'section_id'               => $request['section_id'],
             'specialization_id'        => $request['specialization_id'],
             'status'                   => $request['status'],
+            'birthday'                 => $request['birthday'],
+            'nationality'              => $request['nationality'],
+            'gender'                   => $request['gender'],
+            'graduation_rate'          => $request['graduation_rate'],
         ]);
         
         
@@ -141,9 +155,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $specailizations = Specialization::all();
+        $branches = Branch::Select('id', 'name')->where('status', 1)->get();
+        $sections = Section::Select('id', 'name')->get();
         $student = Student::findOrfail($id);
-        return view('dashboard.students/edit', compact('student', 'specailizations'));
+        return view('dashboard.students/edit', compact('student', 'branches', 'sections'));
     }
 
     /**

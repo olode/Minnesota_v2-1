@@ -161,13 +161,19 @@ Route::post('login-student-portal', 'Auth\Student\LoginController@studentLogin')
 /*********************************************/
 /*********************************************/
 
+/********** Assign Student Course ************/
+Route::get('getSpecializations/{stage_id}', 'Dashboard\SpecializationController@getSpecializations');
+
+
+/************ Student attendance ************/
+Route::get('getSections/{stageID}', 'Dashboard\SectionController@getSections');
 
 // Route::get('get-stages', function(){
 //     $stages = DB::table('stages')->Where('id', )->get();
 
 //     return compact('stages');
 // });
-
+Route::get('get-stage-specialization/{stage_id}', 'Dashboard\SpecializationController@getAjaxSpecializationsFromStageID');
 Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
 Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
 Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
