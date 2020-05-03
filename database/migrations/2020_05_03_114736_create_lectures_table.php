@@ -16,6 +16,7 @@ class CreateLecturesTable extends Migration {
 			$table->string('date', 200);
 			$table->string('tittle', 200);
 			$table->text('about');
+			$table->integer('class_id')->unsigned()->index();
 		});
 	}
 

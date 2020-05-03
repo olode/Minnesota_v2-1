@@ -11,9 +11,10 @@ class CreateStudentMarksTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('student_id')->unsigned();
-			$table->integer('mark_types_id')->unsigned();
+			$table->integer('mark_type_id')->unsigned();
 			$table->integer('student_mark');
-			$table->integer('student_material_id')->unsigned();
+			$table->integer('material_id')->unsigned();
+			$table->integer('class_id')->unsigned();
 		});
 	}
 
