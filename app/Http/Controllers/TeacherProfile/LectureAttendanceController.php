@@ -9,7 +9,7 @@ use App\Models\Lecture;
 use App\Models\Stage;
 use App\Models\Attendance;
 use Image;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LectureAttendanceController extends Controller
 {
@@ -37,8 +37,8 @@ class LectureAttendanceController extends Controller
      */
     public function create()
     {
-        
-        $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
 
         return view('teacher-profile.lectures-attendance.create', compact('materials'));
 
@@ -102,8 +102,9 @@ class LectureAttendanceController extends Controller
      */
     public function edit($id)
     {
+        $teacherId = Auth::guard('teacher')->user()->id;
         $lecture = Lecture::findOrfail($id);
-        $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
+        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
         return view('teacher-profile.lectures-attendance/edit', compact('lecture', 'materials'));
     }
 

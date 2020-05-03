@@ -109,7 +109,7 @@
                  
                   <!-- Both borders end-->
    
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  <table class="table table-responsive table-bordered ">
                       <thead>
                         <tr>
                           <th>عنوان الخبر</th>
@@ -128,87 +128,7 @@
                           <td>٢٨٧٧٤٨</td>
                           <td>٢٠١٩/١٢/٢٥</td>
                           <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>دبلوم</td>
-                          <td>٠٥٦٦٦٢٥٣٧</td>
-                          <td>٢٨٧٧٤٨</td>
-                          <td>٢٠١٩/١٢/٢٥</td>
-                          <td></td>
-                        </tr>
+                      </tr>
                       </tbody>
                       <tfoot>
                         <tr>

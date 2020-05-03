@@ -55,14 +55,14 @@
               <ul class="menu-content">
                 <li ><a class="menu-item" href="{{route('marks.index')}}" data-i18n="nav.dash.analytics">عرض</a>
                 </li>
-                <li><a class="menu-item" href="{{route('add-homework-marks')}}" data-i18n="nav.dash.project">اضافة درجات الواجبات</a>
+                <li><a class="menu-item" href="{{route('marks.create')}}" data-i18n="nav.dash.project">اضافة انواع الدرجات</a>
                 </li>
-                <li><a class="menu-item" href="{{route('add-attendance-marks')}}" data-i18n="nav.dash.project">اضافة درجات الحضور</a>
+                <li><a class="menu-item" href="{{route('add-attendance-marks')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
                 </li>
-                <li><a class="menu-item" href="{{route('add-mid-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبارات</a>
+                {{--  <li><a class="menu-item" href="{{route('add-mid-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبارات</a>
                 </li>
                 <li><a class="menu-item" href="{{route('add-final-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبار النهائي</a>
-                </li>
+                </li>  --}}
               </ul>
             </li>
              <li class=" navigation-header">

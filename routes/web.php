@@ -92,6 +92,23 @@ Route::get('student-login',function(){
 /*********************************************/
 /*********************************************/
 /*********************************************/
+Route::get('teacher-profile-assign-course','TeacherProfile\CourseAssignController@assignCourse')->name('teacher-profile-assign-course');
+Route::get('assign-course/{id}','TeacherProfile\CourseAssignController@showCoursesToAssign')->name('assign.course');
+Route::post('assign-student-to-course','TeacherProfile\CourseAssignController@assignStudentToCourses')->name('assign.student-to.course');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::resource('teacher-profile','TeacherProfile\TeacherController');
@@ -100,7 +117,6 @@ Route::resource('teacher-profile','TeacherProfile\TeacherController');
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
 Route::resource('teacher-profile-students','TeacherProfile\TeacherProfileStudentController');
 
-Route::get('teacher-profile-assign-course','TeacherProfile\TeacherProfileStudentController@assignCourse')->name('teacher-profile-assign-course');
 
 
 Route::resource('student-home-work','TeacherProfile\StudentHomeWorkController');
@@ -167,7 +183,7 @@ Route::get('getSpecializations/{stage_id}', 'Dashboard\SpecializationController@
 
 /************ Student attendance ************/
 Route::get('getSections/{stageID}', 'Dashboard\SectionController@getSections');
-
+Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
 // Route::get('get-stages', function(){
 //     $stages = DB::table('stages')->Where('id', )->get();
 

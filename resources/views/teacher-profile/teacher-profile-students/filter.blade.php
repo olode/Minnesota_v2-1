@@ -17,7 +17,8 @@
           <div class="repeater-default">
             <div data-repeater-list="car">
               <div data-repeater-item>
-                <form class="form row">
+                <form action="{{ route('get-students') }}" method="GET" class="form row">
+                  @csrf
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر المرحلة</label>
                     <br>
