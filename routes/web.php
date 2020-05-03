@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::resource('role', 'RoleController');
+Route::resource('semester', 'SemesterController');
+Route::resource('class', 'ClassController');
+Route::resource('year', 'YearController');
 
 
 Route::get('c-panel', 'HomeController@index')->name('c-panel');

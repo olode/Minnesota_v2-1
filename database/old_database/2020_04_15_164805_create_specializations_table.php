@@ -13,9 +13,16 @@ class CreateSpecializationsTable extends Migration {
 			$table->integer('section_id')->unsigned();
 			$table->string('name');
 			$table->string('info');
-			$table->string('maxStudentNumber');
-			$table->string('rememberToken')->default('0');
+			$table->string('max_student_number');
+			$table->integer('branch_id')->unsigned()->nullable()->index();
 			$table->integer('status')->default('0');
+			$table->integer('stage_id')->unsigned()->index();
+			$table->string('fees');
+			$table->integer('number_of_materials');
+			$table->integer('number_of_mandatory_materials');
+			$table->integer('number_of_optional_materials');
+			$table->integer('number_of_higher_levels');
+			$table->integer('number_of_lower_levels');
 		});
 	}
 

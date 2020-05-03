@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class SpecializationPlan extends Model 
 {
 
+    protected $guarded = [];
     protected $table = 'specialization_plan';
     public $timestamps = true;
-    protected $fillable = array('specialization_id');
 
     public function specialization()
     {
-        return $this->belongsTo('App/Models\Specialization');
+        return $this->belongsTo('App\Models\Specialization');
     }
 
 }

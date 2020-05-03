@@ -11,21 +11,19 @@ class StudentMark extends Model
     protected $table = 'student_marks';
     public $timestamps = true;
 
-    public function student()
+    public function Student()
     {
         return $this->belongsTo('App\Models\Student');
     }
 
-    public function student_material()
-    {
-        return $this->belongsTo('App\Models\StudentMaterial');
-    }
-
-    public function marktypes()
+    public function marktype()
     {
         return $this->belongsTo('App\Models\MarkType');
     }
 
-    
+    public function class()
+    {
+        return $this->belongsTo('App\Models\Class');
+    }
 
 }

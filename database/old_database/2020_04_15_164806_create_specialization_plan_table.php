@@ -11,9 +11,9 @@ class CreateSpecializationPlanTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('specialization_id')->unsigned();
-			$table->string('materialCode');
+			$table->string('material_code');
 			$table->integer('hours');
-			$table->string('pastRequirement');
+			$table->string('past_requirement');
 			$table->string('level');
 		});
 	}

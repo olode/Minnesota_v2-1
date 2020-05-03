@@ -11,13 +11,13 @@ class CreateBranchesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
-			$table->string('emailOfBranch');
-			$table->string('phoneNumber', 200);
+			$table->string('email_of_branch');
+			$table->string('phone_number', 200);
 			$table->string('location');
 			$table->string('country');
-			$table->string('mangerFullName', 200);
-			$table->string('mangerPhoneNumber');
-			$table->string('mangerEmail');
+			$table->string('manger_full_name', 200);
+			$table->string('manger_phone_number');
+			$table->string('manger_email');
 			$table->integer('status')->default('0');
 		});
 	}

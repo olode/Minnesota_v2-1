@@ -10,9 +10,11 @@ class CreateNewsAnnouncementsTable extends Migration {
 		Schema::create('news_announcements', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('teacher_material_id')->unsigned();
+			$table->integer('class_id')->unsigned()->nullable();
 			$table->string('tittle');
 			$table->text('text');
+			$table->bigInteger('owner_id');
+			$table->bigInteger('owner_type');
 		});
 	}
 

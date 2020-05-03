@@ -11,11 +11,12 @@ class CreateLecturesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('material_id')->unsigned();
-			$table->string('articleArrangement', 200);
-			$table->integer('articleArrangementNumber');
+			$table->string('article_arrangement', 200);
+			$table->integer('article_arrangement_number');
 			$table->string('date', 200);
 			$table->string('tittle', 200);
 			$table->text('about');
+			$table->integer('class_id')->unsigned()->index();
 		});
 	}
 

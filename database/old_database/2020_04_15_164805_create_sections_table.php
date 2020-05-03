@@ -9,10 +9,10 @@ class CreateSectionsTable extends Migration {
 	{
 		Schema::create('sections', function(Blueprint $table) {
 			$table->increments('id');
-            $table->timestamps();
-            $table->string('name');
-            $table->string('info');
+			$table->timestamps();
 			$table->integer('stage_id')->unsigned();
+			$table->string('name');
+			$table->string('info');
 		});
 	}
 
