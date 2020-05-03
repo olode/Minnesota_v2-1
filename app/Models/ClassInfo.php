@@ -13,22 +13,22 @@ class ClassInfo extends Model
 
     public function semester()
     {
-        return $this->belongsTo('App/Models\Semester');
+        return $this->belongsTo('App\Models\Semester');
     }
 
     public function material()
     {
-        return $this->belongsTo('App/Model\Material');
+        return $this->belongsTo('App\Models\Material');
     }
 
     public function teacher()
     {
-        return $this->belongsTo('App/Models\Teacher');
+        return $this->belongsTo('App\Models\Teacher');
     }
 
     public function year()
     {
-        return $this->belongsTo('App/Models\Year');
+        return $this->belongsTo('App\Models\Year');
     }
 
 }
