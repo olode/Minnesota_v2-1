@@ -41,8 +41,6 @@
                 </li>
                 <li><a class="menu-item" href="{{route('teacher.create')}}" data-i18n="nav.dash.project">اضافة</a>
                 </li>
-                <li ><a class="menu-item" href="{{route('marktype.create')}}" data-i18n="nav.dash.analytics">اضافة خانة درجة</a>
-                </li>
                 <li><a class="menu-item" href="{{route('studentmark.create')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
                 </li>
               </li>
@@ -105,6 +103,19 @@
             </li>
 
             <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">الفصول</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href="{{route('semester.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الفصول</span></a>
+              <ul class="menu-content">
+                <li ><a class="menu-item" href="{{route('semester.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                </li>
+                <li><a class="menu-item" href="{{route('semester.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">المواد</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -117,20 +128,33 @@
             </li>
 
             <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">الصفوف</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href="{{route('class.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الصفوف</span></a>
+              <ul class="menu-content">
+                <li ><a class="menu-item" href="{{route('class.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                </li>
+                <li><a class="menu-item" href="{{route('class.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">التعيينات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('material.index')}}"><i class="icon-book-open"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة التعيينات</span></a>
+            <li class=" nav-item"><a href="{{route('studentclass.index')}}"><i class="icon-book-open"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة التعيينات</span></a>
               <ul class="menu-content">
-                <li><a class="menu-item" href="{{route('teachermaterial.create')}}" data-i18n="nav.dash.project">تعيين مواد لمعلم</a>
+                {{--  <li >
+                  <a class="menu-item" href="{{route('marktype.create')}}" data-i18n="nav.dash.analytics">تعيين خانة درجة</a>
+                </li>  --}}
+                <li>
+                  <a class="menu-item" href="{{route('studentclass.create')}}" data-i18n="nav.dash.project">تعيين مواد لطالب</a>
                 </li>
-
-                <li><a class="menu-item" href="{{route('teachermaterial.index')}}" data-i18n="nav.dash.project">عرض مواد لمعلم</a>
                 </li>
-                <li><a class="menu-item" href="{{route('studentmaterial.create')}}" data-i18n="nav.dash.project">تعيين مواد لطالب</a>
-                </li>
-                </li>
-                <li><a class="menu-item" href="{{route('studentmaterial.index')}}" data-i18n="nav.dash.project">عرض مواد الطالب</a>
+                <li>
+                  <a class="menu-item" href="{{route('studentclass.index')}}" data-i18n="nav.dash.project">عرض مواد الطالب</a>
                 </li>
               </ul>
             </li>

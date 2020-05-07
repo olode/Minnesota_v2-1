@@ -11,8 +11,4 @@ class MarkType extends Model
     protected $table = 'mark_types';
     public $timestamps = true;
 
-    public function material(){
-        $this->belongsTo('App\Models\TeacherMaterias');
-    }
-
 }

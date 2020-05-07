@@ -127,6 +127,13 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">إجمالي عدد ساعات التخصص</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="إجمالي عدد الساعات"
+                            name="total_hours">
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اختر الحالة</label>
                           <div class="col-md-9">
                             <div class="form-group">

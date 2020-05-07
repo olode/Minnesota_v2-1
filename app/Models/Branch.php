@@ -8,13 +8,7 @@ class Branch extends Model
 {
 
     protected $guarded = [];
-    
     protected $table = 'branches';
     public $timestamps = true;
-
-    public function users()
-    {
-        return $this->hasMany('App\User');
-    }
 
 }

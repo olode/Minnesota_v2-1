@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model 
 {
 
-    protected $fillable = ['special_material_id', 'name', 'info', 'max_mark', 'max_students_number', 'section_id', 'specialization_id', 'optional', 'requirement'];
+    protected $guarded = [];
     protected $table = 'materials';
     public $timestamps = true;
+    protected $visible = array('specialization_id');
 
     public function specialization()
     {

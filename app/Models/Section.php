@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model 
 {
 
-    protected $fillable = ['name', 'info', 'stage_id'];
-
+    protected $guarded = [];
     protected $table = 'sections';
     public $timestamps = true;
 

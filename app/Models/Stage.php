@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stage extends Model 
 {
-    protected $guarded = [];
 
+    protected $guarded = [];
     protected $table = 'stages';
     public $timestamps = true;
 

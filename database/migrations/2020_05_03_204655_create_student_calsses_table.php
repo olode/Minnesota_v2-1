@@ -9,7 +9,8 @@ class CreateStudentCalssesTable extends Migration {
 	{
 		Schema::create('student_calsses', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
+            $table->timestamps();
+            $table->integer('semester_id')->unsigned();
 			$table->integer('student_id')->unsigned();
 			$table->integer('class_id')->unsigned()->index();
 		});

@@ -3,20 +3,21 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateMarkTypesTable extends Migration {
+class CreateSectionsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('mark_types', function(Blueprint $table) {
+		Schema::create('sections', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('student_mark')->unsigned();
+			$table->integer('stage_id')->unsigned();
 			$table->string('name');
+			$table->string('info');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('mark_types');
+		Schema::drop('sections');
 	}
 }

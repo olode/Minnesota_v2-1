@@ -14,12 +14,12 @@ class Semester extends Model
 
     public function year()
     {
-        return $this->belongsTo('App/Models\Year');
+        return $this->belongsTo('App\Models\Year');
     }
 
     public function specialization()
     {
-        return $this->belongsTo('App/Models\Specialization');
+        return $this->belongsTo('App\Models\Specialization');
     }
 
 

@@ -41,9 +41,14 @@ Route::resource('specializationplan', 'Dashboard\SpecializationPlanController');
 Route::resource('material', 'Dashboard\MaterialController');
 Route::resource('stage', 'Dashboard\StageController');
 
-Route::resource('studentclass', 'StudentClassController');
-Route::resource('semester', 'SemesterController');
-Route::resource('class', 'ClassController');
+
+Route::resource('semester', 'Dashboard\SemesterController');
+Route::resource('class', 'Dashboard\ClassController');
+Route::resource('studentclass', 'Dashboard\StudentClassController');
+
+
+
+Route::resource('role', 'RoleController');
 Route::resource('year', 'YearController');
 
 
@@ -183,6 +188,9 @@ Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
 Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
 Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
 Route::get('get-material/{specialization_id}', 'Dashboard\MaterialController@getAjaxMaterial');
+Route::get('get-student/{specialization_id}', 'Dashboard\StudentController@getAjaxStudent');
+Route::get('get-student-class/{class_id}', 'Dashboard\StudentClassController@getAjaxStudentClass');
+Route::get('get-class/{section_id}', 'Dashboard\ClassController@getAjaxClass');
 
 /***************************/
 /*****Student Attendence****/

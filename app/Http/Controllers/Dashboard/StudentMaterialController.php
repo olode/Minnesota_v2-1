@@ -32,8 +32,8 @@ class StudentMaterialController extends Controller
    */
   public function create()
   {
-    $students = Student::all();
-    $materials = TeacherMaterias::all();
+    $students = [];
+    $materials = [];
     return view('dashboard.student_materials/create', compact('students', 'materials'));
   }
 

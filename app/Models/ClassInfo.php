@@ -7,9 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class ClassInfo extends Model 
 {
 
+    protected $guarded = [];
     protected $table = 'classes';
     public $timestamps = true;
-    protected $fillable = array('stage_id', 'section_id', 'semester_id', 'material_id', 'teacher_id', 'class_day', 'class_time', 'max_student', 'lecturing_allowance', 'classroom_url', 'required_attendance', 'class_fee', 'fee_due_date', 'year_id');
+
+    public function stage()
+    {
+        return $this->belongsTo('App\Models\Stage');
+    }
+    public function section()
+    {
+        return $this->belongsTo('App\Models\Section');
+    }
 
     public function semester()
     {

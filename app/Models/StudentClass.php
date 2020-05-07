@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class StudentClass extends Model 
 {
 
+    protected $guarded = [];
     protected $table = 'student_calsses';
     public $timestamps = true;
-    protected $fillable = array('class_id');
 
-    public function Student()
+    public function student()
     {
-        return $this->belongsTo('App/Models\Student');
+        return $this->belongsTo('App\Models\Student');
+    }
+
+    public function semester()
+    {
+        return $this->belongsTo('App\Models\Semester');
     }
 
     public function class()

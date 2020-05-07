@@ -45,7 +45,7 @@
                       <tbody>
                       @foreach ($data as $material)
                       <tr>
-                        <td>{{ $material->special_material_id }}</td>
+                        <td>{{ $material->code }}</td>
                         <td>{{ $material->name }}</td>
                         <td> {{ $material->info }}</td>
                         <td> {{ $material->max_mark }} </td>
