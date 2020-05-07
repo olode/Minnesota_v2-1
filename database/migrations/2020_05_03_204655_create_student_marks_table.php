@@ -13,7 +13,6 @@ class CreateStudentMarksTable extends Migration {
 			$table->integer('student_id')->unsigned();
 			$table->integer('mark_type_id')->unsigned();
 			$table->integer('student_mark');
-			$table->integer('material_id')->unsigned();
 			$table->integer('class_id')->unsigned();
 		});
 	}

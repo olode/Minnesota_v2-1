@@ -60,7 +60,7 @@ class MaterialController extends Controller
     //dd($request->all());
     $request->validate([
 
-      'special_material_id'       => ['string', 'max:255'],
+      'code'                      => ['string', 'max:255'],
       'name'                      => ['required', 'string', 'max:255'],
       'info'                      => ['required', 'string', 'max:255'],
       'max_mark'                  => ['required', 'string', 'max:255'],
@@ -73,7 +73,7 @@ class MaterialController extends Controller
 
     //dd($data);
     Material::create([
-      'special_material_id'       => $idNumber,
+      'code'                      => $idNumber,
       'name'                      => $request['name'],
       'info'                      => $request['info'],
       'max_mark'                  => $request['max_mark'],

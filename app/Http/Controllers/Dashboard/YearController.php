@@ -1,10 +1,10 @@
 <?php 
 
-namespace App\Http\Controllers\Dashboard;
-use  App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-class SpecializationPlanController extends Controller 
+class YearController extends Controller 
 {
 
   /**

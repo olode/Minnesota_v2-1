@@ -237,4 +237,16 @@ class StudentController extends Controller
         Student::destroy($id);
         return redirect('/student');
     }
+
+    public function getAjaxStudent($specialization_id)
+   {
+       $students = Student::Select('id', 'first_name', 'second_name', 'last_name')->Where('specialization_id', $specialization_id)->get();
+ 
+       if($students == null){
+ 
+         $students = 'null';
+       }
+ 
+       return  compact('students');
+   }
 }

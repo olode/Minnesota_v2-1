@@ -10,7 +10,7 @@ class CreateMaterialsTable extends Migration {
 		Schema::create('materials', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('special_material_id');
+			$table->string('code');
 			$table->string('name');
 			$table->string('info');
 			$table->string('max_mark');
@@ -19,6 +19,7 @@ class CreateMaterialsTable extends Migration {
 			$table->integer('specialization_id')->unsigned();
 			$table->integer('optional')->default('0');
 			$table->integer('requirement')->default('0');
+			$table->integer('hours')->unsigned()->nullable();
 		});
 	}
 

@@ -23,6 +23,7 @@ class CreateSpecializationsTable extends Migration {
 			$table->integer('number_of_optional_materials');
 			$table->integer('number_of_higher_levels');
 			$table->integer('number_of_lower_levels');
+			$table->integer('total_hours')->unsigned()->nullable();
 		});
 	}
 

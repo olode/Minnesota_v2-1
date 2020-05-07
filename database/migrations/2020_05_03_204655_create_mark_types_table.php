@@ -10,7 +10,6 @@ class CreateMarkTypesTable extends Migration {
 		Schema::create('mark_types', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('student_mark')->unsigned();
 			$table->string('name');
 		});
 	}

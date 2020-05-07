@@ -17,9 +17,26 @@ class Student extends Authenticatable
     protected $table = 'students';
     public $timestamps = true;
 
+    public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo('App\Models\Section');
+    }
+
     public function specialization()
     {
         return $this->belongsTo('App\Models\Specialization');
     }
+
+    public function student_classes()
+    {
+        return $this->hasMany('App\Models\StudentClass');
+    }
+
+
 
 }

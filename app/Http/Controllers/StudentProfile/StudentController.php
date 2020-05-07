@@ -4,6 +4,9 @@ namespace App\Http\Controllers\StudentProfile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Student;
+use Auth;
+
 
 class StudentController extends Controller
 {
@@ -18,7 +21,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student-profile.students.index');
+        $student = Student::Find(Auth::user()->id);
+        dd($student->student_classes->load('class.material'));
+        return view('student-profile.students.index', compact('student'));
 
     }
 

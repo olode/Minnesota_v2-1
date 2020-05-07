@@ -25,19 +25,23 @@
                     <table class="table table-striped table-bordered dataex-html5-selectors">
                       <thead>
                           <th>اسم الطالب</th>
-                          <th>اسم المادة</th>
-                          <th>العام الدراسي</th>
+                          <th>الفصل</th>
+                          <th>الصف</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
-                      @foreach ($studentmaterials as $studentmaterial)
+                      @foreach ($studentClasses as $studentClass)
                         <tr>
-                          <td>{{ $studentmaterial['student']->first_name }} {{ $studentmaterial['student']->second_name }} {{ $studentmaterial['student']->last_name }}</td>
-                          <td>{{ $studentmaterial['teacher_material']->material->name }}</td>
-                          <td>{{ $studentmaterial->year_of_add }}</td>
+                          <td>{{ $studentClass['student']->first_name }} {{ $studentClass['student']->second_name }} {{ $studentClass['student']->last_name }}</td>
+                          <td>{{ $studentClass['semester']->tittle }}</td>
+                          <td>{{ $studentClass['class']->name }}</td>
                           
                           <td>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmaterial.destroy', $studentmaterial->id) }}" method="post">
+                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentclass.edit', $studentClass->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                           </form>
+                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentclass.destroy', $studentClass->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
                            <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
@@ -47,10 +51,10 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                        <th>اسم المدرس</th>
-                        <th>اسم المادة</th>
-                        <th>العام الدراسي</th>
-                        <th>الاعدادت</th>
+                        <th>اسم الطالب</th>
+                          <th>الفصل</th>
+                          <th>الصف</th>
+                          <th>الاعدادت</th>
                       </tfoot>
                     </table>
                   </div>

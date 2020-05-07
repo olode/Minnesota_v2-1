@@ -15,10 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('role', 'RoleController');
-Route::resource('semester', 'SemesterController');
-Route::resource('class', 'ClassController');
-Route::resource('year', 'YearController');
+
 
 
 Route::get('c-panel', 'HomeController@index')->name('c-panel');
@@ -43,6 +40,16 @@ Route::post('sunactive/{sunactive}', 'Dashboard\SpecializationController@unactiv
 Route::resource('specializationplan', 'Dashboard\SpecializationPlanController');
 Route::resource('material', 'Dashboard\MaterialController');
 Route::resource('stage', 'Dashboard\StageController');
+
+
+Route::resource('semester', 'Dashboard\SemesterController');
+Route::resource('class', 'Dashboard\ClassController');
+Route::resource('studentclass', 'Dashboard\StudentClassController');
+
+
+
+Route::resource('role', 'RoleController');
+Route::resource('year', 'YearController');
 
 
 
@@ -89,6 +96,16 @@ Route::get('student-login',function(){
 })->name('student-login');
 
 
+
+
+
+
+
+
+
+
+
+
 /*********************************************/
 /*********************************************/
 /**********the start of teacher part**********/
@@ -98,42 +115,15 @@ Route::get('student-login',function(){
 Route::get('teacher-profile-assign-course','TeacherProfile\CourseAssignController@assignCourse')->name('teacher-profile-assign-course');
 Route::get('assign-course/{id}','TeacherProfile\CourseAssignController@showCoursesToAssign')->name('assign.course');
 Route::post('assign-student-to-course','TeacherProfile\CourseAssignController@assignStudentToCourses')->name('assign.student-to.course');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::resource('teacher-profile','TeacherProfile\TeacherController');
-
-
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
 Route::resource('teacher-profile-students','TeacherProfile\TeacherProfileStudentController');
-
-
-
 Route::resource('student-home-work','TeacherProfile\StudentHomeWorkController');
 Route::get('follow-up-homework','TeacherProfile\StudentHomeWorkController@followUpHomework')->name('follow-up-homework');
-
-
 Route::resource('lectures','TeacherProfile\LectureAttendanceController');
 Route::get('lecture-attendance','TeacherProfile\LectureAttendanceController@studentAttendance')->name('lecture-attendance');
 Route::get('lecture/download/about/{id}', 'TeacherProfile\LectureAttendanceController@downloadAbout')->name('about.download');
-
-
 Route::resource('marks','TeacherProfile\MarkController');
-
-
 Route::get('add-homework-marks','TeacherProfile\MarkController@addHomeworkMarks')->name('add-homework-marks');
 Route::get('add-attendance-marks','TeacherProfile\MarkController@addAttendanceMarks')->name('add-attendance-marks');
 Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')->name('add-mid-exam-marks');
@@ -197,6 +187,9 @@ Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
 Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
 Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
 Route::get('get-material/{specialization_id}', 'Dashboard\MaterialController@getAjaxMaterial');
+Route::get('get-student/{specialization_id}', 'Dashboard\StudentController@getAjaxStudent');
+Route::get('get-student-class/{class_id}', 'Dashboard\StudentClassController@getAjaxStudentClass');
+Route::get('get-class/{section_id}', 'Dashboard\ClassController@getAjaxClass');
 
 /***************************/
 /*****Student Attendence****/
