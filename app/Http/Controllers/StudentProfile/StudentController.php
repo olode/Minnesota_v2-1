@@ -5,6 +5,8 @@ namespace App\Http\Controllers\StudentProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\StudentClass;
+use App\Models\Semester;
 use Auth;
 
 
@@ -13,6 +15,7 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware('auth:student');
+
     }
     /**
      * Display a listing of the resource.
@@ -21,11 +24,63 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = Student::Find(Auth::user()->id);
-        dd($student->student_classes->load('class.material'));
-        return view('student-profile.students.index', compact('student'));
+
+       $arr = [];
+       $toatl_marks =[];
+       
+       $student = Student::Find(Auth::user()->id);
+       $semesters = Semester::Where('specialization_id', $student->specialization_id)->get();
+
+       foreach($student->student_classes->load('class.material') as $material){
+          array_push($arr, $material->class->material->hours);
+       }
+
+       $taking_hors = array_sum($arr);
+       return view('student-profile.students.index', compact('student', 'taking_hors', 'toatl_marks'));
 
     }
+
+
+
+    public function studentPlan()
+    {
+        $student = Student::Find(Auth::user()->id);
+        $semesters = Semester::Where('specialization_id', $student->specialization_id)->get();
+
+        return view('student-profile.students.plan',compact('student','semesters'));
+    }
+
+
+    public function studentSemesters()
+    {
+        $student = Student::with(['student_classes'])->Find(Auth::user()->id);
+        $semester_materials = "";
+        return view('student-profile.students.semesters',compact('student', 'semester_materials'));
+    }
+
+
+    public function studentSemesterMaterials($semester)
+    {
+        $toatl_marks =[];
+        $student = Student::with(['student_classes'])->Find(Auth::user()->id);
+        $semester_materials = StudentClass::with(['marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
+        return view('student-profile.students.semesters',compact('student', 'semester_materials', 'toatl_marks'));
+    }
+
+    
+    public function studentShowMarks()
+    {
+        $student = Student::Find(Auth::user()->id);
+        return view('student-profile.students.show-marks',compact('student'));
+    }
+
+    // public function studentShowMaterials()
+    // {
+    //     $student = Student::Find(Auth::user()->id);
+        
+    //     return view('student-profile.students.show-materials',compact('student'));
+    // }
+
 
     /**
      * Show the form for creating a new resource.
@@ -94,30 +149,6 @@ class StudentController extends Controller
         //
     }
 
-    public function studentPlan()
-    {
-        
-        return view('student-profile.students.plan');
-    }
-
-
-    public function studentSemesters()
-    {
-        
-        return view('student-profile.students.semesters');
-    }
-    
-    public function studentShowMarks()
-    {
-        
-        return view('student-profile.students.show-marks');
-    }
-
-    public function studentShowMaterials()
-    {
-        
-        return view('student-profile.students.show-materials');
-    }
     
     
 

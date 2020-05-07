@@ -188,7 +188,7 @@
           <li class="dropdown dropdown-user nav-item">
             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
               <span class="avatar avatar-online">
-                <img style="height: 35px;" src="uploads/students/avatars/{{ Auth::user()->avatar }}"
+                <img style="height: 35px;" src="/uploads/students/avatars/{{ Auth::user()->avatar }}"
                 alt="avatar"><i></i></span>
               <span class="user-name">{{ Auth::user()->first_name }}</span>
             </a>

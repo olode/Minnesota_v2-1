@@ -21,9 +21,9 @@ class StudentMark extends Model
         return $this->belongsTo('App\Models\StudentMaterial');
     }
 
-    public function marktypes()
+    public function marktype()
     {
-        return $this->belongsTo('App\Models\MarkType');
+        return $this->belongsTo('App\Models\MarkType', 'mark_type_id');
     }
 
     

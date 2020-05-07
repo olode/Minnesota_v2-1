@@ -22,4 +22,10 @@ class Semester extends Model
         return $this->belongsTo('App/Models\Specialization');
     }
 
+
+    public function classes()
+    {
+        return $this->hasMany('App\Models\ClassInfo');
+    }
+
 }

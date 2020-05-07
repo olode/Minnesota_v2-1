@@ -21,4 +21,16 @@ class StudentClass extends Model
         return $this->belongsTo('App\Models\ClassInfo');
     }
 
+    public function semester()
+    {
+        return $this->belongsTo('App\Models\Semester');
+    }
+
+
+    public function marks()
+    {
+        return $this->hasMany('App\Models\StudentMark', 'student_id', 'student_id');
+    }
+
+
 }
