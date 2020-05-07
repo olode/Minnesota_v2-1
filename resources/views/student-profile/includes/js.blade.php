@@ -6,7 +6,7 @@
   <script type="text/javascript" src="/dashboard/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="/dashboard/app-assets/vendors/js/ui/headroom.min.js"></script>
   <script type="text/javascript" src="/dashboard/app-assets/vendors/js/ui/jquery.sticky.js"></script>
-  <script src="/dashboard/app-assets/vendors/js/ui/prism.min.js" type="text/javascript"></script>
+  <!-- <script src="/dashboard/app-assets/vendors/js/ui/prism.min.js" type="text/javascript"></script> -->
   <script src="/dashboard/app-assets/vendors/js/extensions/jquery.raty.js" type="text/javascript"></script>
   <script src="/dashboard/app-assets/vendors/js/extensions/jquery.knob.min.js" type="text/javascript"></script>
   <script src="/dashboard/app-assets/vendors/js/extensions/wNumb.js" type="text/javascript"></script>
