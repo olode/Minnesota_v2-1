@@ -15,7 +15,7 @@
                   </div>
                   <ul class="list-group list-group-flush">
               @foreach($student->student_classes as $student_class)
-                @if($student_class->class->news != null)
+                @if($student_class->class->news->count() != 0)
                    <li class="list-group-item " data-toggle="modal" data-target="#news{{$student_class->class->news->first()->id}}">
                       <span class="badge badge-default badge-pill bg-primary float-right">{{$student_class->class->material->name}}</span>
                       {{$student_class->class->news->max()->title}}
