@@ -10,7 +10,7 @@
   <script src="/dashboard/app-assets/vendors/js/extensions/jquery.raty.js" type="text/javascript"></script>
   <script src="/dashboard/app-assets/vendors/js/extensions/jquery.knob.min.js" type="text/javascript"></script>
   <script src="/dashboard/app-assets/vendors/js/extensions/wNumb.js" type="text/javascript"></script>
-  <script src="/dashboard/app-assets/vendors/js/extensions/nouislider.min.js" type="text/javascript"></script>
+  <!-- <script src="/dashboard/app-assets/vendors/js/extensions/nouislider.min.js" type="text/javascript"></script> -->
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN ROBUST JS-->
   <script src="/dashboard/app-assets/js/core/app-menu.js" type="text/javascript"></script>
@@ -20,5 +20,7 @@
   <!-- BEGIN PAGE LEVEL JS-->
   <script type="text/javascript" src="/dashboard/app-assets/js/scripts/ui/breadcrumbs-with-stats.js"></script>
   <script src="/dashboard/app-assets/js/scripts/extensions/knob.js" type="text/javascript"></script>
-  <script src="/dashboard/app-assets/js/scripts/pages/content-sidebar.js" type="text/javascript"></script>
+  <!-- <script src="/dashboard/app-assets/js/scripts/pages/content-sidebar.js" type="text/javascript"></script> -->
+
+
   <!-- END PAGE LEVEL JS-->
