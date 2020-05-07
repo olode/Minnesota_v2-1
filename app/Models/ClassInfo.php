@@ -40,4 +40,12 @@ class ClassInfo extends Model
         return $this->belongsTo('App\Models\Year');
     }
 
+        public function news()
+    {
+        return $this->hasMany('App\Models\NewsAnnouncements','class_id');
+    }
+
+
+    
+
 }

@@ -26,4 +26,11 @@ class StudentClass extends Model
         return $this->belongsTo('App\Models\ClassInfo');
     }
 
+
+    public function marks()
+    {
+        return $this->hasMany('App\Models\StudentMark', 'student_id', 'student_id');
+    }
+
+
 }
