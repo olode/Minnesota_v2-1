@@ -89,10 +89,21 @@
                       <div class="form-group row last">
                         <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
                         <div class="col-md-9">
-                            <select  class="form-control" name="requirement" id="">
+                            <select  class="form-control" name="requirement" id="requirement_id">
                               <option selected="" disabled="" >اختر شرط المادة</option>
                               <option value="0">غير متطلب</option>
                               <option value="1">متطلب</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row last" style="display: none;" id="requirement_material">
+                        <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
+                        <div class="col-md-9">
+                            <select  class="form-control" name="requirement" id="" required>
+                              <option >اختر شرط المادة</option>
+                              @foreach ($materials as $material)
+                                  <option value="{{ $material->id }}">{{ $material->name }}</option>
+                              @endforeach
                             </select>
                         </div>
                       </div>
@@ -109,7 +120,18 @@
             </div>
           </div>
           </section>
+<script>
+  $("#requirement_id").change(function(){
 
+    requirement = $(this).val();
+    if(requirement == 1){
+      document.getElementById("requirement_material").style.display = "";
+    }else{
+      document.getElementById("requirement_material").style.display = "none";
+    }
+    
+  });
+</script>
 
 @endsection
 

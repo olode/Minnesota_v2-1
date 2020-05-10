@@ -45,8 +45,9 @@ class MaterialController extends Controller
    */
   public function create()
   {
-    $sections = Section::Select('id', 'name')->get();
-    return view('dashboard.materials.create', compact('sections'));
+    $sections   = Section::Select('id', 'name')->get();
+    $materials  = Material::select('id', 'name')->get();
+    return view('dashboard.materials.create', compact('sections', 'materials'));
   }
 
   /**
@@ -57,6 +58,7 @@ class MaterialController extends Controller
   public function store(Request $request)
   {
     $idNumber = "IUM" . mt_rand(100000, 999999) . "M";
+    
     //dd($request->all());
     $request->validate([
 
@@ -68,9 +70,9 @@ class MaterialController extends Controller
       'section_id'                => ['required', 'integer', 'max:255'],
       'specialization_id'         => ['required', 'integer', 'max:255'],
       'optional'                  => ['required', 'integer', 'max:255'],
-      'requirement'               => ['required', 'integer', 'max:255'],
+      'requirement'               => ['integer', 'max:255'],
     ]);
-
+    //dd($request->all());
     //dd($data);
     Material::create([
       'code'                      => $idNumber,
@@ -109,7 +111,8 @@ class MaterialController extends Controller
   {
     $material = Material::findOrfail($id);
     $sections = Section::Select('id', 'name')->get();
-    return view('dashboard.materials/edit', compact('material', 'sections'));
+    $materials  = Material::select('id', 'name')->get();
+    return view('dashboard.materials/edit', compact('materials', 'material', 'sections'));
   }
 
   /**
