@@ -44,27 +44,10 @@
     </head>
     
     <body>
-        
-        <!-- Start Logo Section -->
-        <section id="logo-section" class="text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="logo text-center">
-                            {{-- <h3>الجامعة الإسلامية بولاية مينيسوتا</h3> --}}
-                            {{-- <div style="width: 700px;height: 185px; margin: auto; margin-top: 5px;">
-                                <img style="width: 100%; height: 100%;" src="/frontend/images/login-logo.jpg" alt="logo">
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Logo Section -->
-        
+
         
         <!-- Start Main Body Section -->
-        <div class="mainbody-section text-center">
+        <div class="mainbody-section text-center" style="margin-top:8%">
             <div class="container">
                 <div class="row">
                     
@@ -175,20 +158,18 @@
         </div>
         <!-- End Main Body Section -->
         
-        <!-- Start Copyright Section -->
-        <div class="copyright text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div>جميع الحقوق محفوظة للجامعة الإسلامية بولاية مينيسوتا</div>
-                    </div>
+
+        
+                <!-- Start Copyright Section -->
+                <div class="copyright text-center">
+                  <div>جميع الحقوق محفوظة للجامعة الإسلامية بولاية مينيسوتا</div>
                 </div>
-            </div>
-        </div>
-        <!-- End Copyright Section -->
-        
-        
-        <!-- Start Feature Section -->
+              <!-- End Copyright Section -->
+
+
+
+
+              <!-- Start Feature Section -->
         <div class="section-modal modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -1086,7 +1067,8 @@
             </div>
         </div>
         <!-- End Testimonial Section -->
-        
+
+
     </body>
     
 </html>
