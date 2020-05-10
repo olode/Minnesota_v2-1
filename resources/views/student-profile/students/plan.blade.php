@@ -28,13 +28,14 @@
                         <td>عدد الساعات</td>
                     </thead>
                     <tbody>
+
                     @foreach($semester->classes as $class)
                       <tr>{{--$class->material--}}
                         <td>{{$class->material->name}}</td>
                         <td>{{'تم او لم يتم'}}</td>
                         <td>{{$class->material->optional == 1 ? "اختياري" : "الزامي"}}
-                            @if($class->material->requirement == 1)
-                              <span class="badge badge-default badge-pill bg-primary float-right">متطلب لمادة ٫٫٫</span>
+                            @if($class->material->requirement != 0)
+                              <span class="badge badge-default badge-pill bg-primary float-right"> {{$class->material->required->name}} </span>
                             @endif
                         </td>
                         <td>{{$class->material->hours}}</td>

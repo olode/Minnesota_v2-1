@@ -33,8 +33,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                    
                     @foreach($student->student_classes as $student_class)
+                    
+                      
+                        @if($student_class->year['year_m'] != now()->year)
+                          @continue
+                        @endif
 
                        <tr>
                         <td>{{$student_class->class->class_day}}</td>

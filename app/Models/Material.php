@@ -17,4 +17,11 @@ class Material extends Model
         return $this->belongsTo('App\Models\Specialization');
     }
 
+
+    public function required()
+    {
+        return $this->belongsTo('App\Models\Material', 'requirement', 'id');
+    }
+    
+
 }

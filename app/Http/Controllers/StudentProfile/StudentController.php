@@ -46,7 +46,6 @@ class StudentController extends Controller
     {
         $student = Student::Find(Auth::user()->id);
         $semesters = Semester::Where('specialization_id', $student->specialization_id)->get();
-
         return view('student-profile.students.plan',compact('student','semesters'));
     }
 
