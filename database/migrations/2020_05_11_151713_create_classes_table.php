@@ -17,8 +17,8 @@ class CreateClassesTable extends Migration {
 			$table->integer('teacher_id')->unsigned();
 			$table->string('name', 10)->nullable();
 			$table->string('class_day', 10)->nullable();
-            $table->time('starts_at')->nullable();
-            $table->time('ends_at')->nullable();
+			$table->time('starts_at')->nullable();
+			$table->time('ends_at')->nullable();
 			$table->integer('max_student')->nullable()->default('10');
 			$table->string('lecturing_allowance')->nullable()->default('10');
 			$table->text('classroom_url')->nullable();

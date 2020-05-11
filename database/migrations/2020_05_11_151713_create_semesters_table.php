@@ -9,8 +9,8 @@ class CreateSemestersTable extends Migration {
 	{
 		Schema::create('semesters', function(Blueprint $table) {
 			$table->increments('id');
-            $table->timestamps();
-            $table->string('tittle', 20)->nullable();
+			$table->timestamps();
+			$table->string('title', 20)->nullable();
 			$table->string('semester_code', 10)->nullable();
 			$table->date('starts_at')->nullable();
 			$table->date('end_at')->nullable();
