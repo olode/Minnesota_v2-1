@@ -32,5 +32,11 @@ class StudentClass extends Model
         return $this->hasMany('App\Models\StudentMark', 'student_id', 'student_id');
     }
 
+    public function year()
+    {
+        return $this->belongsTo('App\Models\Year');
+    }
+
+
 
 }
