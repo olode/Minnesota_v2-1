@@ -59,6 +59,11 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('student_calsses', function(Blueprint $table) {
+			$table->foreign('semester_id')->references('id')->on('semesters')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
+		Schema::table('student_calsses', function(Blueprint $table) {
 			$table->foreign('student_id')->references('id')->on('students')
 						->onDelete('cascade')
 						->onUpdate('cascade');
@@ -79,17 +84,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('student_marks', function(Blueprint $table) {
-			$table->foreign('material_id')->references('id')->on('materials')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
-		Schema::table('student_marks', function(Blueprint $table) {
 			$table->foreign('class_id')->references('id')->on('classes')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
-		Schema::table('specialization_plan', function(Blueprint $table) {
-			$table->foreign('specialization_id')->references('id')->on('specializations')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
@@ -198,6 +193,9 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('students_specialization_id_foreign');
 		});
 		Schema::table('student_calsses', function(Blueprint $table) {
+			$table->dropForeign('student_calsses_semester_id_foreign');
+		});
+		Schema::table('student_calsses', function(Blueprint $table) {
 			$table->dropForeign('student_calsses_student_id_foreign');
 		});
 		Schema::table('student_calsses', function(Blueprint $table) {
@@ -210,13 +208,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('student_marks_mark_type_id_foreign');
 		});
 		Schema::table('student_marks', function(Blueprint $table) {
-			$table->dropForeign('student_marks_material_id_foreign');
-		});
-		Schema::table('student_marks', function(Blueprint $table) {
 			$table->dropForeign('student_marks_class_id_foreign');
-		});
-		Schema::table('specialization_plan', function(Blueprint $table) {
-			$table->dropForeign('specialization_plan_specialization_id_foreign');
 		});
 		Schema::table('users', function(Blueprint $table) {
 			$table->dropForeign('users_branch_id_foreign');

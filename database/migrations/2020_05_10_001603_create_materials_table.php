@@ -10,7 +10,7 @@ class CreateMaterialsTable extends Migration {
 		Schema::create('materials', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('code');
+			$table->string('code')->nullable();
 			$table->string('name');
 			$table->string('info');
 			$table->string('max_mark');

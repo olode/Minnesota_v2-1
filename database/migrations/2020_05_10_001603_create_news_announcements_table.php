@@ -11,7 +11,7 @@ class CreateNewsAnnouncementsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('class_id')->unsigned()->nullable();
-			$table->string('tittle');
+			$table->string('title');
 			$table->text('text');
 			$table->bigInteger('owner_id');
 			$table->bigInteger('owner_type');

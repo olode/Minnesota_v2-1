@@ -11,6 +11,7 @@ class CreateMarkTypesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
+			$table->string('title', 30)->nullable();
 		});
 	}
 
