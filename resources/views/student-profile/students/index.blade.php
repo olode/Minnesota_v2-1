@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                     @foreach($student->student_classes as $student_class)
-                    
+                    {{dd($student_class->year->year_m, $student_class->year)}}
                         @if($student_class->year->year_m != now()->year)
                           @continue
                         @endif
