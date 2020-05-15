@@ -35,9 +35,9 @@
                     <tbody>
                     @foreach($student->student_classes as $student_class)
                     {{dd($student_class->year)}}
-                        @if($student_class->year->year_m != now()->year)
+                        {{--@if($student_class->year->year_m != now()->year)
                           @continue
-                        @endif
+                        @endif--}}
 
                        <tr>
                         <td>{{$student_class->class->class_day}}</td>
