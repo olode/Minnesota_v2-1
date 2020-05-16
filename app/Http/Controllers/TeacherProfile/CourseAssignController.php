@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassInfo;
 use Illuminate\Http\Request;
 use App\Models\Stage;
 use App\Models\Student;
 use App\Models\StudentMaterial;
 use App\Models\TeacherMaterias;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class CourseAssignController extends Controller
 {
@@ -16,13 +18,23 @@ class CourseAssignController extends Controller
     {
         $this->middleware('auth:teacher');
     }
+
+
+    public function assignCourse()
+    {
+        $teacherId          =   Auth::guard('teacher')->user()->id;
+        $stages             = \DB::table('view_student_classes')->where('class_teacher_id', $teacherId)->get()->unique();
+        dd($stages);
+        return view('teacher-profile.teacher-profile-students.assign-course-student', compact('stages'));
+
+    }
     
     public function showCoursesToAssign($id)
     {
         $teacherId          =   Auth::guard('teacher')->user()->id;
         $student            =   Student::findOrfail($id);
         //dd($student);
-        $teacherMaterials    = TeacherMaterias::where('teacher_id', $teacherId)->get();
+        $teacherMaterials    = ClassInfo::where('teacher_id', $teacherId)->get();
         return view('teacher-profile.teacher-profile-students/assign-course/showCoursesToAssign', compact('teacherMaterials', 'student'));
 
     }
@@ -57,10 +69,5 @@ class CourseAssignController extends Controller
 
     }
 
-    public function assignCourse()
-    {
-        $stages = Stage::all();
-        return view('teacher-profile.teacher-profile-students.assign-course-student', compact('stages'));
-
-    }
+    
 }

@@ -57,12 +57,12 @@ class MaterialController extends Controller
    */
   public function store(Request $request)
   {
-    $idNumber = "IUM" . mt_rand(100000, 999999) . "M";
+    //$idNumber = "IUM" . mt_rand(100000, 999999) . "M";
     
     //dd($request->all());
     $request->validate([
 
-      'code'                      => ['string', 'max:255'],
+      'code'                      => ['required', 'string', 'max:255'],
       'name'                      => ['required', 'string', 'max:255'],
       'info'                      => ['required', 'string', 'max:255'],
       'max_mark'                  => ['required', 'string', 'max:255'],
@@ -71,11 +71,13 @@ class MaterialController extends Controller
       'specialization_id'         => ['required', 'integer', 'max:255'],
       'optional'                  => ['required', 'integer', 'max:255'],
       'requirement'               => ['integer', 'max:255'],
+      'hours'                     => ['required', 'integer', 'max:255'],
+      
     ]);
     //dd($request->all());
     //dd($data);
     Material::create([
-      'code'                      => $idNumber,
+      'code'                      => $request['code'],
       'name'                      => $request['name'],
       'info'                      => $request['info'],
       'max_mark'                  => $request['max_mark'],
@@ -84,6 +86,7 @@ class MaterialController extends Controller
       'specialization_id'         => $request['specialization_id'],
       'optional'                  => $request['optional'],
       'requirement'               => $request['requirement'],
+      'hours'                     => $request['hours'],
     ]);
 
   return redirect('/material');

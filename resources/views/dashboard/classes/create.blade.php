@@ -60,7 +60,7 @@
                               <select class="form-control" name="semester_id" id="semester">
                                 <option value="" selected="" disabled="" >اختر الفصل الدراسي</option>
                                 @foreach ($semesters as $semester)
-                                  <option value="{{ $semester->id }}" >{{ $semester->tittle }}</option>
+                                  <option value="{{ $semester->id }}" >{{ $semester->title }}</option>
                                 @endforeach
                               </select>
                             </div>

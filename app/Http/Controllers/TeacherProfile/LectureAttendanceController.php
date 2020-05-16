@@ -8,6 +8,7 @@ use App\Models\TeacherMaterias;
 use App\Models\Lecture;
 use App\Models\Stage;
 use App\Models\Attendance;
+use App\Models\ClassInfo;
 use Image;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,7 @@ class LectureAttendanceController extends Controller
     public function create()
     {
         $teacherId = Auth::guard('teacher')->user()->id;
-        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
+        $materials = ClassInfo::where('teacher_id', '=', $teacherId)->get();
 
         return view('teacher-profile.lectures-attendance.create', compact('materials'));
 

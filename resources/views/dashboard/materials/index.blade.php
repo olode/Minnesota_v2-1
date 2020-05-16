@@ -38,6 +38,7 @@
                           <th>الدرجة النهائية</th>
                           <th>نوع المادة</th>
                           <th>شرط المادة</th>
+                          <th>عدد الساعات المادة</th>
                           <th>القسم</th>
                           <th>التخصص</th>
                           <th>الاعدادت</th>
@@ -57,6 +58,7 @@
                         <td> 
                           @if ($material->requirement === 0) غير متطلب @else متطلب @endif
                         </td>
+                        <td>{{ $material->hours }}</td>
                         <td>{{ $material['specialization']->section->name }}</td>
                         <td>{{ $material['specialization']->name }}</td>
                         <td>
@@ -81,6 +83,7 @@
                         <th>الدرجة النهائية</th>
                         <th>نوع المادة</th>
                         <th>شرط المادة</th>
+                        <th>عدد الساعات المادة</th>
                         <th>القسم</th>
                         <th>التخصص</th>
                         <th>الاعدادت</th>
