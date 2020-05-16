@@ -35,8 +35,7 @@
                     <tbody>
                     @foreach($student->student_classes as $student_class)
                     
-                      
-                        @if($student_class->year['year_m'] != now()->year)
+                        @if($student_class->year->year_m != now()->year)
                           @continue
                         @endif
 
