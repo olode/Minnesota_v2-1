@@ -15,12 +15,15 @@ CREATE VIEW view_student_classes AS SELECT
     `student_calsses`.`id` AS `student_calsses_id` ,
 
     `classes`.`id` AS `class_id`,
+    `classes`.`name` AS `class_name`,
     `classes`.`class_day`,
     `classes`.`starts_at` AS `class_starts_at`,
     `classes`.`ends_at` AS `class_ends_at`,
     `classes`.`year_id` AS `class_year_id`,
+    `classes`.`teacher_id` AS `class_teacher_id`,
 
 
+    `semesters`.`id` AS `semester_id`,
     `semesters`.`semester_code`,
     `semesters`.`title` AS `semester_title`,
     `semesters`.`starts_at` AS `semester_starts_at`,
@@ -31,11 +34,12 @@ CREATE VIEW view_student_classes AS SELECT
     `materials`.`name` AS `material_name`,
     `materials`.`hours` AS `material_hours`,
 
+    `specializations`.`name` AS `specialization_name`,
 
     `sections`.`name` AS `section_name`,
 
-    `stages`.`id` AS `stage.id`,
-    `stages`.`name` AS `stage.name`,
+    `stages`.`id` AS `stage_id`,
+    `stages`.`name` AS `stage_name`,
 
 
     `branches`.`id` AS `branche_id`,
@@ -58,6 +62,8 @@ INNER JOIN `sections` ON `sections`.`id` = `specializations`.section_id
 INNER JOIN `stages` ON `stages`.`id` = `sections`.stage_id
 
 INNER JOIN `branches` ON `branches`.`id` = `stages`.branch_id
+
+
 /***********************************************************/
 /***********************************************************/
 /***********************************************************/

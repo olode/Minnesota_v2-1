@@ -10,7 +10,6 @@
           <!-- Form repeater section start -->
           @include('teacher-profile.teacher-profile-students.filter')
           <!--  Form repeater section end -->
-
           
           <!-- Description -->
           <section id="description" class="card">
@@ -24,7 +23,7 @@
                  
                   <!-- Both borders end-->
                   @if (!empty($students))
-                  <table class="table table-responsive table-bordered">
+                  <table class="table table table-bordered">
                       <thead>
                         <tr>
                           <th>اسم الطالب</th>
@@ -37,19 +36,26 @@
                       </thead>
                       <tbody>
                         
+                        
                           @foreach ($students as $student)
                             <tr>
                               <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->last_name }}</td>
                               <td>ِ{{ $student->special_student_id }}</td>
-                              <td>{{ $student['specialization']->section->stage->name }}</td>
-                              <td>{{ $student['specialization']->section->name }}</td>
+                              <td>{{ $student->stage_name }}</td>
+                              <td>{{ $student->section_name }}</td>
 
-                              <td>{{ $student['specialization']->name }}</td>
+                              <td>{{ $student->specialization_name }}</td>
                               <td>
-                                <form style="display: ruby-base; margin-left: 5px;" action="{{ route('assign.course', $student->id) }}" method="get">
-                                  {{ csrf_field() }}
-                                  <button style="border-radius: 25px;" class="btn btn-warning" type="submit">اضافة مواد للطالب</button>  
-                                </form>
+                                @foreach ($materials as $material)
+                                  <form style="display: ruby-base; margin-left: 5px;" action="{{ route('assign.course') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $year_id }}" name="year_id">
+                                    <input type="hidden" value="{{ $material->class_id }}" name="class_id">
+                                    <input type="hidden" value="{{ $material->semester_id }}" name="semester_id">
+                                    <input type="hidden" value="{{ $student->id }}" name="student_id">
+                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">{{ $material->material_name }}</button>  
+                                  </form>
+                                @endforeach
                               </td>
                             </tr>
                           @endforeach   

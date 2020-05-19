@@ -59,7 +59,7 @@ class MaterialController extends Controller
   {
     //$idNumber = "IUM" . mt_rand(100000, 999999) . "M";
     
-    //dd($request->all());
+    // dd($request->all());
     $request->validate([
 
       'code'                      => ['required', 'string', 'max:255'],
@@ -70,12 +70,20 @@ class MaterialController extends Controller
       'section_id'                => ['required', 'integer', 'max:255'],
       'specialization_id'         => ['required', 'integer', 'max:255'],
       'optional'                  => ['required', 'integer', 'max:255'],
-      'requirement'               => ['integer', 'max:255'],
+      'requirement'               => ['max:255'],
       'hours'                     => ['required', 'integer', 'max:255'],
       
     ]);
     //dd($request->all());
-    //dd($data);
+
+    
+    //This If is just to Give The right Value to "requirement"
+    if ($request['requirement'] == "none") {
+      $requirement = 0;
+    } else {
+      $requirement = $request['requirement'];
+    }
+    
     Material::create([
       'code'                      => $request['code'],
       'name'                      => $request['name'],
@@ -85,7 +93,7 @@ class MaterialController extends Controller
       'section_id'                => $request['section_id'],
       'specialization_id'         => $request['specialization_id'],
       'optional'                  => $request['optional'],
-      'requirement'               => $request['requirement'],
+      'requirement'               => $requirement,
       'hours'                     => $request['hours'],
     ]);
 

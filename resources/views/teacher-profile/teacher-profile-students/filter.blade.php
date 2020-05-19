@@ -25,7 +25,7 @@
                     <select class="form-control" id="stage" name="stage_id">
                       <option>اختر المرحلة</option>
                       @foreach ($stages as $stage)
-                          <option value="{{ $stage->id }}">{{ $stage->name }}</option>
+                          <option value="{{ $stage->stage_id }}">{{ $stage->stage_name }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -33,8 +33,27 @@
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر القسم </label>
                     <br>
+                    <select class="form-control" id="section" name="section_id">
+                      
+                    </select>
+                  </div>
+
+                  <div class="form-group mb-1 col-sm-12 col-md-2">
+                    <label for="profession">اختر التخصص </label>
+                    <br>
                     <select class="form-control" id="specialization" name="specialization_id">
                       
+                    </select>
+                  </div>
+
+                  <div class="form-group mb-1 col-sm-12 col-md-2">
+                    <label for="profession">اختر السنة الدراسية </label>
+                    <br>
+                    <select class="form-control" id="year" name="year_id">
+                      <option value="" disabled selected >اختر</option>
+                      @foreach ($years as $year)
+                          <option value="{{ $year->id }}">{{ $year->year_m }}</option>
+                      @endforeach
                     </select>
                   </div>
 
@@ -50,6 +69,7 @@
           </div>
         </div>
       </div>
+      <span style="margin-bottom: 20px; margin-right: 25px;">ملاحظة: من الضروري إختيار التاريخ قبل الضغط على زر <strong>البحث</strong> لكي يعتمد كاسنة دراسة الطالب للمادة</span>
     </div>
   </div>
 
@@ -57,34 +77,68 @@
 
   $("#stage").change(function(){
       stage_id = $(this).val();
+      $("#section").text('');
       $("#specialization").text('');
+
       $.ajax({
       
-      url:'/get-stage-specialization/'+ stage_id,
+      url:'/get-stage-section/'+ stage_id,
       type:'get',
       dataType:'json',
       success:function(data){
           
-        if(data.specializations.length == 0){
+        if(data.sections.length == 0){
       
-            $("#specialization").append('<option > لا توجد تخصصات للمرحلة </option>');
+            $("#section").append('<option > لا توجد معلومات </option>');
             
             if($("#stage").val() == 'اختر'){
-              $("#specialization").text('');
+              $("#section").text('');
             }
       
         }else{
       
-            $("#stage").append('<option > اختر التخصص </option>');
+            $("#section").append('<option > اختر </option>');
       
-            $.each(data.specializations,function(key, val){
-              $("#specialization").append('<option value='+val.id+' >' + val.name + '</option>');
+            $.each(data.sections,function(key, val){
+              $("#section").append('<option value='+val.section_id+' >' + val.section_name + '</option>');
             });
       
         }
       }
       });
       });
+
+      $("#section").change(function(){
+        section_id = $(this).val();
+        $("#specialization").text('');
+
+        $.ajax({
+        
+        url:'/get-stage-specialization/'+ section_id,
+        type:'get',
+        dataType:'json',
+        success:function(data){
+            
+          if(data.specializations.length == 0){
+        
+              $("#specialization").append('<option > لا توجد معلومات </option>');
+              
+              if($("#section").val() == 'اختر'){
+                $("#specialization").text('');
+              }
+        
+          }else{
+        
+              $("#specialization").append('<option > اختر </option>');
+        
+              $.each(data.specializations,function(key, val){
+                $("#specialization").append('<option value='+val.specialization_id+' >' + val.specialization_name + '</option>');
+              });
+        
+          }
+        }
+        });
+        });
       
       
           

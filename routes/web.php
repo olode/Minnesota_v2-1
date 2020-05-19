@@ -114,7 +114,9 @@ Route::get('student-login',function(){
 /*********************************************/
 /*********************************************/
 Route::get('teacher-profile-assign-course','TeacherProfile\CourseAssignController@assignCourse')->name('teacher-profile-assign-course');
-Route::get('assign-course/{id}','TeacherProfile\CourseAssignController@showCoursesToAssign')->name('assign.course');
+
+Route::post('assign-course','TeacherProfile\CourseAssignController@assignToCourses')->name('assign.course');
+
 Route::post('assign-student-to-course','TeacherProfile\CourseAssignController@assignStudentToCourses')->name('assign.student-to.course');
 Route::resource('teacher-profile','TeacherProfile\TeacherController');
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
@@ -177,13 +179,12 @@ Route::get('getSpecializations/{stage_id}', 'Dashboard\SpecializationController@
 
 /************ Student attendance ************/
 Route::get('getSections/{stageID}', 'Dashboard\SectionController@getSections');
-Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
 // Route::get('get-stages', function(){
 //     $stages = DB::table('stages')->Where('id', )->get();
 
 //     return compact('stages');
 // });
-Route::get('get-stage-specialization/{stage_id}', 'Dashboard\SpecializationController@getAjaxSpecializationsFromStageID');
+
 Route::get('get-stages/{branch_id}', 'Dashboard\StageController@getAjaxStages');
 Route::get('get-section/{stage_id}', 'Dashboard\SectionController@getAjaxSections');
 Route::get('get-specialization/{section_id}', 'Dashboard\SpecializationController@getAjaxSpecializations');
@@ -205,3 +206,15 @@ Route::get('get-class/{section_id}', 'Dashboard\ClassController@getAjaxClass');
 /*********************************************/
 /*********************************************/
 /*********************************************/
+
+
+/*
+ * **************************************************
+ * ****************Teacher Page Ajaxes***************
+ * **************************************************
+*/
+Route::get('get-stage-section/{stage_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSectionsFromStageID');
+
+Route::get('get-stage-specialization/{section_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSpecializationsFromSctionID');
+
+Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
