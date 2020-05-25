@@ -24,7 +24,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-responsive table-bordered dataex-html5-selectors">
+                    <table class="table table table-bordered dataex-html5-selectors">
                       <thead>
                          <th>الاسم</th>
                           <th>البريد الالكتروني للفرع</th>
@@ -63,14 +63,14 @@
                             @endif
                           </td>
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('branche.edit', $branche->id) }}" method="get">
+                            <form  style="display: inline;"  action="{{ route('branche.edit', $branche->id) }}" method="get">
                               {{ csrf_field() }}
-                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل الفرع</button>  
+                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل </button>  
                            </form>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('branche.destroy', $branche->id) }}" method="post">
+                           <form  style="display: inline;"  action="{{ route('branche.destroy', $branche->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
-                           <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف الفرع</button>
+                           <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف </button>
                          </form>
                           </td>
                         </tr>

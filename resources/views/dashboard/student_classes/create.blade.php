@@ -81,7 +81,7 @@
                               <select class="form-control" name="semester_id" id="semester">
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($semesters as $semester)
-                                  <option value="{{ $semester->id }}">{{ $semester->tittle }}</option>
+                                  <option value="{{ $semester->id }}">{{ $semester->title }}</option>
                                 @endforeach
                                 
                               </select>
@@ -94,6 +94,18 @@
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($classes as $class)
                                   <option value="{{ $class->id }}">{{ $class->name }} - {{ $class['material']->name }}</option>
+                                @endforeach
+                                
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control"  for="">اختر السنة</label>
+                            <div class="col-md-9">
+                              <select class="form-control" name="year_id" id="year">
+                                <option value="" selected="" disabled="" >اختر</option>
+                                @foreach ($years as $year)
+                                  <option value="{{ $year->id }}">{{ $year->year_m }}</option>
                                 @endforeach
                                 
                               </select>

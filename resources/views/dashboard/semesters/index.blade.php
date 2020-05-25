@@ -25,6 +25,7 @@
                     <table class="table table-striped table-bordered">
                       <thead>
                           <th>رمز الفصل</th>
+                          <th>اسم الفصل</th>
                           <th>تاريخ البداية</th>
                           <th>تاريخ النهاية</th>
                           <th>أقصى عدد للمواد</th>
@@ -40,6 +41,7 @@
                       @foreach ($semesters as $semester)
                       <tr>
                         <td>{{ $semester->semester_code }}</td>
+                        <td>{{ $semester->title }}</td>
                         <td>{{ $semester->starts_at }}</td>
                         <td>{{ $semester->end_at }}</td>
                         <td>{{ $semester->max_courses }}</td>
@@ -50,11 +52,11 @@
                         <td>{{ $semester['year']->year_m }}</td>
                         <td>{{ $semester['specialization']->name }}</td>
                         <td>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('semester.edit', $semester->id) }}" method="get">
+                          <form  style="display: inline;"   action="{{ route('semester.edit', $semester->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                          </form>
-                         <form style="display: ruby-base; margin-left: 5px;" action="{{ route('semester.destroy', $semester->id) }}" method="post">
+                         <form  style="display: inline;"   action="{{ route('semester.destroy', $semester->id) }}" method="post">
                           @method('DELETE')
                           {{ csrf_field() }}  
                          <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
@@ -65,16 +67,17 @@
                       </tbody>
                       <tfoot>
                         <th>رمز الفصل</th>
-                          <th>تاريخ البداية</th>
-                          <th>تاريخ النهاية</th>
-                          <th>أقصى عدد للمواد</th>
-                          <th>أدنى عدد للمواد</th>
-                          <th>الرسوم</th>
-                          <th>اقل مبلغ للدفع</th>
-                          <th>تاريخ الإستحقاق</th>
-                          <th>السنة الدراسية</th>
-                          <th>التخصص</th>
-                          <th>الاعدادت</th>
+                        <th>اسم الفصل</th>
+                        <th>تاريخ البداية</th>
+                        <th>تاريخ النهاية</th>
+                        <th>أقصى عدد للمواد</th>
+                        <th>أدنى عدد للمواد</th>
+                        <th>الرسوم</th>
+                        <th>اقل مبلغ للدفع</th>
+                        <th>تاريخ الإستحقاق</th>
+                        <th>السنة الدراسية</th>
+                        <th>التخصص</th>
+                        <th>الاعدادت</th>
                       </tfoot>
                     </table>
                   </div>

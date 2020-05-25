@@ -46,15 +46,15 @@
                         <td>{{ $class->class_fee }}</td>
                         <td>{{ $class['year']->year_m }}</td>
                         <td>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('class.show', $class->id) }}" method="get">
+                          <form   style="display: inline;"   action="{{ route('class.show', $class->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
                          </form>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('class.edit', $class->id) }}" method="get">
+                          <form  style="display: inline;"  action="{{ route('class.edit', $class->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                          </form>
-                         <form style="display: ruby-base; margin-left: 5px;" action="{{ route('class.destroy', $class->id) }}" method="post">
+                         <form   style="display: inline;"   action="{{ route('class.destroy', $class->id) }}" method="post">
                           @method('DELETE')
                           {{ csrf_field() }}  
                          <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

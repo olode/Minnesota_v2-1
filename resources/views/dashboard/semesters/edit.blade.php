@@ -43,8 +43,8 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم الفصل</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput1" class="form-control" value="{{ $semester->tittle }}"
-                            name="tittle">
+                            <input type="text" id="projectinput1" class="form-control" value="{{ $semester->title }}"
+                            name="title">
                           </div>
                         </div>
                         <div class="form-group row">

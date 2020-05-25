@@ -98,6 +98,18 @@
                               </select>
                             </div>
                           </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control"  for="">اختر السنة</label>
+                            <div class="col-md-9">
+                              <select class="form-control" name="year_id" id="year">
+                                <option value="" selected="" disabled="" >اختر</option>
+                                @foreach ($years as $year)
+                                  <option value="{{ $year->id }}"@if ($year->id  === $student->year_id) selected="" disabled="" @endif>{{ $year->year_m }}</option>
+                                @endforeach
+                                
+                              </select>
+                            </div>
+                          </div>
                       </div>
                       <div class="form-actions text-center">
                         <button type="submit" class="btn btn-primary">
