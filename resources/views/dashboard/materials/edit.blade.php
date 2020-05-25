@@ -58,6 +58,20 @@
                           </div>
                         </div>
                         <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">عدد الساعات</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $material->hours }}"  id="projectinput4" class="form-control" 
+                            name="hours">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">رمز المادة</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $material->code }}"  id="projectinput4" class="form-control"
+                            name="code">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">القسم</label>
                           <div class="col-md-9">
                               <select  class="form-control" name="section_id" id="section">
@@ -88,10 +102,21 @@
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
                           <div class="col-md-9">
-                              <select  class="form-control" name="requirement" id="">
+                              <select  class="form-control" name="requirement" id="requirement_id">
                                 <option selected="" disabled="" >اختر شرط المادة</option>
                                 <option value="0" @if ($material->requirement === 0) selected="" disabled=""  @endif >غير متطلب</option>
                                 <option value="1" @if ($material->requirement === 1) selected="" disabled=""  @endif >متطلب</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group row last" style="display: none;" id="requirement_material">
+                          <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
+                          <div class="col-md-9">
+                              <select  class="form-control" name="requirement" id="" required>
+                                <option >اختر شرط المادة</option>
+                                @foreach ($materials as $material)
+                                    <option value="{{ $material->id }}">{{ $material->name }}</option>
+                                @endforeach
                               </select>
                           </div>
                         </div>
@@ -110,7 +135,18 @@
           </div>
           </section>
 
+<script>
+  $("#requirement_id").change(function(){
 
+    requirement = $(this).val();
+    if(requirement == 1){
+      document.getElementById("requirement_material").style.display = "";
+    }else{
+      document.getElementById("requirement_material").style.display = "none";
+    }
+    
+  });
+</script>
 @endsection
 @section('js')
 <script src="{{asset('dashboard/js/material.js')}}" type="text/javascript"></script>

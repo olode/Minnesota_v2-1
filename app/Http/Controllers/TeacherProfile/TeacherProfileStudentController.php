@@ -5,6 +5,10 @@ namespace App\Http\Controllers\TeacherProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stage;
+use App\Models\Student;
+use App\Models\StudentMaterial;
+use App\Models\TeacherMaterias;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherProfileStudentController extends Controller
 {
@@ -91,12 +95,7 @@ class TeacherProfileStudentController extends Controller
         //
     }
     
-    public function assignCourse()
-    {
-        $stages = Stage::all();
-        return view('teacher-profile.teacher-profile-students.assign-course-student', compact('stages'));
-
-    }
+    
 
 
 

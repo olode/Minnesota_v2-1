@@ -32,10 +32,10 @@
                       <tbody>
                         @foreach ($news as $data)
                         <tr>
-                          <td>{{ $data->tittle }}</td>
-                          <td>{{ $data['teacher_material']->material->specialization->section->stage->name }}</td>
-                          <td>{{ $data['teacher_material']->material->specialization->name }}</td>
-                          <td>{{ $data['teacher_material']->material->name }}</td>
+                          <td>{{ $data->title }}</td>
+                          <td>{{ $data['class']->material->specialization->section->stage->name }}</td>
+                          <td>{{ $data['class']->material->specialization->name }}</td>
+                          <td>{{ $data['class']->material->name }}</td>
                           <td>{{ $data->text }}</td>
                           <td>{{ $data->created_at }}</td>
                           <td>

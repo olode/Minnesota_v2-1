@@ -10,7 +10,6 @@
           <!-- Form repeater section start -->
           @include('teacher-profile.teacher-profile-students.filter')
           <!--  Form repeater section end -->
-
           
           <!-- Description -->
           <section id="description" class="card">
@@ -23,37 +22,43 @@
                 <div class="card-text">
                  
                   <!-- Both borders end-->
-   
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  @if (!empty($students))
+                  <table class="table table table-bordered">
                       <thead>
                         <tr>
                           <th>اسم الطالب</th>
                           <th>الرقم الجامعي</th>
                           <th>المرحلة</th>
                           <th>القسم</th>
-                          <th>تعيين المواد</th>
+                          <th>التخصص</th>
+                          <th>خيارات</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ِAUD85685s</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>
-                            <button class="btn btn-danger">مبادي المالية</button>
-                            <button class="btn btn-danger">مبادي الادارة</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ِAUD85685s</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td><button class="btn btn-danger">مبادي المالية</button>
-                              <button class="btn btn-danger">مبادي الادارة</button>
-                          </td>
-                        </tr>
+                        
+                        
+                          @foreach ($students as $student)
+                            <tr>
+                              <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->last_name }}</td>
+                              <td>ِ{{ $student->special_student_id }}</td>
+                              <td>{{ $student->stage_name }}</td>
+                              <td>{{ $student->section_name }}</td>
+
+                              <td>{{ $student->specialization_name }}</td>
+                              <td>
+                                @foreach ($materials as $material)
+                                  <form style="display: ruby-base; margin-left: 5px;" action="{{ route('assign.course') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $year_id }}" name="year_id">
+                                    <input type="hidden" value="{{ $material->class_id }}" name="class_id">
+                                    <input type="hidden" value="{{ $material->semester_id }}" name="semester_id">
+                                    <input type="hidden" value="{{ $student->id }}" name="student_id">
+                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">{{ $material->material_name }}</button>  
+                                  </form>
+                                @endforeach
+                              </td>
+                            </tr>
+                          @endforeach   
                         
                       </tbody>
                       <tfoot>
@@ -62,11 +67,17 @@
                           <th>الرقم الجامعي</th>
                           <th>المرحلة</th>
                           <th>القسم</th>
-                          <th>تعيين المواد</th>
+                          <th>التخصص</th>
+                          <th>خيارات</th>
                         </tr>
                       </tfoot>
                     </table>
-        
+                    @else
+                    <hr>
+                        <p>يرجى تحديد البيانات أعلاه لعرض الطلاب</p>
+                    <hr>
+                    @endif
+
         <!-- Both borders end -->
 
                 </div>

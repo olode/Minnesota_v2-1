@@ -34,16 +34,16 @@
                       @foreach ($students as $student)
                         <tr>
                           <td>{{ $student['student']->first_name}} {{ $student['student']->second_name}} {{ $student['student']->last_name}}</td>
-                          <td>{{ $student['student_material']->teacher_material->material->name }}</td>
+                          <td>{{ $student['class']->material->name }}</td>
                           <td>يجب طباعت الناتج من جدول اخر</td>
                           <td>{{ $student->student_mark }}</td>
                           
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmark.edit', $student->id) }}" method="get">
+                            <form  style="display: inline;"  action="{{ route('studentmark.edit', $student->id) }}" method="get">
                             {{ csrf_field() }}  
                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>
                             </form>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmark.destroy', $student->id) }}" method="post">
+                           <form  style="display: inline;"  action="{{ route('studentmark.destroy', $student->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
                            <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

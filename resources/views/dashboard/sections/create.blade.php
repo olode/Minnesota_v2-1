@@ -43,11 +43,11 @@
                             <input type="text" id="projectinput2" class="form-control" placeholder="نبذة عن القسم"name="info">
                           </div>
                         </div>
-                       
+
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="">اختر المرحلة</label>
                           <div class="col-md-9">
-                          <select class="form-control" name="stage_id" id="">
+                          <select multiple class="form-control" name="stage_id[]" id="">
                             <option value="" selected></option>
                             @foreach ($stages as $stage)
                             <option value="{{ $stage->id }}" >{{ $stage->name }}</option>

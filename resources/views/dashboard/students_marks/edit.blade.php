@@ -28,31 +28,32 @@
                       @method('PUT')
                       @csrf
                       <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> تعديل الدرجة</h4>
+                        <h4 class="form-section"><i class="ft-user"></i> درجة الطالب</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الدرجة</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $studentmark->student_mark }}" id="projectinput2" class="form-control" placeholder="الدرجة النهائية"
+                            <input type="text" id="projectinput2" class="form-control" value="{{ $studentmark->student_mark }}"
                             name="student_mark">
                           </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اسم الدرجة</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="mark_types_id" id="">
+                              <select class="form-control" name="mark_type_id" id="">
                                   @foreach ($marks as $mark)
-                                      <option class="form-control"  @if ($mark->id === $studentmark->mark_types_id) {{ "selected='' disabled=''" }} @endif  value="{{$mark->id}}">{{$mark->name}}</option>
+                                      <option class="form-control" value="{{$mark->id}}" @if ($mark->id === $studentmark->id)  selected="" disabled="" @endif >{{$mark->name}}</option>
                                   @endforeach
                               </select>
                             </div>
                           </div>
 
                         <div class="form-group row">
-                            <label class="col-md-3 label-control"  for="">المادة</label>
+                            <label class="col-md-3 label-control"  for="">اختر الصف</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="student_material_id" id="">
+                              <select class="form-control" name="class_id" id="class">
+                                  <option value="" selected="" disabled="" >اختر</option>
                                   @foreach ($materials as $material)
-                                      <option class="form-control" @if ($material->id === $studentmark->student_material_id) {{ "selected='' disabled=''" }} @endif value="{{$material->id}}">{{$material['teacher_material']->material->name}}</option>
+                                      <option class="form-control" value="{{$material->id}}">{{$material->name}}</option>
                                   @endforeach
                               </select>
                             </div>
@@ -61,11 +62,8 @@
                         <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اسم الطالب</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="student_id" id="">
-                                  <option value="{{ $studentmark->student_id }}" ></option>
-                                  @foreach ($students as $student)
-                                      <option @if ($student->id === $studentmark->student_id) {{ "selected='' disabled=''" }} @endif class="form-control" value="{{$student->id}}">{{$student->first_name}} {{$student->second_name}} {{$student->last_name}}  (  الرقم الجامعي{{$student->special_student_id}} )  </option>
-                                  @endforeach
+                              <select class="form-control" name="student_id" id="student">
+                                  
                               </select>
                             </div>
                           </div>
@@ -84,4 +82,7 @@
           </section>
 
 
+@endsection
+@section('js')
+        <script  src="{{asset('dashboard/js/studentMarks.js')}}" type="text/javascript" ></script>
 @endsection

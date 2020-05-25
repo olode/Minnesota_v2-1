@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassInfo;
 use Illuminate\Http\Request;
 use App\Models\NewsAnnouncements;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,8 @@ class TeacherController extends Controller
         $ownerType = "2";
         $news = NewsAnnouncements::where('owner_id', $teacherId)
         ->where('owner_type', $ownerType)->get();
-
-        return view('teacher-profile.teachres.index', compact('news'));
+        $classes  =  ClassInfo::all()->where('teacher_id', $teacherId);
+        return view('teacher-profile.teachres.index', compact('news', 'classes'));
     }
 
     /**

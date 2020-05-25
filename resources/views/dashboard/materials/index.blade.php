@@ -38,6 +38,7 @@
                           <th>الدرجة النهائية</th>
                           <th>نوع المادة</th>
                           <th>شرط المادة</th>
+                          <th>عدد الساعات المادة</th>
                           <th>القسم</th>
                           <th>التخصص</th>
                           <th>الاعدادت</th>
@@ -45,7 +46,7 @@
                       <tbody>
                       @foreach ($data as $material)
                       <tr>
-                        <td>{{ $material->special_material_id }}</td>
+                        <td>{{ $material->code }}</td>
                         <td>{{ $material->name }}</td>
                         <td> {{ $material->info }}</td>
                         <td> {{ $material->max_mark }} </td>
@@ -55,17 +56,17 @@
                           @if ($material->optional === 1) إلزامي @endif
                         </td>
                         <td> 
-                          @if ($material->requirement === 0) غير متطلب @endif
-                          @if ($material->requirement === 1) متطلب @endif
+                          @if ($material->requirement === 0) غير متطلب @else متطلب @endif
                         </td>
+                        <td>{{ $material->hours }}</td>
                         <td>{{ $material['specialization']->section->name }}</td>
                         <td>{{ $material['specialization']->name }}</td>
                         <td>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.edit', $material->id) }}" method="get">
+                          <form  style="display: inline;"   action="{{ route('material.edit', $material->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                          </form>
-                         <form style="display: ruby-base; margin-left: 5px;" action="{{ route('material.destroy', $material->id) }}" method="post">
+                         <form  style="display: inline;"   action="{{ route('material.destroy', $material->id) }}" method="post">
                           @method('DELETE')
                           {{ csrf_field() }}  
                          <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
@@ -82,6 +83,7 @@
                         <th>الدرجة النهائية</th>
                         <th>نوع المادة</th>
                         <th>شرط المادة</th>
+                        <th>عدد الساعات المادة</th>
                         <th>القسم</th>
                         <th>التخصص</th>
                         <th>الاعدادت</th>

@@ -12,29 +12,29 @@
         <title>Elevator - Multipurpose Bootstrap Theme</title>
         <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
-        <link href="{{asset('frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="/frontend/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Font Awesome CSS -->
-        <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="/frontend/css/font-awesome.min.css" rel="stylesheet">
 		
 		<!-- Custom CSS -->
-        <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
+        <link href="/frontend/css/animate.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
+        <link href="/frontend/css/style.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 
         <!-- Template js -->
-        <script src="{{asset('frontend/js/jquery-2.1.1.min.js')}}"></script>
-        <script src="{{asset('frontend/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('frontend/js/jquery.appear.js')}}"></script>
-        <script src="{{asset('frontend/js/contact_me.js')}}"></script>
-        <script src="{{asset('frontend/js/jqBootstrapValidation.js')}}"></script>
-        <script src="{{asset('frontend/js/modernizr.custom.js')}}"></script>
-        <script src="{{asset('frontend/js/script.js')}}"></script>
+        <script src="/frontend/js/jquery-2.1.1.min.js"></script>
+        <script src="/frontend/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/frontend/js/jquery.appear.js"></script>
+        <script src="/frontend/js/contact_me.js"></script>
+        <script src="/frontend/js/jqBootstrapValidation.js"></script>
+        <script src="/frontend/js/modernizr.custom.js"></script>
+        <script src="/frontend/js/script.js"></script>
 
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -44,27 +44,10 @@
     </head>
     
     <body>
-        
-        <!-- Start Logo Section -->
-        <section id="logo-section" class="text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="logo text-center">
-                            {{-- <h3>الجامعة الإسلامية بولاية مينيسوتا</h3> --}}
-                            {{-- <div style="width: 700px;height: 185px; margin: auto; margin-top: 5px;">
-                                <img style="width: 100%; height: 100%;" src="{{asset('frontend/images/login-logo.jpg')}}" alt="logo">
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Logo Section -->
-        
+
         
         <!-- Start Main Body Section -->
-        <div class="mainbody-section text-center">
+        <div class="mainbody-section text-center" style="margin-top:8%">
             <div class="container">
                 <div class="row">
                     
@@ -108,13 +91,13 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="{{asset('frontend/images/about-03.jpg')}}" class="img-responsive" alt="">
+                                        <img src="/frontend/images/about-03.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontend/images/about-02.jpg')}}" class="img-responsive" alt="">
+                                        <img src="/frontend/images/about-02.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="item">
-                                        <img src="{{asset('frontend/images/about-01.jpg')}}" class="img-responsive" alt="">
+                                        <img src="/frontend/images/about-01.jpg" class="img-responsive" alt="">
                                     </div>
 
                                 </div>
@@ -175,20 +158,18 @@
         </div>
         <!-- End Main Body Section -->
         
-        <!-- Start Copyright Section -->
-        <div class="copyright text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div>جميع الحقوق محفوظة للجامعة الإسلامية بولاية مينيسوتا</div>
-                    </div>
+
+        
+                <!-- Start Copyright Section -->
+                <div class="copyright text-center">
+                  <div>جميع الحقوق محفوظة للجامعة الإسلامية بولاية مينيسوتا</div>
                 </div>
-            </div>
-        </div>
-        <!-- End Copyright Section -->
-        
-        
-        <!-- Start Feature Section -->
+              <!-- End Copyright Section -->
+
+
+
+
+              <!-- Start Feature Section -->
         <div class="section-modal modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -308,7 +289,7 @@
                         
                         <div class="col-md-4">
                             <div class="portfolio-item">
-                                <img src="{{asset('frontend/images/portfolio/1.png')}}" class="img-responsive" alt="...">
+                                <img src="/frontend/images/portfolio/1.png" class="img-responsive" alt="...">
                                 <div class="portfolio-details text-center">
                                     <h4>Project Name</h4>
                                     <a href="#"><i class="fa fa-link"></i></a>
@@ -1086,7 +1067,8 @@
             </div>
         </div>
         <!-- End Testimonial Section -->
-        
+
+
     </body>
     
 </html>

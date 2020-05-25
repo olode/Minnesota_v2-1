@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 use  App\Http\Controllers\Controller;
+use App\Models\ClassInfo;
 use Illuminate\Http\Request;
 use App\Models\StudentMark;
 use App\Models\Student;
 use App\Models\MarkType;
+use App\Models\StudentClass;
 use App\Models\StudentMaterial;
 
 
@@ -34,10 +36,10 @@ class StudentMarkController extends Controller
    */
   public function create()
   {
-    $students = Student::all();
+    
     $marks = MarkType::all();
-    $materials = StudentMaterial::all();
-    return view('dashboard.students_marks/create', compact('students', 'marks', 'materials'));
+    $materials = ClassInfo::all();
+    return view('dashboard.students_marks/create', compact( 'marks', 'materials'));
   }
 
   /**
@@ -47,23 +49,12 @@ class StudentMarkController extends Controller
    */
   public function store(Request $request)
   {
-
-    //dd($request->all());
-    $id = $request['mark_types_id'];
-    $maxmark = $request['student_mark'];
-    $marktype = MarkType::findOrfail($id);
-    $mark = $marktype->student_mark;
-    
-    if ($maxmark === $mark Or $maxmark  < $mark ) {
-
+      $request->validate([
+        'student_mark'    =>  ['required', 'integer'],
+      ]);
+      //dd($request->all());
       StudentMark::create($request->all());
       return redirect('/studentmark');
-
-    } else {
-      
-      return redirect()->back();
-    
-    }
     
   }
 
@@ -87,11 +78,10 @@ class StudentMarkController extends Controller
   public function edit($id)
   {
     //dd($id);
-    $studentmark = StudentMark::findOrfail($id);
-    $students = Student::all();
+    $studentmark      =  StudentMark::findOrfail($id);
     $marks = MarkType::all();
-    $materials = StudentMaterial::all();
-    return view('dashboard.students_marks/edit', compact('studentmark', 'students', 'marks', 'materials'));
+    $materials = ClassInfo::all();
+    return view('dashboard.students_marks/edit', compact('studentmark', 'marks', 'materials'));
   }
 
   /**

@@ -11,9 +11,9 @@ class Lecture extends Model
     protected $table = 'lectures';
     public $timestamps = true;
 
-    public function material()
+    public function class()
     {
-        return $this->belongsTo('App\Models\TeacherMaterias');
+        return $this->belongsTo('App\Models\Class');
     }
 
 }

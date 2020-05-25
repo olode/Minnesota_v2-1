@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $teacherNamespace = 'App\Http\Controllers\TeacherProfile';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -39,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapTeacherRoutes();
         //
     }
 
@@ -70,4 +72,23 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+
+
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapTeacherRoutes()
+    {
+        Route::prefix('teacher')
+             ->middleware('web')
+             ->namespace($this->teacherNamespace)
+             ->group(base_path('routes/teacher.php'));
+    }
+
 }

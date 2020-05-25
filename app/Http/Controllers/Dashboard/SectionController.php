@@ -56,21 +56,29 @@ class SectionController extends Controller
    */
   public function store(Request $request)
   {
-
-    //dd($request->all());
     $request->validate([
       'name' => ['required', 'string', 'max:255'],
       'info' => ['required', 'string', 'max:255'],
-      'stage_id' => ['required', 'integer', 'max:255'],
     ]);
-
-      Section::create([
-        'name' => $request['name'],
-        'info' => $request['info'],
-        'stage_id' => $request['stage_id'],
-      ]);
-
+    
+    $stages   = array($request->stage_id);
+    if (!empty($stages)) {
+      foreach ($stages as $value) {
+      
+        foreach ($value as $stage) {
+          Section::create([
+            'name' => $request['name'],
+            'info' => $request['info'],
+            'stage_id' => $stage,
+          ]);
+        }
+      }
       return redirect('/section');
+
+    } else {
+      return redirect()->back();
+    }
+    
 
   }
 

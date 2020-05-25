@@ -38,8 +38,8 @@
                         <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اسم الدرجة</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="mark_types_id" id="">
-                                  <option value="" selected="" disabled="" >اسم الدرجة</option>
+                              <select class="form-control" name="mark_type_id" id="">
+                                  <option value="" selected="" disabled="" >اختر</option>
                                   @foreach ($marks as $mark)
                                       <option class="form-control" value="{{$mark->id}}">{{$mark->name}}</option>
                                   @endforeach
@@ -48,12 +48,12 @@
                           </div>
 
                         <div class="form-group row">
-                            <label class="col-md-3 label-control"  for="">المادة</label>
+                            <label class="col-md-3 label-control"  for="">اختر الصف</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="student_material_id" id="">
-                                  <option value="" selected="" disabled="" >اختر المادة</option>
+                              <select class="form-control" name="class_id" id="class">
+                                  <option value="" selected="" disabled="" >اختر</option>
                                   @foreach ($materials as $material)
-                                      <option class="form-control" value="{{$material->id}}">{{$material['teacher_material']->material->name}}</option>
+                                      <option class="form-control" value="{{$material->id}}">{{$material->name}}</option>
                                   @endforeach
                               </select>
                             </div>
@@ -62,11 +62,8 @@
                         <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اسم الطالب</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="student_id" id="">
-                                  <option value="" selected="" disabled="" >اختر الطالب</option>
-                                  @foreach ($students as $student)
-                                      <option class="form-control" value="{{$student->id}}">{{$student->first_name}} {{$student->second_name}} {{$student->last_name}}  (  الرقم الجامعي {{$student->special_student_id}} )  </option>
-                                  @endforeach
+                              <select class="form-control" name="student_id" id="student">
+                                  
                               </select>
                             </div>
                           </div>
@@ -85,4 +82,7 @@
           </section>
 
 
+@endsection
+@section('js')
+        <script  src="{{asset('dashboard/js/studentMarks.js')}}" type="text/javascript" ></script>
 @endsection

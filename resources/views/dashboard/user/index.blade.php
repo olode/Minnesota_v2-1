@@ -64,11 +64,11 @@
                                   @endif
                                 </td>
                                 <td>
-                                  <form style="display: ruby-base; margin-left: 5px;" action="{{ route('user.edit', $user->id) }}" method="get">
+                                  <form  style="display: inline;"  action="{{ route('user.edit', $user->id) }}" method="get">
                                     {{ csrf_field() }}
                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                                  </form>
-                                 <form style="display: ruby-base; margin-left: 5px;" action="{{ route('user.destroy', $user->id) }}" method="post">
+                                 <form  style="display: inline;"  action="{{ route('user.destroy', $user->id) }}" method="post">
                                   @method('DELETE')
                                   {{ csrf_field() }}  
                                  <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

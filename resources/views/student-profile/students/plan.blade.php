@@ -15,111 +15,41 @@
             <div class="card-content">
               <div class="card-body">
                 <div class="card-text">
-                  <p class="text-center">الفصل الاول</p>
-                 
-                 
-                                 <!-- Both borders end-->
-   
-                                 <div class="table-responsive">
+
+              @foreach($semesters as $semester)
+                <p class="text-center">{{$semester->title}}</p>
+
+                <div class="table-responsive">
                   <table class="table table-bordered mb-0">
                     <thead>
-                   
-                    </thead>
-                    <tbody>
-                    <tr>
                         <td>المادة</td>
                         <td>الحالة</td>
                         <td>وضع المادة</td>
                         <td>عدد الساعات</td>
-                  
-                      </tr>
+                    </thead>
+                    <tbody>
 
-                      <tr>
-                        <td>نطام الاقتصاد في الاسلام</td>
-                        <td>تم</td>
-                        <td>الزامي</td>
-                        <td>٢</td>
+                    @foreach($semester->classes as $class)
+                      <tr>{{--$class->material--}}
+                        <td>{{$class->material->name}}</td>
+                        <td>{{'تم او لم يتم'}}</td>
+                        <td>{{$class->material->optional == 1 ? "اختياري" : "الزامي"}}
+                            @if($class->material->requirement != 0)
+                              <span class="badge badge-default badge-pill bg-primary float-right"> {{$class->material->required->name}} </span>
+                            @endif
+                        </td>
+                        <td>{{$class->material->hours}}</td>
                       </tr>
-                      <tr>
-                        <td>الادارة المالية</td>
-                        <td>تم</td>
-                        <td>الزامي</td>
-                        <td>٢</td>
-                      </tr>
-                      <tr>
-                        <td>القانون الاقتصادي</td>
-                        <td>تم</td>
-                        <td>اختياري</td>
-                        <td>٢</td>
-                      </tr>
-                      <tr>
-                        <td>نطام الاقتصاد في الاسلام</td>
-                        <td>تم</td>
-                        <td>الزامي</td>
-                        <td>٢</td>
-                      </tr>
-                      
-                    
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
-        
-        <!-- Both borders end -->
-<br>
-<br>
-<br>
 
+                <br>
+                <br>
+                <br>
+              @endforeach
 
-        <p class="text-center">الفصل الثاني</p>
-                 
-                 
-                 <!-- Both borders end-->
-
-                 <div class="table-responsive">
-  <table class="table table-bordered mb-0">
-    <thead>
-   
-    </thead>
-    <tbody>
-    <tr>
-        <td>المادة</td>
-        <td>الحالة</td>
-        <td>وضع المادة</td>
-        <td>عدد الساعات</td>
-  
-      </tr>
-
-      <tr>
-        <td>نطام الاقتصاد في الاسلام</td>
-        <td>لم يتم</td>
-        <td>الزامي</td>
-        <td>٢</td>
-      </tr>
-      <tr>
-        <td>الادارة المالية</td>
-        <td>لم يتم</td>
-        <td>الزامي</td>
-        <td>٢</td>
-      </tr>
-      <tr>
-        <td>القانون الاقتصادي</td>
-        <td>لم يتم</td>
-        <td>اختياري</td>
-        <td>٢</td>
-      </tr>
-      <tr>
-        <td>نطام الاقتصاد في الاسلام</td>
-        <td>لم يتم</td>
-        <td>الزامي</td>
-        <td>٢</td>
-      </tr>
-      
-    
-    </tbody>
-  </table>
-</div>
-
-<!-- Both borders end -->
 
                 </div>
               </div>

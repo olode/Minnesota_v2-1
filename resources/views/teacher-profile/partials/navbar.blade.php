@@ -4,8 +4,8 @@
       <ul class="nav navbar-nav flex-row">
         <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
         <li class="nav-item">
-          <a class="navbar-brand" href="/c-panel">
-            <img class="brand-logo" alt="robust admin logo" src="{{asset('dashboard/app-assets/images/logo/logo-dark-sm.jpg')}}">
+          <a class="navbar-brand" href="/teacher-profile">
+            <img class="brand-logo" alt="robust admin logo" src="{{asset('/dashboard/app-assets/images/logo/logo-dark-sm.jpg')}}">
             <h3 class="brand-text">الجامعة الإسلامية بولاية منيسوتا</h3>
           </a>
         </li>
@@ -121,7 +121,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-online rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
+                        <img src="/uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -137,7 +137,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-busy rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
+                        <img src="/uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -153,7 +153,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-online rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
+                        <img src="/uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -169,7 +169,7 @@
                   <div class="media">
                     <div class="media-left">
                       <span class="avatar avatar-sm avatar-away rounded-circle">
-                        <img src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
+                        <img src="/uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                         alt="avatar"><i></i></span>
                     </div>
                     <div class="media-body">
@@ -188,7 +188,7 @@
           <li class="dropdown dropdown-user nav-item">
             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
               <span class="avatar avatar-online">
-                <img style="height: 35px;" src="uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
+                <img style="height: 35px;" src="/uploads/teachers/avatars/{{ Auth::guard('teacher')->user()->avatar }}"
                 alt="avatar"><i></i></span>
               <span class="user-name">{{ Auth::guard('teacher')->user()->first_name }}</span>
             </a>

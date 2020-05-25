@@ -27,7 +27,7 @@
                           <th>الاسم</th>
                           <th>العدد المسموح للطلاب</th>
                           <th>القسم</th>
-                          <th>الفرع التابع له</th>
+                          <th>تابع للفرع</th>
                           <th>حالة التخصص</th>
                           <th>الاعدادت</th>
                       </thead>
@@ -52,15 +52,15 @@
                             @endif
                         </td>
                         <td>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('specialization.show', $data->id) }}" method="get">
+                          <form  style="display: inline;"   action="{{ route('specialization.show', $data->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
                           </form>
-                          <form style="display: ruby-base; margin-left: 5px;" action="{{ route('specialization.edit', $data->id) }}" method="get">
+                          <form  style="display: inline;"   action="{{ route('specialization.edit', $data->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                          </form>
-                         <form style="display: ruby-base; margin-left: 5px;" action="{{ route('specialization.destroy', $data->id) }}" method="post">
+                         <form  style="display: inline;"   action="{{ route('specialization.destroy', $data->id) }}" method="post">
                           @method('DELETE')
                           {{ csrf_field() }}  
                          <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
@@ -73,9 +73,9 @@
                         <th>الاسم</th>
                         <th>العدد المسموح للطلاب</th>
                         <th>القسم</th>
-                        <th>الفرع التابع له</th>
+                        <th>تابع للفرع</th>
                         <th>حالة التخصص</th>
-                        <th>الاعدادت</th>>
+                        <th>الاعدادت</th>
                       </tfoot>
                     </table>
                   </div>

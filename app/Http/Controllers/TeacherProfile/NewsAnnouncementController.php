@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassInfo;
 use Illuminate\Http\Request;
 use App\Models\TeacherMaterias;
 use App\Models\NewsAnnouncements;
@@ -44,7 +45,7 @@ class NewsAnnouncementController extends Controller
     public function create()
     {
         $teacherId = Auth::guard('teacher')->user()->id;
-        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
+        $materials = ClassInfo::where('teacher_id', '=', $teacherId)->get();
         return view('teacher-profile.news-announcements.create', compact('materials'));
 
     }
@@ -62,16 +63,16 @@ class NewsAnnouncementController extends Controller
         $ownerType = "2";
         $request->validate([
 
-            'teacher_material_id'          => ['required', 'integer', 'max:255'],
-            'tittle'                       => ['required', 'string', 'max:255'],
+            'class_id'                     => ['required', 'integer', 'max:255'],
+            'title'                       => ['required', 'string', 'max:255'],
             'text'                         => ['required', 'string', 'max:255'],
 
         ]);
 
-        //dd($request->all());
+        // dd($request->all());
         NewsAnnouncements::create([
-            'teacher_material_id'          => $request['teacher_material_id'],
-            'tittle'                       => $request['tittle'],
+            'class_id'                     => $request['class_id'],
+            'title'                       => $request['title'],
             'text'                         => $request['text'],
             'owner_id'                     => $teacherId,
             'owner_type'                   => $ownerType,

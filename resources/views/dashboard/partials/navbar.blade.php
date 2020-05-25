@@ -121,7 +121,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
+                          <img src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -137,7 +137,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-busy rounded-circle">
-                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
+                          <img src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -153,7 +153,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
+                          <img src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -169,7 +169,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-away rounded-circle">
-                          <img src="uploads/users/avatars/{{ Auth::user()->avatar }}"
+                          <img src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
                           alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
@@ -188,7 +188,7 @@
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="avatar avatar-online">
-                  <img style="height: 35px;" src="uploads/users/avatars/{{ Auth::user()->avatar }}"
+                  <img style="height: 35px;" src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
                   alt="avatar"><i></i></span>
                 <span class="user-name">{{ Auth::user()->first_name }}</span>
               </a>

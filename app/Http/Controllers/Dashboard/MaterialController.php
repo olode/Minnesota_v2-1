@@ -45,8 +45,9 @@ class MaterialController extends Controller
    */
   public function create()
   {
-    $sections = Section::Select('id', 'name')->get();
-    return view('dashboard.materials.create', compact('sections'));
+    $sections   = Section::Select('id', 'name')->get();
+    $materials  = Material::select('id', 'name')->get();
+    return view('dashboard.materials.create', compact('sections', 'materials'));
   }
 
   /**
@@ -56,11 +57,12 @@ class MaterialController extends Controller
    */
   public function store(Request $request)
   {
-    $idNumber = "IUM" . mt_rand(100000, 999999) . "M";
-    //dd($request->all());
+    //$idNumber = "IUM" . mt_rand(100000, 999999) . "M";
+    
+    // dd($request->all());
     $request->validate([
 
-      'special_material_id'       => ['string', 'max:255'],
+      'code'                      => ['required', 'string', 'max:255'],
       'name'                      => ['required', 'string', 'max:255'],
       'info'                      => ['required', 'string', 'max:255'],
       'max_mark'                  => ['required', 'string', 'max:255'],
@@ -68,12 +70,22 @@ class MaterialController extends Controller
       'section_id'                => ['required', 'integer', 'max:255'],
       'specialization_id'         => ['required', 'integer', 'max:255'],
       'optional'                  => ['required', 'integer', 'max:255'],
-      'requirement'               => ['required', 'integer', 'max:255'],
+      'requirement'               => ['max:255'],
+      'hours'                     => ['required', 'integer', 'max:255'],
+      
     ]);
+    //dd($request->all());
 
-    //dd($data);
+    
+    //This If is just to Give The right Value to "requirement"
+    if ($request['requirement'] == "none") {
+      $requirement = 0;
+    } else {
+      $requirement = $request['requirement'];
+    }
+    
     Material::create([
-      'special_material_id'       => $idNumber,
+      'code'                      => $request['code'],
       'name'                      => $request['name'],
       'info'                      => $request['info'],
       'max_mark'                  => $request['max_mark'],
@@ -81,7 +93,8 @@ class MaterialController extends Controller
       'section_id'                => $request['section_id'],
       'specialization_id'         => $request['specialization_id'],
       'optional'                  => $request['optional'],
-      'requirement'               => $request['requirement'],
+      'requirement'               => $requirement,
+      'hours'                     => $request['hours'],
     ]);
 
   return redirect('/material');
@@ -109,7 +122,8 @@ class MaterialController extends Controller
   {
     $material = Material::findOrfail($id);
     $sections = Section::Select('id', 'name')->get();
-    return view('dashboard.materials/edit', compact('material', 'sections'));
+    $materials  = Material::select('id', 'name')->get();
+    return view('dashboard.materials/edit', compact('materials', 'material', 'sections'));
   }
 
   /**
