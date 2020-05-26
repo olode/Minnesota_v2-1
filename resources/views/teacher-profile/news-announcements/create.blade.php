@@ -49,7 +49,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">المادة</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="teacher_material_id" class="form-control">
+                            <select id="projectinput6" name="class_id" class="form-control">
                               <option value="none" selected="" disabled="">اختر المادة المراد إشعارها</option>
                               @foreach ($materials as $material)
                                 <option value="{{ $material->id }}">{{ $material['material']->name }} - ( {{ $material['material']->specialization->name }} ) - ( {{ $material['material']->specialization->section->name }} ) </option>
@@ -61,7 +61,7 @@
                           <label class="col-md-3 label-control" for="projectinput2">عنوان التنبيه او الخبر</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="عنوان التنبيه او الخبر"
-                            name="tittle">
+                            name="title">
                           </div>
                         </div>
                      

@@ -58,6 +58,20 @@
                           </div>
                         </div>
                         <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">عدد الساعات</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $material->hours }}"  id="projectinput4" class="form-control" 
+                            name="hours">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">رمز المادة</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $material->code }}"  id="projectinput4" class="form-control"
+                            name="code">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">القسم</label>
                           <div class="col-md-9">
                               <select  class="form-control" name="section_id" id="section">

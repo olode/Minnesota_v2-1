@@ -39,11 +39,11 @@
                           <td>{{ $student->student_mark }}</td>
                           
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmark.edit', $student->id) }}" method="get">
+                            <form  style="display: inline;"  action="{{ route('studentmark.edit', $student->id) }}" method="get">
                             {{ csrf_field() }}  
                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>
                             </form>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('studentmark.destroy', $student->id) }}" method="post">
+                           <form  style="display: inline;"  action="{{ route('studentmark.destroy', $student->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
                            <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

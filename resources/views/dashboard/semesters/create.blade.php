@@ -44,7 +44,7 @@
                           <label class="col-md-3 label-control" for="projectinput1">اسم الفصل</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" placeholder="اسم الفصل"
-                            name="tittle">
+                            name="title">
                           </div>
                         </div>
                         <div class="form-group row">

@@ -18,7 +18,7 @@
                   @foreach ($news as $item)
                   <li class="list-group-item " data-toggle="modal" data-target="#{{ $item->id}}">
                     <span class="badge badge-default badge-pill bg-primary float-right">{{ $item->id}}</span>
-                    {{ $item->tittle}}
+                    {{ $item->title}}
                   </li>
                   @endforeach
                 </ul>

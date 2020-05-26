@@ -26,35 +26,24 @@
                         <th>اسم المادة</th>
                         <th>رمز المادة</th>
                         <th>موعد المحاضرة</th>
-                        <th>رابط القاعة</th>
                         <th>عدد الطلاب</th>
+                        <th>رابط القاعة</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>١٠٠</td>
-                      </tr>
-                      <tr>
-                        <td>Mary</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Moe</td>
-                        <td>١٠٠</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>Doe</td>
-                        <td>١٠٠</td>
-                      </tr>
+                      
+                      @foreach ($classes as $class)
+                        <tr>
+                          <td>{{ $class->class_day }}</td>
+                          <td>{{ $class->name }}</td>
+                          <td>{{ $class['material']->code }}</td>
+                          <td>من {{ $class->starts_at }}  -  الى {{ $class->ends_at }}</td>
+                          <td>١٠٠</td>
+                          <td>
+                            <a href="{{ $class->classroom_url }}" target="_blank" class="btn btn-primary" rel="noopener noreferrer">دخول</a>
+                          </td>
+                        </tr>    
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -134,5 +123,5 @@
         </div>
       </div>
 
-
+      @include('teacher-profile.partials.left-sidebar')
 @endsection

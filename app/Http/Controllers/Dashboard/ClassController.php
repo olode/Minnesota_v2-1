@@ -39,7 +39,7 @@ class ClassController extends Controller
   {
     $stages     = Stage::select('name', 'id')->get();
     $sections   = Section::select('name', 'id')->get();
-    $semesters  = Semester::select('tittle', 'id')->get();
+    $semesters  = Semester::select('title', 'id')->get();
     $materials  = Material::select('name', 'id')->get();
     $teachers   = Teacher::select('first_name', 'second_name', 'last_name', 'id')->get();
     $years      = Year::select('year_m', 'id')->get();

@@ -46,7 +46,7 @@ class SemesterController extends Controller
   public function store(Request $request)
   {
       $request->validate([
-        'tittle'                        => ['required', 'string', 'max:255'],
+        'title'                        => ['required', 'string', 'max:255'],
         'semester_code'                 => ['required', 'string', 'max:255'],
         'starts_at'                     => ['required', 'date', 'max:255'],
         'end_at'                        => ['required', 'date', 'max:255'],

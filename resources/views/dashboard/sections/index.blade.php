@@ -43,11 +43,11 @@
                           <td>{{ $section['stage']->name }}</td>
                           
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('section.edit', $section->id) }}" method="get">
+                            <form  style="display: inline;"   action="{{ route('section.edit', $section->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                            </form>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('section.destroy', $section->id) }}" method="post">
+                           <form  style="display: inline;"   action="{{ route('section.destroy', $section->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
                            <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

@@ -6,10 +6,15 @@ use App\Models\Branch;
 use App\Models\ClassInfo;
 use App\Models\Semester;
 use App\Models\StudentClass;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class StudentClassController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
   /**
    * Display a listing of the resource.
@@ -30,9 +35,10 @@ class StudentClassController extends Controller
   public function create()
   {
     $branches   = Branch::select('name', 'id')->get();
-    $semesters  = Semester::select('tittle', 'id')->get();
+    $semesters  = Semester::select('title', 'id')->get();
     $classes    = ClassInfo::select('name', 'id', 'material_id')->get();
-    return view('dashboard.student_classes/create', compact('branches', 'semesters', 'classes'));
+    $years      = Year::all();
+    return view('dashboard.student_classes/create', compact('branches', 'semesters', 'classes', 'years'));
   }
 
   /**
@@ -51,6 +57,7 @@ class StudentClassController extends Controller
       'semester_id'                => ['required', 'integer', 'max:255'],
       'student_id'                 => ['required', 'integer', 'max:255'],
       'class_id'                   => ['required', 'integer', 'max:255'],
+      'year_id'                    => ['required', 'integer', 'max:255'],
 
     ]);
     //dd($request->all());
@@ -58,6 +65,7 @@ class StudentClassController extends Controller
       'semester_id'                     => $request['semester_id'],
       'student_id'                      => $request['student_id'],
       'class_id'                        => $request['class_id'],
+      'year_id'                         => $request['year_id'],
     ]);
 
   return redirect('/studentclass');
@@ -86,7 +94,8 @@ class StudentClassController extends Controller
     $branches   = Branch::select('name', 'id')->get();
     $semesters  = Semester::select('tittle', 'id')->get();
     $classes    = ClassInfo::select('name', 'id')->get();
-    return view('dashboard.student_classes/edit', compact('student', 'branches', 'semesters', 'classes'));
+    $years      = Year::all();
+    return view('dashboard.student_classes/edit', compact('student', 'branches', 'semesters', 'classes', 'years'));
   }
 
   /**
@@ -103,6 +112,7 @@ class StudentClassController extends Controller
       'semester_id'                     => $request['semester_id'],
       'student_id'                      => $request['student_id'],
       'class_id'                        => $request['class_id'],
+      'year_id'                         => $request['year_id'],
     ]);
         
     return redirect('/studentclass');

@@ -92,7 +92,9 @@ class StageController extends Controller
    */
   public function edit($id)
   {
-    
+    $stage    = Stage::findOrfail($id);
+    $branches = Branch::all();
+    return view('dashboard.stage.edit', compact('stage', 'branches'));
   }
 
   /**
@@ -101,9 +103,12 @@ class StageController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
-    
+    $stage    = Stage::findOrfail($id);
+    $stage->update($request->all());
+
+    return redirect('/stage');
   }
 
   /**

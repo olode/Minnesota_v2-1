@@ -65,15 +65,15 @@
                             @endif
                           </td>
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.show', $teacher->id) }}" method="get">
+                            <form  style="display: inline;"  action="{{ route('teacher.show', $teacher->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
                            </form>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.edit', $teacher->id) }}" method="get">
+                            <form  style="display: inline;"  action="{{ route('teacher.edit', $teacher->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
                            </form>
-                           <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teacher.destroy', $teacher->id) }}" method="post">
+                           <form  style="display: inline;"  action="{{ route('teacher.destroy', $teacher->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  
                            <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>

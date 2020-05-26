@@ -13,7 +13,7 @@ class SpecializationController extends Controller
 
   public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
   /**
@@ -22,17 +22,7 @@ class SpecializationController extends Controller
    * @return Response
    */
 
-  public function getAjaxSpecializationsFromStageID($stage_id)
-  {
-      $specializations = Specialization::Select('id', 'name')->Where('stage_id', $stage_id)->get();
-      
-      if($specializations == null){
-
-        $specializations = 'null';
-      }
-
-      return  compact('specializations');
-  }
+  
 
   public function getAjaxSpecializations($section_id)
   {

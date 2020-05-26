@@ -9,7 +9,7 @@ class Semester extends Model
 
     protected $table = 'semesters';
     public $timestamps = true;
-    protected $fillable = array('semester-code', 'starts_at', 'end_at', 'max_courses', 'min_courses', 'semester_fee', 'min_paid', 'due_date', 'year_id', 'specialization_id');
+    protected $fillable = array('title', 'semester_code', 'starts_at', 'end_at', 'max_courses', 'min_courses', 'semester_fee', 'min_paid', 'due_date', 'year_id', 'specialization_id');
     protected $visible = array('specialization_id');
 
     public function year()

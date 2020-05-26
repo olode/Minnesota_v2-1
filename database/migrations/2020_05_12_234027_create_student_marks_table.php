@@ -10,8 +10,8 @@ class CreateStudentMarksTable extends Migration {
 		Schema::create('student_marks', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('student_id')->unsigned();
-			$table->integer('mark_type_id')->unsigned();
+			$table->integer('student_id')->unsigned()->nullable()->index();
+			$table->integer('mark_type_id')->unsigned()->nullable()->index();
 			$table->integer('student_mark')->nullable();
 			$table->integer('class_id')->unsigned()->nullable()->index();
 			$table->integer('year_id')->unsigned()->nullable()->index();
