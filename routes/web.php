@@ -84,6 +84,7 @@ Route::resource('schedule', 'Dashboard\ScheduleController');
 
 
 Route::resource('student-profile','StudentProfile\StudentController');
+Route::post('get-in-class','StudentProfile\StudentController@getInClass')->name('get-in-class');
 Route::get('student-plan','StudentProfile\StudentController@studentPlan')->name('student-plan');
 Route::get('student-semester/{semester}/materials','StudentProfile\StudentController@studentSemesterMaterials')->name('student-semester-materials');
 Route::get('student-semesters','StudentProfile\StudentController@studentSemesters')->name('student-semesters');

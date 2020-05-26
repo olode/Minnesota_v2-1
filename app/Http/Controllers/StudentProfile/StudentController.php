@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\StudentClass;
 use App\Models\Semester;
+use App\Models\ClassInfo;
+use App\Models\Attendance;
 use Auth;
+use Str;
 
 
 class StudentController extends Controller
@@ -71,6 +74,54 @@ class StudentController extends Controller
     {
         $student = Student::Find(Auth::user()->id);
         return view('student-profile.students.show-marks',compact('student'));
+    }
+
+    public function getInClass(Request $request)
+    {
+
+        if($request->start <= date('H:i') && $request->end >= date('H:i')){
+
+
+            $class = ClassInfo::with(['lectures_attendance'])
+                                ->Select('id','classroom_url')
+                                ->Where('id', $request->id)->First();
+
+                                
+            if($class->lectures_attendance->first() == null){
+
+
+              return  view('student-profile.messages.uncomplate-lecturer');
+              
+
+            }
+
+
+            $check_attendance = Attendance::Where('lecture_id', $class->lectures_attendance->first()->id)
+                                            ->Where('attendance', 1)
+                                            ->Where('student_id', Auth::user()->id)
+                                            ->first();
+
+
+            if($check_attendance === null){
+
+                $attendance =  new Attendance;
+                $attendance->lecture_id = $class->lectures_attendance->first()->id;
+                $attendance->attendance = 1;
+                $attendance->student_id = Auth::user()->id;
+                $attendance->save();
+
+            }
+
+
+            return  redirect($class->classroom_url);
+
+
+
+        }else{
+
+            return  redirect()->back();
+        }
+
     }
 
     // public function studentShowMaterials()

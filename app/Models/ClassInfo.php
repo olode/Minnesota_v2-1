@@ -45,6 +45,11 @@ class ClassInfo extends Model
         return $this->hasMany('App\Models\NewsAnnouncements','class_id');
     }
 
+    public function lectures_attendance()
+    {
+        return $this->hasMany('App\Models\Lecture','class_id')->Select('id','class_id', 'date')->Where('date', date('Y-m-d'));
+    }
+
 
     
 
