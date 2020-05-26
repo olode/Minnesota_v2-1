@@ -47,13 +47,13 @@
                               <td>{{ $student->specialization_name }}</td>
                               <td>
                                 @foreach ($materials as $material)
-                                  <form style="display: ruby-base; margin-left: 5px;" action="{{ route('assign.course') }}" method="POST">
+                                  <form style="display: inline;" action="{{ route('assign.course') }}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $year_id }}" name="year_id">
-                                    <input type="hidden" value="{{ $material->class_id }}" name="class_id">
+                                    <input type="hidden" value="{{ $material->id }}" name="class_id">
                                     <input type="hidden" value="{{ $material->semester_id }}" name="semester_id">
                                     <input type="hidden" value="{{ $student->id }}" name="student_id">
-                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">{{ $material->material_name }}</button>  
+                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">{{ $material->name }}</button>  
                                   </form>
                                 @endforeach
                               </td>
@@ -94,3 +94,10 @@
 
 
 @endsection
+<script>
+  var msg = '{{Session::get('alert')}}';
+  var exist = '{{Session::has('alert')}}';
+  if(exist){
+    alert(msg);
+  }
+</script>
