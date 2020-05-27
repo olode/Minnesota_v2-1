@@ -217,4 +217,9 @@ Route::get('get-stage-section/{stage_id}', 'TeacherProfile\TeacherAjaxController
 
 Route::get('get-stage-specialization/{section_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSpecializationsFromSctionID');
 
+Route::get('get-stage-semester/{specialization_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSemesterFromSpecializatioID');
+
+Route::get('get-stage-class/{semester_id}', 'TeacherProfile\TeacherAjaxController@getAjaxClassFromSemesterID');
+
 Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
+Route::post('get-teacher-Students', 'TeacherProfile\TeacherAjaxController@getTeacherStudents')->name('get-teacher-students');

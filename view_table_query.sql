@@ -11,7 +11,12 @@
 
 
 CREATE VIEW view_student_classes AS SELECT
-    `students`.*,
+    `students`.`id`,
+    `students`.`first_name` ,
+    `students`.`second_name` ,
+    `students`.`last_name` ,
+    `students`.`special_student_id` ,
+
     `student_calsses`.`id` AS `student_calsses_id` ,
 
     `classes`.`id` AS `class_id`,
@@ -36,6 +41,7 @@ CREATE VIEW view_student_classes AS SELECT
 
     `specializations`.`name` AS `specialization_name`,
 
+    `sections`.`id` AS `section_id`,
     `sections`.`name` AS `section_name`,
 
     `stages`.`id` AS `stage_id`,
@@ -100,7 +106,10 @@ CREATE VIEW view_teacher_classes AS SELECT
     `sections`.`name` AS `section_name` ,
 
     `specializations`.`id` AS `specialization_id` ,
-    `specializations`.`name` AS `specialization_name` 
+    `specializations`.`name` AS `specialization_name` ,
+
+    `semesters`.`id` AS `semester_id` ,
+    `semesters`.`title` AS `semester_title` 
 
     
 
@@ -113,6 +122,8 @@ INNER JOIN `sections` ON `sections`.`id` = `classes`.section_id
 INNER JOIN `students` ON `students`.`section_id` = `classes`.section_id
 
 INNER JOIN `specializations` ON `specializations`.`id` = `students`.specialization_id
+
+INNER JOIN `semesters` ON `semesters`.`id` = `classes`.semester_id
 
 
 
