@@ -84,6 +84,7 @@ Route::resource('schedule', 'Dashboard\ScheduleController');
 
 
 Route::resource('student-profile','StudentProfile\StudentController');
+Route::post('get-in-class','StudentProfile\StudentController@getInClass')->name('get-in-class');
 Route::get('student-plan','StudentProfile\StudentController@studentPlan')->name('student-plan');
 Route::get('student-semester/{semester}/materials','StudentProfile\StudentController@studentSemesterMaterials')->name('student-semester-materials');
 Route::get('student-semesters','StudentProfile\StudentController@studentSemesters')->name('student-semesters');
@@ -217,4 +218,9 @@ Route::get('get-stage-section/{stage_id}', 'TeacherProfile\TeacherAjaxController
 
 Route::get('get-stage-specialization/{section_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSpecializationsFromSctionID');
 
+Route::get('get-stage-semester/{specialization_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSemesterFromSpecializatioID');
+
+Route::get('get-stage-class/{semester_id}', 'TeacherProfile\TeacherAjaxController@getAjaxClassFromSemesterID');
+
 Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
+Route::post('get-teacher-Students', 'TeacherProfile\TeacherAjaxController@getTeacherStudents')->name('get-teacher-students');

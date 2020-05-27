@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                     @foreach($student->student_classes as $student_class)
-                    
+
                         @if($student_class->year->year_m != now()->year)
                           @continue
                         @endif
@@ -45,7 +45,21 @@
                         <td>{{$student_class->class->material->code}}</td>
                         <td>{{$student_class->class->teacher->first_name}} {{$student_class->class->teacher->last_name}}</td>
                         <td>من : {{Str::limit($student_class->class->starts_at, 5, '')}} الى : {{Str::limit($student_class->class->ends_at, 5, '')}}</td>
-                        <td><a href="{{$student_class->class->classroom_url}}" class="badge badge-success" target="_blank">دخول</a></td>
+                        <td>
+
+                        @if(Str::limit($student_class->class->starts_at, 5, '') <= date('H:i') && Str::limit($student_class->class->ends_at, 5, '') >= date('H:i'))
+
+                          <form action="{{route('get-in-class')}}" method="POST" target="_blank">
+                          @csrf
+                            <input type="text" name="id" value="{{$student_class->class->id}}" hidden>
+                            <input type="text" name="start" value="{{Str::limit($student_class->class->starts_at, 5, '')}}" hidden>
+                            <input type="text" name="end" value="{{Str::limit($student_class->class->ends_at, 5, '')}}" hidden>
+                            <button type="supmet" class="badge badge-success" target="_blank">دخول</button>
+                          </form>
+
+                        @endif
+
+                        </td>
                         <td><button class="badge badge-success" data-toggle="modal" data-target="#sigl-class{{$student_class->class->id}}">عرض</button></td>
                       </tr>
 

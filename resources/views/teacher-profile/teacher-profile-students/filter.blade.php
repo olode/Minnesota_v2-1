@@ -22,8 +22,8 @@
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر المرحلة</label>
                     <br>
-                    <select class="form-control" id="stage" name="stage_id">
-                      <option>اختر المرحلة</option>
+                    <select class="form-control" id="stage" name="stage_id" required>
+                      <option disabled selected></option>
                       @foreach ($stages as $stage)
                           <option value="{{ $stage->stage_id }}">{{ $stage->stage_name }}</option>
                       @endforeach
@@ -33,7 +33,7 @@
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر القسم </label>
                     <br>
-                    <select class="form-control" id="section" name="section_id">
+                    <select class="form-control" id="section" name="section_id" required>
                       
                     </select>
                   </div>
@@ -41,7 +41,7 @@
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر التخصص </label>
                     <br>
-                    <select class="form-control" id="specialization" name="specialization_id">
+                    <select class="form-control" id="specialization" name="specialization_id" required>
                       
                     </select>
                   </div>
@@ -49,7 +49,7 @@
                   <div class="form-group mb-1 col-sm-12 col-md-2">
                     <label for="profession">اختر السنة الدراسية </label>
                     <br>
-                    <select class="form-control" id="year" name="year_id">
+                    <select class="form-control" id="year" name="year_id" required>
                       <option value="" disabled selected >اختر</option>
                       @foreach ($years as $year)
                           <option value="{{ $year->id }}">{{ $year->year_m }}</option>

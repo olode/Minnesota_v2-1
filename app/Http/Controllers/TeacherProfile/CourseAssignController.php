@@ -13,6 +13,7 @@ use App\Models\TeacherMaterias;
 use App\Models\Year;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Log;
 
 class CourseAssignController extends Controller
 {
@@ -25,7 +26,7 @@ class CourseAssignController extends Controller
     public function assignCourse()
     {
         $teacherId          =   Auth::guard('teacher')->user()->id;
-        $stages             = \DB::table('view_student_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        $stages             = \DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
         $years              =  Year::all();
         return view('teacher-profile.teacher-profile-students.assign-course-student', compact('stages', 'years'));
 
@@ -34,14 +35,31 @@ class CourseAssignController extends Controller
     public function assignToCourses(Request $request)
     {
         
-        $request->validate([
+        $studentClassCheck     =  $request->validate([
             'student_id'                    => ['required', 'integer', 'max:255'],
             'year_id'                       => ['required', 'integer', 'max:255'],
             'class_id'                      => ['required', 'integer', 'max:255'],
             'semester_id'                   => ['required', 'integer', 'max:255'],
         ]);
+
+        // dd($studentClassCheck);
+        $check   = StudentClass::where([
+          'student_id'          => $request['student_id'],
+          'year_id'             => $request['year_id'],
+          'class_id'            => $request['class_id'],
+          'semester_id'         => $request['semester_id'],
+        ])->first();
+
+        // dd($check);
+        if ($check == null) {
+            StudentClass::create(request()->all());
+        } else {
+            
+            return redirect()->back()->with('alert', 'تم تعيين هذه المادة مسبقا لنفس الطالب');
+        }
+        
         // dd(request()->all());
-        StudentClass::create(request()->all());
+        
         return redirect()->back();
 
     }
