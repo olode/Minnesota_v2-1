@@ -63,10 +63,17 @@ class StudentController extends Controller
 
     public function studentSemesterMaterials($semester)
     {
+
         $toatl_marks =[];
         $student = Student::with(['student_classes'])->Find(Auth::user()->id);
-        $semester_materials = StudentClass::with(['marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
+        $semester_materials = StudentClass::with(['lectures','marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
         return view('student-profile.students.semesters',compact('student', 'semester_materials', 'toatl_marks'));
+
+
+        // $toatl_marks =[];
+        // $student = Student::with(['student_classes'])->Find(Auth::user()->id);
+        // $semester_materials = StudentClass::with(['marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
+        // return view('student-profile.students.semesters',compact('student', 'semester_materials', 'toatl_marks'));
     }
 
     
