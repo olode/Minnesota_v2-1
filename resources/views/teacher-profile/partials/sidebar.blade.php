@@ -43,7 +43,7 @@
                 </li>
                 <li><a class="menu-item" href="{{route('student-home-work.create')}}" data-i18n="nav.dash.project">اضافة</a>
                 </li>
-                <li ><a class="menu-item" href="{{route('follow-up-homework')}}" data-i18n="nav.dash.analytics">متابعة التكليفات</a>
+                <li ><a class="menu-item" href="{{route('follow-up-homework.index')}}" data-i18n="nav.dash.analytics">متابعة التكليفات</a>
                 </li>
               </ul>
             </li>

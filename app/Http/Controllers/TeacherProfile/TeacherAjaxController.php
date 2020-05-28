@@ -4,6 +4,8 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassInfo;
+use App\Models\FollowUpHomework;
+use App\Models\HomeWork;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
 use App\Models\Student;
@@ -59,6 +61,19 @@ class TeacherAjaxController extends Controller
         return  compact('semesters');
     }
 
+    public function getAjaxClassFromSectionID($section_id)
+    {
+        $teacherId            =   Auth::guard('teacher')->user()->id;
+        $classes              =   DB::table('view_teacher_classes')->Select('class_id', 'class_name')->Where('section_id', $section_id)->Where('class_teacher_id', $teacherId)->get()->unique('class_id');
+        
+        if($classes == null){
+
+            $classes = 'null';
+        }
+
+        return  compact('classes');
+    }
+
     public function getAjaxClassFromSemesterID($semester_id)
     {
         $teacherId            =   Auth::guard('teacher')->user()->id;
@@ -83,6 +98,19 @@ class TeacherAjaxController extends Controller
         }
 
         return  compact('lectures');
+    }
+
+    public function getAjaxHomeworkFromLectureID($lecture_id)
+    {
+        
+        $homeworks       =   HomeWork::Select('id', 'title')->Where('lecture_id', $lecture_id)->get();
+        
+        if($homeworks == null){
+
+            $homeworks = 'null';
+        }
+
+        return  compact('homeworks');
     }
 
     /***********************************************************************
@@ -182,7 +210,7 @@ class TeacherAjaxController extends Controller
 
     ************************************************************************/
 
-        /***********************************************************************
+    /***********************************************************************
      * 
         All This Part Will Talk About Filtering Lecture Students 
 
@@ -235,4 +263,64 @@ class TeacherAjaxController extends Controller
     ************************************************************************/
 
 
+    /***********************************************************************
+     * 
+        All This Part Will Talk About Filtering Lecture Students 
+
+    ************************************************************************/
+    
+    public function getHomeworkStudents(Request $request)
+    {
+        
+        $request->validate([
+            'stage_id'                           => ['required', 'integer'],
+            'section_id'                         => ['required', 'integer'],
+            'class_id'                           => ['required', 'integer'],
+            'lecture_id'                         => ['required', 'integer'],
+            'homework_id'                        => ['required', 'integer'],
+        ]);
+
+        $homework_id   = $request->homework_id;
+        
+
+        $array      = [];
+        $students   = FollowUpHomework::where($array);
+        foreach ($request->all() as $key => $value) {
+            if ($key === '_token') {
+                continue;
+            }
+            if ($key === 'stage_id') {
+                continue;
+            }
+            if ($key === 'section_id') {
+                continue;
+            }
+            if ($key === 'class_id') {
+                continue;
+            }
+            if ($key === 'lecture_id') {
+                continue;
+            }
+            if ($value === 'لا توجد معلومات') {
+                continue;
+            }
+            if ($value === 'اختر') {
+                continue;
+            }
+            $students   = $students->Where($key, '=', $value);
+        }
+        
+        $students = $students->get();
+        // dd($students);
+        $teacherId          =   Auth::guard('teacher')->user()->id;
+        $stages             =   DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        return view('teacher-profile.homeworks.follow-up-homework', compact('students', 'stages', 'homework_id'));
+       
+    }
+
+    /***********************************************************************
+     * 
+        All This Part Above Were Talking About Filtering Lecture Students
+
+    ************************************************************************/
 }

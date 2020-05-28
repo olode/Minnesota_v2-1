@@ -11,14 +11,15 @@ class FollowUpHomework extends Model
     public $timestamps = true;
     protected $fillable = array('homework', 'homework_id', 'student_id', 'status');
 
-    public function homework()
-    {
-        return $this->belongsTo('App\Models\HomeWork');
-    }
 
     public function student()
     {
         return $this->belongsTo('App\Models\Student');
+    }
+
+    public function homework()
+    {
+        return $this->belongsTo('App\Models\HomeWork');
     }
 
 }
