@@ -10,13 +10,13 @@ class CreateLecturesTable extends Migration {
 		Schema::create('lectures', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('material_id')->unsigned();
-			$table->string('article_arrangement', 200);
+			$table->string('article_arrangement', 20);
 			$table->integer('article_arrangement_number');
-			$table->string('date', 200);
-			$table->string('tittle', 200);
+			$table->date('date');
+			$table->string('title', 20);
 			$table->text('about');
 			$table->integer('class_id')->unsigned()->index();
+			$table->integer('mark')->unsigned()->nullable();
 		});
 	}
 

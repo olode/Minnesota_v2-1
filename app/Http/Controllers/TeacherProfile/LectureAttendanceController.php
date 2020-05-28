@@ -11,6 +11,7 @@ use App\Models\Attendance;
 use App\Models\ClassInfo;
 use Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LectureAttendanceController extends Controller
 {
@@ -55,11 +56,12 @@ class LectureAttendanceController extends Controller
     {
         //dd($request->all());
         $request->validate([
-            'material_id'                   => ['required', 'integer', 'max:255'],
-            'articleArrangement'            => ['required', 'string', 'max:255'],
-            'articleArrangementNumber'      => ['required', 'integer', 'max:255'],
-            'date'                          => ['required', 'string', 'max:255'],
-            'tittle'                        => ['required', 'string', 'max:255'],
+            'class_id'                      => ['required', 'integer', 'max:255'],
+            'article_arrangement'           => ['required', 'string', 'max:255'],
+            'article_arrangement_number'    => ['required', 'integer', 'max:255'],
+            'date'                          => ['required', 'date', 'max:255'],
+            'title'                         => ['required', 'string', 'max:255'],
+            'mark'                          => ['required', 'integer', 'max:255'],
             'about'                         => ['required'],
         ]);
         
@@ -74,11 +76,12 @@ class LectureAttendanceController extends Controller
 
         //dd($request->all());
         Lecture::create([
-            'material_id'                   => $request['material_id'],
-            'articleArrangement'            => $request['articleArrangement'],
-            'articleArrangementNumber'      => $request['articleArrangementNumber'],
+            'class_id'                      => $request['class_id'],
+            'article_arrangement'           => $request['article_arrangement'],
+            'article_arrangement_number'    => $request['article_arrangement_number'],
             'date'                          => $request['date'],
-            'tittle'                        => $request['tittle'],
+            'title'                         => $request['title'],
+            'mark'                          => $request['mark'],
             'about'                         => $aboutneme,
         ]);
         return redirect('/lectures');
@@ -105,8 +108,8 @@ class LectureAttendanceController extends Controller
     {
         $teacherId = Auth::guard('teacher')->user()->id;
         $lecture = Lecture::findOrfail($id);
-        $materials = TeacherMaterias::where('teacher_id', '=', $teacherId)->get();
-        return view('teacher-profile.lectures-attendance/edit', compact('lecture', 'materials'));
+        $materials = ClassInfo::where('teacher_id', '=', $teacherId)->get();
+        return view('teacher-profile.lectures-attendance.edit', compact('lecture', 'materials'));
     }
 
     /**
@@ -138,57 +141,16 @@ class LectureAttendanceController extends Controller
 
     public function studentAttendance(Request $request)
     {
-        
-        
-        //$lectures = Lecture::all()->where('');
 
-
-
-
-        // if (empty($request->all())) {
-
-        //     $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
-
-        //     $attendancedata = '';
-
-        //     return view('teacher-profile.lectures-attendance.attendance', compact('materials', , 'attendancedata'));
-        
-        // }
-        // if(!empty($request->material_id))
-        // {
-
-
-            $stages    = Stage::select('id', 'name')->get();
-            // $materials = TeacherMaterias::where('teacher_id', '=', 674180)->get();
-            return view('teacher-profile.lectures-attendance.attendance', compact('materials', 'stages', 'attendancedata'));
-            //d($materials);
-            //$lectures = Lecture::all();
-
-            //dd($request->all());
-            // $lectureId = $request->lecture_id;
-
-            // $teacherId = $request->teacher_id;
-
-            // $materials = Attendance::where('id', '=', $lectureId)->get();
-            
-            // $attendancedata = Attendance::findOrfail($lectureId);
-            
-            // dd($lectureId);
-
-        // }
-
-
-
-
-
-        //return view('teacher-profile.lectures-attendance.attendance', compact('lectures', 'attendancedata'));
-
+        $teacherId          = Auth::guard('teacher')->user()->id;
+        $stages             = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        return view('teacher-profile.lectures-attendance.attendance', compact('stages'));
     }
     
 
-    public function absent()
+    public function preparation(Request $request)
     {
-        
+        dd($request->all());
     }
 
     public function downloadAbout($id)

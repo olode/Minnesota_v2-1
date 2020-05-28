@@ -12,6 +12,7 @@ class CreateAttendancesTable extends Migration {
 			$table->timestamps();
 			$table->integer('lecture_id')->unsigned();
 			$table->string('attendance')->default('0');
+			$table->integer('student_id')->unsigned()->nullable()->index();
 		});
 	}
 

@@ -19,7 +19,7 @@
                  
                   <!-- Both borders end-->
    
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  <table class="table table table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
                           <th>المادة</th>
@@ -35,11 +35,11 @@
                       <tbody>
                       @foreach ($lectures as $lecture)
                         <tr>
-                          <td>{{ $lecture['material']->material->name }}</td>
-                          <td>{{ $lecture->tittle }}</td>
-                          <td>{{ $lecture->articleArrangement }} - ( {{ $lecture->articleArrangementNumber }} )</td>
-                          <td>{{ $lecture['material']->material->specialization->section->stage->name }}</td>
-                          <td>{{ $lecture['material']->material->specialization->section->name }}</td>
+                          <td>{{ $lecture['class']->material->name }}</td>
+                          <td>{{ $lecture->title }}</td>
+                          <td>{{ $lecture->article_arrangement }} - ( {{ $lecture->article_arrangement_number }} )</td>
+                          <td>{{ $lecture['class']->material->specialization->section->stage->name }}</td>
+                          <td>{{ $lecture['class']->material->specialization->section->name }}</td>
                           <td>{{ $lecture->date }}</td>
                           <td>
                             <form action="{{ route('about.download', $lecture->id ) }}" method="get">
@@ -48,14 +48,14 @@
                             </form>
                           </td>
                           <td>
-                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('lectures.edit', $lecture->id) }}" method="get">
+                            <form style="display: inline;" action="{{ route('lectures.edit', $lecture->id) }}" method="get">
                               {{ csrf_field() }}
-                             <button style="" class="btn btn-warning" type="submit">تعديل المحاضرة</button>  
+                             <button style="" class="btn btn-warning" type="submit">تعديل</button>  
                               </form>
-                              <form style="display: ruby-base; margin-left: 5px;" action="{{ route('lectures.destroy', $lecture->id ) }}" method="post">
+                              <form style="display: inline;" action="{{ route('lectures.destroy', $lecture->id ) }}" method="post">
                                 @method('DELETE')
                                 {{ csrf_field() }}  
-                              <button style="" class="btn btn-danger" type="submit">حذف المحاضرة</button>
+                              <button style="" class="btn btn-danger" type="submit">حذف</button>
                             </form>
                           </td>
                         </tr>
