@@ -4,6 +4,7 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassInfo;
+use App\Models\Lecture;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Stage;
@@ -69,6 +70,19 @@ class TeacherAjaxController extends Controller
         }
 
         return  compact('classes');
+    }
+
+    public function getAjaxLectureFromClassID($class_id)
+    {
+        
+        $lectures       =   Lecture::Select('id', 'title')->Where('class_id', $class_id)->get();
+        
+        if($lectures == null){
+
+            $lectures = 'null';
+        }
+
+        return  compact('lectures');
     }
 
     /***********************************************************************
@@ -165,6 +179,58 @@ class TeacherAjaxController extends Controller
     /***********************************************************************
      * 
         All This Part Above Were Talking About Filtering Teacher Students
+
+    ************************************************************************/
+
+        /***********************************************************************
+     * 
+        All This Part Will Talk About Filtering Lecture Students 
+
+    ************************************************************************/
+    
+    public function getLectureStudents(Request $request)
+    {
+        
+        $request->validate([
+            'stage_id'                           => ['required', 'integer'],
+            'section_id'                         => ['required', 'integer'],
+            'semester_id'                        => ['required', 'integer'],
+            'class_id'                           => ['required', 'integer'],
+            'lecture_id'                         => ['required', 'integer'],
+        ]);
+
+        $lecture_id   = $request->lecture_id;
+        
+
+        $array      = [];
+        $students   = DB::table('view_student_classes')->where($array);
+        foreach ($request->all() as $key => $value) {
+            if ($key === '_token') {
+                continue;
+            }
+            if ($key === 'lecture_id') {
+                continue;
+            }
+            if ($value === 'لا توجد معلومات') {
+                continue;
+            }
+            if ($value === 'اختر') {
+                continue;
+            }
+            $students   = $students->Where($key, '=', $value);
+        }
+        
+        $students = $students->get();
+        // dd($students);
+        $teacherId          = Auth::guard('teacher')->user()->id;
+        $stages             =   DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        return view('teacher-profile.lectures-attendance.attendance', compact('students', 'stages', 'lecture_id'));
+       
+    }
+
+    /***********************************************************************
+     * 
+        All This Part Above Were Talking About Filtering Lecture Students
 
     ************************************************************************/
 
