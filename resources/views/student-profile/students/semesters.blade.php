@@ -67,19 +67,66 @@
                           <br>
                             
                               
-                            <h4 class="card-title text-center">درجات الحضور</h4>
+                            <h4 class="card-title text-center">درجات الحضور والواجبات والمشاركات</h4>
                             <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th style="width:30%" scope="col">#</th>
-                                <th scope="col">الدرجة</th>
+                                <th style="width:30%" scope="col">المحاضرة</th>
+                                <th scope="col">درجة الحضور</th>
+                                <th scope="col">درجة الواجب</th>
+                                <th scope="col">درجة المشاركة</th>
                               </tr>
                             </thead>
                             <tbody>
                               @foreach($semester_material->lectures as $lecture)
                                 <tr>
                                   <th  scope="row">{{$lecture->title}}</th>
-                                  <td>{{$lecture->attendance == null ? "0" : $lecture->attendance->mark}} /  {{$lecture->full_mark}}</td>
+                                  <td>
+                                    <!-- {{--$lecture->attendance == null ? "0" : $lecture->attendance->mark--}} /  {{--$lecture->full_mark--}} -->
+                                    @if($lecture->attendance != null)
+
+                                     {{$lecture->attendance->mark}} / {{$lecture->full_mark}}
+
+                                     <?php
+
+                                        array_push($total_marks , $lecture->attendance->mark)
+                                     ?> 
+
+                                    @else
+                                      {{0}} / {{$lecture->full_mark}}
+                                    @endif
+                                  
+                                  
+                                  </td>
+                               
+                                  <td>
+                                    @if($lecture->home_work != null)
+
+                                        @if($lecture->home_work->follow_up_home_work != null)
+
+                                          {{$lecture->home_work->follow_up_home_work->mark}} /  {{$lecture->home_work->full_mark}}
+
+                                     <?php
+
+                                            array_push($total_marks , $lecture->home_work->follow_up_home_work->mark)
+                                      ?> 
+
+                                        @else
+
+                                          {{0}} /  {{$lecture->home_work->full_mark}}
+
+                                        @endif
+
+                                    @else
+
+                                        {{'لايوجد واجب' }}
+
+                                    @endif
+                                  </td>
+                                  
+                                  <td>#مشاركة</td>
+
+                                  
                                 </tr> 
                                @endforeach
                             </tbody>
@@ -89,7 +136,47 @@
                           <br>
                             
                               
-                            <h4 class="card-title text-center">درجات الواجبات</h4>
+                            <h4 class="card-title text-center">درجات الاختبارات الصفية </h4>
+                            <table class="table table-bordered">
+                            <thead>
+
+                              <tr>
+                                <th style="width:30%" scope="col">كويز</th>
+                                <th scope="col">الدرجة</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              @foreach($semester_material->quizzes as  $quizze)
+                                  <tr>
+                                    <th scope="row">{{$quizze->title}}</th>
+                                    <td>
+                                    <!-- {{--$quizze->quizze_mark == null ? "0" : $quizze->quizze_mark->mark--}} / {{--$quizze->full_mark--}} -->
+                                    @if($quizze->quizze_mark != null)
+
+                                     {{$quizze->quizze_mark->mark}} / {{$quizze->full_mark}}
+
+                                     <?php
+
+                                      array_push($total_marks , $quizze->quizze_mark->mark)
+                                     ?> 
+
+                                    @else
+                                      {{0}} / {{$quizze->full_mark}}
+                                    @endif
+
+                                    </td>
+                                  </tr> 
+                              @endforeach
+                               
+                            </tbody>
+                          </table>
+                          
+
+                          <br>
+                            
+                              
+                            <h4 class="card-title text-center">درجات الاختبارات النهائية </h4>
                             <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -98,31 +185,51 @@
                               </tr>
                             </thead>
                             <tbody>
-                              @foreach($semester_material->lectures as $lecture)
-                                <tr>
-                                  <th  scope="row">{{$lecture->title}}</th>
-                                  <td>{{$lecture->attendance == null ? "0" : $lecture->mark}} /  {{$lecture->mark}}</td>
-                                </tr> 
-                               @endforeach
+
+                              @foreach($semester_material->final_exams as  $final_exam)
+                                  <tr>
+                                    <th scope="row">{{$final_exam->title}}</th>
+                                    <td>
+                                    
+                                      <!-- {{--$final_exam->final_exam_mark == null ? "0" : $final_exam->final_exam_mark->mark--}} / {{--$final_exam->full_mark--}} -->
+                                      @if($final_exam->final_exam_mark != null)
+
+                                        {{$final_exam->final_exam_mark->mark}} / {{$final_exam->full_mark}}
+
+                                        <?php
+
+                                          array_push($total_marks , $final_exam->final_exam_mark->mark)
+                                        ?> 
+
+                                      @else
+
+                                        {{0}} / {{$final_exam->full_mark}}
+
+                                      @endif
+                                    </td>
+                                  </tr> 
+                              @endforeach
+                               
                             </tbody>
                           </table>
-                          
 
 
                           <br>
 
-
+                          
+                          
+                          
                           <h4 class="card-title text-center">مجموع الدرجات</h4>
                           <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th style="width:30%" scope="col">#</th>
-                                <th scope="col">المجموع </th>
+                                <th style="width:30%" scope="col"> المجموع</th>
+                                <th scope="col">الدرجة </th>
                               </tr>
                             </thead>
                             <tr>
-                                <td style="width:30%" scope="col">#</td>
-                                <td scope="col"></td>
+                                <td style="width:30%" scope="col">{{ array_sum($total_marks) }}</td>
+                                <td scope="col">{{Greades::mark_code(array_sum($total_marks))}}</td>
                               </tr>
                             <tbody>
                             </tbody>

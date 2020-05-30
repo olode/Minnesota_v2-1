@@ -19,11 +19,13 @@ class Lecture extends Model
 
     public function attendance()
     {
-
-
         return $this->hasOne('App\Models\Attendance', 'lecture_id')->Where('student_id', Auth::user()->id);
-         
+    }
 
+
+    public function home_work()
+    {
+        return $this->hasOne('App\Models\HomeWork', 'lecture_id');
     }
 
 }
