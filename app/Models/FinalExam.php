@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Auth;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,13 @@ class FinalExam extends Model
 
     public function class()
     {
-        return $this->belongsTo('App\Models\ClassInfo');
+        return $this->belongsTo('App\Models\Class');
+    }
+
+
+    public function final_exam_mark()
+    {
+        return $this->hasOne('App\Models\FollowUpFinalExam', 'final_exam_id')->Where('student_id', Auth::user()->id);
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class HomeWork extends Model 
 {
@@ -29,6 +30,11 @@ class HomeWork extends Model
     public function section()
     {
         return $this->belongsTo('App\Models\Section');
+    }
+
+    public function follow_up_home_work()
+    {
+        return $this->hasOne('App\Models\FollowUpHomework', 'homework_id')->Where('student_id', Auth::user()->id);
     }
 
 }

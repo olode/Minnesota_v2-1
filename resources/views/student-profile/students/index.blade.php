@@ -80,24 +80,136 @@
 
                             <div class="modal-body">
                             <div class="card">
-                            @foreach($student_class->marks->unique('mark_type_id')->where('class_id', $student_class->class_id) as $marks_title)
-                            <ul class="list-group">
-                            <h4 class="card-title text-center">{{$marks_title->marktype->title}}</h4>
-                          
-                              @foreach($student_class->marks->where('mark_type_id', $marks_title->marktype->id) as $mark)
-                                  
-                                  <li class="list-group-item"> <span class="" style="padding:30px;">{{$mark->marktype->name}}-{{$loop->iteration}}</span>  <span class="badge badge-pill badge-success"> {{$mark->student_mark}}</span> </li>
-                                  
-                                  @php
-                                    array_push($toatl_marks, $mark->student_mark)
-                                  @endphp
 
-                              @endforeach
+
+                            <ul class="list-group">
+                            <h4 class="card-title text-center"> درجات الحضور والواجب والمشاركة</h4>
+                          
+                           
+                            @foreach($student_class->lectures as $lecture)
+                                  <li class="list-group-item">{{$lecture->title}} 
+                                  <span class="badge badge-pill badge-success" style="padding:5px;" >
+                                  
+                                  @if($lecture->attendance != null)
+
+                                     {{$lecture->attendance->mark}} / {{$lecture->full_mark}}
+
+                                     <?php
+
+                                        // array_push($total_marks , $lecture->attendance->mark)
+                                     ?> 
+
+                                    @else
+                                      {{0}} / {{$lecture->full_mark}}
+                                    @endif
+                                  
+                                  </span>  
+
+                                  <span class="" style="padding-right:40px;">
+                                      {{"الواجب"}}
+                                      <span class="badge badge-pill badge-success" style="padding:5px;" >
+                                          @if($lecture->home_work != null)
+
+                                          @if($lecture->home_work->follow_up_home_work != null)
+
+                                            {{$lecture->home_work->follow_up_home_work->mark}} /  {{$lecture->home_work->full_mark}}
+
+                                          <?php
+
+                                              // array_push($total_marks , $lecture->home_work->follow_up_home_work->mark)
+                                          ?> 
+
+                                          @else
+
+                                            {{0}} /  {{$lecture->home_work->full_mark}}
+
+                                          @endif
+
+                                          @else
+
+                                          {{'لايوجد واجب' }}
+
+                                          @endif
+                                      </span> 
+                                  </span>
+
+                                <span style="padding-right:40px;">
+                                      {{"#مشاركة"}}
+                                      <span class="badge badge-pill badge-success" >
+                                      {{"#مشاركة"}}
+                                      </span>
+                                  </span>
+                                  </li>
+                            @endforeach      
+                           
+
+                            </ul>
+
+                            <br>
+
+
+
+
+                            <ul class="list-group">
+                            <h4 class="card-title text-center">درجات الاختبارات الصفية</h4>
+                          
+                           
+                            @foreach($student_class->quizzes as  $quizze)
+                                  <li class="list-group-item">{{$quizze->title}} <span class="" style="padding:30px;">
+                                  
+                                  @if($quizze->quizze_mark != null)
+
+                                     {{$quizze->quizze_mark->mark}} / {{$quizze->full_mark}}
+
+                                     <?php
+
+                                      // array_push($total_marks , $quizze->quizze_mark->mark)
+                                     ?> 
+
+                                    @else
+                                      {{0}} / {{$quizze->full_mark}}
+                                    @endif
+                                  
+                                  </span>  
+                                  <span class="badge badge-pill badge-success"></span> 
+                                  </li>
+                            @endforeach      
+                           
+
+                            </ul>
+
+                            <br>
+                            <ul class="list-group">
+                            <h4 class="card-title text-center">درجات الاختبارات النهائية</h4>
+                          
+                           
+                            @foreach($student_class->final_exams as  $final_exam)
+                                  <li class="list-group-item">{{$final_exam->title}} <span class="" style="padding:30px;">
+                                  
+                                  @if($final_exam->final_exam_mark != null)
+
+                                  {{$final_exam->final_exam_mark->mark}} / {{$final_exam->full_mark}}
+
+                                  <?php
+
+                                    array_push($total_marks , $final_exam->final_exam_mark->mark)
+                                  ?> 
+
+                                  @else
+
+                                  {{0}} / {{$final_exam->full_mark}}
+
+                                  @endif
+                                  
+                                  </span>  
+                                  <span class="badge badge-pill badge-success"></span> 
+                                  </li>
+                            @endforeach      
+                           
 
                             </ul>
                             <br>
 
-                              @endforeach
                              
                             </div>
                             <div class="modal-footer">
@@ -221,3 +333,23 @@
 
 
 @endsection
+
+
+{{--@foreach($student_class->marks->unique('mark_type_id')->where('class_id', $student_class->class_id) as $marks_title)
+                            <ul class="list-group">
+                            <h4 class="card-title text-center">{{$marks_title->marktype->title}}</h4>
+                          
+                              @foreach($student_class->marks->where('mark_type_id', $marks_title->marktype->id) as $mark)
+                                  
+                                  <li class="list-group-item"> <span class="" style="padding:30px;">{{$mark->marktype->name}}-{{$loop->iteration}}</span>  <span class="badge badge-pill badge-success"> {{$mark->student_mark}}</span> </li>
+                                  
+                                  @php
+                                    array_push($toatl_marks, $mark->student_mark)
+                                  @endphp
+
+                              @endforeach
+
+                            </ul>
+                            <br>
+
+                              @endforeach--}}
