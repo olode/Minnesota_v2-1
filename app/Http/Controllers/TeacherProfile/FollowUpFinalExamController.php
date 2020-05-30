@@ -21,7 +21,7 @@ class FollowUpFinalExamController extends Controller
     $followupfinalexams = FollowUpFinalExam::all();
     $teacherId          = Auth::guard('teacher')->user()->id;
     $classes            = ClassInfo::where('teacher_id', $teacherId)->get();
-    return view('teacher-profile.final_exams.follow-up-finalexam', compact('classes', 'followUpQuizzes'));
+    return view('teacher-profile.final_exams.follow-up-finalexam', compact('classes', 'followupfinalexams'));
   }
 
   /**
