@@ -30,6 +30,7 @@
                               <th>الرقم الجامعي</th>
                               <th>المرحلة</th>
                               <th>القسم</th>
+                              <th>حالة التحضير</th>
                               <th>تحضير</th>
                             </tr>
                           </thead>
@@ -40,6 +41,15 @@
                                 <td>{{ $student->special_student_id }}</td>
                                 <td>{{ $student->stage_name }}</td>
                                 <td>{{ $student->section_name }}</td>
+                                <td>
+                                  @foreach ($attendances as $attendance)
+                                    @if ($student->id == $attendance->student_id && $lecture_id == $attendance->lecture_id)
+
+                                        {{ $attendance->attendance }}
+                                        
+                                    @endif
+                                  @endforeach
+                                </td>
                                 <td>
                                   
                                   <form style="display: inline;"  action="{{ route('preparation') }}" method="post">
@@ -72,6 +82,7 @@
                               <th>الرقم الجامعي</th>
                               <th>المرحلة</th>
                               <th>القسم</th>
+                              <th>حالة التحضير</th>
                               <th>تعيين المواد</th>
                             </tr>
                           </tfoot>

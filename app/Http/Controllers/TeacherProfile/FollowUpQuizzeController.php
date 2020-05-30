@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
-use App\Models\FollowUpHomework;
+use App\Models\ClassInfo;
+use App\Models\FollowUpQuizze;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class FollowUpHomeworkController extends Controller 
+class FollowUpQuizzeController extends Controller 
 {
 
-  public function __construct()
-    {
-        $this->middleware('auth:teacher');
-    }
   /**
    * Display a listing of the resource.
    *
@@ -22,9 +18,10 @@ class FollowUpHomeworkController extends Controller
    */
   public function index()
   {
+    $followUpQuizzes    = FollowUpQuizze::all();
     $teacherId          = Auth::guard('teacher')->user()->id;
-    $stages             = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
-    return view('teacher-profile.homeworks.follow-up-homework', compact('stages'));
+    $classes            = ClassInfo::where('teacher_id', $teacherId)->get();
+    return view('teacher-profile.quizzes.follow-up-quizzes', compact('classes', 'followUpQuizzes'));
   }
 
   /**
@@ -44,6 +41,34 @@ class FollowUpHomeworkController extends Controller
    */
   public function store(Request $request)
   {
+    $request->validate([
+      'quizze_id'          => ['required', 'integer', 'max:20'],
+      'student_id'         => ['required', 'integer', 'max:30'],
+      'status'             => ['required', 'integer', 'max:2'],
+      'mark'               => ['required', 'integer', 'max:255'],
+  ]);
+      
+  $studentCheck   = FollowUpQuizze::where([
+
+    ['quizze_id', '=', $request->quizze_id],
+    ['student_id', '=', $request->student_id],
+
+  ])->first();
+  
+  if (empty($studentCheck)) {
+
+    FollowUpQuizze::create($request->all());
+    return redirect('/followupquizze');
+
+  } elseif (!empty($studentCheck)) {
+
+    $quizze = FollowUpQuizze::findOrfail($studentCheck->id);
+    $quizze->update($request->all());
+        
+    return redirect('/followupquizze');
+
+  }
+
     
   }
 
@@ -89,21 +114,6 @@ class FollowUpHomeworkController extends Controller
   public function destroy($id)
   {
     
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function markUpdate(Request $request, $id)
-  {
-    // dd($request->all());
-    $homework = FollowUpHomework::findOrfail($id);
-    $homework->update($request->all());
-    
-    return redirect('/follow-up-homework');
   }
   
 }

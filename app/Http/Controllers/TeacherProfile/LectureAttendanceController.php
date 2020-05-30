@@ -150,7 +150,32 @@ class LectureAttendanceController extends Controller
 
     public function preparation(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $request->validate([
+            'lecture_id'      => ['required', 'integer', 'max:20'],
+            'student_id'      => ['required', 'integer', 'max:30'],
+            'attendance'      => ['required', 'string', 'max:30'],
+        ]);
+            
+        $studentCheck   = Attendance::where([
+      
+          ['lecture_id', '=', $request->lecture_id],
+          ['student_id', '=', $request->student_id],
+      
+        ])->first();
+        // dd($studentCheck);
+        if (empty($studentCheck)) {
+      
+            Attendance::create($request->all());
+          return redirect('/lecture-attendance');
+      
+        } elseif (!empty($studentCheck)) {
+      
+          $followupfinalexam = Attendance::findOrfail($studentCheck->id);
+          $followupfinalexam->update($request->all());
+              
+          return redirect('/lecture-attendance');
+        }
     }
 
     public function downloadAbout($id)

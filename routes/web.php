@@ -108,7 +108,7 @@ Route::resource('teacher-profile','TeacherProfile\TeacherController');
 Route::resource('news-announcements','TeacherProfile\NewsAnnouncementController');
 Route::resource('teacher-profile-students','TeacherProfile\TeacherProfileStudentController');
 Route::resource('student-home-work','TeacherProfile\StudentHomeWorkController');
-Route::get('follow-up-homework','TeacherProfile\StudentHomeWorkController@followUpHomework')->name('follow-up-homework');
+
 Route::resource('lectures','TeacherProfile\LectureAttendanceController');
 Route::get('lecture-attendance','TeacherProfile\LectureAttendanceController@studentAttendance')->name('lecture-attendance');
 Route::get('lecture/download/about/{id}', 'TeacherProfile\LectureAttendanceController@downloadAbout')->name('about.download');
@@ -118,9 +118,15 @@ Route::get('add-attendance-marks','TeacherProfile\MarkController@addAttendanceMa
 Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')->name('add-mid-exam-marks');
 Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMarks')->name('add-final-exam-marks');
 
+Route::resource('follow-up-homework','TeacherProfile\FollowUpHomeworkController');
+Route::put('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkController@markUpdate')->name('homework-mark-update');
 
 Route::post('preparation-student', 'TeacherProfile\LectureAttendanceController@preparation')->name('preparation');
 
+Route::resource('quizze', 'TeacherProfile\QuizzeController');
+Route::resource('followupquizze', 'TeacherProfile\FollowUpQuizzeController');
+Route::resource('finalexam', 'TeacherProfile\FinalExamController');
+Route::resource('followupfinalexam', 'TeacherProfile\FollowUpFinalExamController');
 
 /*********************************************/
 /*********************************************/
@@ -210,9 +216,17 @@ Route::get('get-stage-specialization/{section_id}', 'TeacherProfile\TeacherAjaxC
 Route::get('get-stage-semester/{specialization_id}', 'TeacherProfile\TeacherAjaxController@getAjaxSemesterFromSpecializatioID');
 
 Route::get('get-stage-class/{semester_id}', 'TeacherProfile\TeacherAjaxController@getAjaxClassFromSemesterID');
+Route::get('get-section-class/{section_id}', 'TeacherProfile\TeacherAjaxController@getAjaxClassFromSectionID');
 
 Route::get('get-stage-lecture/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxLectureFromClassID');
+Route::get('get-class-quizze/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxQuizzeFromClassID');
+Route::get('get-class-finalexam/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxFinalExamFromClassID');
+
+Route::get('get-lecture-homework/{lecture_id}', 'TeacherProfile\TeacherAjaxController@getAjaxHomeworkFromLectureID');
 
 Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->name('get-students');
 Route::post('get-teacher-Students', 'TeacherProfile\TeacherAjaxController@getTeacherStudents')->name('get-teacher-students');
 Route::post('get-students-to-attendance', 'TeacherProfile\TeacherAjaxController@getLectureStudents')->name('get-students-to-attendance');
+Route::post('follow-up-homework-students', 'TeacherProfile\TeacherAjaxController@getHomeworkStudents')->name('follow-up-homework-students');
+Route::post('follow-up-quizze-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForQuizze')->name('follow-up-quizze-students');
+Route::post('follow-up-finalexam-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForFinalExam')->name('follow-up-finalexam-students');

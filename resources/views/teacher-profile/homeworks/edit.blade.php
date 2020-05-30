@@ -18,7 +18,8 @@
                   <!-- Both borders end-->
    
 
-                  <form action="{{ route('student-home-work.store') }}" method="POST" class="form form-horizontal form-bordered">
+                  <form action="{{ route('student-home-work.update', $homework->id) }}" method="POST" class="form form-horizontal form-bordered">
+                    @method('PUT')
                     @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="icon-notebook"></i>تفاصيل التكليف</h4>
@@ -60,28 +61,28 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">تاريخ التسليم</label>
                           <div class="col-md-9">
-                            <input type="date" id="projectinput2" class="form-control" placeholder="تاريخ التسليم"
+                            <input type="date" value="{{ $homework->due_date }}" id="projectinput2" class="form-control" placeholder="تاريخ التسليم"
                             name="due_date">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">عنوان التكليف</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="عنوان التكليف"
+                            <input type="text" value="{{ $homework->title }}"  id="projectinput2" class="form-control" placeholder="عنوان التكليف"
                             name="title">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">درجة التكليف</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="درجة التكليف"
+                            <input type="text" value="{{ $homework->full_mark }}"  id="projectinput2" class="form-control" placeholder="درجة التكليف"
                             name="full_mark">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput9">تفاصيل  التكليف</label>
                           <div class="col-md-9">
-                            <textarea id="projectinput9" rows="5" class="form-control" name="info" placeholder="تفاصيل  التكليف"></textarea>
+                            <textarea id="projectinput9" rows="5" class="form-control" name="info" placeholder="تفاصيل  التكليف">{{ $homework->info }}</textarea>
                           </div>
                         </div>
                       </div>

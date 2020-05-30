@@ -10,7 +10,7 @@ class HomeWork extends Model
 
     protected $table = 'homeworks';
     public $timestamps = true;
-    protected $fillable = array('title', 'info', 'due_date', 'lecture_id', 'class_id', 'stage_id', 'section_id');
+    protected $fillable = array('title', 'info', 'due_date', 'lecture_id', 'class_id', 'stage_id', 'section_id', 'teacher_id');
 
     public function lecture()
     {
