@@ -19,36 +19,58 @@
                  
                   <!-- Both borders end-->
    
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  <table class="table table table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
                           <th>عنوان التكليف</th>
                           <th>المرحلة</th>
                           <th>القسم</th>
-                          <th>التكليف</th>
+                          <th>الصف</th>
+                          <th>المحاضرة</th>
+                          <th>موعد التسليم</th>
+                          <th>درجة التكليف</th>
+                          <th>وصف التكليف</th>
                           <th>اعدادت</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>التكليف الاول</td>
-                          <td><button class="btn btn-success">عرض</button>
-                              <button class="btn btn-danger">حذف</button>
-                              <button class="btn btn-warning">تعديل</button>
+                        @foreach ($homeworks as $homework)
+                        <tr>
+                          <td>{{ $homework->title }}</td>
+                          <td>{{ $homework['stage']->name }}</td>
+                          <td>{{ $homework['section']->name }}</td>
+                          <td>{{ $homework['class']->name }}</td>
+                          <td>{{ $homework['lecture']->title }}</td>
+                          <td>{{ $homework->due_date }}</td>
+                          <td>{{ $homework->full_mark }}</td>
+                          <td>{{ $homework->info }}</td>
+                          <td>
+                            <form style="display: inline;" action="{{ route('student-home-work.edit', $homework->id) }}" method="get">
+                              {{ csrf_field() }}
+                             <button style="" class="btn btn-warning" type="submit">تعديل</button>  
+                              </form>
+                              <form style="display: inline;" action="{{ route('student-home-work.destroy', $homework->id ) }}" method="post">
+                                @method('DELETE')
+                                {{ csrf_field() }}  
+                              <button style="" class="btn btn-danger" type="submit">حذف</button>
+                            </form>
                           </td>
                         </tr>
+                        @endforeach
+                      
                         
                       </tbody>
                       <tfoot>
                       <tr>
-                          <th>عنوان التكليف</th>
-                          <th>المرحلة</th>
-                          <th>القسم</th>
-                          <th>التكليف</th>
-                          <th>اعدادت</th>
+                        <th>عنوان التكليف</th>
+                        <th>المرحلة</th>
+                        <th>القسم</th>
+                        <th>الصف</th>
+                        <th>المحاضرة</th>
+                        <th>موعد التسليم</th>
+                        <th>درجة التكليف</th>
+                        <th>وصف التكليف</th>
+                        <th>اعدادت</th>
                         </tr>
                       </tfoot>
                     </table>

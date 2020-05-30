@@ -18,75 +18,70 @@
                   <!-- Both borders end-->
    
 
-                  <form class="form form-horizontal form-bordered">
+                  <form action="{{ route('student-home-work.store') }}" method="POST" class="form form-horizontal form-bordered">
+                    @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="icon-notebook"></i>تفاصيل التكليف</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">المرحلة</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">المرحلة</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                            <select id="stage" name="stage_id" class="form-control">
+                              <option value="none" selected="" disabled="">اختر</option>
+                              @foreach ($stages as $stage)
+                                  <option value="{{ $stage->stage_id }}">{{ $stage->stage_name }}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">القسم</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                            <select id="section" name="section_id" class="form-control">
+                              
                             </select>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">المادة</label>
+                          <label class="col-md-3 label-control" for="projectinput6">الصف</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="design">ثانوي</option>
-                              <option value="development">دبلوم</option>
-                              <option value="illustration">بكالوريوس</option>
-                              <option value="branding">ماجستير</option>
+                            <select id="class" name="class_id" class="form-control">
+                              
                             </select>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">التكليف</label>
+                          <label class="col-md-3 label-control" for="projectinput6">المحاضرة</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">التكليف</option>
-                              <option value="design">الاول</option>
-                              <option value="development">الثاني</option>
-                              <option value="illustration">الثالث</option>
-                              <option value="branding">الرابع</option>
+                            <select id="lecture" name="lecture_id" class="form-control">
+                              
                             </select>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">تاريخ التسليم</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="تاريخ التسليم"
-                            name="lname">
+                            <input type="date" id="projectinput2" class="form-control" placeholder="تاريخ التسليم"
+                            name="due_date">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">عنوان التكليف</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="عنوان التكليف"
-                            name="lname">
+                            name="title">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">درجة التكليف</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="درجة التكليف"
+                            name="full_mark">
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput9">تفاصيل  التكليف</label>
                           <div class="col-md-9">
-                            <textarea id="projectinput9" rows="5" class="form-control" name="comment" placeholder="تفاصيل  التكليف"></textarea>
+                            <textarea id="projectinput9" rows="5" class="form-control" name="info" placeholder="تفاصيل  التكليف"></textarea>
                           </div>
                         </div>
                       </div>
@@ -111,5 +106,104 @@
         </div>
       </div>
 
+<script>
+  $("#stage").change(function(){
+    stage_id = $(this).val();
+    $("#section").text('');
+    $("#class").text('');
+    $("#lecture").text('');
 
+    $.ajax({
+    
+    url:'/get-stage-section/'+ stage_id,
+    type:'get',
+    dataType:'json',
+    success:function(data){
+        
+      if(data.sections.length == 0){
+    
+          $("#section").append('<option > لا توجد معلومات </option>');
+          
+          if($("#stage").val() == 'اختر'){
+            $("#section").text('');
+          }
+    
+      }else{
+    
+          $("#section").append('<option > اختر </option>');
+    
+          $.each(data.sections,function(key, val){
+            $("#section").append('<option value='+val.section_id+' >' + val.section_name + '</option>');
+          });
+    
+      }
+    }
+    });
+    });
+
+    $("#section").change(function(){
+      section_id = $(this).val();
+      $("#class").text('');
+      $("#lecture").text('');
+
+      $.ajax({
+      
+      url:'/get-section-class/'+ section_id,
+      type:'get',
+      dataType:'json',
+      success:function(data){
+          
+        if(data.classes.length == 0){
+      
+            $("#class").append('<option > لا توجد معلومات </option>');
+            
+            if($("#section").val() == 'اختر'){
+              $("#class").text('');
+            }
+      
+        }else{
+      
+            $("#class").append('<option > اختر </option>');
+      
+            $.each(data.classes,function(key, val){
+              $("#class").append('<option value='+val.class_id+' >' + val.class_name + '</option>');
+            });
+      
+        }
+      }
+      });
+      });
+
+      $("#class").change(function(){
+        class_id = $(this).val();
+        $("#lecture").text('');
+
+        $.ajax({
+        
+        url:'/get-stage-lecture/'+ class_id,
+        type:'get',
+        dataType:'json',
+        success:function(data){
+            
+          if(data.lectures.length == 0){
+        
+              $("#lecture").append('<option > لا توجد معلومات </option>');
+              
+              if($("#class").val() == 'اختر'){
+                $("#lecture").text('');
+              }
+        
+          }else{
+        
+              $("#lecture").append('<option selected disabled ></option>');
+        
+              $.each(data.lectures,function(key, val){
+                $("#lecture").append('<option value='+val.id+' >' + val.title + '</option>');
+              });
+        
+          }
+        }
+        });
+        });
+</script>
 @endsection

@@ -28,57 +28,48 @@
                     <div class="repeater-default">
                       <div data-repeater-list="car">
                         <div data-repeater-item>
-                          <form class="form row">
-                       
+                          <form action="{{ route('follow-up-homework-students') }}" method="POST" class="form row">
+                            @csrf
                             <div class="form-group mb-1 col-sm-12 col-md-2">
                               <label for="profession">اختر المرحلة</label>
                               <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المرحلة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                              <select name="stage_id" class="form-control" id="stage" required>
+                                <option selected disabled></option>
+                                @foreach ($stages as $stage)
+                                    <option value="{{ $stage->stage_id }}">{{ $stage->stage_name }}</option>
+                                @endforeach
                               </select>
                             </div>
                             
                             <div class="form-group mb-1 col-sm-12 col-md-2">
                               <label for="profession">اختر القسم </label>
                               <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر القسم</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                              <select class="form-control" name="section_id" id="section" required>
+                                
+                              </select>
+                            </div>
+
+                            <div class="form-group mb-1 col-sm-12 col-md-2">
+                              <label for="profession">اختر الصف </label>
+                              <br>
+                              <select name="class_id" class="form-control" id="class" required>
+                                
                               </select>
                             </div>
 
                             <div class="form-group mb-1 col-sm-12 col-md-2">
                               <label for="profession">اختر المادة </label>
                               <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر المادة</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                              <select name="lecture_id" class="form-control" id="lecture" required>
+                                
                               </select>
                             </div>
 
                             <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="profession">اختر التكليف </label>
+                              <label for="profession">اختر التكليف</label>
                               <br>
-                              <select class="form-control" id="profession">
-                                <option>اختر التكليف</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                              <select name="homework_id" class="form-control" id="homework" required>
+                                
                               </select>
                             </div>
 
@@ -111,119 +102,59 @@
                  
                   <!-- Both borders end-->
    
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  @if (!empty($students))
+                    <table class="table table table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
+                          <th>اسم الطالب</th>
                           <th>عنوان التكليف</th>
-                          <th>المرحلة</th>
-                          <th>القسم</th>
-                          <th>ترتيب التكليف</th>
+                          <th>اسم الصف</th>
+                          <th>التكليف</th>
+                          <th>الدرجة</th>
                           <th>التنفيذ</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>احمد سعد علي</td>
-                          <td>ماجستير</td>
-                          <td>ادارة اعمال</td>
-                          <td>الثاني</td>
-                          <td><button class="btn btn-success">تم</button>
-                              <button class="btn btn-danger">لم يتم</button>
-                          </td>
-                        </tr>
-                       
+                        @foreach ($students as $student)
+                          <tr>
+                            <td>{{ $student['student']->first_name }} {{ $student['student']->second_name }} {{ $student['student']->last_name }}</td>
+                            <td>{{ $student->homework_id }}</td>
+                            <td>{{ $student->homework_id }}</td>
+                            <td><button class="btn btn-primary">تحميل التكليف</button></td>
+                            <td>{{ $student->mark }}</td>
+                            <td>
+                              <form action="{{ route('homework-mark-update', $student->id) }}" method="post">
+                                @method('PUT')
+                                @csrf
+                              <div class="row">
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="text" name="mark" >
+                                  </div>
+                                  <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success">حفظ</button>                         
+                                  </div>
+                                
+                              </div>
+                            </form> 
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                       <tfoot>
                       <tr>
-                          <th>عنوان التكليف</th>
-                          <th>المرحلة</th>
-                          <th>القسم</th>
-                          <th>ترتيب التكليف</th>
-                          <th>التنفيذ</th>
-                        </tr>
+                        <th>اسم الطالب</th>
+                        <th>عنوان التكليف</th>
+                        <th>اسم الصف</th>
+                        <th>التكليف</th>
+                        <th>الدرجة</th>
+                        <th>التنفيذ</th>
+                      </tr>
                       </tfoot>
                     </table>
+                  @else
+                  <hr>
+                      <h5>يرجى أستخدام الفلتر للحصول على البيانات المطلوبة</h5>
+                  @endif
         
         <!-- Both borders end -->
 
@@ -238,6 +169,140 @@
         </div>
       </div>
 
+<script>
+  $("#stage").change(function(){
+    stage_id = $(this).val();
+    $("#section").text('');
+    $("#class").text('');
+    $("#lecture").text('');
+    $("#homework").text('');
 
+    $.ajax({
+    
+    url:'/get-stage-section/'+ stage_id,
+    type:'get',
+    dataType:'json',
+    success:function(data){
+        
+      if(data.sections.length == 0){
+    
+          $("#section").append('<option > لا توجد معلومات </option>');
+          
+          if($("#stage").val() == 'اختر'){
+            $("#section").text('');
+          }
+    
+      }else{
+    
+          $("#section").append('<option > اختر </option>');
+    
+          $.each(data.sections,function(key, val){
+            $("#section").append('<option value='+val.section_id+' >' + val.section_name + '</option>');
+          });
+    
+      }
+    }
+    });
+    });
+
+    $("#section").change(function(){
+      section_id = $(this).val();
+      $("#class").text('');
+      $("#lecture").text('');
+      $("#homework").text('');
+
+      $.ajax({
+      
+      url:'/get-section-class/'+ section_id,
+      type:'get',
+      dataType:'json',
+      success:function(data){
+          
+        if(data.classes.length == 0){
+      
+            $("#class").append('<option > لا توجد معلومات </option>');
+            
+            if($("#section").val() == 'اختر'){
+              $("#class").text('');
+            }
+      
+        }else{
+      
+            $("#class").append('<option > اختر </option>');
+      
+            $.each(data.classes,function(key, val){
+              $("#class").append('<option value='+val.class_id+' >' + val.class_name + '</option>');
+            });
+      
+        }
+      }
+      });
+      });
+
+      $("#class").change(function(){
+        class_id = $(this).val();
+        $("#lecture").text('');
+        $("#homework").text('');
+
+        $.ajax({
+        
+        url:'/get-stage-lecture/'+ class_id,
+        type:'get',
+        dataType:'json',
+        success:function(data){
+            
+          if(data.lectures.length == 0){
+        
+              $("#lecture").append('<option > لا توجد معلومات </option>');
+              
+              if($("#class").val() == 'اختر'){
+                $("#lecture").text('');
+              }
+        
+          }else{
+        
+              $("#lecture").append('<option selected disabled >اختر</option>');
+        
+              $.each(data.lectures,function(key, val){
+                $("#lecture").append('<option value='+val.id+' >' + val.title + '</option>');
+              });
+        
+          }
+        }
+        });
+        });
+
+        $("#lecture").change(function(){
+          lecture_id = $(this).val();
+          $("#homework").text('');
+  
+          $.ajax({
+          
+          url:'/get-lecture-homework/'+ lecture_id,
+          type:'get',
+          dataType:'json',
+          success:function(data){
+              
+            if(data.homeworks.length == 0){
+          
+                $("#homework").append('<option > لا توجد معلومات </option>');
+                
+                if($("#lecture").val() == 'اختر'){
+                  $("#homework").text('');
+                }
+          
+            }else{
+          
+                $("#homework").append('<option selected disabled >اختر</option>');
+          
+                $.each(data.homeworks,function(key, val){
+                  $("#homework").append('<option value='+val.id+' >' + val.title + '</option>');
+                });
+          
+            }
+          }
+          });
+          });
+</script>
 
 @endsection

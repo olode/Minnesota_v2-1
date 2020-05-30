@@ -43,11 +43,41 @@
                 </li>
                 <li><a class="menu-item" href="{{route('student-home-work.create')}}" data-i18n="nav.dash.project">اضافة</a>
                 </li>
-                <li ><a class="menu-item" href="{{route('follow-up-homework')}}" data-i18n="nav.dash.analytics">متابعة التكليفات</a>
+                <li ><a class="menu-item" href="{{route('follow-up-homework.index')}}" data-i18n="nav.dash.analytics">متابعة التكليفات</a>
                 </li>
               </ul>
             </li>
-             <li class=" navigation-header">
+            <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">الإختبارات النهائية</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+
+            <li class=" nav-item"><a href="index.html"><i class="icon-note"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الإختبارات النهائية</span></a>
+              <ul class="menu-content">
+                <li ><a class="menu-item" href="{{route('finalexam.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                </li>
+                <li><a class="menu-item" href="{{route('finalexam.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                </li>
+                <li ><a class="menu-item" href="{{route('followupfinalexam.index')}}" data-i18n="nav.dash.analytics">متابعة الدرجات</a>
+                </li>
+              </ul>
+            </li>
+            <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">الإختبارات الشهرية</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+
+            <li class=" nav-item"><a href="index.html"><i class="icon-note"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الإختبارات الشهرية</span></a>
+              <ul class="menu-content">
+                <li ><a class="menu-item" href="{{route('quizze.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                </li>
+                <li><a class="menu-item" href="{{route('quizze.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                </li>
+                <li ><a class="menu-item" href="{{route('followupquizze.index')}}" data-i18n="nav.dash.analytics">متابعة الدرجات</a>
+                </li>
+              </ul>
+            </li>
+             {{--  <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الدرجات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -59,12 +89,12 @@
                 </li>
                 <li><a class="menu-item" href="{{route('add-attendance-marks')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
                 </li>
-                {{--  <li><a class="menu-item" href="{{route('add-mid-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبارات</a>
+                 <li><a class="menu-item" href="{{route('add-mid-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبارات</a>
                 </li>
                 <li><a class="menu-item" href="{{route('add-final-exam-marks')}}" data-i18n="nav.dash.project">اضافة درجات الاختبار النهائي</a>
-                </li>  --}}
+                </li>
               </ul>
-            </li>
+            </li>  --}}
              <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">المحاضرات و التحضير</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
