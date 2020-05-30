@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class FollowUpFinalExamController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth:teacher');
+    }
   /**
    * Display a listing of the resource.
    *
