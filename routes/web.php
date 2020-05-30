@@ -138,6 +138,10 @@ Route::put('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkControll
 
 Route::post('preparation-student', 'TeacherProfile\LectureAttendanceController@preparation')->name('preparation');
 
+Route::resource('quizze', 'TeacherProfile\QuizzeController');
+Route::resource('followupquizze', 'TeacherProfile\FollowUpQuizzeController');
+Route::resource('finalexam', 'TeacherProfile\FinalExamController');
+Route::resource('followupfinalexam', 'TeacherProfile\FollowUpFinalExamController');
 
 /*********************************************/
 /*********************************************/
@@ -230,6 +234,8 @@ Route::get('get-stage-class/{semester_id}', 'TeacherProfile\TeacherAjaxControlle
 Route::get('get-section-class/{section_id}', 'TeacherProfile\TeacherAjaxController@getAjaxClassFromSectionID');
 
 Route::get('get-stage-lecture/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxLectureFromClassID');
+Route::get('get-class-quizze/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxQuizzeFromClassID');
+Route::get('get-class-finalexam/{class_id}', 'TeacherProfile\TeacherAjaxController@getAjaxFinalExamFromClassID');
 
 Route::get('get-lecture-homework/{lecture_id}', 'TeacherProfile\TeacherAjaxController@getAjaxHomeworkFromLectureID');
 
@@ -237,3 +243,5 @@ Route::get('get-Students', 'TeacherProfile\TeacherAjaxController@getStudents')->
 Route::post('get-teacher-Students', 'TeacherProfile\TeacherAjaxController@getTeacherStudents')->name('get-teacher-students');
 Route::post('get-students-to-attendance', 'TeacherProfile\TeacherAjaxController@getLectureStudents')->name('get-students-to-attendance');
 Route::post('follow-up-homework-students', 'TeacherProfile\TeacherAjaxController@getHomeworkStudents')->name('follow-up-homework-students');
+Route::post('follow-up-quizze-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForQuizze')->name('follow-up-quizze-students');
+Route::post('follow-up-finalexam-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForFinalExam')->name('follow-up-finalexam-students');

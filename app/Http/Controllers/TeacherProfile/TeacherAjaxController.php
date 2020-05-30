@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attendance;
 use App\Models\ClassInfo;
+use App\Models\FinalExam;
+use App\Models\FollowUpFinalExam;
 use App\Models\FollowUpHomework;
+use App\Models\FollowUpQuizze;
 use App\Models\HomeWork;
 use App\Models\Lecture;
+use App\Models\Quizze;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Stage;
@@ -98,6 +103,32 @@ class TeacherAjaxController extends Controller
         }
 
         return  compact('lectures');
+    }
+
+    public function getAjaxQuizzeFromClassID($class_id)
+    {
+        
+        $quizzes       =   Quizze::Select('id', 'title')->Where('class_id', $class_id)->get();
+        
+        if($quizzes == null){
+
+            $quizzes = 'null';
+        }
+
+        return  compact('quizzes');
+    }
+
+    public function getAjaxFinalExamFromClassID($class_id)
+    {
+        
+        $finalexams       =   FinalExam::Select('id', 'title')->Where('class_id', $class_id)->get();
+        
+        if($finalexams == null){
+
+            $finalexams = 'null';
+        }
+
+        return  compact('finalexams');
     }
 
     public function getAjaxHomeworkFromLectureID($lecture_id)
@@ -252,7 +283,8 @@ class TeacherAjaxController extends Controller
         // dd($students);
         $teacherId          = Auth::guard('teacher')->user()->id;
         $stages             =   DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
-        return view('teacher-profile.lectures-attendance.attendance', compact('students', 'stages', 'lecture_id'));
+        $attendances        = Attendance::all();
+        return view('teacher-profile.lectures-attendance.attendance', compact('students', 'stages', 'lecture_id', 'attendances'));
        
     }
 
@@ -320,7 +352,95 @@ class TeacherAjaxController extends Controller
 
     /***********************************************************************
      * 
-        All This Part Above Were Talking About Filtering Lecture Students
+        All This Part Above Were Talking About Filtering Class Students
+
+    ************************************************************************/
+
+    public function getClassStudentsForQuizze(Request $request)
+    {
+        
+        $request->validate([
+            'class_id'                           => ['required', 'integer'],
+            'quizze_id'                          => ['required', 'integer'],
+        ]);
+
+        $quizze_id   = $request->quizze_id;
+        
+
+        $array      = [];
+        $students   = DB::table('view_student_classes')->where($array);
+        foreach ($request->all() as $key => $value) {
+            if ($key === '_token') {
+                continue;
+            }
+            if ($key === 'class_id') {
+                continue;
+            }
+            if ($key === 'quizze_id') {
+                continue;
+            }
+            $students   = $students->Where($key, '=', $value);
+        }
+        
+        $students = $students->get();
+        // dd($students);
+        $teacherId          =   Auth::guard('teacher')->user()->id;
+        $classes            = ClassInfo::where('teacher_id', $teacherId)->get();
+        $followUpQuizzes    = FollowUpQuizze::all();
+        return view('teacher-profile.quizzes.follow-up-quizzes', compact('students', 'classes', 'quizze_id', 'followUpQuizzes'));
+       
+    }
+
+    /***********************************************************************
+     * 
+        All This Part Above Were Talking About Filtering Class Students 
+
+    ************************************************************************/
+
+     /***********************************************************************
+     * 
+        All This Part Above Were Talking About Filtering Class Students
+
+    ************************************************************************/
+
+    public function getClassStudentsForFinalExam(Request $request)
+    {
+        
+        $request->validate([
+            'class_id'                           => ['required', 'integer'],
+            'final_exam_id'                      => ['required', 'integer'],
+        ]);
+
+        $final_exam_id   = $request->final_exam_id;
+        
+
+        $array      = [];
+        $students   = DB::table('view_student_classes')->where($array);
+        foreach ($request->all() as $key => $value) {
+            if ($key === '_token') {
+                continue;
+            }
+            if ($key === 'class_id') {
+                continue;
+            }
+            if ($key === 'final_exam_id') {
+                continue;
+            }
+            $students   = $students->Where($key, '=', $value);
+        }
+        
+        $students = $students->get();
+        // dd($students);
+        $teacherId          =   Auth::guard('teacher')->user()->id;
+        $classes            = ClassInfo::where('teacher_id', $teacherId)->get();
+        $followupfinalexams = FollowUpFinalExam::all();
+        return view('teacher-profile.final_exams.follow-up-finalexam', compact('students', 'classes', 'final_exam_id', 'followupfinalexams'));
+       
+    }
+
+    /***********************************************************************
+     * 
+        All This Part Above Were Talking About Filtering Class Students
 
     ************************************************************************/
 }
