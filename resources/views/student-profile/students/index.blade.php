@@ -192,7 +192,7 @@
 
                                   <?php
 
-                                    array_push($total_marks , $final_exam->final_exam_mark->mark)
+                                    // array_push($total_marks , $final_exam->final_exam_mark->mark)
                                   ?> 
 
                                   @else
