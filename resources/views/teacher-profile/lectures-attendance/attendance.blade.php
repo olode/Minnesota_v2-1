@@ -5,7 +5,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
 
          @include('teacher-profile.lectures-attendance.filter')
 

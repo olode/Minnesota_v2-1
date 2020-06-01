@@ -4,6 +4,7 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassInfo;
+use App\Models\FinalExam;
 use App\Models\FollowUpFinalExam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,26 +52,35 @@ class FollowUpFinalExamController extends Controller
       'status'             => ['required', 'integer', 'max:2'],
       'mark'               => ['required', 'integer', 'max:255'],
   ]);
-      
-  $studentCheck   = FollowUpFinalExam::where([
-
-    ['final_exam_id', '=', $request->final_exam_id],
-    ['student_id', '=', $request->student_id],
-
-  ])->first();
   
-  if (empty($studentCheck)) {
+  $checkMark      = FinalExam::findOrfail($request->final_exam_id);
+  // dd($checkMark->full_mark);
+  if ($request->mark <= $checkMark->full_mark) {
+    $studentCheck   = FollowUpFinalExam::where([
 
-    FollowUpFinalExam::create($request->all());
-    return redirect('/followupfinalexam');
+      ['final_exam_id', '=', $request->final_exam_id],
+      ['student_id', '=', $request->student_id],
+  
+    ])->first();
+    
+    if (empty($studentCheck)) {
+  
+      FollowUpFinalExam::create($request->all());
+      return redirect('/followupfinalexam');
+  
+    } elseif (!empty($studentCheck)) {
+  
+      $followupfinalexam = FollowUpFinalExam::findOrfail($studentCheck->id);
+      $followupfinalexam->update($request->all());
+          
+      return redirect('/followupfinalexam');
+    }
+  }else{
 
-  } elseif (!empty($studentCheck)) {
+    return redirect('/followupfinalexam')->with('alert', 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار');
 
-    $followupfinalexam = FollowUpFinalExam::findOrfail($studentCheck->id);
-    $followupfinalexam->update($request->all());
-        
-    return redirect('/followupfinalexam');
   }
+  
 }
 
   /**

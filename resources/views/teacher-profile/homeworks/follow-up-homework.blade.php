@@ -5,7 +5,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body"  style="margin-left: 0px;">
 
            <!-- Form repeater section start -->
        

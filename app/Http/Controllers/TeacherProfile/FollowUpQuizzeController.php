@@ -5,6 +5,7 @@ namespace App\Http\Controllers\TeacherProfile;
 use App\Http\Controllers\Controller;
 use App\Models\ClassInfo;
 use App\Models\FollowUpQuizze;
+use App\Models\Quizze;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,27 +52,34 @@ class FollowUpQuizzeController extends Controller
       'status'             => ['required', 'integer', 'max:2'],
       'mark'               => ['required', 'integer', 'max:255'],
   ]);
+  $checkMark      = Quizze::findOrfail($request->quizze_id);
       
-  $studentCheck   = FollowUpQuizze::where([
+  if ($request->mark <= $checkMark->full_mark) {
+    
+    $studentCheck   = FollowUpQuizze::where([
 
-    ['quizze_id', '=', $request->quizze_id],
-    ['student_id', '=', $request->student_id],
-
-  ])->first();
+      ['quizze_id', '=', $request->quizze_id],
+      ['student_id', '=', $request->student_id],
   
-  if (empty($studentCheck)) {
-
-    FollowUpQuizze::create($request->all());
-    return redirect('/followupquizze');
-
-  } elseif (!empty($studentCheck)) {
-
-    $quizze = FollowUpQuizze::findOrfail($studentCheck->id);
-    $quizze->update($request->all());
-        
-    return redirect('/followupquizze');
-
+    ])->first();
+    
+    if (empty($studentCheck)) {
+  
+      FollowUpQuizze::create($request->all());
+      return redirect('/followupquizze');
+  
+    } elseif (!empty($studentCheck)) {
+  
+      $quizze = FollowUpQuizze::findOrfail($studentCheck->id);
+      $quizze->update($request->all());
+          
+      return redirect('/followupquizze');
+  
+    }
+  } else {
+    return redirect('/followupquizze')->with('alert', 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار');
   }
+  
 
     
   }

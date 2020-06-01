@@ -5,7 +5,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
 
             <!-- Form repeater section start -->
        
@@ -155,7 +155,13 @@
           
         </div>
       </div>
-
+<script>
+  var msg = '{{Session::get('alert')}}';
+  var exist = '{{Session::has('alert')}}';
+  if(exist){
+    alert(msg);
+  }
+</script>
 <script>
 
     $("#class").change(function(){

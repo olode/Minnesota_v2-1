@@ -4,7 +4,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
           <!-- Description -->
           <section id="description" class="card">
             <div class="card-header">
@@ -17,7 +17,7 @@
                  
                   <!-- Both borders end-->
    
-                  <table class="table table-responsive table-bordered dataex-html5-selectors">
+                  <table class="table table table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
                           <th>عنوان الخبر</th>
