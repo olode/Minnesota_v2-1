@@ -28,7 +28,7 @@ class StudentController extends Controller
     {
 
        $arr = [];
-       $toatl_marks =[];
+       $total_marks =[];
        
        $student = Student::Find(Auth::user()->id);
        $semesters = Semester::Where('specialization_id', $student->specialization_id)->get();
