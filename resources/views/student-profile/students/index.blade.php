@@ -192,7 +192,7 @@
 
                                   <?php
 
-                                    array_push($total_marks , $final_exam->final_exam_mark->mark)
+                                    // array_push($total_marks , $final_exam->final_exam_mark->mark)
                                   ?> 
 
                                   @else
@@ -344,7 +344,7 @@
                                   <li class="list-group-item"> <span class="" style="padding:30px;">{{$mark->marktype->name}}-{{$loop->iteration}}</span>  <span class="badge badge-pill badge-success"> {{$mark->student_mark}}</span> </li>
                                   
                                   @php
-                                    array_push($toatl_marks, $mark->student_mark)
+                                    <!-- array_push($toatl_marks, $mark->student_mark) -->
                                   @endphp
 
                               @endforeach
