@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="الجامعة الاسلامية بولاية منيسوتا-الفرع الثالث">
+    <meta name="keywords" content="minnesota, ium-3, imu3, ium, جامعة منيسوتا, الجامعة الاسلامية بمنيسوتا, جامعة منيسوتا الاسلامية, الجامعة الاسلامية بولاية منيسوتا-الفرع الثالث, منيسوتا الفرع الثالث">
+  <!-- <meta name="author" content="PIXINVENT"> -->
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
