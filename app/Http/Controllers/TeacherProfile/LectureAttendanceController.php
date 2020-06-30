@@ -61,7 +61,7 @@ class LectureAttendanceController extends Controller
             'article_arrangement_number'    => ['required', 'integer', 'max:255'],
             'date'                          => ['required', 'date', 'max:255'],
             'title'                         => ['required', 'string', 'max:255'],
-            'mark'                          => ['required', 'integer', 'max:255'],
+            'full_mark'                     => ['required', 'integer', 'max:255'],
             'about'                         => ['required'],
         ]);
         
@@ -81,7 +81,7 @@ class LectureAttendanceController extends Controller
             'article_arrangement_number'    => $request['article_arrangement_number'],
             'date'                          => $request['date'],
             'title'                         => $request['title'],
-            'mark'                          => $request['mark'],
+            'full_mark'                     => $request['full_mark'],
             'about'                         => $aboutneme,
         ]);
         return redirect('/lectures');

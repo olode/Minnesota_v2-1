@@ -41,11 +41,11 @@
                 </li>
                 <li><a class="menu-item" href="{{route('teacher.create')}}" data-i18n="nav.dash.project">اضافة</a>
                 </li>
-                <li><a class="menu-item" href="{{route('studentmark.create')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
+                {{--  <li><a class="menu-item" href="{{route('studentmark.create')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
                 </li>
               </li>
               <li><a class="menu-item" href="{{route('studentmark.index')}}" data-i18n="nav.dash.project">عرض درجات الطلاب</a>
-              </li>
+              </li>  --}}
               </ul>
             </li>
 

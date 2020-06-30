@@ -40,7 +40,7 @@
                           <td>{{ $lecture->article_arrangement }} - ( {{ $lecture->article_arrangement_number }} )</td>
                           <td>{{ $lecture['class']->material->specialization->section->stage->name }}</td>
                           <td>{{ $lecture['class']->material->specialization->section->name }}</td>
-                          <td>{{ $lecture->date }}</td>
+                          <td style="    font-size: smaller;">{{ $lecture->date }}</td>
                           <td>
                             <form action="{{ route('about.download', $lecture->id ) }}" method="get">
                               @csrf

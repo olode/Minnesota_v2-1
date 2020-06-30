@@ -72,6 +72,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
+                            <input type="hidden" value="{{ $data->branch_id }}" name="branch_id">
                             <select id="projectinput6" name="branch_id" class="form-control">
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}" @if ( $branche->id ===  $data->branch_id )  selected="" disabled="" @endif>{{ $branche->name }}</option> 
@@ -82,6 +83,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الصلاحية</label>
                           <div class="col-md-9">
+                            <input type="hidden" value="{{ $data->role_id }}" name="role_id">
                             <select id="projectinput6" name="role_id" class="form-control">
                               @foreach ($roles as $role)
                               <option value="{{$role->id}}"@if ( $role->id ===  $data->role_id )  selected="" disabled="" @endif> {{ $role->name }} </option> 

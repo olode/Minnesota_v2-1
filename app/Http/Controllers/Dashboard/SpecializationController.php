@@ -77,7 +77,7 @@ class SpecializationController extends Controller
       'number_of_optional_materials'              => ['required', 'integer', 'max:255'],
       'number_of_higher_levels'                   => ['required', 'integer', 'max:255'],
       'number_of_lower_levels'                    => ['required', 'integer', 'max:255'],
-      'total_hours'                               => ['required', 'integer', 'max:255'],
+      'total_hours'                               => ['required', 'integer'],
     ]);
 
     Specialization::create($request->all());
