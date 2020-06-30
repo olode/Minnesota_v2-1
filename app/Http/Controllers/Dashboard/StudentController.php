@@ -171,7 +171,66 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::findOrfail($id);
-        $student->update($request->all());
+        $student->fill($request->except('avatar', 'qualification_image', 'passport_image'));
+
+        if(request()->hasFile('avatar')){
+
+          $avatar = request()->file('avatar');
+          $filename = time() .'.'. $avatar->getClientOriginalExtension();
+          Image::make($avatar)->save(public_path('/uploads/students/avatars/' . $filename));
+          $avatarneme = $filename;
+
+          $student->avatar = $avatarneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+      if(request()->hasFile('qualification_image')){
+
+          $qualifications = request()->file('qualification_image');
+          $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
+          Image::make($qualifications)->save(public_path('/uploads/students/qualifications/' . $qualificationsname));
+          $qualificationsneme = $qualificationsname;
+
+          $student->qualification_image = $qualificationsneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+      if(request()->hasFile('passport_image')){
+
+          $passport = request()->file('passport_image');
+          $passportname = time() .'.'. $passport->getClientOriginalExtension();
+          Image::make($passport)->save(public_path('/uploads/students/passports/' . $passportname));
+          $passportneme = $passportname;
+
+          $student->passport_image = $passportneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+
+        $student->update([
+          'first_name'               => $request['first_name'],
+          'second_name'              => $request['second_name'],
+          'last_name'                => $request['last_name'],
+          'location'                 => $request['location'],
+          'email'                    => $request['email'],
+          'phone_number'             => $request['phone_number'],
+          'qualification'            => $request['qualification'],
+          'passport_number'          => $request['passport_number'],
+          'branch_id'                => $request['branch_id'],
+          'section_id'               => $request['section_id'],
+          'specialization_id'        => $request['specialization_id'],
+          'status'                   => $request['status'],
+          'birthday'                 => $request['birthday'],
+          'nationality'              => $request['nationality'],
+          'gender'                   => $request['gender'],
+          'graduation_rate'          => $request['graduation_rate'],
+      ]);
         
         return redirect('/student');
     }

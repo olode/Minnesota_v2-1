@@ -81,6 +81,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="status" value="{{ $teacher->status }}">
                             <select id="projectinput6" name="status" class="form-control">
                               <option  value="{{ $teacher->status }}"   selected="" disabled="">الحالة</option>
                               <option value="0">غير مفعل</option>
@@ -92,6 +93,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="qualification" value="{{ $teacher->qualification }}">
                             <select id="projectinput6" name="qualification" class="form-control">
                               <option  value="{{ $teacher->qualification }}"  selected="" disabled="">اخر مؤهل علمي</option>
                               <option value="1">ثانوي</option>

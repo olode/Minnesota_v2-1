@@ -146,7 +146,56 @@ class TeacherController extends Controller
   public function update(Request $request, $id)
   {
     $teacher = Teacher::findOrfail($id);
-        $teacher->update($request->all());
+
+    if(request()->hasFile('avatar')){
+
+      $avatar = request()->file('avatar');
+      $filename = time() .'.'. $avatar->getClientOriginalExtension();
+      Image::make($avatar)->save(public_path('/uploads/teachers/avatars/' . $filename));
+      $avatarneme = $filename;
+
+      $teacher->avatar = $avatarneme;
+      // Then we just save
+      $teacher->save();
+
+    }
+
+    if(request()->hasFile('qualification_image')){
+
+        $qualifications = request()->file('qualification_image');
+        $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
+        Image::make($qualifications)->save(public_path('/uploads/teachers/qualifications/' . $qualificationsname));
+        $qualificationsneme = $qualificationsname;
+
+        $teacher->qualification_image = $qualificationsneme;
+        // Then we just save
+        $teacher->save();
+
+    }
+
+    if(request()->hasFile('passport_image')){
+
+        $passport = request()->file('passport_image');
+        $passportname = time() .'.'. $passport->getClientOriginalExtension();
+        Image::make($passport)->save(public_path('/uploads/teachers/passports/' . $passportname));
+        $passportneme = $passportname;
+
+        $teacher->passport_image = $passportneme;
+        // Then we just save
+        $teacher->save();
+
+    }
+        $teacher->update([
+          'first_name'                     => $request['first_name'],
+          'second_name'                    => $request['second_name'],
+          'last_name'                      => $request['last_name'],
+          'location'                       => $request['location'],
+          'email'                          => $request['email'],
+          'phone_number'                   => $request['phone_number'],
+          'qualification'                  => $request['qualification'],
+          'passport_number'                => $request['passport_number'],
+          'status'                         => $request['status'],
+      ]);
         
         return redirect('/teacher');
   }

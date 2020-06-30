@@ -88,6 +88,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الجنس</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="gender" value="{{ $student->gender }}">
                             <select id="projectinput6" name="gender" class="form-control">
                               <option value="0" @if ($student->gender === '0' ) selected="" disabled="" @endif >ذكر</option>
                               <option value="1" @if ($student->gender === '1' ) selected="" disabled="" @endif >أنثى</option>
@@ -105,6 +106,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اختر الفرع</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="branch_id" value="{{ $student->branch_id }}">
                             <select id="projectinput6" name="branch_id" id="branch" class="form-control">
                               <option value="none" selected="" disabled="">إختر الفرع</option>
                               @foreach ($branches as $branch)
@@ -116,6 +118,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اختر القسم</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="section_id" value="{{ $student->section_id }}">
                             <select id="section" name="section_id" class="form-control">
                               <option selected="" disabled="">اختر القسم</option>
                               @foreach ($sections as $section)
@@ -127,6 +130,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اختر التخصص</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="specialization_id" value="{{ $student->specialization_id }}">
                             <select id="specialization" name="specialization_id" class="form-control">
                               
                             </select>
@@ -135,6 +139,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="status" value="{{ $student->status }}">
                             <select id="projectinput6" name="status" class="form-control">
                               <option  value="{{ $student->status }}"   selected="" disabled="">الحالة</option>
                               <option value="0">غير مفعل</option>
@@ -146,6 +151,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
                           <div class="col-md-9">
+                            <input type="hidden" name="qualification" value="{{ $student->qualification }}">
                             <select id="projectinput6" name="qualification" class="form-control">
                               <option  value="{{ $student->qualification }}"  selected="" disabled="">اخر مؤهل علمي</option>
                               <option value="1">ثانوي</option>
