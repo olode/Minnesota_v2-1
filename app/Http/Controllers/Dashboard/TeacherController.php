@@ -45,7 +45,7 @@ class TeacherController extends Controller
   {
     $idNumber = "IUM" . mt_rand(100000, 999999) . "T";
         
-        //dd($request->all());
+        
         $request->validate([
 
             'special_teacher_id'         => ['string', 'max:255'],
