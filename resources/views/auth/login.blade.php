@@ -26,7 +26,7 @@
                       @csrf
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="الرقم التعريفي"
-                        name="id" required>
+                        name="special_user_id" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>

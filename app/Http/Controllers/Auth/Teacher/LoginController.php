@@ -66,7 +66,7 @@ class LoginController extends Controller
 
         ]);
         
-        $sure = Auth::guard('teacher')->attempt(['id' => $request->id, 'password' => $request->password]);
+        $sure = Auth::guard('teacher')->attempt(['special_teacher_id' => $request->id, 'password' => $request->password]);
         if ($sure) {
 
             return redirect()->intended(route('teacher-profile.index'));
