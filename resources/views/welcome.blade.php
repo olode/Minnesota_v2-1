@@ -62,9 +62,9 @@
                         </div>
                         
                         <div class="menu-item green">
-                            <a href="#portfolio-modal" data-toggle="modal">
-                                <i class="fa fa-file-photo-o"></i>
-                                <p>صور الجامعة</p>
+                            <a href="#contact-modal" data-toggle="modal">
+                                <i class="fa fa-plus"></i>
+                                <p>التسجيل في الجامعة</p>
                             </a>
                         </div>
                         
@@ -269,41 +269,9 @@
         
         
         
-        <!-- Start Portfolio Section -->
-        <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title text-center">
-                            <h3>Our Portfolio</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <img src="/frontend/images/portfolio/1.png" class="img-responsive" alt="...">
-                                <div class="portfolio-details text-center">
-                                    <h4>Project Name</h4>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                                                
-                    </div><!-- /.row -->
-                </div>
-                
-            </div>
-        </div>
-        <!-- End Portfolio Section -->
+        <!-- Start Contact Section -->
+        @include('frontend.students.create')
+        <!-- End Contact Section -->
         
         
         <!-- Start About Us Section -->
@@ -1068,8 +1036,10 @@
             </div>
         </div>
         <!-- End Testimonial Section -->
+        <script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
 
 
     </body>
+    
     
 </html>

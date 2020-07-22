@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-
+Route::resource('/', 'Frontend\StudentController');
 
 
 Route::get('c-panel', 'HomeController@index')->name('c-panel');
@@ -230,3 +230,37 @@ Route::post('get-students-to-attendance', 'TeacherProfile\TeacherAjaxController@
 Route::post('follow-up-homework-students', 'TeacherProfile\TeacherAjaxController@getHomeworkStudents')->name('follow-up-homework-students');
 Route::post('follow-up-quizze-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForQuizze')->name('follow-up-quizze-students');
 Route::post('follow-up-finalexam-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForFinalExam')->name('follow-up-finalexam-students');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('get-stages-frontend/{branch_id}', 'Frontend\AjaxController@getAjaxStages');
+Route::get('get-section-frontend/{stage_id}', 'Frontend\AjaxController@getAjaxSections');
+Route::get('get-specialization-frontend/{section_id}', 'Frontend\AjaxController@getAjaxSpecializations');
