@@ -45,30 +45,30 @@ class StudentController extends Controller
     {
         $idNumber = "IUM" . mt_rand(100000, 999999) . "S";
         
-        //dd($request->all());
+        // dd($request->all());
         $request->validate([
-            'first_name'                 => ['string', 'max:255'],
-            'second_name'                => ['string', 'max:255'],
-            'last_name'                  => ['string', 'max:255'],
-            'location'                   => ['string', 'max:255'],
-            'email'                      => ['string', 'max:255'],
-            'phone_number'               => ['string', 'max:255'],
-            'avatar'                     => [],
-            'qualification'              => ['string', 'max:255'],
-            'qualification_image'        => [],
-            'passport_number'            => ['string', 'max:255'],
-            'passport_image'             => [],
-            'branch_id'                  => ['integer', 'max:255'],
-            'section_id'                 => ['integer', 'max:255'],
-            'specialization_id'          => ['integer', 'max:255'],
-            'birthday'                   => ['string', 'max:255'],
-            'nationality'                => ['string', 'max:255'],
-            'gender'                     => ['string', 'max:255'],
-            'graduation_rate'            => ['string', 'max:255'],
+            'first_name'                 => ['required','string','max:20','min:3'],
+            'second_name'                => ['required','string','max:20','min:3'],
+            'last_name'                  => ['required','string','max:20','min:3'],
+            'location'                   => ['required','string','max:20','min:3'],
+            'email'                      => ['required','string','max:20','min:3'],
+            'phone_number'               => ['required','string','max:20','min:3'],
+            'avatar'                     => ['required', 'mimes:jpeg,jpg,png'],
+            'qualification'              => ['required','string','max:20','min:3'],
+            'qualification_image'        => ['required', 'mimes:jpeg,jpg,png'],
+            'passport_number'            => ['required','string','max:20','min:3'],
+            'passport_image'             => ['required', 'mimes:jpeg,jpg,png'],
+            'branch_id'                  => ['required','integer','min:1'],
+            'section_id'                 => ['required','integer','min:1'],
+            'specialization_id'          => ['required','integer','min:1'],
+            'birthday'                   => ['required','string','max:20','min:3'],
+            'nationality'                => ['required','string','max:20','min:3'],
+            'gender'                     => ['required','string','max:20','min:3'],
+            'graduation_rate'            => ['required','string','max:20','min:3'],
 
         ]);
 
-            dd($request->all());
+            // dd($request->all());
         if(request()->hasFile('avatar')){
 
             $avatar = request()->file('avatar');

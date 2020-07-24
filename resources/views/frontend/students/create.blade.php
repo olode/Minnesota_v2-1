@@ -16,7 +16,8 @@
             </div>
             <div class="row" dir="rtl" style="padding-top: 80px;">
                 <div class="col-md-12">
-                    <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" >
+                    <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
+                        @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -120,8 +121,7 @@
                                 </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-primary">إرسال البيانات</button>
+                                <input type="submit" class="btn btn-primary" value="إرسال البيانات" >
                             </div>
                         </div>
                     </form>
