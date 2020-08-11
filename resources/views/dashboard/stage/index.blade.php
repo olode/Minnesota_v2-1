@@ -22,7 +22,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors text-center">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors text-center">
                       <thead>
                           <th>الاسم</th>
                           <th>نبذة عن المرحلة</th>
@@ -36,7 +36,7 @@
                           <td>{{ $stage->info }}</td>
                           <td>{{ $stage['branch']->name }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form  style="display: inline;"  action="{{ route('stage.edit', $stage->id) }}" method="get">
                               {{ csrf_field() }}  
                               <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>

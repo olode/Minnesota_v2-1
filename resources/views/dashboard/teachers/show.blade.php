@@ -3,16 +3,16 @@
 @section('content')
 <style>
     .heads{
-        background-color: #795abd;
+        background-color: #e5ecff;
         padding: 10px;
-        border: solid #4f52ff;
+        /* border: solid #4f52ff; */
         font-size: 20px;
     }
     .data{
-        background-color: #7e8484;
-        padding: 10px; font-size: 21px;
-        color: #f4f2ef;
-        border: solid cadetblue;
+        background-color: #b9bbbb;
+        padding: 10px;
+        font-size: 21px;
+        color: #ffffff;
     }
 </style>
  <!-- Column selectors table -->

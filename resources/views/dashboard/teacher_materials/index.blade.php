@@ -22,7 +22,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                           <th>اسم المدرس</th>
                           <th>اسم المادة</th>
@@ -38,7 +38,7 @@
                           <td>٦</td>
                           <td>{{ $teachermaterial->year_of_add }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                            <form style="display: ruby-base; margin-left: 5px;" action="{{ route('teachermaterial.destroy', $teachermaterial->id) }}" method="post">
                             @method('DELETE')
                             {{ csrf_field() }}  

@@ -59,6 +59,7 @@ class StudentController extends Controller
             'special_student_id'         => ['string', 'max:255'],
             'first_name'                 => ['string', 'max:255'],
             'second_name'                => ['string', 'max:255'],
+            'third_name'                 => ['string', 'max:255'],
             'last_name'                  => ['string', 'max:255'],
             'location'                   => ['string', 'max:255'],
             'email'                      => ['string', 'max:255'],
@@ -111,6 +112,7 @@ class StudentController extends Controller
             'special_student_id'       => $idNumber,
             'first_name'               => $request['first_name'],
             'second_name'              => $request['second_name'],
+            'third_name'                => $request['third_name'],
             'last_name'                => $request['last_name'],
             'location'                 => $request['location'],
             'email'                    => $request['email'],
@@ -216,6 +218,7 @@ class StudentController extends Controller
         $student->update([
           'first_name'               => $request['first_name'],
           'second_name'              => $request['second_name'],
+          'third_name'               => $request['third_name'],
           'last_name'                => $request['last_name'],
           'location'                 => $request['location'],
           'email'                    => $request['email'],

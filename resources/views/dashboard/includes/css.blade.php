@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap" rel="stylesheet">
 
 <link rel="apple-touch-icon" href="/dashboard/app-assets/images/ico/logo-dark-sm.jpg">
   <link rel="shortcut icon" type="image/x-icon" href="/dashboard/app-assets/images/ico/logo-dark-sm.jpg">

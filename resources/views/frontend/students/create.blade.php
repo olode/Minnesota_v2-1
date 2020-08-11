@@ -14,7 +14,7 @@
                     <p>تسجيل البيانات لا يعني قبول الطالب في الجامعة في حال تم قبوله سوف تصله رسالة تبلغه بذلك</p>
                 </div>
             </div>
-            <div class="row" dir="rtl" style="padding-top: 80px;">
+            <div class="row" dir="rtl" >
                 <div class="col-md-12">
                     <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
                         @csrf
@@ -97,10 +97,12 @@
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="qualification" id="" required data-validation-required-message="رجاء اختر المؤهل العلمي" >
-                                    <option value="" selected disabled>اختر المؤهل العلمي</option>
-                                    <option value="0">ذكر</option>
-                                    <option value="1">أنثى</option>
-                                    <option value="2">غير ذلك</option>
+                                    <option value="none" selected disabled>اختر المؤهل العلمي</option>
+                                    <option value="1">ثانوي</option>
+                                    <option value="2">دبلوم</option>
+                                    <option value="3">بكالوريوس</option>
+                                    <option value="4">ماجستير</option>
+                                    <option value="5">دكتورا</option>
                                     </select>
                                     <p class="help-block text-danger"></p>
                                 </div>

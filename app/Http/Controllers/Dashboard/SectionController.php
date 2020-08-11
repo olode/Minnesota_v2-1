@@ -5,6 +5,7 @@ use  App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stage;
 use App\Models\Section;
+use App\Models\Student;
 
 class SectionController extends Controller 
 {
@@ -35,7 +36,8 @@ class SectionController extends Controller
   public function index()
   {
     $sections = Section::all();
-    return view('dashboard.sections/index', compact('sections'));
+    $students = Student::Select('id')->get();
+    return view('dashboard.sections.index', compact('sections', 'students'));
   }
 
   /**

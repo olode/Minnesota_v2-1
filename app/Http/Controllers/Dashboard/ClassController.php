@@ -88,6 +88,9 @@ class ClassController extends Controller
    */
   public function show($id)
   {
+
+    $data   = ClassInfo::findOrfail($id);
+    return view('dashboard.classes.show', compact('data'));
     
   }
 

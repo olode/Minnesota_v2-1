@@ -22,7 +22,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered">
+                    <table class="table  table-responsive table-bordered">
                       <thead>
                           <th>رمز الفصل</th>
                           <th>اسم الفصل</th>
@@ -51,7 +51,7 @@
                         <td>{{ $semester->due_date }}</td>
                         <td>{{ $semester['year']->year_m }}</td>
                         <td>{{ $semester['specialization']->name }}</td>
-                        <td>
+                        <td  class="d-inline-flex">
                           <form  style="display: inline;"   action="{{ route('semester.edit', $semester->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  

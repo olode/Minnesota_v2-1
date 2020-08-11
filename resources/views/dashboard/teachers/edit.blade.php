@@ -46,7 +46,14 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $teacher->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            <input type="text" id="projectinput2" class="form-control" value="{{ $teacher->third_name }}" 
+                            name="third_name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">الإسم الأخير</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $teacher->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الأخير"
                             name="last_name">
                           </div>
                         </div>
@@ -57,25 +64,46 @@
                             name="location">
                           </div>
                         </div>
+                        <div class="form-group row ">
+                          <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control"  value="{{ $teacher->specializatio_name }}" 
+                            name="specializatio_name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>  
+                        <input type="hidden" name="qualification" value="{{ $teacher->qualification }}">
+                        <div class="col-md-9">
+                          <select id="projectinput6" name="qualification" class="form-control">
+                            <option  value="{{ $teacher->qualification }}"  selected="" disabled="">اخر مؤهل علمي</option>
+                            <option value="1">ثانوي</option>
+                            <option value="2">دبلوم</option>
+                            <option value="3">بكالوريوس</option>
+                            <option value="4">ماجستير</option>
+                            <option value="5">دكتورا</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
+                        <div class="col-md-9">
+                          <input type="text" value="{{ $teacher->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                          name="passport_number">
+                        </div>
+                      </div>
+                      <div class="form-group row last">
+                        <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
+                        <div class="col-md-9">
+                          <input type="text" value="{{ $teacher->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                          name="phone_number">
+                        </div>
+                      </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
                           <div class="col-md-9">
                             <input type="text" value="{{ $teacher->email }}"   id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
                             name="email">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $teacher->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phone_number">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
-                          <div class="col-md-9">
-                            <input type="file"  value="{{ $teacher->avatar }}"   id="projectinput4" class="form-control"  
-                            name="avatar">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -91,17 +119,10 @@
                         </div>
                         <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
+                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
                           <div class="col-md-9">
-                            <input type="hidden" name="qualification" value="{{ $teacher->qualification }}">
-                            <select id="projectinput6" name="qualification" class="form-control">
-                              <option  value="{{ $teacher->qualification }}"  selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="1">ثانوي</option>
-                              <option value="2">دبلوم</option>
-                              <option value="3">بكالوريوس</option>
-                              <option value="4">ماجستير</option>
-                              <option value="5">دكتورا</option>
-                            </select>
+                            <input type="file"  value="{{ $teacher->avatar }}"   id="projectinput4"  
+                            name="avatar">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -111,13 +132,6 @@
                               <input type="file"  value="{{ $teacher->qualification_image }}"  id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $teacher->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">

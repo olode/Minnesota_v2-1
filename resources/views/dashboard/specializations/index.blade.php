@@ -22,10 +22,10 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
-                          <th>الاسم</th>
-                          <th>العدد المسموح للطلاب</th>
+                          <th>التخصص</th>
+                          <th>المرحلة</th>
                           <th>القسم</th>
                           <th>تابع للفرع</th>
                           <th>حالة التخصص</th>
@@ -35,7 +35,7 @@
                       @foreach ($datas as $data)
                       <tr>
                         <td>{{ $data->name }}</td>
-                        <td>{{ $data->max_student_number }}</td>
+                        <td>{{ $data['section']->stage->name }}</td>
                         <td>{{ $data['section']->name }}</td>
                         <td>{{ $data['section']->stage->branch->name }}</td>
                         <td>
@@ -51,7 +51,7 @@
                               </form> 
                             @endif
                         </td>
-                        <td>
+                        <td  class="d-inline-flex">
                           <form  style="display: inline;"   action="{{ route('specialization.show', $data->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  

@@ -46,43 +46,15 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $student->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            <input type="text" value="{{ $student->third_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            name="third_name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">الإسم الأخير</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الأخير"
                             name="last_name">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->location }}"  id="projectinput3" class="form-control" placeholder="العنوان" 
-                            name="location">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->email }}"   id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
-                            name="email">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phone_number">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">تاريخ الميلاد</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->birthday }}" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
-                            name="birthday">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">الجنسية</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->nationality }}" id="projectinput4" class="form-control" placeholder="الجنسية" 
-                            name="nationality">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -97,10 +69,17 @@
                           </div>
                         </div>
                         <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
+                          <label class="col-md-3 label-control" for="projectinput4">الجنسية</label>
                           <div class="col-md-9">
-                            <input type="file"  value="{{ $student->avatar }}"   id="projectinput4" class="form-control"  
-                            name="avatar">
+                            <input type="text" value="{{ $student->nationality }}" id="projectinput4" class="form-control" placeholder="الجنسية" 
+                            name="nationality">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -137,18 +116,6 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
-                          <div class="col-md-9">
-                            <input type="hidden" name="status" value="{{ $student->status }}">
-                            <select id="projectinput6" name="status" class="form-control">
-                              <option  value="{{ $student->status }}"   selected="" disabled="">الحالة</option>
-                              <option value="0">غير مفعل</option>
-                              <option value="1">مفعول</option>
-                            </select>
-                          </div>
-                        </div>
-                        <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
-                        <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <input type="hidden" name="qualification" value="{{ $student->qualification }}">
@@ -170,19 +137,59 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->email }}"   id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
+                            name="email">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->location }}"  id="projectinput3" class="form-control" placeholder="العنوان" 
+                            name="location">
+                          </div>
+                        </div>
+                        <div class="form-group row ">
+                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
+                          </div>
+                        </div>
+                        <div class="form-group row ">
+                          <label class="col-md-3 label-control" for="projectinput4">تاريخ الميلاد</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{ $student->birthday }}" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
+                            name="birthday">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
+                          <div class="col-md-9">
+                            <input type="hidden" name="status" value="{{ $student->status }}">
+                            <select id="projectinput6" name="status" class="form-control">
+                              <option  value="{{ $student->status }}"   selected="" disabled="">الحالة</option>
+                              <option value="0">غير مفعل</option>
+                              <option value="1">مفعول</option>
+                            </select>
+                          </div>
+                        </div>
+                        <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
+                          <div class="col-md-9">
+                            <input type="file"  value="{{ $student->avatar }}"   id="projectinput4"  
+                            name="avatar">
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-md-3 label-control">صورة لأخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
                               <input type="file"  value="{{ $student->qualification_image }}"  id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
-                          <div class="col-md-9">
-                            <input type="text" value="{{ $student->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">

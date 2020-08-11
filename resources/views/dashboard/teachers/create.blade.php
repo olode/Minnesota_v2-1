@@ -46,55 +46,23 @@
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            name="third_name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">الإسم الأخير</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الأخير"
                             name="last_name">
                           </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
+                        <div class="form-group row ">
+                          <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="العنوان" 
-                            name="location">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="التخصص" 
+                            name="specializatio_name">
                           </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
-                            name="email">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phone_number">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
-                            name="password">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
-                          <div class="col-md-9">
-                            <input type="file" id="projectinput4" class="form-control"  
-                            name="avatar">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">حالة الدكتور</label>
-                          <div class="col-md-9">
-                            <select id="projectinput6" name="status" class="form-control">
-                              <option value="none" selected="" disabled="">الحالة</option>
-                              <option value="0">غير مفعل</option>
-                              <option value="1">مفعول</option>
-                            </select>
-                          </div>
-                        </div>
-                        <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
                           <div class="col-md-9">
@@ -109,19 +77,65 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                            name="passport_number">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
+                            name="email">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput3" class="form-control" placeholder="العنوان" 
+                            name="location">
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
+                          <div class="col-md-9">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
+                            name="password">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">حالة الدكتور</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="status" class="form-control">
+                              <option value="none" selected="" disabled="">الحالة</option>
+                              <option value="0">غير مفعل</option>
+                              <option value="1">مفعول</option>
+                            </select>
+                          </div>
+                        </div>
+                        <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
+                          <div class="col-md-9">
+                            <input type="file" id="projectinput4" 
+                            name="avatar">
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label class="col-md-3 label-control">صورة لأخر مؤهل علمي</label>
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
                               <input type="file" id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passport_number">
                           </div>
                         </div>
                         <div class="form-group row">

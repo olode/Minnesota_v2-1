@@ -22,9 +22,9 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
-                          <th>الاسم</th>
+                          <th>اسم القسم</th>
                           <th>عدد الطلاب في القسم</th>
                           <th>عدد المعلمين في القسم</th>
                           <th>عدد المواد في القسم</th>
@@ -36,13 +36,13 @@
                       @foreach ($sections as $section)
                         <tr>
                           <td>{{ $section->name }}</td>
-                          <td>٥٠</td>
+                          <td>32</td>
                           <td>٦</td>
                           <td>٨</td>
                           <td>{{ $section->info }}</td>
                           <td>{{ $section['stage']->name }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form  style="display: inline;"   action="{{ route('section.edit', $section->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  

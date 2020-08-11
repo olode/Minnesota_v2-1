@@ -29,7 +29,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table table-responsive table-bordered dataex-html5-selectors ">
                       <thead>
                           <th>رمز المقرر</th>
                           <th>اسم المقرر</th>
@@ -61,16 +61,24 @@
                         <td>{{ $material->hours }}</td>
                         <td>{{ $material['specialization']->section->name }}</td>
                         <td>{{ $material['specialization']->name }}</td>
-                        <td>
-                          <form  style="display: inline;"   action="{{ route('material.edit', $material->id) }}" method="get">
-                            {{ csrf_field() }}
-                           <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
-                         </form>
-                         <form  style="display: inline;"   action="{{ route('material.destroy', $material->id) }}" method="post">
-                          @method('DELETE')
-                          {{ csrf_field() }}  
-                         <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
-                       </form>
+                        <td  class="d-inline-flex">
+                          <div class="row">
+                            <div class="col-md-6">
+
+                              <form     action="{{ route('material.edit', $material->id) }}" method="get">
+                                {{ csrf_field() }}
+                               <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
+                             </form>
+                            </div>
+                            <div class="col-md-6">
+  
+                              <form   action="{{ route('material.destroy', $material->id) }}" method="post">
+                                @method('DELETE')
+                                {{ csrf_field() }}  
+                               <button style="border-radius: 25px;" class="btn btn-danger" type="submit">حذف</button>
+                             </form>
+                            </div>
+                          </div>
                       </td>
                       </tr>
                       @endforeach
