@@ -44,25 +44,23 @@ class TeacherController extends Controller
   public function store(Request $request)
   {
     $idNumber = "IUM" . mt_rand(100000, 999999) . "T";
-        
+    
         
         $request->validate([
-
-            'special_teacher_id'         => ['string', 'max:255'],
-            'first_name'                 => ['string', 'max:255'],
-            'second_name'                => ['string', 'max:255'],
-            'third_name'                 => ['string', 'max:255'],
-            'last_name'                  => ['string', 'max:255'],
-            'location'                   => ['string', 'max:255'],
-            'email'                      => ['string', 'max:255'],
-            'phone_number'               => ['string', 'max:255'],
-            'password'                   => ['string', 'max:255'],
-            'avatar'                     => [],
-            'qualification'              => ['string', 'max:255'],
-            'qualification_image'        => [],
-            'passport_number'            => ['string', 'max:255'],
-            'passport_image'             => [],
-            'status'                     => ['integer', 'max:255'],
+          
+            'first_name'                 => ['required','string', 'max:255'],
+            'second_name'                => ['required','string', 'max:255'],
+            'third_name'                 => ['required','string', 'max:255'],
+            'last_name'                  => ['required','string', 'max:255'],
+            'location'                   => ['required','string', 'max:255'],
+            'job_description'            => ['required','string', 'max:255'],
+            'specialization_name'        => ['required','string', 'max:255'],
+            'qualification'              => ['required','string', 'max:255'],
+            'email'                      => ['email','required','string', 'max:255'],
+            'phone_number'               => ['required','string', 'max:255'],
+            'status'                     => ['required','integer', 'max:255'],
+            'passport_number'            => ['required','string', 'max:255'],
+            'password'                   => ['required','string', 'max:255'],
         ]);
 
 
@@ -73,6 +71,8 @@ class TeacherController extends Controller
             Image::make($avatar)->save(public_path('/uploads/teachers/avatars/' . $filename));
             $avatarneme = $filename;
 
+        }else{
+          $avatarneme = "defult.png";
         }
 
         if(request()->hasFile('qualification_image')){
@@ -82,6 +82,8 @@ class TeacherController extends Controller
             Image::make($qualifications)->save(public_path('/uploads/teachers/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
+        }else{
+          $qualificationsneme = "defult.png";
         }
 
         if(request()->hasFile('passport_image')){
@@ -91,6 +93,8 @@ class TeacherController extends Controller
             Image::make($passport)->save(public_path('/uploads/teachers/passports/' . $passportname));
             $passportneme = $passportname;
 
+        }else{
+          $passportneme = "defult.png";
         }
         
         Teacher::create([
@@ -100,6 +104,7 @@ class TeacherController extends Controller
             'third_name'                     => $request['third_name'],
             'last_name'                      => $request['last_name'],
             'specialization_name'            => $request['specialization_name'],
+            'job_description'                => $request['job_description'],
             'location'                       => $request['location'],
             'email'                          => $request['email'],
             'phone_number'                   => $request['phone_number'],
@@ -193,6 +198,7 @@ class TeacherController extends Controller
           'second_name'                    => $request['second_name'],
           'third_name'                     => $request['third_name'],
           'last_name'                      => $request['last_name'],
+          'job_description'                => $request['job_description'],
           'specialization_name'            => $request['specialization_name'],
           'location'                       => $request['location'],
           'email'                          => $request['email'],

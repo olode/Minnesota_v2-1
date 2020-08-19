@@ -11,7 +11,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">عرض معلومات الدكاترة</h4>
+                  <h4 class="card-title">عرض معلومات المعلمين</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -32,12 +32,13 @@
                           <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
-                          <th>رقم الجواز</th>
-                          <th>حالة الطالب</th>
+                          <th>الوصف الوظيفي</th>
+                          <th>حالة المعلم</th>
                           <th>الاعدادت</th>
                         </tr>
                       </thead>
                       <tbody>
+                      
                       @foreach ($teachers as $teacher)
                         <tr>
                           <td>{{$teacher->special_teacher_id}}</td>
@@ -50,7 +51,7 @@
                             @if ($teacher->qualification === '5') {{"دكتورا"}} @endif
                           </td>
                           <td>{{$teacher->phone_number}}</td>
-                          <td>{{$teacher->passport_number}}</td>
+                          <td>{{$teacher->job_description}}</td>
                           <td>
                             @if ($teacher->status === 1)
                             <form action="{{ route('teacher.unactive', $teacher->id) }}" method="post">
@@ -88,8 +89,8 @@
                           <th>الاسم</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
-                          <th>رقم الجواز</th>
-                          <th>حالة الطالب</th>
+                          <th>الوصف الوظيفي</th>
+                          <th>حالة المعلم</th>
                           <th>الاعدادت</th>
                         </tr>
                       </tfoot>
