@@ -45,7 +45,7 @@ class MaterialController extends Controller
    */
   public function create()
   {
-    $sections   = Section::Select('id', 'name')->get();
+    $sections   = Section::Select('id', 'name', 'stage_id')->get();
     $materials  = Material::select('id', 'name')->get();
     return view('dashboard.materials.create', compact('sections', 'materials'));
   }
@@ -74,6 +74,7 @@ class MaterialController extends Controller
       'hours'                     => ['required', 'integer', 'max:255'],
       
     ]);
+    
     //dd($request->all());
 
     
@@ -121,7 +122,7 @@ class MaterialController extends Controller
   public function edit($id)
   {
     $material = Material::findOrfail($id);
-    $sections = Section::Select('id', 'name')->get();
+    $sections = Section::Select('id', 'name', 'stage_id')->get();
     $materials  = Material::select('id', 'name')->get();
     return view('dashboard.materials/edit', compact('materials', 'material', 'sections'));
   }

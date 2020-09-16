@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">اضافة مادة جديدة</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">تعديل مادة </h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -22,6 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('material.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المواد</i></a> 
                                         
                     </div>
                     <form action="{{ route('material.update', $material->id) }}" method="POST"  class="form form-horizontal form-bordered">
@@ -30,9 +31,9 @@
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات المادة</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">الإسم </label>
+                          <label class="col-md-3 label-control" for="projectinput1"> المادة </label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $material->name }}"  id="projectinput1" class="form-control" placeholder="الإسم "
+                            <input type="text"  value="{{ $material->name }}"  id="projectinput1" class="form-control" placeholder=" المادة "
                             name="name">
                           </div>
                         </div>
@@ -77,7 +78,7 @@
                               <select  class="form-control" name="section_id" id="section">
                                 option selected="" disabled="" >اختر القسم</option>
                                 @foreach ($sections as $section)
-                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                    <option value="{{ $section->id }}">{{$section->stage->name}} - {{ $section->name }}</option>
                                 @endforeach
                               </select>
                           </div>
