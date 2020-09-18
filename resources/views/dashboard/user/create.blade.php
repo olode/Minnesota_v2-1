@@ -21,6 +21,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('user.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المستخدمين</i></a> 
                                         
                     </div>
                     <form class="form form-horizontal form-bordered" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
@@ -30,49 +31,70 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput1" class="form-control" placeholder="الإسم الاول"
+                            <input type="text" value="{{old('first_name')}}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
                             name="first_name">
+                            @if($errors->first('first_name'))
+                               <div style="color:red;">{{$errors->first('first_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
+                            <input type="text" value="{{old('second_name')}}" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
                             name="second_name">
+                            @if($errors->first('second_name'))
+                               <div style="color:red;">{{$errors->first('second_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">اسم العائلة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="اسم العائلة"
+                            <input type="text" value="{{old('last_name')}}" id="projectinput2" class="form-control" placeholder="اسم العائلة"
                             name="last_name">
+                            @if($errors->first('last_name'))
+                               <div style="color:red;">{{$errors->first('last_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" name="email">
+                            <input type="text" value="{{old('email')}}" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" name="email">
+                            @if($errors->first('email'))
+                               <div style="color:red;">{{$errors->first('email')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            <input type="text" value="{{old('phone_number')}}" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
                             name="phone_number">
+                            @if($errors->first('phone_number'))
+                               <div style="color:red;">{{$errors->first('phone_number')}}</div>
+                            @endif
                           </div>
                         </div>
 
                         <div class="form-group row last">
                         <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
                             <div class="col-md-9">
-                                <input type="file" id="projectinput4" class="form-control" name="avatar">
+                                <input type="file"  value="{{old('avatar')}}" id="projectinput4" class="form-control" name="avatar">
+                                @if($errors->first('avatar'))
+                                  <div style="color:red;">{{$errors->first('avatar')}}</div>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row last">
                             <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
                             <div class="col-md-9">
-                                <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" name="password">
+                                <input type="text" value="{{old('password')}}" id="projectinput4" class="form-control" placeholder="كلمة المرور" name="password">
+                                @if($errors->first('password'))
+                                  <div style="color:red;">{{$errors->first('password')}}</div>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -84,6 +106,9 @@
                               <option value="{{$branche->id}}">{{ $branche->name }}</option> 
                               @endforeach
                             </select>
+                                @if($errors->first('branch_id'))
+                                  <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -95,6 +120,9 @@
                               <option value="{{$role->id}}" >{{ $role->name }}</option> 
                               @endforeach
                             </select>
+                            @if($errors->first('role_id'))
+                                  <div style="color:red;">{{$errors->first('role_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -105,6 +133,9 @@
                                 <option value="0">غير مفعل</option>
                                 <option value="1">مفعل</option>
                               </select>
+                              @if($errors->first('status'))
+                                  <div style="color:red;">{{$errors->first('status')}}</div>
+                            @endif
                             </div>
                           </div>
                       </div>
