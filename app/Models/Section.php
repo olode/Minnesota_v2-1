@@ -22,9 +22,15 @@ class Section extends Model
     }
 
 
-    public function teacher_count()
+    public function teachers()
     {
         return $this->hasMany('App\Models\ClassInfo', 'section_id');
+    }
+
+
+    public function materials()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id' );
     }
 
     

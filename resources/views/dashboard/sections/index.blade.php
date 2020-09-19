@@ -25,22 +25,22 @@
                     <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                           <th> القسم</th>
+                          <th> المرحلة</th>
                           <th>عدد الطلاب في القسم</th>
                           <th>عدد المعلمين في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
-                          <th> المرحلة</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
                       @foreach ($sections as $section)
                         <tr>
                           <td>{{ $section->name }}</td>
-                          <td>{{ $section->students_count }}</td>
-                          <td>{{$section->teacher_count->unique('teacher_id')->count()}}</td>
-                          <td>٨</td>
-                          <td>{{ $section->info }}</td>
                           <td>{{ $section->stage->name }}</td>
+                          <td>{{ $section->students_count }}</td>
+                          <td>{{$section->teachers->unique('teacher_id')->count()}}</td>
+                          <td>{{$section->materials->unique('material_id')->count()}}</td>
+                          <td>{{ $section->info }}</td>
                           
                           <td  class="d-inline-flex">
                             <form  style="display: inline;"   action="{{ route('section.edit', $section->id) }}" method="get">
@@ -58,11 +58,11 @@
                       </tbody>
                       <tfoot>
                           <th>القسم</th>
+                          <th> المرحلة</th>
                           <th>عدد الطلاب في القسم</th>
                           <th>عدد المعلمين في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
-                          <th> المرحلة</th>
                           <th>الاعدادت</th>
                       </tfoot>
                     </table>
