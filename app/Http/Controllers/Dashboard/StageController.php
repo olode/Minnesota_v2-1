@@ -57,7 +57,7 @@ class StageController extends Controller
 
     $request->validate([
       'name'         => ['required', 'string', 'max:255'],
-      'info'         => ['required', 'string', 'max:255'],
+      'info'         => ['required', 'string'],
       'branch_id'    => ['required', 'integer', 'max:255'],
     ]);
 
@@ -105,6 +105,12 @@ class StageController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+      'name'         => ['required', 'string', 'max:255'],
+      'info'         => ['required', 'string'],
+      'branch_id'    => ['required', 'integer', 'max:255'],
+    ]);
     $stage    = Stage::findOrfail($id);
     $stage->update($request->all());
 

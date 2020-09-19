@@ -13,7 +13,7 @@ class Specialization extends Model
 
     public function section()
     {
-        return $this->belongsTo('App\Models\Section');
+        return $this->belongsTo('App\Models\Section', 'section_id');
     }
 
 }

@@ -25,6 +25,8 @@
               <div class="card">
                 <div class="card-header">
                   <h1 class="card-title">عرض معلومات التخصص</h1>
+                  <a  href="{{route('specialization.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة التخصصات</i></a> 
+
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">

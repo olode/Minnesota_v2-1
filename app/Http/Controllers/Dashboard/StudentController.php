@@ -39,7 +39,7 @@ class StudentController extends Controller
     public function create()
     {
         $branches = Branch::Select('id', 'name')->where('status', 1)->get();
-        $sections = Section::Select('id', 'name')->get();
+        $sections = Section::Select('id', 'name', 'stage_id')->get();
         return view('dashboard.students/create', compact('branches', 'sections'));
     }
 
@@ -53,31 +53,29 @@ class StudentController extends Controller
     {
         $idNumber = "IUM" . mt_rand(100000, 999999) . "S";
         
-        //dd($request->all());
         $request->validate([
-
-            'special_student_id'         => ['string', 'max:255'],
-            'first_name'                 => ['string', 'max:255'],
-            'second_name'                => ['string', 'max:255'],
-            'third_name'                 => ['string', 'max:255'],
-            'last_name'                  => ['string', 'max:255'],
-            'location'                   => ['string', 'max:255'],
-            'email'                      => ['string', 'max:255'],
-            'phone_number'               => ['string', 'max:255'],
-            'password'                   => ['string', 'max:255'],
-            'avatar'                     => [],
-            'qualification'              => ['string', 'max:255'],
-            'qualification_image'        => [],
-            'passport_number'            => ['string', 'max:255'],
-            'passport_image'             => [],
-            'branch_id'                  => ['integer', 'max:255'],
-            'section_id'                 => ['integer', 'max:255'],
-            'specialization_id'          => ['integer', 'max:255'],
-            'status'                     => ['integer', 'max:255'],
-            'birthday'                   => ['string', 'max:255'],
-            'nationality'                => ['string', 'max:255'],
-            'gender'                     => ['string', 'max:255'],
-            'graduation_rate'            => ['string', 'max:255'],
+            'special_student_id'         => ['required','string', 'max:255'],
+            'first_name'                 => ['required','string', 'max:255'],
+            'second_name'                => ['required','string', 'max:255'],
+            'third_name'                 => ['required','string', 'max:255'],
+            'last_name'                  => ['required','string', 'max:255'],
+            'location'                   => ['required','string', 'max:255'],
+            'email'                      => ['required','email', 'max:255'],
+            'phone_number'               => ['required','string', 'max:255'],
+            'password'                   => ['required','string', 'max:255'],
+            'avatar'                     => ['image:jpeg,png,jpg'],
+            'qualification'              => ['required','string', 'max:255'],
+            'qualification_image'        => ['image:jpeg,png,jpg'],
+            'passport_number'            => ['required','string', 'max:255'],
+            'passport_image'             => ['image:jpeg,png,jpg'],
+            'branch_id'                  => ['required','integer', 'max:255'],
+            'section_id'                 => ['required','integer', 'max:255'],
+            'specialization_id'          => ['required','integer', 'max:255'],
+            'status'                     => ['required','integer', 'max:255'],
+            'birthday'                   => ['required','string', 'max:255'],
+            'nationality'                => ['required','string', 'max:255'],
+            'gender'                     => ['required','string', 'max:255'],
+            'graduation_rate'            => ['required','string', 'max:255'],
         ]);
 
 
@@ -158,7 +156,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $branches = Branch::Select('id', 'name')->where('status', 1)->get();
-        $sections = Section::Select('id', 'name')->get();
+        $sections = Section::Select('id', 'name', 'stage_id')->get();
         $student = Student::findOrfail($id);
         return view('dashboard.students/edit', compact('student', 'branches', 'sections'));
     }
@@ -172,6 +170,30 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+      $request->validate([
+       
+        'first_name'                 => ['required','string', 'max:255'],
+        'second_name'                => ['required','string', 'max:255'],
+        'third_name'                 => ['required','string', 'max:255'],
+        'last_name'                  => ['required','string', 'max:255'],
+        'location'                   => ['required','string', 'max:255'],
+        'email'                      => ['required','email', 'max:255'],
+        'phone_number'               => ['required','string', 'max:255'],
+        'qualification'              => ['required','string', 'max:255'],
+        'passport_number'            => ['required','string', 'max:255'],
+        'branch_id'                  => ['required','integer', 'max:255'],
+        'section_id'                 => ['required','integer', 'max:255'],
+        'specialization_id'          => ['required','integer', 'max:255'],
+        'status'                     => ['required','integer', 'max:255'],
+        'birthday'                   => ['required','string', 'max:255'],
+        'nationality'                => ['required','string', 'max:255'],
+        'gender'                     => ['required','string', 'max:255'],
+        'graduation_rate'            => ['required','string', 'max:255'],
+    ]);
+
+    
         $student = Student::findOrfail($id);
         $student->fill($request->except('avatar', 'qualification_image', 'passport_image'));
 

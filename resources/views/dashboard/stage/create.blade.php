@@ -22,7 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('stage.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المراحل</i></a> 
                     </div>
                     <form method="POST" action="{{ route('stage.store') }}" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                         @csrf
@@ -31,24 +31,33 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">اسم المرحلة </label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput1" class="form-control" placeholder="الإسم " name="name">
+                            <input type="text" value="{{old('name')}}" id="projectinput1" class="form-control" placeholder="الإسم " name="name">
+                            @if($errors->first('name'))
+                               <div style="color:red;">{{$errors->first('name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">نبذة عن المرحلة</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="نبذة" name="info">
+                            <input type="text" value="{{old('info')}}" id="projectinput4" class="form-control" placeholder="نبذة" name="info">
+                            @if($errors->first('info'))
+                               <div style="color:red;">{{$errors->first('info')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
                             <select id="projectinput6" name="branch_id" class="form-control">
-                              <option value="" selected="" disabled="">اختر الفرع</option>
+                              <option selected="" disabled="">اختر الفرع</option>
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}">{{ $branche->name }}</option> 
                               @endforeach
                             </select>
+                              @if($errors->first('branch_id'))
+                                <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                              @endif
                           </div>
                         </div>
                       </div>

@@ -21,6 +21,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('semester.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الفصول (semesters)</i></a> 
                                         
                     </div>
                     <form action="{{ route('semester.update', $semester->id) }}" method="POST" class="form form-horizontal form-bordered">
@@ -34,10 +35,13 @@
                             <div class="form-group">
                               <select class="form-control" name="specialization_id" id="specialization">
                                 @foreach ($specializations as $specialization)
-                                  <option value="{{ $specialization->id }}" @if ($specialization->id === $semester->specialization_id) selected="" disabled=""  @endif  >{{ $specialization->name }}</option>
+                                  <option value="{{ $specialization->id }}" @if ($specialization->id === $semester->specialization_id) selected="" disabled=""  @endif  >{{ $specialization->section->stage->name }} - {{ $specialization->section->name }} - {{ $specialization->name }}</option>
                                 @endforeach
                               </select>
                             </div>
+                            @if($errors->first('specialization_id'))
+                                  <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -45,6 +49,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" value="{{ $semester->title }}"
                             name="title">
+                            @if($errors->first('title'))
+                                  <div style="color:red;">{{$errors->first('title')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -52,6 +59,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput1" class="form-control" value="{{ $semester->semester_code }}"
                             name="semester_code">
+                            @if($errors->first('semester_code'))
+                                  <div style="color:red;">{{$errors->first('semester_code')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -59,6 +69,9 @@
                           <div class="col-md-9">
                             <input type="date" id="projectinput1" class="form-control"  value="{{ $semester->starts_at }}"
                             name="starts_at">
+                            @if($errors->first('starts_at'))
+                                  <div style="color:red;">{{$errors->first('starts_at')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -66,6 +79,9 @@
                           <div class="col-md-9">
                             <input type="date" id="projectinput2" class="form-control"  value="{{ $semester->end_at }}"
                             name="end_at">
+                            @if($errors->first('end_at'))
+                                  <div style="color:red;">{{$errors->first('end_at')}}</div>
+                                @endif
                           </div>
                         </div>
 
@@ -74,6 +90,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control"  value="{{ $semester->max_courses }}"
                             name="max_courses">
+                            @if($errors->first('max_courses'))
+                                  <div style="color:red;">{{$errors->first('max_courses')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -81,6 +100,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control"  value="{{ $semester->min_courses }}"
                             name="min_courses">
+                            @if($errors->first('min_courses'))
+                                  <div style="color:red;">{{$errors->first('min_courses')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -88,6 +110,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control"  value="{{ $semester->semester_fee }}"
                             name="semester_fee">
+                            @if($errors->first('semester_fee'))
+                                  <div style="color:red;">{{$errors->first('semester_fee')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -95,6 +120,9 @@
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control"  value="{{ $semester->min_paid }}"
                             name="min_paid">
+                            @if($errors->first('min_paid'))
+                                  <div style="color:red;">{{$errors->first('min_paid')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -102,6 +130,9 @@
                           <div class="col-md-9">
                             <input type="date" id="projectinput2" class="form-control"  value="{{ $semester->due_date }}"
                             name="due_date">
+                            @if($errors->first('due_date'))
+                                  <div style="color:red;">{{$errors->first('due_date')}}</div>
+                                @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -114,6 +145,9 @@
                                 @endforeach
                               </select>
                             </div>
+                            @if($errors->first('year_id'))
+                                  <div style="color:red;">{{$errors->first('year_id')}}</div>
+                                @endif
                           </div>
                         </div>
                        

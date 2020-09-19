@@ -58,8 +58,7 @@ class MaterialController extends Controller
   public function store(Request $request)
   {
     //$idNumber = "IUM" . mt_rand(100000, 999999) . "M";
-    
-    // dd($request->all());
+   
     $request->validate([
 
       'code'                      => ['required', 'string', 'max:255'],
@@ -74,8 +73,6 @@ class MaterialController extends Controller
       'hours'                     => ['required', 'integer', 'max:255'],
       
     ]);
-    
-    //dd($request->all());
 
     
     //This If is just to Give The right Value to "requirement"
@@ -135,6 +132,23 @@ class MaterialController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+
+      'code'                      => ['required', 'string', 'max:255'],
+      'name'                      => ['required', 'string', 'max:255'],
+      'info'                      => ['required', 'string', 'max:255'],
+      'max_mark'                  => ['required', 'string', 'max:255'],
+      'max_students_number'       => ['required', 'integer', 'max:255'],
+      'section_id'                => ['required', 'integer', 'max:255'],
+      'specialization_id'         => ['required', 'integer', 'max:255'],
+      'optional'                  => ['required', 'integer', 'max:255'],
+      'requirement'               => ['max:255'],
+      'hours'                     => ['required', 'integer', 'max:255'],
+      
+    ]);
+    
+    
     $material = Material::findOrfail($id);
     $material->update($request->all());
 

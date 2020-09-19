@@ -33,9 +33,9 @@
             </li>  --}}
             <li class="dropdown dropdown-notification nav-item">
               <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-                <span class="badge badge-pill badge-default badge-danger badge-default badge-up">5</span>
+                <span class="badge badge-pill badge-default badge-danger badge-default badge-up">...</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+              <!-- <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 <li class="dropdown-menu-header">
                   <h6 class="dropdown-header m-0">
                     <span class="grey darken-2">Notifications</span>
@@ -103,13 +103,13 @@
                   </a>
                 </li>
                 <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
-              </ul>
+              </ul> -->
             </li>
             <li class="dropdown dropdown-notification nav-item">
               <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-mail"></i>
-                <span class="badge badge-pill badge-default badge-info badge-default badge-up">5 </span>
+                <span class="badge badge-pill badge-default badge-info badge-default badge-up">...</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+              <!-- <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 <li class="dropdown-menu-header">
                   <h6 class="dropdown-header m-0">
                     <span class="grey darken-2">Messages</span>
@@ -183,12 +183,12 @@
                   </a>
                 </li>
                 <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a></li>
-              </ul>
+              </ul> -->
             </li>
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="avatar avatar-online">
-                  <img style="height: 35px;" src="/uploads/users/avatars/{{ Auth::user()->avatar }}"
+                  <img style="height: 35px;" src="/uploads/users/avatars/{{ (Auth::user()->avatar) ? Auth::user()->avatar : 'defult.jpeg' }}"
                   alt="avatar"><i></i></span>
                 <span class="user-name">{{ Auth::user()->first_name }}</span>
               </a>

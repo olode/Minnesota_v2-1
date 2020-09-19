@@ -153,6 +153,22 @@ class TeacherController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+      'first_name'=> ['required','string', 'max:255'],
+      'second_name'=> ['required','string', 'max:255'],
+      'third_name'=> ['required','string', 'max:255'],
+      'last_name'=> ['required','string', 'max:255'],
+      'location'=> ['required','string', 'max:255'],
+      'job_description'=> ['required','string', 'max:255'],
+      'specialization_name'=> ['required','string', 'max:255'],
+      'qualification'=> ['required','string', 'max:255'],
+      'email'=> ['email','required','string', 'max:255'],
+      'phone_number'=> ['required','string', 'max:255'],
+      'status'=> ['required','integer', 'max:255'],
+      'passport_number'=> ['required','string', 'max:255'],
+    ]);
+
     $teacher = Teacher::findOrfail($id);
 
     if(request()->hasFile('avatar')){
@@ -193,19 +209,20 @@ class TeacherController extends Controller
         $teacher->save();
 
     }
+
         $teacher->update([
-          'first_name'                     => $request['first_name'],
-          'second_name'                    => $request['second_name'],
-          'third_name'                     => $request['third_name'],
-          'last_name'                      => $request['last_name'],
-          'job_description'                => $request['job_description'],
-          'specialization_name'            => $request['specialization_name'],
-          'location'                       => $request['location'],
-          'email'                          => $request['email'],
-          'phone_number'                   => $request['phone_number'],
-          'qualification'                  => $request['qualification'],
-          'passport_number'                => $request['passport_number'],
-          'status'                         => $request['status'],
+          'first_name'=> $request['first_name'],
+          'second_name'=> $request['second_name'],
+          'third_name'=> $request['third_name'],
+          'last_name'=> $request['last_name'],
+          'job_description'=> $request['job_description'],
+          'specialization_name'=> $request['specialization_name'],
+          'location'=> $request['location'],
+          'email'=> $request['email'],
+          'phone_number'=> $request['phone_number'],
+          'qualification'=> $request['qualification'],
+          'passport_number'=> $request['passport_number'],
+          'status'=> $request['status'],
       ]);
         
         return redirect('/teacher');

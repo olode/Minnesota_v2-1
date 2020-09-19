@@ -22,7 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('student.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الطلاب</i></a> 
                     </div>
                     <form action="{{ route('student.update', $student->id) }}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                       @method('PUT')
@@ -34,6 +34,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->first_name }}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
                             name="first_name">
+                            @if($errors->first('first_name'))
+                               <div style="color:red;">{{$errors->first('first_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -41,6 +44,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->second_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثاني"
                             name="second_name">
+                            @if($errors->first('second_name'))
+                               <div style="color:red;">{{$errors->first('second_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -48,6 +54,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->third_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الثالث"
                             name="third_name">
+                            @if($errors->first('third_name'))
+                               <div style="color:red;">{{$errors->first('third_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -55,6 +64,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->last_name }}"  id="projectinput2" class="form-control" placeholder="الإسم الأخير"
                             name="last_name">
+                            @if($errors->first('last_name'))
+                               <div style="color:red;">{{$errors->first('last_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -66,6 +78,9 @@
                               <option value="1" @if ($student->gender === '1' ) selected="" disabled="" @endif >أنثى</option>
                               <option value="2" @if ($student->gender === '2' ) selected="" disabled="" @endif >غير ذلك</option>
                             </select>
+                            @if($errors->first('gender'))
+                               <div style="color:red;">{{$errors->first('gender')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -73,6 +88,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->nationality }}" id="projectinput4" class="form-control" placeholder="الجنسية" 
                             name="nationality">
+                            @if($errors->first('nationality'))
+                               <div style="color:red;">{{$errors->first('nationality')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -80,6 +98,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->passport_number }}"  id="projectinput3" class="form-control" placeholder="رقم الجواز" 
                             name="passport_number">
+                            @if($errors->first('passport_number'))
+                               <div style="color:red;">{{$errors->first('passport_number')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -92,6 +113,9 @@
                                   <option value="{{ $branch->id }}" @if ($student->branch_id === $branch->id ) selected="" disabled="" @endif >{{ $branch->name }}</option>
                               @endforeach
                             </select>
+                            @if($errors->first('branch_id'))
+                               <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -101,9 +125,12 @@
                             <select id="section" name="section_id" class="form-control">
                               <option selected="" disabled="">اختر القسم</option>
                               @foreach ($sections as $section)
-                                  <option value="{{ $section->id }}" >{{ $section->name }}</option>
+                                  <option value="{{ $section->id }}" >{{ $section->stage->name }} - {{ $section->name }}</option>
                               @endforeach
                             </select>
+                            @if($errors->first('section_id'))
+                               <div style="color:red;">{{$errors->first('section_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -113,6 +140,9 @@
                             <select id="specialization" name="specialization_id" class="form-control">
                               
                             </select>
+                            @if($errors->first('specialization_id'))
+                               <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -127,6 +157,9 @@
                               <option value="4">ماجستير</option>
                               <option value="5">دكتورا</option>
                             </select>
+                            @if($errors->first('qualification'))
+                               <div style="color:red;">{{$errors->first('qualification')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -134,6 +167,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $student->graduation_rate }}"  id="projectinput3" class="form-control" placeholder="نسبة التخرج" 
                             name="graduation_rate">
+                            @if($errors->first('graduation_rate'))
+                               <div style="color:red;">{{$errors->first('graduation_rate')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -141,6 +177,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->email }}"   id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
                             name="email">
+                            @if($errors->first('email'))
+                               <div style="color:red;">{{$errors->first('email')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -148,6 +187,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->location }}"  id="projectinput3" class="form-control" placeholder="العنوان" 
                             name="location">
+                            @if($errors->first('location'))
+                               <div style="color:red;">{{$errors->first('location')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row ">
@@ -155,6 +197,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->phone_number }}"   id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
                             name="phone_number">
+                            @if($errors->first('phone_number'))
+                               <div style="color:red;">{{$errors->first('phone_number')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row ">
@@ -162,6 +207,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->birthday }}" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
                             name="birthday">
+                            @if($errors->first('birthday'))
+                               <div style="color:red;">{{$errors->first('birthday')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -173,6 +221,9 @@
                               <option value="0">غير مفعل</option>
                               <option value="1">مفعول</option>
                             </select>
+                            @if($errors->first('status'))
+                               <div style="color:red;">{{$errors->first('status')}}</div>
+                            @endif
                           </div>
                         </div>
                         <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
@@ -181,6 +232,9 @@
                           <div class="col-md-9">
                             <input type="file"  value="{{ $student->avatar }}"   id="projectinput4"  
                             name="avatar">
+                            @if($errors->first('avatar'))
+                               <div style="color:red;">{{$errors->first('avatar')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -190,6 +244,9 @@
                               <input type="file"  value="{{ $student->qualification_image }}"  id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
+                            @if($errors->first('qualification_image'))
+                               <div style="color:red;">{{$errors->first('qualification_image')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -199,6 +256,9 @@
                               <input type="file" value="{{ $student->passport_image }}"  id="file" name="passport_image" >
                               <span class="file-custom"></span>
                             </label>
+                            @if($errors->first('passport_image'))
+                               <div style="color:red;">{{$errors->first('passport_image')}}</div>
+                            @endif
                           </div>
                         </div>
                       </div>

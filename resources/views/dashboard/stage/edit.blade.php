@@ -22,7 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('stage.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المراحل</i></a> 
                     </div>
                     <form method="POST" action="{{ route('stage.update', $stage->id) }}" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                         @method('PUT')
@@ -34,6 +34,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $stage->name }}" id="projectinput1" class="form-control" 
                             name="name">
+                            @if($errors->first('name'))
+                               <div style="color:red;">{{$errors->first('name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -41,6 +44,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $stage->info }}"  id="projectinput4" class="form-control" 
                             name="info">
+                            @if($errors->first('info'))
+                               <div style="color:red;">{{$errors->first('info')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -51,6 +57,9 @@
                               <option value="{{$branche->id}}" @if ($branche->id === $stage->branch_id ) selected="" disabled=""  @endif>{{ $branche->name }}</option> 
                               @endforeach
                             </select>
+                            @if($errors->first('branch_id'))
+                               <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                            @endif
                           </div>
                         </div>
                       </div>

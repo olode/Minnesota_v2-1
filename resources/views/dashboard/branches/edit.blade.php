@@ -22,7 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('branche.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الفروع</i></a> 
                     </div>
                     <form action="{{route('branche.update', $data->id)}}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                         @method('PUT')
@@ -34,6 +34,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $data->name }}" id="projectinput1" class="form-control"
                             name="name">
+                            @if($errors->first('name'))
+                               <div style="color:red;">{{$errors->first('name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -41,6 +44,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->email_of_branch }}" id="projectinput3" class="form-control" 
                             name="email_of_branch">
+                            @if($errors->first('email_of_branch'))
+                               <div style="color:red;">{{$errors->first('email_of_branch')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -48,6 +54,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->phone_number }}" id="projectinput4" class="form-control" 
                              name="phone_number">
+                             @if($errors->first('phone_number'))
+                               <div style="color:red;">{{$errors->first('phone_number')}}</div>
+                             @endif
                           </div>
                         </div>
                  
@@ -56,6 +65,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->location }}" id="projectinput2" class="form-control" 
                             name="location">
+                            @if($errors->first('location'))
+                               <div style="color:red;">{{$errors->first('location')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -63,6 +75,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->country }}" id="projectinput2" class="form-control" 
                             name="country">
+                            @if($errors->first('country'))
+                               <div style="color:red;">{{$errors->first('country')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -70,6 +85,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->manger_full_name }}" id="projectinput2" class="form-control"
                             name="manger_full_name">
+                            @if($errors->first('manger_full_name'))
+                               <div style="color:red;">{{$errors->first('manger_full_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -77,6 +95,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->manger_phone_number }}" id="projectinput2" class="form-control" 
                             name="manger_phone_number">
+                            @if($errors->first('manger_phone_number'))
+                               <div style="color:red;">{{$errors->first('manger_phone_number')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -84,6 +105,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $data->manger_email }}" id="projectinput2" class="form-control" 
                             name="manger_email">
+                            @if($errors->first('manger_email'))
+                               <div style="color:red;">{{$errors->first('manger_email')}}</div>
+                            @endif
                           </div>
                         </div>
                        

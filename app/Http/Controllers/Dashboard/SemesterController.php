@@ -33,7 +33,7 @@ class SemesterController extends Controller
    */
   public function create()
   {
-    $specializations = Specialization::select('name', 'id')->get();
+    $specializations = Specialization::select('id','name', 'section_id')->get();
     $years           = Year::all();
     return view('dashboard.semesters/create', compact('specializations', 'years'));
   }
@@ -85,7 +85,7 @@ class SemesterController extends Controller
   {
 
     $semester        = Semester::findOrfail($id);
-    $specializations = Specialization::select('name', 'id')->get();
+    $specializations = Specialization::select( 'id','name', 'section_id')->get();
     $years           = Year::all();
     return view('dashboard.semesters/edit', compact('specializations', 'years', 'semester'));
   }
@@ -98,7 +98,20 @@ class SemesterController extends Controller
    */
   public function update(Request $request, $id)
   {
-    // dd($id);
+    $request->validate([
+      'title'                        => ['required', 'string', 'max:255'],
+      'semester_code'                 => ['required', 'string', 'max:255'],
+      'starts_at'                     => ['required', 'date', 'max:255'],
+      'end_at'                        => ['required', 'date', 'max:255'],
+      'max_courses'                   => ['required', 'integer', 'max:255'],
+      'min_courses'                   => ['required', 'integer', 'max:255'],
+      'semester_fee'                  => ['required', 'integer', 'max:255'],
+      'min_paid'                      => ['required', 'integer', 'max:255'],
+      'due_date'                      => ['required', 'date', 'max:255'],
+      'year_id'                       => ['required', 'integer', 'max:255'],
+      'specialization_id'             => ['required', 'integer', 'max:255'],
+    ]);
+    
     $semester        = Semester::findOrfail($id);
     $semester->update($request->all());
 
