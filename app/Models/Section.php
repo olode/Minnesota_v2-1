@@ -16,4 +16,17 @@ class Section extends Model
         return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
 
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student', 'section_id');
+    }
+
+
+    public function teacher_count()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id');
+    }
+
+    
+
 }

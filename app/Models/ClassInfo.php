@@ -13,7 +13,7 @@ class ClassInfo extends Model
 
     public function stage()
     {
-        return $this->belongsTo('App\Models\Stage');
+        return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
     public function section()
     {

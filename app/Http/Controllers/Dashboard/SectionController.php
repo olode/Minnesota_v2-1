@@ -35,7 +35,7 @@ class SectionController extends Controller
 
   public function index()
   {
-    $sections = Section::all();
+    $sections = Section::withCount(['students','teacher_count'])->get();
     $students = Student::Select('id')->get();
     return view('dashboard.sections.index', compact('sections', 'students'));
   }
@@ -61,6 +61,7 @@ class SectionController extends Controller
     $request->validate([
       'name' => ['required', 'string', 'max:255'],
       'info' => ['required', 'string', 'max:255'],
+      'stage_id' => ['required'],
     ]);
     
     $stages   = array($request->stage_id);
@@ -116,6 +117,12 @@ class SectionController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'name' => ['required', 'string', 'max:255'],
+      'info' => ['required', 'string', 'max:255'],
+      'stage_id' => ['required'],
+    ]);
+
     $section = Section::findOrfail($id);
     $section->update($request->all());
 
