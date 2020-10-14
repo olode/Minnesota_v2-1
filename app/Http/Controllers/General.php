@@ -12,7 +12,7 @@ use Hash;
 class General extends Controller
 {
    public function  get_b_c_data(){
-
+    set_time_limit(0);
        $bc_datas =   DB::table('BC_data')->get();
       
 
