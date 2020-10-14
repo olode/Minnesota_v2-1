@@ -79,7 +79,7 @@ Route::resource('teachermaterial', 'Dashboard\TeacherMateriasController');
 Route::resource('marktype', 'Dashboard\MarkTypeController');
 // Route::resource('schedule', 'Dashboard\ScheduleController');
 
-
+Route::get('get-b-c-data', 'General@get_b_c_data');
 
 
 
