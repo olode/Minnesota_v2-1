@@ -70,14 +70,14 @@ class General extends Controller
             $student->email = $bc_data->email;
             $student->phone_number = $bc_data->phone;
             $student->location = $bc_data->address;
-            $student->qualification = 1;
+            $student->qualification = 2;
             $student->avatar = 'defult.jpeg';
             $student->qualification_image = 'defult.jpeg';
             $student->passport_image = 'defult.jpeg';
-            $student->section_id = 3;
+            $student->section_id = 1;
             $student->status = 1;
             $student->branch_id = 1;
-            $student->specialization_id = 3;
+            $student->specialization_id = 1;
             $student->password = Hash::make($bc_data->phone);
     
             $student->save();
@@ -108,14 +108,14 @@ class General extends Controller
                 $student->email = $bc_data->email;
                 $student->phone_number = $bc_data->phone;
                 $student->location = $bc_data->address;
-                $student->qualification = 1;
+                $student->qualification = 3;
                 $student->avatar = 'defult.jpeg';
                 $student->qualification_image = 'defult.jpeg';
                 $student->passport_image = 'defult.jpeg';
-                $student->section_id = 3;
+                $student->section_id = 4;
                 $student->status = 1;
                 $student->branch_id = 1;
-                $student->specialization_id = 3;
+                $student->specialization_id = 4;
                 $student->password = Hash::make($bc_data->phone);
         
                 $student->save();
