@@ -80,6 +80,8 @@ Route::resource('marktype', 'Dashboard\MarkTypeController');
 // Route::resource('schedule', 'Dashboard\ScheduleController');
 
 Route::get('get-b-c-data', 'General@get_b_c_data');
+Route::get('get-master-ata', 'General@get_master_data');
+Route::get('get-phd-data', 'General@get_phd_data');
 
 
 
