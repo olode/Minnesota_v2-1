@@ -35,9 +35,10 @@ class SectionController extends Controller
 
   public function index()
   {
-    $sections = Section::all();
-    $students = Student::Select('id')->get();
-    return view('dashboard.sections.index', compact('sections', 'students'));
+    $sections = Section::with(['student_count', 'classes_count', 'material_count'])->get();
+    
+    // $students = Student::Select('id')->count();
+    return view('dashboard.sections.index', compact('sections'));
   }
 
   /**

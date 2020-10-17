@@ -26,7 +26,7 @@
                       <thead>
                           <th>اسم القسم</th>
                           <th>عدد الطلاب في القسم</th>
-                          <th>عدد المعلمين في القسم</th>
+                          <th>عدد الصفوف في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
                           <th>اسم المرحلة</th>
@@ -36,9 +36,9 @@
                       @foreach ($sections as $section)
                         <tr>
                           <td>{{ $section->name }}</td>
-                          <td>32</td>
-                          <td>٦</td>
-                          <td>٨</td>
+                          <td>{{ $section->student_count->count() }}</td>
+                          <td>{{ $section->classes_count->count() }}</td>
+                          <td>{{ $section->material_count->count() }}</td>
                           <td>{{ $section->info }}</td>
                           <td>{{ $section['stage']->name }}</td>
                           
@@ -59,7 +59,7 @@
                       <tfoot>
                           <th>الاسم</th>
                           <th>عدد الطلاب في القسم</th>
-                          <th>عدد المعلمين في القسم</th>
+                          <th>عدد الصفوف في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
                           <th>اسم المرحلة</th>

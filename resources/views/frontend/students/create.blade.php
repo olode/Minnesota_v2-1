@@ -9,14 +9,15 @@
         
         <div class="container">
             <div class="row">
-                <div class="section-title text-center">
+                {{-- <div class="section-title text-center">
                     <h3>تسجيل بيانات طالب مستجد</h3>
                     <p>تسجيل البيانات لا يعني قبول الطالب في الجامعة في حال تم قبوله سوف تصله رسالة تبلغه بذلك</p>
-                </div>
+                </div> --}}
             </div>
             <div class="row" dir="rtl" >
                 <div class="col-md-12">
-                    <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
+                    <h1 class="text-center " style=" font-size: 100px;">قريبا</h1>
+                    {{-- <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -126,7 +127,7 @@
                                 <input type="submit" class="btn btn-primary" value="إرسال البيانات" >
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
