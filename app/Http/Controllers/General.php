@@ -120,6 +120,69 @@ class General extends Controller
         
                 $student->save();
                }
+
+               
         
+            }
+
+
+            public function get_student_data(Request $request){
+               set_time_limit(0);
+// ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
+               $table = $request->table;
+               
+
+               $values = DB::table($table)->get();
+
+               foreach($values as $value){
+              
+               
+                  if($value->stage == 'البكالوريوس.'){
+
+                     $qu = 1;
+                     $sec = $request->sec_1;
+                     $spe = $request->spe_1;
+
+                  }elseif($value->stage == 'الماجستير.'){
+                     $qu = 2;
+                     $sec = $request->sec_2;
+                     $spe = $request->spe_2;
+
+                  }else{
+                     $qu = 3;
+                     $sec = $request->sec_3;
+                     $spe = $request->spe_3;
+
+
+                  }
+                
+                  DB::table('students')->insert([
+                     ['first_name' => $value->f_name , 
+                     'second_name' => $value->s_name,
+                     'last_name' => $value->third_name." ".$value->fourth_name,
+                     'birthday' => $value->berth,
+                     'gender' => $value->sex,
+                     'nationality' => $value->nationality,
+                     'passport_number' => $value->passport,
+                     'special_student_id' => $value->code,
+                     'qualification' => $value->gread,
+                     'graduation_rate' => $value->graguted,
+                     'email' => $value->email,
+                     'phone_number' => $value->phone,
+                     'location' => $value->address,
+                     'avatar' => 'defult.jpeg',
+                     'qualification_image' => 'defult.jpeg',
+                     'passport_image' => 'defult.jpeg',
+                     'qualification' => $qu,
+                     'section_id' => $sec,
+                     'specialization_id' => $spe,
+                     'status' => 1,
+                     'branch_id' => 1,
+                     'password' => Hash::make($value->phone)]
+                 ]);
+
+               }
+              
+                  
             }
 }
