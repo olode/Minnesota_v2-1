@@ -18,6 +18,7 @@
                       <li><a data-action="close"><i class="ft-x"></i></a></li>
                     </ul>
                   </div>
+                  
                 </div>
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
@@ -41,7 +42,7 @@
                       <tbody style="text-align: center;">
                          @foreach ($users as $user)
                             <tr>
-                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar }}" alt=""></td>
+                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar ? $user->avatar : 'defult.jpeg' }}" alt=""></td>
                                 <td>{{ $user->special_user_id }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->second_name }}</td>

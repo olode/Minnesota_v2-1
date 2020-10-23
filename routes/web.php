@@ -79,7 +79,11 @@ Route::resource('teachermaterial', 'Dashboard\TeacherMateriasController');
 Route::resource('marktype', 'Dashboard\MarkTypeController');
 // Route::resource('schedule', 'Dashboard\ScheduleController');
 
-
+Route::get('get-b-c-data', 'General@get_b_c_data');
+Route::get('get-master-ata', 'General@get_master_data');
+Route::get('get-phd-data', 'General@get_phd_data');
+// ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
+Route::get('get-student-data', 'General@get_student_data');
 
 
 

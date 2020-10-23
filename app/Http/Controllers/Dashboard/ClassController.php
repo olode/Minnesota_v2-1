@@ -37,8 +37,8 @@ class ClassController extends Controller
    */
   public function create()
   {
-    $stages     = Stage::select('name', 'id')->get();
-    $sections   = Section::select('name', 'id')->get();
+    $stages     = Stage::select('id', 'name')->get();
+    $sections   = Section::select('id', 'name', 'stage_id')->get();
     $semesters  = Semester::select('title', 'id')->get();
     $materials  = Material::select('name', 'id')->get();
     $teachers   = Teacher::select('first_name', 'second_name', 'last_name', 'id')->get();
@@ -71,7 +71,7 @@ class ClassController extends Controller
       'classroom_url'                              => ['required', 'url', 'max:255'],
       'required_attendance'                        => ['required', 'integer', 'max:255'],
       'class_fee'                                  => ['required', 'string', 'max:255'],
-      'fee_due_date'                               => ['required', 'date', 'max:255'],
+      'fee_due_date'                               => ['required', 'date', 'max:10'],
     ]);
       
     //dd($request->all());
@@ -105,7 +105,7 @@ class ClassController extends Controller
     $class      = ClassInfo::findOrfail($id);
     $stages     = Stage::select('name', 'id')->get();
     $sections   = Section::select('name', 'id')->get();
-    $semesters  = Semester::select('tittle', 'id')->get();
+    $semesters  = Semester::select('title', 'id')->get();
     $materials  = Material::select('name', 'id')->get();
     $teachers   = Teacher::select('first_name', 'second_name', 'last_name', 'id')->get();
     $years      = Year::select('year_m', 'id')->get();
@@ -120,6 +120,27 @@ class ClassController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    
+    $request->validate([
+      'stage_id'                                   => ['required', 'integer', 'max:255'],
+      'section_id'                                 => ['required', 'integer', 'max:255'],
+      'semester_id'                                => ['required', 'integer', 'max:255'],
+      'material_id'                                => ['required', 'integer', 'max:255'],
+      'teacher_id'                                 => ['required', 'integer', 'max:255'],
+      'year_id'                                    => ['required', 'max:255'],
+      'name'                                       => ['required', 'string', 'max:255'],
+      'class_day'                                  => ['required', 'string', 'max:255'],
+      'starts_at'                                  => ['required', 'max:255'],
+      'ends_at'                                    => ['required', 'max:255'],
+      'max_student'                                => ['required', 'integer', 'max:255'],
+      'lecturing_allowance'                        => ['required', 'string', 'max:255'],
+      'classroom_url'                              => ['required', 'url', 'max:255'],
+      'required_attendance'                        => ['required', 'integer', 'max:255'],
+      'class_fee'                                  => ['required', 'string', 'max:255'],
+      'fee_due_date'                               => ['required', 'date', 'max:10'],
+    ]);
+    
     $class = ClassInfo::findOrfail($id);
     $class->update($request->all());
     

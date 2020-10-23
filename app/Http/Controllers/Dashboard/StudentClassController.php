@@ -106,6 +106,14 @@ class StudentClassController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'specialization_id'          => ['required', 'integer', 'max:255'],
+      'semester_id'                => ['required', 'integer', 'max:255'],
+      'student_id'                 => ['required', 'integer', 'max:255'],
+      'class_id'                   => ['required', 'integer', 'max:255'],
+      'year_id'                    => ['required', 'integer', 'max:255'],
+
+    ]);
 
     $studentClass = StudentClass::findOrfail($id);
     $studentClass->update([

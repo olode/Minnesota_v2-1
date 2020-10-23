@@ -13,9 +13,10 @@ class Section extends Model
 
     public function stage()
     {
-        return $this->belongsTo('App\Models\Stage');
+        return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
 
+<<<<<<< HEAD
 
     public function student_count()
     {
@@ -30,4 +31,25 @@ class Section extends Model
         return $this->hasMany('App\Models\Material',  'section_id');
     }
 
+=======
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student', 'section_id');
+    }
+
+
+    public function teachers()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id');
+    }
+
+
+    public function materials()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id' );
+    }
+
+    
+
+>>>>>>> dabb8186b6c50db0606a8f0d0414ff789ff92944
 }

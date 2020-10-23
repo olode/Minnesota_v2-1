@@ -25,6 +25,7 @@
               <div class="card">
                 <div class="card-header">
                   <h1 class="card-title">عرض معلومات الصفوف</h1>
+                  <a  href="{{route('class.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الصفوف(classes)</i></a> 
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">

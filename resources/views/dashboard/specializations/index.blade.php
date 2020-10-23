@@ -70,7 +70,7 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                        <th>الاسم</th>
+                        <th>التخصص</th>
                         <th>العدد المسموح للطلاب</th>
                         <th>القسم</th>
                         <th>تابع للفرع</th>

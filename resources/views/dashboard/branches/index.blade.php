@@ -26,7 +26,7 @@
                     <p class="card-text text-center"></p>
                     <table class="table table-responsive table-bordered dataex-html5-selectors">
                       <thead>
-                         <th>الاسم</th>
+                         <th>الفرع</th>
                           <th>البريد الالكتروني للفرع</th>
                           <th>رقم الهاتف</th>
                           <th>الموقع</th>
@@ -77,7 +77,7 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                        <th>الاسم</th>
+                        <th>الفرع</th>
                         <th>البريد الالكتروني للفرع</th>
                         <th>رقم الهاتف</th>
                         <th>الموقع</th>

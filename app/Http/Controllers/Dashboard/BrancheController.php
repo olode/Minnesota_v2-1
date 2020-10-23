@@ -88,6 +88,17 @@ class BrancheController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'name'                 => ['required', 'string', 'max:255'],
+      'email_of_branch'      => ['required', 'email', 'max:255'],
+      'phone_number'         => ['required', 'string', 'max:255'],
+      'location'             => ['required', 'string', 'max:255'],
+      'country'              => ['required', 'string', 'max:255'],
+      'manger_full_name'     => ['required', 'string', 'max:255'],
+      'manger_phone_number'  => ['required', 'string', 'max:255'],
+      'manger_email'         => ['required', 'email', 'max:255'],
+      'status'               => ['required', 'integer'],
+    ]);
     $branche = Branch::findOrfail($id);
     $branche->update($request->all());
     

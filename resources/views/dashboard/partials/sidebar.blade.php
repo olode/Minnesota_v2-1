@@ -106,7 +106,7 @@
               <span data-i18n="nav.category.layouts">الفصول</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('semester.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الفصول</span></a>
+            <li class=" nav-item"><a href="{{route('semester.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الفصول (semesters)</span></a>
               <ul class="menu-content">
                 <li ><a class="menu-item" href="{{route('semester.index')}}" data-i18n="nav.dash.analytics">عرض</a>
                 </li>
@@ -131,7 +131,7 @@
               <span data-i18n="nav.category.layouts">الصفوف</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('class.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الصفوف</span></a>
+            <li class=" nav-item"><a href="{{route('class.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">  ادارة الصفوف (classes)</span></a>
               <ul class="menu-content">
                 <li ><a class="menu-item" href="{{route('class.index')}}" data-i18n="nav.dash.analytics">عرض</a>
                 </li>

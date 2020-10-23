@@ -70,7 +70,7 @@ class UserController extends Controller
   {
     
     $id = "IUM" . mt_rand(100000, 999999) . "U";
-    //dd($id);
+ 
     $request->validate( [
           'special_user_id'    => ['string', 'max:255'],
           'first_name'         => ['required', 'string', 'max:255'],
@@ -82,11 +82,10 @@ class UserController extends Controller
           'branch_id'          => ['required', 'integer', 'max:255'],
           'role_id'            => ['required', 'integer', 'max:255'],
           'status'             => ['required', 'integer', 'max:255'],
-          'avatar'             => ['required', 'image'],
+          'avatar'             => ['image:jpeg,png'],
       ]);
       
-        //dd($idNumber);
-
+  
         $avatarneme = '';
         if(request()->hasFile('avatar')){
 
@@ -96,9 +95,7 @@ class UserController extends Controller
             $avatarneme = $filename;
 
         }
-
-        //dd($request->all());
-        //dd($idNumber);
+ 
          User::create([
             'special_user_id'       => $id,
             'first_name'            => $request['first_name'],
@@ -213,7 +210,14 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    
+
+    $user = User::Find($id);
+    $defult = "defult.jpeg";
+    if($user->avatar || !$defult){
+      unlink(public_path('/uploads/users/avatars/'. $user->avatar));
+    }
+    $user->delete();
+    return \redirect()->back();
   }
   
 }

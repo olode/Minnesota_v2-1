@@ -22,6 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('studentclass.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة تعينات الطلاب</i></a> 
                                         
                     </div>
                     <form  action="{{ route('studentclass.store') }}" method="POST" class="form form-horizontal form-bordered">
@@ -37,6 +38,9 @@
                                     <option class="form-control" value="{{$branch->id}}">{{ $branch->name }}</option>
                                 @endforeach
                             </select>
+                            @if($errors->first('branch_id'))
+                               <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                              @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -46,6 +50,9 @@
                                   
                                 
                               </select>
+                              @if($errors->first('stage_id'))
+                               <div style="color:red;">{{$errors->first('stage_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -55,6 +62,9 @@
                                   
                                 
                               </select>
+                              @if($errors->first('section_id'))
+                               <div style="color:red;">{{$errors->first('section_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -64,6 +74,9 @@
                                     
                                   
                                 </select>
+                                @if($errors->first('specialization_id'))
+                               <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                              @endif
                               </div>
                           </div>
                           <div class="form-group row">
@@ -73,6 +86,9 @@
                                    
 
                                 </select>
+                                @if($errors->first('student_id'))
+                               <div style="color:red;">{{$errors->first('student_id')}}</div>
+                              @endif
                               </div>
                           </div>
                           <div class="form-group row">
@@ -85,6 +101,9 @@
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('semester_id'))
+                               <div style="color:red;">{{$errors->first('semester_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -97,11 +116,15 @@
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('class_id'))
+                               <div style="color:red;">{{$errors->first('class_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اختر السنة</label>
                             <div class="col-md-9">
+                            
                               <select class="form-control" name="year_id" id="year">
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($years as $year)
@@ -109,6 +132,9 @@
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('year_id'))
+                               <div style="color:red;">{{$errors->first('year_id')}}</div>
+                              @endif
                             </div>
                           </div>
                       </div>

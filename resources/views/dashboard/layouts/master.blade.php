@@ -32,7 +32,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-header row">
-        @if ($errors->any())
+       {{-- @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
                   @foreach ($errors->all() as $error)
@@ -40,7 +40,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                   @endforeach
               </ul>
           </div>
-        @endif
+        @endif--}}
       </div>
       
 
