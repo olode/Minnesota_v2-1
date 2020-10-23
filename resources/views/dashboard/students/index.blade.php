@@ -31,6 +31,7 @@
                         <tr>
                           <th>الرقم الجامعي</th>
                           <th>الاسم</th>
+                          <th>المرحلة</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>
@@ -43,6 +44,7 @@
                         <tr>
                           <td>{{$student->special_student_id}}</td>
                           <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->third_name }} {{ $student->last_name }}</td>
+                          <td>{{$student['section']->stage->name}}</td>
                           <td>
                             @if ($student->qualification === '1') {{"ثانوي"}} @endif
                             @if ($student->qualification === '2') {{"دبلوم"}} @endif
@@ -87,6 +89,7 @@
                         <tr>
                           <th>الرقم الجامعي</th>
                           <th>الاسم</th>
+                          <th>المرحلة</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>

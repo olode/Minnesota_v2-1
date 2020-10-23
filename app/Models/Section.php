@@ -16,7 +16,6 @@ class Section extends Model
         return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
 
-<<<<<<< HEAD
 
     public function student_count()
     {
@@ -31,7 +30,6 @@ class Section extends Model
         return $this->hasMany('App\Models\Material',  'section_id');
     }
 
-=======
     public function students()
     {
         return $this->hasMany('App\Models\Student', 'section_id');
@@ -51,5 +49,4 @@ class Section extends Model
 
     
 
->>>>>>> dabb8186b6c50db0606a8f0d0414ff789ff92944
 }

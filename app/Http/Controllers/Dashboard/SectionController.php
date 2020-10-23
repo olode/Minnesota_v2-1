@@ -18,7 +18,7 @@ class SectionController extends Controller
    * Display a listing of the resource.
    *
    * @return Response
-   */
+   **/
 
   public function getAjaxSections($stage_id)
   {
@@ -35,16 +35,10 @@ class SectionController extends Controller
 
   public function index()
   {
-<<<<<<< HEAD
     $sections = Section::with(['student_count', 'classes_count', 'material_count'])->get();
     
     // $students = Student::Select('id')->count();
     return view('dashboard.sections.index', compact('sections'));
-=======
-    $sections = Section::withCount(['students','teachers', 'materials'])->get();
-    $students = Student::Select('id')->get();
-    return view('dashboard.sections.index', compact('sections', 'students'));
->>>>>>> dabb8186b6c50db0606a8f0d0414ff789ff92944
   }
 
   /**

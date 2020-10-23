@@ -36,16 +36,9 @@
                       @foreach ($sections as $section)
                         <tr>
                           <td>{{ $section->name }}</td>
-<<<<<<< HEAD
                           <td>{{ $section->student_count->count() }}</td>
                           <td>{{ $section->classes_count->count() }}</td>
                           <td>{{ $section->material_count->count() }}</td>
-=======
-                          <td>{{ $section->stage->name }}</td>
-                          <td>{{ $section->students_count }}</td>
-                          <td>{{$section->teachers->unique('teacher_id')->count()}}</td>
-                          <td>{{$section->materials->unique('material_id')->count()}}</td>
->>>>>>> dabb8186b6c50db0606a8f0d0414ff789ff92944
                           <td>{{ $section->info }}</td>
                           
                           <td  class="d-inline-flex">

@@ -37,8 +37,12 @@
                 </div>
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
-                    <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <div class="">
+                        <a  href="{{route('student.index')}}" class="btn btn-primary"><i class="ft-corner-down-right"> عرض قائمة الطلاب</i></a> 
+                    
+                        <a  href="{{route('student.edit', $data->id)}}" class="btn btn-warning"><i class="ft-edit"> تعديل بيانات الطالب </i></a> 
+                    </div>
+                    <table class="table table-striped table-bordered dataex-html5-selectors" style="text-align: center;">
                       
                         <hr>
                         <div class="row" style="margin-bottom:45px">
@@ -82,7 +86,7 @@
                             <h3 class="heads">النسبة</h3>
                             <p class="data">{{ $data->graduation_rate }}</p>
                         </div>
-                        <div class="col col-md-2">
+                        <div class="col col-md-3">
                             <h3 class="heads">المؤهل الدراسي</h3>
                             <p class="data">
                             @if ($data->qualification === '1') {{"ثانوي"}} @endif
@@ -92,10 +96,14 @@
                             @if ($data->qualification === '5') {{"دكتورا"}} @endif
                             </p>
                         </div>
-                        <div class="col col-md-2">
+                        <div class="col col-md-5">
                             <h3 class="heads">البريد الإلكتروني</h3>
                             <p class="data">{{ $data->email }}</p>
                         </div>
+                      </div>
+
+                      <hr>
+                      <div class="row" style="margin-bottom:45px">
                         <div class="col col-md-2">
                             <h3 class="heads">رقم الهاتف</h3>
                             <p class="data">{{ $data->phone_number }}</p>
@@ -104,10 +112,6 @@
                             <h3 class="heads">العنوان</h3>
                             <p class="data">{{ $data->location }}</p>
                         </div>
-                      </div>
-
-                      <hr>
-                      <div class="row" style="margin-bottom:45px">
                         <div class="col col-md-2">
                             <h3 class="heads">رقم الجواز</h3>
                             <p class="data">{{ $data->passport_number }}</p>
@@ -115,6 +119,10 @@
                         <div class="col col-md-2">
                             <h3 class="heads">الفرع</h3>
                             <p class="data">{{ $data['specialization']->section->stage->branch->name }}</p>
+                        </div>
+                        <div class="col col-md-2">
+                            <h3 class="heads">المرحلة</h3>
+                            <p class="data">{{ $data['section']->stage->name }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">القسم</h3>
@@ -134,7 +142,7 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="col col-md-2">
+                        <div class="col col-md-4">
                             <h3 class="heads">صورة الطالب</h3>
                             <div style="width: 100%; height: 245px; background-size: contain;">
                                 <img src="/uploads/students/avatars/{{$data->avatar}}"  onContextMenu="return false" onDragStart="return false" galleryimg="no"  style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
