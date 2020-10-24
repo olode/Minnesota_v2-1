@@ -33,6 +33,7 @@
                       <thead>
                           <th>رمز المقرر</th>
                           <th>اسم المقرر</th>
+                          <th>المرحلة</th>
                           <th>وصف المقرر</th>
                           <th>العدد المسموح من الطلاب</th>
                           <th>الدرجة النهائية</th>
@@ -48,6 +49,7 @@
                       <tr>
                         <td>{{ $material->code }}</td>
                         <td>{{ $material->name }}</td>
+                        <td>{{ $material['specialization']->section->stage->name }}</td>
                         <td> {{ $material->info }}</td>
                         <td> {{ $material->max_mark }} </td>
                         <td> {{ $material->max_students_number }} </td>
@@ -86,6 +88,7 @@
                       <tfoot>
                         <th>رمز المقرر</th>
                         <th>اسم المقرر</th>
+                        <th>المرحلة</th>
                         <th>وصف المقرر</th>
                         <th>العدد المسموح من الطلاب</th>
                         <th>الدرجة النهائية</th>

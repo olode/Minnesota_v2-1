@@ -100,7 +100,7 @@ class SemesterController extends Controller
   {
     $request->validate([
       'title'                        => ['required', 'string', 'max:255'],
-      'semester_code'                 => ['required', 'string', 'max:255'],
+      'semester_code'                 => ['required', 'alpha', 'max:255'],
       'starts_at'                     => ['required', 'date', 'max:255'],
       'end_at'                        => ['required', 'date', 'max:255'],
       'max_courses'                   => ['required', 'integer', 'max:255'],
