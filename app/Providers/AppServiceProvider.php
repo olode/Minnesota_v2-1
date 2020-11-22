@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Policies\PostPolicy;
+use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // $this->registerPolicies();
+
+        Gate::define('super-admin', function ($user) {
+
+            return $user->role->name === 'superadmin';
+            
+
+        });
     }
 }

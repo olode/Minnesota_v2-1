@@ -4,20 +4,20 @@
           <li class=" nav-item"><a href="{{route('c-panel')}}"><i class="icon-home"></i><span class="menu-title" data-i18n="nav.scrumboard.main">الرئيسية</span></a>
             </li>
 
-            <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">المستخدمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
-              data-placement="right" data-original-title="Layouts"></i>
-            </li>
-            <li class=" nav-item"><a href="{{route('user.index')}}"><i class="icon-user"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة المستخدمين</span></a>
-              <ul class="menu-content">
-                <li ><a class="menu-item" href="{{route('user.index')}}" data-i18n="nav.dash.analytics">عرض</a>
-                </li>
-                <li><a class="menu-item" href="{{route('user.create')}}" data-i18n="nav.dash.project">اضافة</a>
-                </li>
-              </ul>
-            </li>
-
-
+            @can('super-admin')
+              <li class=" navigation-header">
+                <span data-i18n="nav.category.layouts">المستخدمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+                data-placement="right" data-original-title="Layouts"></i>
+              </li>
+              <li class=" nav-item"><a href="{{route('user.index')}}"><i class="icon-user"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة المستخدمين</span></a>
+                <ul class="menu-content">
+                  <li ><a class="menu-item" href="{{route('user.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                  </li>
+                  <li><a class="menu-item" href="{{route('user.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                  </li>
+                </ul>
+              </li>
+            @endcan
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الطلاب</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
@@ -30,7 +30,7 @@
                 </li>
               </ul>
             </li>
-
+            @can('super-admin')
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">المعلمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
@@ -159,7 +159,7 @@
               </ul>
             </li>
 
-
+            @endcan
             {{--  <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الاعلانات والتنبيهات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
