@@ -13,7 +13,8 @@ class SpecializationController extends Controller
 
   public function __construct()
     {
-      $this->middleware(['auth', 'super-admin']);
+      $this->middleware(['auth']);
+      $this->middleware(['super-admin'])->except(['getAjaxSpecializations']);
     }
 
   /**
