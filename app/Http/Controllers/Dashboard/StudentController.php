@@ -54,28 +54,28 @@ class StudentController extends Controller
         $idNumber = "IUM" . mt_rand(100000, 999999) . "S";
         
         $request->validate([
-            'special_student_id'         => ['required','string', 'max:255'],
-            'first_name'                 => ['required','string', 'max:255'],
-            'second_name'                => ['required','string', 'max:255'],
-            'third_name'                 => ['required','string', 'max:255'],
-            'last_name'                  => ['required','string', 'max:255'],
-            'location'                   => ['required','string', 'max:255'],
-            'email'                      => ['required','email', 'max:255'],
-            'phone_number'               => ['required','string', 'max:255'],
-            'password'                   => ['required','string', 'max:255'],
-            'avatar'                     => ['image:jpeg,png,jpg'],
-            'qualification'              => ['required','string', 'max:255'],
-            'qualification_image'        => ['image:jpeg,png,jpg'],
-            'passport_number'            => ['required','string', 'max:255'],
-            'passport_image'             => ['image:jpeg,png,jpg'],
-            'branch_id'                  => ['required','integer', 'max:255'],
-            'section_id'                 => ['required','integer', 'max:255'],
-            'specialization_id'          => ['required','integer', 'max:255'],
-            'status'                     => ['required','integer', 'max:255'],
-            'birthday'                   => ['required','string', 'max:255'],
-            'nationality'                => ['required','string', 'max:255'],
-            'gender'                     => ['required','string', 'max:255'],
-            'graduation_rate'            => ['required','string', 'max:255'],
+            'special_student_id'=> ['required','string', 'max:255'],
+            'first_name'=> ['required','string', 'max:255'],
+            'second_name'=> ['required','string', 'max:255'],
+            'third_name'=> ['required','string', 'max:255'],
+            'last_name'=> ['required','string', 'max:255'],
+            'location'=> ['required','string', 'max:255'],
+            'email'=> ['required','email', 'max:255'],
+            'phone_number'=> ['required','string', 'max:255'],
+            'password'=> ['required','string', 'max:255'],
+            'avatar'=> ['image:jpeg,png,jpg'],
+            'qualification'=> ['required','string', 'max:255'],
+            'qualification_image'=> ['image:jpeg,png,jpg'],
+            'passport_number'=> ['required','string', 'max:255'],
+            'passport_image'=> ['image:jpeg,png,jpg'],
+            'branch_id'=> ['required','integer', 'max:255'],
+            'section_id'=> ['required','integer', 'max:255'],
+            'specialization_id'=> ['required','integer', 'max:255'],
+            'status'=> ['required','integer', 'max:255'],
+            'birthday'=> ['required','string', 'max:255'],
+            'nationality'=> ['required','string', 'max:255'],
+            'gender'=> ['required','string', 'max:255'],
+            'graduation_rate'=> ['required','string', 'max:255'],
         ]);
 
 
@@ -86,6 +86,8 @@ class StudentController extends Controller
             Image::make($avatar)->save(public_path('/uploads/students/avatars/' . $filename));
             $avatarneme = $filename;
 
+        }else{
+            $avatarneme = 'default.png';
         }
 
         if(request()->hasFile('qualification_image')){
@@ -95,6 +97,8 @@ class StudentController extends Controller
             Image::make($qualifications)->save(public_path('/uploads/students/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
+        }else{
+          $qualificationsneme = 'default.png';
         }
 
         if(request()->hasFile('passport_image')){
@@ -104,31 +108,33 @@ class StudentController extends Controller
             Image::make($passport)->save(public_path('/uploads/students/passports/' . $passportname));
             $passportneme = $passportname;
 
+        }else{
+          $passportneme = 'default.png';
         }
         
         Student::create([
-            'special_student_id'       => $idNumber,
-            'first_name'               => $request['first_name'],
-            'second_name'              => $request['second_name'],
-            'third_name'                => $request['third_name'],
-            'last_name'                => $request['last_name'],
-            'location'                 => $request['location'],
-            'email'                    => $request['email'],
-            'phone_number'             => $request['phone_number'],
-            'password'                 => Hash::make($request['password']),
-            'avatar'                   => $avatarneme,
-            'qualification'            => $request['qualification'],
-            'qualification_image'      => $qualificationsneme,
-            'passport_number'          => $request['passport_number'],
-            'passport_image'           => $passportneme,
-            'branch_id'                => $request['branch_id'],
-            'section_id'               => $request['section_id'],
-            'specialization_id'        => $request['specialization_id'],
-            'status'                   => $request['status'],
-            'birthday'                 => $request['birthday'],
-            'nationality'              => $request['nationality'],
-            'gender'                   => $request['gender'],
-            'graduation_rate'          => $request['graduation_rate'],
+            'special_student_id'=> $request['special_student_id'],
+            'first_name'=> $request['first_name'],
+            'second_name'=> $request['second_name'],
+            'third_name'=> $request['third_name'],
+            'last_name'=> $request['last_name'],
+            'location'=> $request['location'],
+            'email'=> $request['email'],
+            'phone_number'=> $request['phone_number'],
+            'password'=> Hash::make($request['password']),
+            'avatar'=> $avatarneme,
+            'qualification'=> $request['qualification'],
+            'qualification_image'=> $qualificationsneme,
+            'passport_number'=> $request['passport_number'],
+            'passport_image'=> $passportneme,
+            'branch_id'=> $request['branch_id'],
+            'section_id'=> $request['section_id'],
+            'specialization_id'=> $request['specialization_id'],
+            'status'=> $request['status'],
+            'birthday'=> $request['birthday'],
+            'nationality'=> $request['nationality'],
+            'gender'=> $request['gender'],
+            'graduation_rate'=> $request['graduation_rate'],
         ]);
         
         

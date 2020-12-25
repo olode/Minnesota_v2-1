@@ -68,6 +68,19 @@
                             @endif
                           </div>
                         </div>
+
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">الرقم الجامعي</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('special_student_id')}}" id="projectinput2" class="form-control" placeholder="الرقم الجامعي"
+                            name="special_student_id">
+                            @if($errors->first('special_student_id'))
+                               <div style="color:red;">{{$errors->first('special_student_id')}}</div>
+                            @endif
+                          </div>
+                        </div>
+
+
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الجنس</label>
                           <div class="col-md-9">
