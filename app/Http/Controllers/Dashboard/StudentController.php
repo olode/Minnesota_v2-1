@@ -138,7 +138,8 @@ class StudentController extends Controller
         ]);
         
         
-        return redirect('/student');
+        // return redirect('/student');
+        return redirect()->back()->with('success', '  تم حفظ بيانات الطالب  '.$request['first_name'].'  بنجاح  ');
     }
 
     /**

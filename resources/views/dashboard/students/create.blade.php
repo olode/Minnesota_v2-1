@@ -28,6 +28,11 @@
                       @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات شخصية</h4>
+                        @if(session()->has('success'))
+                            <div class="alert alert-success" id="successMessage">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
@@ -296,6 +301,9 @@
 @endsection
 @section('js')
 <script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
+<script>
+    $("#successMessage").delay(3200).fadeOut(3000);
+</script>
 @endsection
 
 
