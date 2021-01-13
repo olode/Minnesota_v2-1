@@ -55,7 +55,7 @@ class StudentClassController extends Controller
       'section_id'                 => ['required', 'integer', 'max:255'],
       'specialization_id'          => ['required', 'integer', 'max:255'],
       'semester_id'                => ['required', 'integer', 'max:255'],
-      'student_id'                 => ['required', 'integer', 'max:255'],
+      'student_id'                 => ['required', 'integer'],
       'class_id'                   => ['required', 'integer', 'max:255'],
       'year_id'                    => ['required', 'integer', 'max:255'],
 
