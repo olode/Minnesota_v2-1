@@ -99,7 +99,7 @@ class SemesterController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-      'title'                        => ['required', 'string', 'max:255'],
+      'title'                         => ['required', 'string', 'max:255'],
       'semester_code'                 => ['required', 'alpha_dash', 'max:255'],
       'starts_at'                     => ['required', 'date', 'max:255'],
       'end_at'                        => ['required', 'date', 'max:255'],
@@ -108,8 +108,8 @@ class SemesterController extends Controller
       'semester_fee'                  => ['required', 'integer', 'max:255'],
       'min_paid'                      => ['required', 'integer', 'max:255'],
       'due_date'                      => ['required', 'date', 'max:255'],
-      'year_id'                       => ['required', 'integer', 'max:255'],
-      'specialization_id'             => ['required', 'integer', 'max:255'],
+      'year_id'                       => ['integer', 'max:255'],
+      'specialization_id'             => ['integer', 'max:255'],
     ]);
     
     $semester        = Semester::findOrfail($id);

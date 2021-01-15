@@ -123,14 +123,14 @@ class ClassController extends Controller
 
     
     $request->validate([
-      'stage_id'                                   => ['required', 'integer', 'max:255'],
-      'section_id'                                 => ['required', 'integer', 'max:255'],
-      'semester_id'                                => ['required', 'integer', 'max:255'],
-      'material_id'                                => ['required', 'integer', 'max:255'],
-      'teacher_id'                                 => ['required', 'integer', 'max:255'],
-      'year_id'                                    => ['required', 'max:255'],
-      'name'                                       => ['required', 'string', 'max:255'],
-      'class_day'                                  => ['required', 'string', 'max:255'],
+      'stage_id'                                   => ['integer', 'max:255'],
+      'section_id'                                 => ['integer', 'max:255'],
+      'semester_id'                                => ['integer', 'max:255'],
+      'material_id'                                => ['integer', 'max:255'],
+      'teacher_id'                                 => ['integer', 'max:255'],
+      'year_id'                                    => ['max:255'],
+      'name'                                       => ['string', 'max:255'],
+      'class_day'                                  => ['string', 'max:255'],
       'starts_at'                                  => ['required', 'max:255'],
       'ends_at'                                    => ['required', 'max:255'],
       'max_student'                                => ['required', 'integer', 'max:255'],
