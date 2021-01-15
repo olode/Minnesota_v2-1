@@ -40,7 +40,7 @@ class ClassController extends Controller
     $stages     = Stage::select('id', 'name')->get();
     $sections   = Section::select('id', 'name', 'stage_id')->get();
     $semesters  = Semester::select('title', 'id')->get();
-    $materials  = Material::select('name', 'id')->get();
+    $materials  = Material::select('name', 'id', 'section_id')->get();
     $teachers   = Teacher::select('first_name', 'second_name', 'last_name', 'id')->get();
     $years      = Year::select('year_m', 'id')->get();
     return view('dashboard.classes/create', compact('stages', 'sections', 'semesters', 'materials', 'teachers', 'years'));

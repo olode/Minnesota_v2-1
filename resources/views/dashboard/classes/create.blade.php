@@ -76,14 +76,14 @@
                               @endif
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row basic-select2">
                           <label class="col-md-3 label-control" for="projectinput2">اختر المادة</label>
                           <div class="col-md-9">
                             <div class="form-group">
-                              <select class="form-control" name="material_id" id="material">
+                              <select class="select2 form-control" name="material_id" id="material">
                                 <option value="" selected="" disabled="" >اختر المادة</option>
                                 @foreach ($materials as $material)
-                                  <option value="{{ $material->id }}" >{{ $material->name }}</option>
+                                  <option value="{{ $material->id }}" >{{ $material->name }}-{{$material->section->name}}-{{$material->section->stage->name}}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -92,11 +92,14 @@
                               @endif
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row basic-select2">
                           <label class="col-md-3 label-control" for="projectinput2">اختر المدرس</label>
                           <div class="col-md-9">
                             <div class="form-group">
-                              <select class="form-control" name="teacher_id" id="teacher">
+                             <!-- Basic Select2 start -->
+           
+     
+                              <select class="select2 form-control" name="teacher_id" id="teacher">
                                 <option value="" selected="" disabled="" >اختر المدرس</option>
                                 @foreach ($teachers as $teacher)
                                   <option value="{{ $teacher->id }}" >{{ $teacher->first_name }} {{ $teacher->second_name }} {{ $teacher->last_name }}</option>

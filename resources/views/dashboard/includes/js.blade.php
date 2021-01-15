@@ -47,4 +47,8 @@
   <script src="/dashboard/app-assets/js/scripts/tables/datatables-extensions/datatable-button/datatable-html5.js"
   type="text/javascript"></script>
   <!-- END DATA TABLE-->
+  <script src="/dashboard/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
+
+  <script src="/dashboard/app-assets/js/scripts/forms/select/form-select2.js" type="text/javascript"></script>
+
 @yield('js')

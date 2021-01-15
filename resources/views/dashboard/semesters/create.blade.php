@@ -23,7 +23,7 @@
                     <div class="card-text">
                       <a  href="{{route('semester.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الفصول (semesters)</i></a> 
                     </div>
-                    <form action="{{ route('semester.store') }}" method="POST" class="form form-horizontal form-bordered">
+                    <form action="{{ route('semester.store') }}" method="POST" class="form form-horizontal form-bordered basic-select2">
                       @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات الفصل</h4>
@@ -31,7 +31,7 @@
                           <label class="col-md-3 label-control" for="projectinput2">اختر التخصص</label>
                           <div class="col-md-9">
                             <div class="form-group">
-                              <select class="form-control" name="specialization_id" id="specialization">
+                              <select class="select2 form-control" name="specialization_id" id="specialization">
                                 <option value="" selected="" disabled="" >اختر التخصص</option>
                                 @foreach ($specializations as $specialization)
                                   <option value="{{ $specialization->id }}" >{{ $specialization->section->stage->name }} - {{ $specialization->section->name }} - {{ $specialization->name }}</option>

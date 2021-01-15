@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/charts/morris.css">
   <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/extensions/unslider.css">
   <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/weather-icons/climacons.min.css">
+  <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/forms/selects/select2.min.css">
   <!-- END VENDOR CSS-->
   <!-- BEGIN ROBUST CSS-->
   <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/css-rtl/app.css">

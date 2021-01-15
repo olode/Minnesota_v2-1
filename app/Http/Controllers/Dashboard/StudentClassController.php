@@ -35,7 +35,7 @@ class StudentClassController extends Controller
   public function create()
   {
     $branches   = Branch::select('name', 'id')->get();
-    $semesters  = Semester::select('title', 'id')->get();
+    $semesters  = Semester::select('title', 'id', 'specialization_id')->get();
     $classes    = ClassInfo::select('name', 'id', 'material_id')->get();
     $years      = Year::all();
     return view('dashboard.student_classes/create', compact('branches', 'semesters', 'classes', 'years'));
