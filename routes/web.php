@@ -86,7 +86,7 @@ Route::get('get-phd-data', 'General@get_phd_data');
 Route::get('get-student-data', 'General@get_student_data');
 
 
-
+Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->name('password.reset1');
 
 
 

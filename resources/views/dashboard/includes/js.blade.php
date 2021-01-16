@@ -2,6 +2,12 @@
 <script src="/dashboard/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
+    
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+
 
   <script type="text/javascript" src="/dashboard/app-assets/vendors/js/ui/jquery.sticky.js"></script>
   <script type="text/javascript" src="/dashboard/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
@@ -28,8 +34,8 @@
   <script type="text/javascript" src="/dashboard/app-assets/js/scripts/ui/breadcrumbs-with-stats.js"></script>
   <script src="/dashboard/app-assets/js/scripts/pages/dashboard-analytics.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
-
   
+
 
 
 

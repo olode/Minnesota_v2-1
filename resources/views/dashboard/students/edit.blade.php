@@ -1,5 +1,6 @@
 @extends('dashboard.layouts.master')
 
+
 @section('content')
 
  <!-- Basic form layout section start -->
@@ -27,8 +28,16 @@
                     <form action="{{ route('student.update', $student->id) }}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                       @method('PUT')
                         @csrf
+
+                        @if (session()->has('success'))
+                            <div class="alert alert-success text-center" style="font-size: 22px; margin-top: 30px;">
+                                {{session()->get('success')}}
+                            </div>
+                        @endif
                       <div class="form-body">
+                        
                         <h4 class="form-section"><i class="ft-user"></i> معلومات شخصية</h4>
+
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
@@ -183,6 +192,16 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">استعادة كلمة المرور</label>
+                          
+                          <div class="col-md-9">
+                              <a href="{{ route('password.reset1', $student->id) }}" class="form-control btn btn-danger" style=" color:white; font-size: 15px; font-weight: bold; ">استعادة</a>
+                          </div>
+                          
+                        </div>
+
+
+                        <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
                           <div class="col-md-9">
                             <input type="text" value="{{ $student->location }}"  id="projectinput3" class="form-control" placeholder="العنوان" 
@@ -275,6 +294,8 @@
           </div>
           </section>
 @endsection
+ 
 @section('js')
+
 <script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
 @endsection
