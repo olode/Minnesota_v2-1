@@ -32,7 +32,7 @@
                     @foreach($semester->classes as $class)
                       <tr>{{--$class->material--}}
                         <td>{{$class->material->name}}</td>
-                        <td>{{'تم او لم يتم'}}</td>
+                        <td>{{'قريباً'}}</td>
                         <td>{{$class->material->optional == 1 ? "اختياري" : "الزامي"}}
                             @if($class->material->requirement != 0)
                               <span class="badge badge-default badge-pill bg-primary float-right"> {{$class->material->required->name}} </span>
