@@ -30,7 +30,9 @@
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
+                        
                       </fieldset>
+                      <br>
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="password" class="form-control form-control-lg input-lg" id="user-password"
                         name="password" placeholder="أدخل كلمة المرور" required>
@@ -38,6 +40,11 @@
                           <i class="fa fa-key"></i>
                         </div>
                       </fieldset>
+                      @if ($errors->any())
+                          <div class="">
+                              <p class="text-center " style=" color:#de7e7e; font-weight: bold; "> تحقق من الرقم التعريفي أو كلمة المرور  </p>
+                          </div>
+                      @endif
                       {{--  <div class="form-group row">
                         <div class="col-md-6 col-12 text-center text-md-left">
                           <fieldset>

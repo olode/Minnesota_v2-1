@@ -15,8 +15,10 @@
 //     return view('welcome');
 // });
 
-Route::resource('/', 'Frontend\StudentController');
 
+Route::group(['middleware' => 'preventBackHistory'], function()
+{
+    
 
 Route::get('c-panel', 'HomeController@index')->name('c-panel');
 
@@ -90,6 +92,9 @@ Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->nam
 
 
 
+
+});
+Route::resource('/', 'Frontend\StudentController');
 
 
 
