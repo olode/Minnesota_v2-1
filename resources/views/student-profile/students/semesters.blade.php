@@ -13,8 +13,9 @@
 
 
 
-  <div class="col-xl-2 col-md-2 col-sm-2">
-      @foreach($student->student_classes->unique('semester_id') as $class)      
+  {{--<div class="col-xl-2 col-md-2 col-sm-2">
+
+      @foreach($student->student_classes->unique('semester_id')->sortByDesc('semester_id') as $class)      
         <a href="{{route('student-semester-materials', $class->semester->id)}}">
           <div class="card">
             <div class="card-content">
@@ -28,9 +29,9 @@
       @endforeach
 
   </div>
+--}}
 
-
-  <div class="col-xl-10 col-md-10 col-sm-10">
+  <div class="col-xl-12 col-md-12 col-sm-12">
       <div class="card">
         <div class="card-content">
           <div class="card-body">
@@ -47,7 +48,7 @@
                         <div class="card shadow-lg  border">
                           <div class="card-content">
                             <div class="card-body">
-                              <p class="card-text"> {{$semester_material->class->material->name}}</p>
+                              <p class="card-text text-center"> {{$semester_material->class->material->name}}</p>
                             </div>
                           </div>
                         </div>
@@ -261,6 +262,27 @@
   
 
   
+    <div class="col-xl-12 col-md-12 col-sm-12">
+      <div class="row justify-content-center">
+      @foreach($student->student_classes->unique('semester_id')->sortByDesc('semester_id') as $class)  
+        <div class="col-xl-3 col-md-3 col-sm-3">
+          <h5>    
+            <a href="{{route('student-semester-materials', $class->semester->id)}}">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <p class="card-text text-center">{{$class->semester->title}}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </h5>
+        </div>
+      @endforeach
+      </div>
+    </div>
+
+
 </div>
 
 
