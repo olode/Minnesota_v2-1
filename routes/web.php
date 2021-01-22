@@ -86,6 +86,8 @@ Route::get('get-master-ata', 'General@get_master_data');
 Route::get('get-phd-data', 'General@get_phd_data');
 // ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
 Route::get('get-student-data', 'General@get_student_data');
+Route::get('material-assign/{materialtable}', 'General@material_assing');
+Route::get('material-clean-duplicate-names/{materialTable}', 'General@clean_duplicate_names');
 
 
 Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->name('password.reset1');

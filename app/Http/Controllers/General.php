@@ -46,9 +46,9 @@ class General extends Controller
         $student->save();
        }
 
-    }
+   }
 
-    public function  get_master_data(){
+   public function  get_master_data(){
         set_time_limit(0);
            $bc_datas =   DB::table('master_data')->get();
           
@@ -83,10 +83,9 @@ class General extends Controller
             $student->save();
            }
     
-        }
+   }
 
-
-        public function  get_phd_data(){
+   public function  get_phd_data(){
             set_time_limit(0);
                $bc_datas =   DB::table('PHD_data')->get();
               
@@ -123,12 +122,11 @@ class General extends Controller
 
                
         
-            }
+   }
 
-
-            public function get_student_data(Request $request){
+   public function get_student_data(Request $request){
                set_time_limit(0);
-// ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
+               // ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
                $table = $request->table;
                
 
@@ -184,5 +182,137 @@ class General extends Controller
                }
               
                   
+   }
+
+   public function material_assing(Request $request, $table){
+      // url
+      // /material-assign/{table_name}?class_id=7&semester_id=8&year_id=2
+      $materials = DB::table($table)->get();
+      $counter= 1;
+      $missing = 1;
+      foreach($materials as $material){
+
+         $students = DB::table('students')->Where('special_student_id', $material->id_number)->get();
+
+
+         if($students->all() != []){
+
+            foreach ($students as $student) {
+               if($material->id_number == $student->special_student_id){
+                  echo "++++++++";
+                  echo "<br>";
+                  echo $counter++;
+                  echo "<br>";
+                  echo $student->special_student_id;
+                  echo "<br>";
+                  echo $material->id_number;
+                  echo "<br>";
+                  echo $student->first_name." ".$student->second_name." ".$student->third_name." ".$student->last_name;
+                  echo "<br>";
+                  echo $material->name;
+                  echo "<br>";
+                  echo "++++++++";
+                  echo "<br>";
+                  echo "<br>";
+                  
+
+                   DB::table('student_calsses')->insert([
+                     'semester_id' => $request->semester_id,
+                     'student_id' => $student->id,
+                     'class_id' => $request->class_id,
+                     'year_id' => $request->year_id
+                 ]);
+   
+
+               }
+              
+             
             }
+
+         }else{
+        
+
+            
+            echo "<h1 style='color:red'>"."++++++++"." </h1>";
+             
+            echo "<h3 style='color:red'>".$missing++." </h3>";
+            echo "<br>";
+
+            echo "<h3 style='color:red'>".$material->id_number." </h3>";
+            echo "<br>";
+            echo "<h3 style='color:red'>".$material->name." </h3>";
+            echo "<h1 style='color:red'>"."++++++++"." </h1>";
+
+            echo "<br>";
+         }
+        
+      }
+   }
+
+   public function clean_duplicate_names($table){
+     
+      $materials = DB::table($table)->get();
+      $counter= 1;
+      $missing = 1;
+      foreach($materials as $material){
+
+         $students = DB::table('students')->Where('special_student_id', $material->id_number)->get();
+
+
+         if($students->all() != []){
+            $delet_counter = 1;
+
+            foreach ($students as $student) {
+               if($material->id_number == $student->special_student_id){
+                  echo "++++++++";
+                  echo "<br>";
+                  echo $counter++;
+                  echo "<br>";
+                  echo $student->special_student_id;
+                  echo "<br>";
+                  echo $material->id_number;
+                  echo "<br>";
+                  echo $student->first_name." ".$student->second_name." ".$student->third_name." ".$student->last_name;
+                  echo "<br>";
+                  echo $material->name;
+                  echo "<br>";
+                  echo "++++++++";
+                  echo "<br>";
+                  echo "<br>";
+                
+
+               }
+              
+
+
+               if($delet_counter != 1){
+                  
+                  echo "<h1>NO".$delet_counter." NEED</h1>";
+                  DB::table('students')->Where('special_student_id',$student->special_student_id)->delete();
+                  continue;
+               }
+               $delet_counter++;
+               
+             
+            }
+
+         }else{
+        
+
+            
+            echo "<h1 style='color:red'>"."++++++++"." </h1>";
+             
+            echo "<h3 style='color:red'>".$missing++." </h3>";
+            echo "<br>";
+
+            echo "<h3 style='color:red'>".$material->id_number." </h3>";
+            echo "<br>";
+            echo "<h3 style='color:red'>".$material->name." </h3>";
+            echo "<h1 style='color:red'>"."++++++++"." </h1>";
+
+            echo "<br>";
+         }
+        
+      }
+   }
 }
