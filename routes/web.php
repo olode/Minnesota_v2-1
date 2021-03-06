@@ -88,6 +88,8 @@ Route::get('get-phd-data', 'General@get_phd_data');
 Route::get('get-student-data', 'General@get_student_data');
 Route::get('material-assign/{materialtable}', 'General@material_assing');
 Route::get('material-clean-duplicate-names/{materialTable}', 'General@clean_duplicate_names');
+Route::get('set-pass-key/{table_name}', 'General@set_pass_key');
+
 
 
 Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->name('password.reset1');
@@ -241,32 +243,6 @@ Route::post('get-students-to-attendance', 'TeacherProfile\TeacherAjaxController@
 Route::post('follow-up-homework-students', 'TeacherProfile\TeacherAjaxController@getHomeworkStudents')->name('follow-up-homework-students');
 Route::post('follow-up-quizze-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForQuizze')->name('follow-up-quizze-students');
 Route::post('follow-up-finalexam-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForFinalExam')->name('follow-up-finalexam-students');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

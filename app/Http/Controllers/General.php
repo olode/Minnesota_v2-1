@@ -315,4 +315,28 @@ class General extends Controller
         
       }
    }
+
+
+   public function set_pass_key($table){
+
+      $counter = 1;
+      $values = DB::table($table)->get();
+
+      foreach($values as $value){
+
+
+         echo $counter++;
+         echo "<br>";
+         echo $value->id_number;
+         echo "<br>";
+         echo $value->name;
+         echo "<br>";
+
+      DB::table('students')
+      ->where('special_student_id', $value->id_number)
+      ->update([
+         'email' => $value->email,
+         'password' => Hash::make($value->phone)]);
+      }
+   }
 }
