@@ -140,7 +140,7 @@ class StudentClassController extends Controller
 
   public function getAjaxStudentClass($class_id)
    {
-       $students = StudentClass::with(['student:id,first_name,second_name,last_name'])->Where('class_id', $class_id)->get()->unique('student_id');
+       $students = StudentClass::with(['student:id,first_name,second_name,third_name,last_name'])->Where('class_id', $class_id)->get()->unique('student_id');
  
        if($students == null){
  

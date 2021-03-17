@@ -129,7 +129,7 @@ $("#branch").change(function(){
           $("#student").append('<option > اختر </option>');
   
           $.each(data.students,function(key, val){
-            $("#student").append('<option value='+val.id+' >' + val.first_name + ' '  + val.second_name + ' '  + val.last_name + '</option>');
+            $("#student").append('<option value='+val.id+' >' + val.first_name + ' '  + val.second_name + ' '  + val.third_name + ' '  + val.last_name + '</option>');
           });
   
       }

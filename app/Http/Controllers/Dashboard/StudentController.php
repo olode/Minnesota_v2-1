@@ -331,7 +331,7 @@ class StudentController extends Controller
 
     public function getAjaxStudent($specialization_id)
    {
-       $students = Student::Select('id', 'first_name', 'second_name', 'last_name')->Where('specialization_id', $specialization_id)->get();
+       $students = Student::Select('id', 'first_name', 'second_name','third_name', 'last_name')->Where('specialization_id', $specialization_id)->get();
  
        if($students == null){
  
