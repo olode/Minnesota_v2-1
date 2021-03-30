@@ -45,14 +45,15 @@ class FinalExamController extends Controller
    */
   public function store(Request $request)
   {
+ 
     
     $request->validate([
-      'class_id'          => ['required', 'integer', 'max:10'],
+      'class_id'          => ['required', 'integer'],
       'date'              => ['required', 'date', 'max:20'],
       'title'             => ['required', 'string', 'max:50'],
       'full_mark'         => ['required', 'integer', 'max:255'],
   ]);
-  // dd($request->all());
+  
   FinalExam::create($request->all());
     return redirect('/finalexam');
   }
