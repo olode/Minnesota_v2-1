@@ -90,6 +90,11 @@ Route::get('material-assign/{materialtable}', 'General@material_assing');
 Route::get('material-clean-duplicate-names/{materialTable}', 'General@clean_duplicate_names');
 Route::get('set-pass-key/{table_name}', 'General@set_pass_key');
 
+Route::get('set-final-exsam-marks/{table}', 'General@set_final_exsam_marks');
+
+
+
+
 
 
 Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->name('password.reset1');

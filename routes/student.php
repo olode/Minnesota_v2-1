@@ -1,5 +1,9 @@
 <?php 
 
+Route::group(['middleware' => 'preventBackHistory'], function()
+{
+    
+
 Route::get('student-login',function(){
 
     return view('student-profile.user.login');
@@ -16,3 +20,4 @@ Route::get('student-shwo-marks','StudentProfile\StudentController@studentShowMar
 Route::get('student-shwo-materials','StudentProfile\StudentController@studentShowMaterials')->name('student-shwo-materials');
 
 
+});

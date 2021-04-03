@@ -339,4 +339,28 @@ class General extends Controller
          'password' => Hash::make($value->phone)]);
       }
    }
+
+
+
+   // set-final-exsam-marks/marks_material_social?exam_id=
+   public function set_final_exsam_marks(Request $request, $table){
+
+      $values = DB::table($table)->get();
+      $students = Student::WhereIn('special_student_id',$values->pluck('id_number'))->get();
+
+      foreach($students as $student){
+
+         $values = DB::table('follow_up_final_exams')->insert(['student_id'=>$student->id,
+                                                               'mark'=>100,
+                                                               'final_exam_id'=>$request->exam_id
+
+         ]);
+
+      }
+
+         
+       
+      
+
+   }
 }
