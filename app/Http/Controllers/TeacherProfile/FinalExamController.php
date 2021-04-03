@@ -22,7 +22,8 @@ class FinalExamController extends Controller
    */
   public function index()
   {
-    $finalexams    = FinalExam::all();
+   
+    $finalexams = ClassInfo::where('teacher_id', Auth::user()->id)->get();
     return view('teacher-profile.final_exams.index', compact('finalexams'));
   }
 

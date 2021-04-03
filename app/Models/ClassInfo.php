@@ -51,6 +51,12 @@ class ClassInfo extends Model
     }
 
 
+    public function final_exams()
+    {
+        return $this->hasMany('App\Models\FinalExam','class_id');
+    }
+
+
     
 
 }
