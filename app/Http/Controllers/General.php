@@ -349,12 +349,31 @@ class General extends Controller
       $students = Student::WhereIn('special_student_id',$values->pluck('id_number'))->get();
 
       foreach($students as $student){
+         foreach($values as $value) {
 
-         $values = DB::table('follow_up_final_exams')->insert(['student_id'=>$student->id,
-                                                               'mark'=>100,
-                                                               'final_exam_id'=>$request->exam_id
+            if($student->special_student_id == $value->id_number){
 
-         ]);
+                DB::table('follow_up_final_exams')->insert(['student_id'=>$student->id,
+                                                                     'mark'=>$value->final_mark,
+                                                                     'final_exam_id'=>$request->exam_id]);
+            }
+            
+
+
+         }
+
+         
+
+      // $values = DB::table($table)->get();
+      // $students = Student::WhereIn('special_student_id',$values->pluck('id_number'))->get();
+
+      // foreach($students as $student){
+
+      //    $values = DB::table('follow_up_final_exams')->insert(['student_id'=>$student->id,
+      //                                                          'mark'=>100,
+      //                                                          'final_exam_id'=>$request->exam_id
+
+      //    ]);
 
       }
 
