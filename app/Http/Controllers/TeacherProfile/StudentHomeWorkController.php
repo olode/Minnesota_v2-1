@@ -49,14 +49,14 @@ class StudentHomeWorkController extends Controller
     {
         
         $request->validate([
-            'stage_id'             => ['required', 'integer', 'max:10'],
-            'section_id'           => ['required', 'integer', 'max:10'],
-            'class_id'             => ['required', 'integer', 'max:10'],
-            'lecture_id'           => ['required', 'integer', 'max:255'],
-            'due_date'             => ['required', 'date', 'max:255'],
-            'title'                => ['required', 'string', 'max:200'],
-            'info'                 => ['required'],
-            'full_mark'            => ['required', 'integer', 'max:255'],
+            'stage_id'=> ['required', 'integer'],
+            'section_id'=> ['required', 'integer'],
+            'class_id'=> ['required', 'integer'],
+            'lecture_id'=> ['required', 'integer'],
+            'due_date'=> ['required'],
+            'title'=> ['required', 'string', 'max:200'],
+            'info'=> ['required'],
+            'full_mark'=> ['required', 'integer'],
         ]);
 
         $teacherId          =   Auth::guard('teacher')->user()->id;

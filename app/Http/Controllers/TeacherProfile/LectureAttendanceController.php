@@ -56,13 +56,13 @@ class LectureAttendanceController extends Controller
     {
         //dd($request->all());
         $request->validate([
-            'class_id'                      => ['required', 'integer', 'max:255'],
-            'article_arrangement'           => ['required', 'string', 'max:255'],
-            'article_arrangement_number'    => ['required', 'integer', 'max:255'],
-            'date'                          => ['required', 'date', 'max:255'],
-            'title'                         => ['required', 'string', 'max:255'],
-            'full_mark'                     => ['required', 'integer', 'max:255'],
-            'about'                         => ['required'],
+            'class_id'=> ['required', 'integer', 'max:255'],
+            'article_arrangement'=> ['required', 'string', 'max:255'],
+            'article_arrangement_number'=> ['required', 'integer', 'max:255'],
+            'date'=> ['required', 'date', 'max:255'],
+            'title'=> ['required', 'string', 'max:255'],
+            'full_mark'=> ['required', 'integer', 'max:255'],
+            'about'=> ['nullable'],
         ]);
         
         $aboutneme = '';
@@ -76,13 +76,13 @@ class LectureAttendanceController extends Controller
 
         //dd($request->all());
         Lecture::create([
-            'class_id'                      => $request['class_id'],
-            'article_arrangement'           => $request['article_arrangement'],
-            'article_arrangement_number'    => $request['article_arrangement_number'],
-            'date'                          => $request['date'],
-            'title'                         => $request['title'],
-            'full_mark'                     => $request['full_mark'],
-            'about'                         => $aboutneme,
+            'class_id'=> $request['class_id'],
+            'article_arrangement'=> $request['article_arrangement'],
+            'article_arrangement_number'=> $request['article_arrangement_number'],
+            'date'=> $request['date'],
+            'title'=> $request['title'],
+            'full_mark'=> $request['full_mark'],
+            'about'=> $aboutneme,
         ]);
         return redirect('/lectures');
     }
