@@ -100,10 +100,25 @@ class FollowUpHomeworkController extends Controller
   public function markUpdate(Request $request, $id)
   {
     // dd($request->all());
-    $homework = FollowUpHomework::findOrfail($id);
-    $homework->update($request->all());
-    
-    return redirect('/follow-up-homework');
+    $homework = FollowUpHomework::Where('student_id', $id)->Where('homework_id', $request->homework_id)->first();
+    if($homework == null){
+
+      FollowUpHomework::create([
+        'student_id' => $id,
+        'homework_id' => $request->homework_id,
+        'mark' => $request->mark,
+      ]);
+
+    }elseif($homework){
+
+      $homework->student_id = $id;
+      $homework->homework_id = $request->homework_id;
+      $homework->mark = $request->mark;
+      $homework->save() ;
+    }
+
+    $new_mark = $request->mark;
+    return \compact('new_mark');
   }
   
 }

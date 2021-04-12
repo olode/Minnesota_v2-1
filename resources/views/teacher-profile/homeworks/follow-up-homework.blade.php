@@ -107,28 +107,44 @@
                       <thead>
                         <tr>
                           <th>اسم الطالب</th>
+                          <th>الرقم الجامعي</th>
                           <th>عنوان التكليف</th>
-                          <th>اسم الصف</th>
+                          <th>المادة </th>
                           <th>التكليف</th>
-                          <th>الدرجة</th>
-                          <th>التنفيذ</th>
+                          <th>الدرجة المرصودة</th>
+                          <th>رصد الدرجة</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach ($students as $student)
                           <tr>
-                            <td>{{ $student['student']->first_name }} {{ $student['student']->second_name }} {{ $student['student']->last_name }}</td>
-                            <td>{{ $student->homework_id }}</td>
-                            <td>{{ $student->homework_id }}</td>
+                            <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->last_name }}</td>
+                            <td>{{ $student->special_student_id }}</td>
+                            <td>{{ $home_work_title }}</td>
+                            <td>{{$student->class_name}}</td>
                             <td><button class="btn btn-primary">تحميل التكليف</button></td>
-                            <td>{{ $student->mark }}</td>
+                            <td id="{{$student->id}}newMark">
+
+
+                              @foreach($student->homeworks as $mark)
+                                @if($mark->homework_id == $homework_id)
+                                
+                                {{ $mark->mark }}
+
+                                @endif
+                              @endforeach
+                               
+                            </td>
                             <td>
-                              <form action="{{ route('homework-mark-update', $student->id) }}" method="post">
-                                @method('PUT')
+                              <form id="form" action="{{ route('homework-mark-update', $student->id) }}" method="post">
+                                @method('post')
                                 @csrf
                               <div class="row">
                                   <div class="col-md-6">
-                                    <input class="form-control" type="text" name="mark" >
+                                    <input id="{{$student->id}}marks"  class="form-control" type="text" name="mark" >
+                                    <input value="{{$student->id}}"  class="form-control" type="text" name="stuId" hidden>
+                                    
+                                    <input class="form-control" value="{{$homework_id}}" type="text" name="homework_id" hidden >
                                   </div>
                                   <div class="col-md-6">
                                     <button type="submit" class="btn btn-success">حفظ</button>                         
@@ -143,11 +159,12 @@
                       <tfoot>
                       <tr>
                         <th>اسم الطالب</th>
+                        <th>الرقم الجامعي</th>
                         <th>عنوان التكليف</th>
-                        <th>اسم الصف</th>
+                        <th>المادة</th>
                         <th>التكليف</th>
-                        <th>الدرجة</th>
-                        <th>التنفيذ</th>
+                        <th>الدرجة المرصودة</th>
+                        <th>رصد الدرجة</th>
                       </tr>
                       </tfoot>
                     </table>
@@ -168,6 +185,50 @@
           
         </div>
       </div>
+
+
+<script>
+
+  $(document).on('submit','#form',function(event){
+
+    event.preventDefault();
+    var form = $(this);
+    var fors = form.serialize()
+    var spl = fors.split("&")
+    var splMark = spl[2].split("=")
+    var splStuId = spl[3].split("=")
+
+    
+
+    if(splMark[1] == ""){
+
+      $('#'+splStuId[1]+'marks').css('border-color', 'red'); 
+
+    }else{
+
+
+      $.ajax({
+          type: form.attr('method'),
+          url: form.attr('action'),
+          data: form.serialize()
+        }).done(function(data) {
+          // stu_status = $('#'+data.stu_id+'attendance').text(data.status)
+          $('#'+splStuId[1]+'marks').css('border-color', '#D4D4D4')
+          $('#'+splStuId[1]+'marks').val('')
+          $('#'+splStuId[1]+'newMark').text(data.new_mark)
+          // Optionally alert the user of success here...
+          // console.log(data);
+        }).fail(function(data) {
+          // Optionally alert the user of an error here...
+        });
+
+
+    }
+
+    
+  });
+</script>
+
 
 <script>
   $("#stage").change(function(){
@@ -304,5 +365,7 @@
           });
           });
 </script>
+
+
 
 @endsection

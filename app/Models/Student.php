@@ -37,6 +37,11 @@ class Student extends Authenticatable
         return $this->hasMany('App\Models\StudentClass');
     }
 
+    public function homeworks()
+    {
+        return $this->hasMany('App\Models\FollowUpHomework');
+    }
+
 
 
 }

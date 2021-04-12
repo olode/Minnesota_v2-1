@@ -382,4 +382,46 @@ class General extends Controller
       
 
    }
+
+
+   public function clean_duplicate_student_class(){
+
+      $values = DB::table('student_calsses')->select('semester_id', 'student_id', 'class_id')->distinct()->get();
+
+      foreach($values as $value){
+
+        $duplcated_classes =  DB::table('student_calsses')->Where('semester_id', $value->semester_id)
+                                       ->Where('student_id', $value->student_id)
+                                       ->Where('class_id', $value->class_id)->get();
+
+                                       
+         if($duplcated_classes->count() != 1){
+
+            
+            $counter = 1;
+            foreach($duplcated_classes as $duplcated_classe){
+  
+               if($counter == 1){
+                     echo  $counter;
+                     echo  "<br>";
+                     echo  $duplcated_classe->id;
+                     echo  "<br>";
+                     echo  $duplcated_classe->student_id;
+                     echo  "<hr>";
+                  DB::table('student_calsses')->where('id', '=', $duplcated_classe->id)->where('created_at', '!=', null)->delete();
+               }
+
+
+               
+               $counter++;
+               
+
+            }
+
+         }
+
+         
+      }
+      
+   }
 }

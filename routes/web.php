@@ -92,6 +92,7 @@ Route::get('set-pass-key/{table_name}', 'General@set_pass_key');
 
 Route::get('set-final-exsam-marks/{table}', 'General@set_final_exsam_marks');
 
+Route::get('clean-duplicate-student-class', 'General@clean_duplicate_student_class');
 
 
 
@@ -137,7 +138,7 @@ Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')
 Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMarks')->name('add-final-exam-marks');
 
 Route::resource('follow-up-homework','TeacherProfile\FollowUpHomeworkController');
-Route::put('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkController@markUpdate')->name('homework-mark-update');
+Route::post('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkController@markUpdate')->name('homework-mark-update');
 
 Route::post('preparation-student', 'TeacherProfile\LectureAttendanceController@preparation')->name('preparation');
 
