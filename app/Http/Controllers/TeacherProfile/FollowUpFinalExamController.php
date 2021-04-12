@@ -46,16 +46,24 @@ class FollowUpFinalExamController extends Controller
    */
   public function store(Request $request)
   {
+
     $request->validate([
-      'final_exam_id'      => ['required', 'integer', 'max:20'],
-      'student_id'         => ['required', 'integer', 'max:30'],
-      'status'             => ['required', 'integer', 'max:2'],
-      'mark'               => ['required', 'integer', 'max:255'],
+      'final_exam_id'=> ['required', 'integer'],
+      'student_id'=> ['required', 'integer'],
+      'status'=> ['integer'],
+      'mark'=> ['required', 'integer'],
   ]);
+
+
+
+
+  $new_mark = $request->mark;
+
   
-  $checkMark      = FinalExam::findOrfail($request->final_exam_id);
+  $checkMark= FinalExam::findOrfail($request->final_exam_id);
   // dd($checkMark->full_mark);
   if ($request->mark <= $checkMark->full_mark) {
+
     $studentCheck   = FollowUpFinalExam::where([
 
       ['final_exam_id', '=', $request->final_exam_id],
@@ -65,22 +73,27 @@ class FollowUpFinalExamController extends Controller
     
     if (empty($studentCheck)) {
   
-      FollowUpFinalExam::create($request->all());
-      return redirect('/followupfinalexam');
+      FollowUpFinalExam::create(['student_id'=>$request->student_id,'mark'=>$request->mark,'final_exam_id'=>$request->final_exam_id]);
+      return \compact('new_mark');
   
     } elseif (!empty($studentCheck)) {
   
-      $followupfinalexam = FollowUpFinalExam::findOrfail($studentCheck->id);
-      $followupfinalexam->update($request->all());
-          
-      return redirect('/followupfinalexam');
+      $studentCheck->mark = $request->mark; 
+      $studentCheck->save();
+
+      
+      
+      return \compact('new_mark');
+
     }
   }else{
 
-    return redirect('/followupfinalexam')->with('alert', 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار');
+      $new_mark = 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار';
+      return \compact('new_mark');
 
+      
   }
-  
+
 }
 
   /**

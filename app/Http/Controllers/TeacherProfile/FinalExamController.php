@@ -49,10 +49,10 @@ class FinalExamController extends Controller
  
     
     $request->validate([
-      'class_id'          => ['required', 'integer'],
-      'date'              => ['required', 'date', 'max:20'],
-      'title'             => ['required', 'string', 'max:50'],
-      'full_mark'         => ['required', 'integer', 'max:255'],
+      'class_id'=> ['required', 'integer'],
+      'date'=> ['required', 'string'],
+      'title'=> ['required', 'string'],
+      'full_mark'=> ['required', 'integer'],
   ]);
   
   FinalExam::create($request->all());

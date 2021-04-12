@@ -412,16 +412,14 @@ class TeacherAjaxController extends Controller
             'final_exam_id' => ['required', 'integer'],
         ]);
 
-        $final_exam_id   = $request->final_exam_id;
-        
-
+        $final_exam_id   = (int)$request->final_exam_id;
+     
         $array = [];
-        $students = DB::table('view_student_classes')->where($array);
+        // $students = DB::table('view_student_classes')->where($array);
+        $students =  ViewStudentClasse::With(['final_exams'])->where($array);
+
         foreach ($request->all() as $key => $value) {
             if ($key === '_token') {
-                continue;
-            }
-            if ($key === 'class_id') {
                 continue;
             }
             if ($key === 'final_exam_id') {
@@ -431,11 +429,12 @@ class TeacherAjaxController extends Controller
         }
         
         $students = $students->get();
-        // dd($students);
+   
+        
         $teacherId = Auth::guard('teacher')->user()->id;
         $classes= ClassInfo::where('teacher_id', $teacherId)->get();
-        $followupfinalexams = FollowUpFinalExam::all();
-        return view('teacher-profile.final_exams.follow-up-finalexam', compact('students', 'classes', 'final_exam_id', 'followupfinalexams'));
+        // $followupfinalexams = FollowUpFinalExam::all();
+        return view('teacher-profile.final_exams.follow-up-finalexam', compact('students', 'classes', 'final_exam_id'));
        
     }
 

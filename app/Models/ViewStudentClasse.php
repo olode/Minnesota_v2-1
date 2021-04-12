@@ -17,4 +17,9 @@ class ViewStudentClasse extends Model
         return $this->hasMany('App\Models\FollowUpHomework', 'student_id');
     }
 
+    public function final_exams()
+    {
+        return $this->hasMany('App\Models\FollowUpFinalExam', 'student_id');
+    }
+
 }
