@@ -204,7 +204,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('follow_up_quizzes', function(Blueprint $table) {
-			$table->foreign('student_id')->references('id')->on('quizzes')
+			$table->foreign('student_id')->references('id')->on('students')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});

@@ -369,12 +369,10 @@ class TeacherAjaxController extends Controller
         
 
         $array = [];
-        $students = DB::table('view_student_classes')->where($array);
+        // $students = DB::table('view_student_classes')->where($array);
+        $students =  ViewStudentClasse::With(['quizzes'])->where($array);
         foreach ($request->all() as $key => $value) {
             if ($key === '_token') {
-                continue;
-            }
-            if ($key === 'class_id') {
                 continue;
             }
             if ($key === 'quizze_id') {
@@ -387,8 +385,8 @@ class TeacherAjaxController extends Controller
         // dd($students);
         $teacherId = Auth::guard('teacher')->user()->id;
         $classes = ClassInfo::where('teacher_id', $teacherId)->get();
-        $followUpQuizzes = FollowUpQuizze::all();
-        return view('teacher-profile.quizzes.follow-up-quizzes', compact('students', 'classes', 'quizze_id', 'followUpQuizzes'));
+        $quizze = Quizze::Find($quizze_id);
+        return view('teacher-profile.quizzes.follow-up-quizzes', compact('students', 'classes', 'quizze'));
        
     }
 

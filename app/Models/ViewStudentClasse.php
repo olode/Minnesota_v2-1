@@ -22,4 +22,11 @@ class ViewStudentClasse extends Model
         return $this->hasMany('App\Models\FollowUpFinalExam', 'student_id');
     }
 
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\FollowUpQuizze', 'student_id');
+    }
+
+    
+
 }

@@ -46,14 +46,20 @@ class FollowUpQuizzeController extends Controller
    */
   public function store(Request $request)
   {
+ 
     $request->validate([
-      'quizze_id'          => ['required', 'integer', 'max:20'],
-      'student_id'         => ['required', 'integer', 'max:30'],
-      'status'             => ['required', 'integer', 'max:2'],
-      'mark'               => ['required', 'integer', 'max:255'],
+      'quizze_id'=> ['required'],
+      'student_id'=> ['required', 'integer'],
+      'status'=> ['integer'],
+      'mark'=> ['required', 'integer'],
   ]);
-  $checkMark      = Quizze::findOrfail($request->quizze_id);
-      
+
+  $new_mark = $request->mark;
+
+  
+   
+  $checkMark= Quizze::findOrfail($request->quizze_id);
+
   if ($request->mark <= $checkMark->full_mark) {
     
     $studentCheck   = FollowUpQuizze::where([
@@ -63,21 +69,34 @@ class FollowUpQuizzeController extends Controller
   
     ])->first();
     
+
     if (empty($studentCheck)) {
-  
-      FollowUpQuizze::create($request->all());
-      return redirect('/followupquizze');
+      
+      FollowUpQuizze::create([
+        'quizze_id'=> $request->quizze_id,
+        'status'=> $request->status,
+        'mark'=> $request->mark,
+        'student_id'=> (int)$request->student_id]);
+
+      return compact('new_mark');
   
     } elseif (!empty($studentCheck)) {
+   
   
-      $quizze = FollowUpQuizze::findOrfail($studentCheck->id);
-      $quizze->update($request->all());
-          
-      return redirect('/followupquizze');
+      $studentCheck->student_id = $request->student_id;
+      $studentCheck->quizze_id = $request->quizze_id;
+      $studentCheck->mark = $request->mark;
+      $studentCheck->save();
+
+      return compact('new_mark');
   
     }
+
+
   } else {
-    return redirect('/followupquizze')->with('alert', 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار');
+    $new_mark = 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار';
+    return compact('new_mark');
+    // return redirect('/followupquizze')->with('alert', 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار');
   }
   
 

@@ -168,7 +168,7 @@
         </div>
       </div>
 
-      <script>
+<script>
 
   $(document).on('submit','#form',function(event){
 
