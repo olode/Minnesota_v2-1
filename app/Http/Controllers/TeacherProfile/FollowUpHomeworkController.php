@@ -4,6 +4,7 @@ namespace App\Http\Controllers\TeacherProfile;
 
 use App\Http\Controllers\Controller;
 use App\Models\FollowUpHomework;
+use App\Models\Homework;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -100,6 +101,12 @@ class FollowUpHomeworkController extends Controller
   public function markUpdate(Request $request, $id)
   {
     // dd($request->all());
+
+    $homework= Homework::findOrfail($request->homework_id);
+
+    if ($request->mark <= $homework->full_mark) {
+    
+      
     $homework = FollowUpHomework::Where('student_id', $id)->Where('homework_id', $request->homework_id)->first();
     if($homework == null){
 
@@ -119,7 +126,11 @@ class FollowUpHomeworkController extends Controller
 
     $new_mark = $request->mark;
     return \compact('new_mark');
+  }else{
+    $new_mark = 'الدرجة المراد تعيينها اكبر من الدرجة المعينة للإختبار';
+    return compact('new_mark');
   }
+}
   
 }
 
