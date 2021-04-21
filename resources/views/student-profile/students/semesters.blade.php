@@ -229,8 +229,11 @@
                               </tr>
                             </thead>
                             <tr>
-                                <td style="width:30%" scope="col">{{ array_sum($total_marks) }}</td>
+                            @if($total_marks)
+                            <td style="width:30%" scope="col">{{ array_sum($total_marks) }}</td>
                                 <td scope="col">{{Greades::mark_code(array_sum($total_marks))}}</td>
+                            @endif
+                                
                               </tr>
                             <tbody>
                             </tbody>
@@ -243,7 +246,11 @@
                         </div>
                       </div>
                     </div>
+                    <?php
+                      $total_marks = [];
+                    ?>
                   @endforeach
+                   
 
                   </div>
         @elseif($semester_materials == "")
@@ -264,7 +271,8 @@
   
     <div class="col-xl-12 col-md-12 col-sm-12">
       <div class="row justify-content-center">
-      @foreach($student->student_classes->unique('semester_id')->sortByDesc('semester_id') as $class)  
+     
+      @foreach($student->student_classes->unique('semester_id') as $class)  
         <div class="col-xl-3 col-md-3 col-sm-3">
           <h5>    
             <a href="{{route('student-semester-materials', $class->semester->id)}}">

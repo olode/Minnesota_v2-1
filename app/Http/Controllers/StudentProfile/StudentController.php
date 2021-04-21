@@ -62,9 +62,12 @@ class StudentController extends Controller
 
     public function studentSemesterMaterials($semester)
     {
+
         $total_marks =[];
         $student = Student::with(['student_classes'])->Find(Auth::user()->id);
-        $semester_materials = StudentClass::with(['lectures.home_work.follow_up_home_work','quizzes', 'final_exams'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
+        $semester_materials = StudentClass::with(['lectures.home_work.follow_up_home_work','quizzes', 'final_exams'])
+                                          ->Where('student_id', Auth::user()->id)
+                                          ->Where('semester_id', $semester)->get();
         return view('student-profile.students.semesters',compact('student', 'semester_materials', 'total_marks'));
 
 
