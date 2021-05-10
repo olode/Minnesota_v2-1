@@ -22,7 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('specialization.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة التخصصات</i></a> 
                     </div>
                     <form action="{{ route('specialization.update', $special->id) }}" method="POST" class="form form-horizontal form-bordered">
                       @method('PUT')
@@ -39,6 +39,9 @@
                                   @endforeach
                                 </select>
                               </div>
+                                @if($errors->first('branch_id'))
+                                  <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -51,6 +54,9 @@
                                   @endforeach
                                 </select>
                               </div>
+                                @if($errors->first('total_hours'))
+                                  <div style="color:red;">{{$errors->first('total_hours')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -64,6 +70,9 @@
                                   @endforeach
                                 </select>
                               </div>
+                                @if($errors->first('section_id'))
+                                  <div style="color:red;">{{$errors->first('section_id')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -71,6 +80,9 @@
                             <div class="col-md-9">
                               <input type="text" value="{{ $special->name }}" id="projectinput1" class="form-control" placeholder="اسم التخصص"
                               name="name">
+                                @if($errors->first('name'))
+                                  <div style="color:red;">{{$errors->first('name')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -78,6 +90,9 @@
                             <div class="col-md-9">
                               <input type="text" value="{{ $special->info }}"  id="projectinput2" class="form-control" placeholder="نبذة عن التخصص"
                               name="info">
+                                @if($errors->first('info'))
+                                  <div style="color:red;">{{$errors->first('info')}}</div>
+                                @endif
                             </div>
                           </div>
   
@@ -86,6 +101,9 @@
                             <div class="col-md-9">
                               <input type="text" value="{{ $special->max_student_number }}"   id="projectinput2" class="form-control" placeholder="عدد الطلاب"
                               name="max_student_number">
+                                @if($errors->first('max_student_number'))
+                                  <div style="color:red;">{{$errors->first('max_student_number')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -93,6 +111,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->fees }}" class="form-control" placeholder="رسوم التخصص"
                               name="fees">
+                                @if($errors->first('fees'))
+                                  <div style="color:red;">{{$errors->first('fees')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -100,6 +121,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->number_of_materials }}" class="form-control" placeholder="عدد مواد التخصص"
                               name="number_of_materials">
+                                @if($errors->first('number_of_materials'))
+                                  <div style="color:red;">{{$errors->first('number_of_materials')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -107,6 +131,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->number_of_mandatory_materials }}" class="form-control" placeholder="عدد المواد"
                               name="number_of_mandatory_materials">
+                                @if($errors->first('number_of_mandatory_materials'))
+                                  <div style="color:red;">{{$errors->first('number_of_mandatory_materials')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -114,6 +141,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->number_of_optional_materials }}" class="form-control" placeholder="عدد المواد"
                               name="number_of_optional_materials">
+                                @if($errors->first('number_of_optional_materials'))
+                                  <div style="color:red;">{{$errors->first('number_of_optional_materials')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -121,6 +151,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->number_of_higher_levels }}" class="form-control" placeholder="عدد المستويات الأعلى"
                               name="number_of_higher_levels">
+                                @if($errors->first('number_of_higher_levels'))
+                                  <div style="color:red;">{{$errors->first('number_of_higher_levels')}}</div>
+                                @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -128,6 +161,9 @@
                             <div class="col-md-9">
                               <input type="text" id="projectinput2" value="{{ $special->number_of_lower_levels }}" class="form-control" placeholder="عدد المستويات الأقل"
                               name="number_of_lower_levels">
+                                @if($errors->first('number_of_lower_levels'))
+                                  <div style="color:red;">{{$errors->first('number_of_lower_levels')}}</div>
+                                @endif
                             </div>
                           </div>
                          

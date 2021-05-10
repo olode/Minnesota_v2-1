@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">اضافة مادة جديدة</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">تعديل مادة </h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -22,6 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('material.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المواد</i></a> 
                                         
                     </div>
                     <form action="{{ route('material.update', $material->id) }}" method="POST"  class="form form-horizontal form-bordered">
@@ -30,10 +31,13 @@
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات المادة</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">الإسم </label>
+                          <label class="col-md-3 label-control" for="projectinput1"> المادة </label>
                           <div class="col-md-9">
-                            <input type="text"  value="{{ $material->name }}"  id="projectinput1" class="form-control" placeholder="الإسم "
+                            <input type="text"  value="{{ $material->name }}"  id="projectinput1" class="form-control" placeholder=" المادة "
                             name="name">
+                            @if($errors->first('name'))
+                               <div style="color:red;">{{$errors->first('name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -41,6 +45,9 @@
                           <div class="col-md-9">
                             <input type="text"  value="{{ $material->info }}"  id="projectinput4" class="form-control" placeholder="نبذة عن المادة" 
                             name="info">
+                            @if($errors->first('info'))
+                               <div style="color:red;">{{$errors->first('info')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -48,6 +55,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $material->max_mark }}"  id="projectinput4" class="form-control" placeholder="إجمالي الدرجات" 
                             name="max_mark">
+                            @if($errors->first('max_mark'))
+                               <div style="color:red;">{{$errors->first('max_mark')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -55,6 +65,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $material->max_students_number }}" id="projectinput4" class="form-control" placeholder="عدد الطلاب" 
                             name="max_students_number">
+                            @if($errors->first('max_students_number'))
+                               <div style="color:red;">{{$errors->first('max_students_number')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -62,6 +75,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $material->hours }}"  id="projectinput4" class="form-control" 
                             name="hours">
+                            @if($errors->first('hours'))
+                               <div style="color:red;">{{$errors->first('hours')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -69,6 +85,9 @@
                           <div class="col-md-9">
                             <input type="text" value="{{ $material->code }}"  id="projectinput4" class="form-control"
                             name="code">
+                            @if($errors->first('code'))
+                               <div style="color:red;">{{$errors->first('code')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -77,10 +96,14 @@
                               <select  class="form-control" name="section_id" id="section">
                                 option selected="" disabled="" >اختر القسم</option>
                                 @foreach ($sections as $section)
-                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                    <option value="{{ $section->id }}">{{$section->stage->name}} - {{ $section->name }}</option>
                                 @endforeach
                               </select>
+                              @if($errors->first('code'))
+                               <div style="color:red;">{{$errors->first('code')}}</div>
+                            @endif
                           </div>
+                          
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">التخصص</label>
@@ -88,7 +111,11 @@
                               <select  class="form-control" name="specialization_id" id="specialization">
                                 
                               </select>
+                              @if($errors->first('specialization_id'))
+                               <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                            @endif
                           </div>
+                         
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">اختر نوع المادة</label>
@@ -97,7 +124,11 @@
                                 <option value="0" @if ($material->optional === 0) selected="" disabled=""  @endif >إختياري</option>
                                 <option value="1" @if ($material->optional === 1) selected="" disabled=""  @endif >إلزامي</option>
                               </select>
+                              @if($errors->first('optional'))
+                               <div style="color:red;">{{$errors->first('optional')}}</div>
+                            @endif
                           </div>
+                          
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
@@ -107,7 +138,11 @@
                                 <option value="0" @if ($material->requirement === 0) selected="" disabled=""  @endif >غير متطلب</option>
                                 <option value="1" @if ($material->requirement === 1) selected="" disabled=""  @endif >متطلب</option>
                               </select>
+                              @if($errors->first('requirement'))
+                               <div style="color:red;">{{$errors->first('requirement')}}</div>
+                            @endif
                           </div>
+                          
                         </div>
                         <div class="form-group row last" style="display: none;" id="requirement_material">
                           <label class="col-md-3 label-control" for="projectinput4">شروط المادة</label>
@@ -118,7 +153,11 @@
                                     <option value="{{ $material->id }}">{{ $material->name }}</option>
                                 @endforeach
                               </select>
+                              @if($errors->first('requirement'))
+                               <div style="color:red;">{{$errors->first('requirement')}}</div>
+                            @endif
                           </div>
+                           
                         </div>
                       </div>
                       </div>

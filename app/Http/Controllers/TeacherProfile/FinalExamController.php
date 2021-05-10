@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class FinalExamController extends Controller 
 {
+  public function __construct()
+    {
+        $this->middleware('auth:teacher');
+    }
 
   /**
    * Display a listing of the resource.
@@ -18,7 +22,8 @@ class FinalExamController extends Controller
    */
   public function index()
   {
-    $finalexams    = FinalExam::all();
+   
+    $finalexams = ClassInfo::where('teacher_id', Auth::user()->id)->get();
     return view('teacher-profile.final_exams.index', compact('finalexams'));
   }
 
@@ -41,14 +46,15 @@ class FinalExamController extends Controller
    */
   public function store(Request $request)
   {
+ 
     
     $request->validate([
-      'class_id'          => ['required', 'integer', 'max:10'],
-      'date'              => ['required', 'date', 'max:20'],
-      'title'             => ['required', 'string', 'max:50'],
-      'full_mark'         => ['required', 'integer', 'max:255'],
+      'class_id'=> ['required', 'integer'],
+      'date'=> ['required', 'string'],
+      'title'=> ['required', 'string'],
+      'full_mark'=> ['required', 'integer'],
   ]);
-  // dd($request->all());
+  
   FinalExam::create($request->all());
     return redirect('/finalexam');
   }

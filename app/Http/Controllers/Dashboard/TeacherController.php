@@ -12,7 +12,7 @@ class TeacherController extends Controller
 {
   public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware(['auth', 'super-admin']);
     }
 
   /**
@@ -44,24 +44,23 @@ class TeacherController extends Controller
   public function store(Request $request)
   {
     $idNumber = "IUM" . mt_rand(100000, 999999) . "T";
+    
         
-        //dd($request->all());
         $request->validate([
-
-            'special_teacher_id'         => ['string', 'max:255'],
-            'first_name'                 => ['string', 'max:255'],
-            'second_name'                => ['string', 'max:255'],
-            'last_name'                  => ['string', 'max:255'],
-            'location'                   => ['string', 'max:255'],
-            'email'                      => ['string', 'max:255'],
-            'phone_number'               => ['string', 'max:255'],
-            'password'                   => ['string', 'max:255'],
-            'avatar'                     => [],
-            'qualification'              => ['string', 'max:255'],
-            'qualification_image'        => [],
-            'passport_number'            => ['string', 'max:255'],
-            'passport_image'             => [],
-            'status'                     => ['integer', 'max:255'],
+          
+            'first_name'                 => ['required','string', 'max:255'],
+            'second_name'                => ['required','string', 'max:255'],
+            'third_name'                 => ['required','string', 'max:255'],
+            'last_name'                  => ['required','string', 'max:255'],
+            'location'                   => ['required','string', 'max:255'],
+            'job_description'            => ['required','string', 'max:255'],
+            'specialization_name'        => ['required','string', 'max:255'],
+            'qualification'              => ['required','string', 'max:255'],
+            'email'                      => ['email','required','string', 'max:255'],
+            'phone_number'               => ['required','string', 'max:255'],
+            'status'                     => ['required','integer', 'max:255'],
+            'passport_number'            => ['required','string', 'max:255'],
+            'password'                   => ['required','string', 'max:255'],
         ]);
 
 
@@ -72,6 +71,8 @@ class TeacherController extends Controller
             Image::make($avatar)->save(public_path('/uploads/teachers/avatars/' . $filename));
             $avatarneme = $filename;
 
+        }else{
+          $avatarneme = "defult.png";
         }
 
         if(request()->hasFile('qualification_image')){
@@ -81,6 +82,8 @@ class TeacherController extends Controller
             Image::make($qualifications)->save(public_path('/uploads/teachers/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
+        }else{
+          $qualificationsneme = "defult.png";
         }
 
         if(request()->hasFile('passport_image')){
@@ -90,13 +93,18 @@ class TeacherController extends Controller
             Image::make($passport)->save(public_path('/uploads/teachers/passports/' . $passportname));
             $passportneme = $passportname;
 
+        }else{
+          $passportneme = "defult.png";
         }
         
         Teacher::create([
             'special_teacher_id'             => $idNumber,
             'first_name'                     => $request['first_name'],
             'second_name'                    => $request['second_name'],
+            'third_name'                     => $request['third_name'],
             'last_name'                      => $request['last_name'],
+            'specialization_name'            => $request['specialization_name'],
+            'job_description'                => $request['job_description'],
             'location'                       => $request['location'],
             'email'                          => $request['email'],
             'phone_number'                   => $request['phone_number'],
@@ -145,8 +153,77 @@ class TeacherController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+      'first_name'=> ['required','string', 'max:255'],
+      'second_name'=> ['required','string', 'max:255'],
+      'third_name'=> ['required','string', 'max:255'],
+      'last_name'=> ['required','string', 'max:255'],
+      'location'=> ['required','string', 'max:255'],
+      'job_description'=> ['required','string', 'max:255'],
+      'specialization_name'=> ['required','string', 'max:255'],
+      'qualification'=> ['required','string', 'max:255'],
+      'email'=> ['email','required','string', 'max:255'],
+      'phone_number'=> ['required','string', 'max:255'],
+      'status'=> ['required','integer', 'max:255'],
+      'passport_number'=> ['required','string', 'max:255'],
+    ]);
+
     $teacher = Teacher::findOrfail($id);
-        $teacher->update($request->all());
+
+    if(request()->hasFile('avatar')){
+
+      $avatar = request()->file('avatar');
+      $filename = time() .'.'. $avatar->getClientOriginalExtension();
+      Image::make($avatar)->save(public_path('/uploads/teachers/avatars/' . $filename));
+      $avatarneme = $filename;
+
+      $teacher->avatar = $avatarneme;
+      // Then we just save
+      $teacher->save();
+
+    }
+
+    if(request()->hasFile('qualification_image')){
+
+        $qualifications = request()->file('qualification_image');
+        $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
+        Image::make($qualifications)->save(public_path('/uploads/teachers/qualifications/' . $qualificationsname));
+        $qualificationsneme = $qualificationsname;
+
+        $teacher->qualification_image = $qualificationsneme;
+        // Then we just save
+        $teacher->save();
+
+    }
+
+    if(request()->hasFile('passport_image')){
+
+        $passport = request()->file('passport_image');
+        $passportname = time() .'.'. $passport->getClientOriginalExtension();
+        Image::make($passport)->save(public_path('/uploads/teachers/passports/' . $passportname));
+        $passportneme = $passportname;
+
+        $teacher->passport_image = $passportneme;
+        // Then we just save
+        $teacher->save();
+
+    }
+
+        $teacher->update([
+          'first_name'=> $request['first_name'],
+          'second_name'=> $request['second_name'],
+          'third_name'=> $request['third_name'],
+          'last_name'=> $request['last_name'],
+          'job_description'=> $request['job_description'],
+          'specialization_name'=> $request['specialization_name'],
+          'location'=> $request['location'],
+          'email'=> $request['email'],
+          'phone_number'=> $request['phone_number'],
+          'qualification'=> $request['qualification'],
+          'passport_number'=> $request['passport_number'],
+          'status'=> $request['status'],
+      ]);
         
         return redirect('/teacher');
   }

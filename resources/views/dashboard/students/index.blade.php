@@ -26,11 +26,13 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
                           <th>الرقم الجامعي</th>
                           <th>الاسم</th>
+                          <th>المرحلة</th>
+                          <th>التخصص</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>
@@ -42,7 +44,9 @@
                       @foreach ($students as $student)
                         <tr>
                           <td>{{$student->special_student_id}}</td>
-                          <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->last_name }}</td>
+                          <td>{{ $student->first_name }} {{ $student->second_name }} {{ $student->third_name }} {{ $student->last_name }}</td>
+                          <td>{{$student['section']->stage->name}}</td>
+                          <td>{{$student['specialization']->name}}</td>
                           <td>
                             @if ($student->qualification === '1') {{"ثانوي"}} @endif
                             @if ($student->qualification === '2') {{"دبلوم"}} @endif
@@ -65,7 +69,7 @@
                               </form> 
                             @endif
                           </td>
-                          <td>
+                          <td  class="d-inline-flex">
                             <form style="display: inline;" action="{{ route('student.show', $student->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  
@@ -87,6 +91,8 @@
                         <tr>
                           <th>الرقم الجامعي</th>
                           <th>الاسم</th>
+                          <th>المرحلة</th>
+                          <th>التخصص</th>
                           <th>المؤهل</th>
                           <th>رقم الهاتف</th>
                           <th>رقم الجواز</th>

@@ -40,7 +40,9 @@
                           <td>من {{ $class->starts_at }}  -  الى {{ $class->ends_at }}</td>
                           <td>١٠٠</td>
                           <td>
-                            <a href="{{ $class->classroom_url }}" target="_blank" class="btn btn-primary" rel="noopener noreferrer">دخول</a>
+                            @if ($class->starts_at >= now() && $class->ends_at <= now())
+                              <a href="{{ $class->classroom_url }}" target="_blank" class="btn btn-primary" rel="noopener noreferrer">دخول</a>
+                            @endif
                           </td>
                         </tr>    
                       @endforeach
@@ -103,7 +105,7 @@
 
                       <tr>
                         <td>إجمالي المحاضرات في الاسبوع</td>
-                        <td>٨</td>
+                        <td>{{ $classesCount }}</td>
                       
                       </tr>
                     

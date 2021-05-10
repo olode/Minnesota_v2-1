@@ -13,7 +13,40 @@ class Section extends Model
 
     public function stage()
     {
-        return $this->belongsTo('App\Models\Stage');
+        return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
+
+
+    public function student_count()
+    {
+        return $this->hasMany('App\Models\Student',  'section_id');
+    }
+    public function classes_count()
+    {
+        return $this->hasMany('App\Models\ClassInfo',  'section_id');
+    }
+    public function material_count()
+    {
+        return $this->hasMany('App\Models\Material',  'section_id');
+    }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student', 'section_id');
+    }
+
+
+    public function teachers()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id');
+    }
+
+
+    public function materials()
+    {
+        return $this->hasMany('App\Models\ClassInfo', 'section_id' );
+    }
+
+    
 
 }

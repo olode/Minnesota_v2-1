@@ -17,7 +17,8 @@ class UserController extends Controller
   
   public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'super-admin']);
+        // $this->authorize('super-admin');
     }
   /**
    * Display a listing of the resource.
@@ -70,23 +71,22 @@ class UserController extends Controller
   {
     
     $id = "IUM" . mt_rand(100000, 999999) . "U";
-    //dd($id);
+ 
     $request->validate( [
           'special_user_id'    => ['string', 'max:255'],
           'first_name'         => ['required', 'string', 'max:255'],
           'second_name'        => ['required', 'string', 'max:255'],
           'last_name'          => ['required', 'string', 'max:255'],
-          'email'              => ['required', 'string', 'email', 'max:255'],
+          'email'              => ['required', 'unique:users,email', 'string', 'email', 'max:255'],
           'phone_number'       => ['required', 'string', 'max:255'],
-          'avatar'             => [],
           'password'           => ['required'],
           'branch_id'          => ['required', 'integer', 'max:255'],
           'role_id'            => ['required', 'integer', 'max:255'],
           'status'             => ['required', 'integer', 'max:255'],
+          'avatar'             => ['image:jpeg,png'],
       ]);
       
-        //dd($idNumber);
-
+  
         $avatarneme = '';
         if(request()->hasFile('avatar')){
 
@@ -96,9 +96,7 @@ class UserController extends Controller
             $avatarneme = $filename;
 
         }
-
-        //dd($request->all());
-        //dd($idNumber);
+ 
          User::create([
             'special_user_id'       => $id,
             'first_name'            => $request['first_name'],
@@ -148,11 +146,37 @@ class UserController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
     $user = User::findOrfail($id);
     //dd(request()->all());
-    $user->update(request()->all());
+
+    $user->fill($request->except('avatar'));
+    // dd($user);
+    if(request()->hasFile('avatar')){
+
+      $avatar = request()->file('avatar');
+      $filename = time() .'.'. $avatar->getClientOriginalExtension();
+      Image::make($avatar)->save(public_path('/uploads/users/avatars/' . $filename));
+      $avatarneme = $filename;
+
+      $user->avatar = $avatarneme;
+      // Then we just save
+      $user->save();
+  }
+
+  //dd($request->all());
+  //dd($idNumber);
+   
+    $user->update([
+            'first_name'            => $request['first_name'],
+            'second_name'           => $request['second_name'],
+            'last_name'             => $request['last_name'],
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phone_number'],
+            'branch_id'             => $request['branch_id'],
+            'role_id'               => $request['role_id'],
+    ]);
 
     return redirect('/user');
   }
@@ -187,7 +211,14 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    
+
+    $user = User::Find($id);
+    $defult = "defult.jpeg";
+    if($user->avatar || !$defult){
+      unlink(public_path('/uploads/users/avatars/'. $user->avatar));
+    }
+    $user->delete();
+    return \redirect()->back();
   }
   
 }

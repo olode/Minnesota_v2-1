@@ -22,9 +22,10 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                           <th>اسم الطالب</th>
+                          <th>المرحلة</th>
                           <th>الفصل</th>
                           <th>الصف</th>
                           <th>السنة الدراسية</th>
@@ -34,11 +35,12 @@
                       @foreach ($studentClasses as $studentClass)
                         <tr>
                           <td>{{ $studentClass['student']->first_name }} {{ $studentClass['student']->second_name }} {{ $studentClass['student']->last_name }}</td>
+                          <td>{{ $studentClass['student']->section->stage->name }}</td>
                           <td>{{ $studentClass['semester']->title }}</td>
                           <td>{{ $studentClass['class']->name }}</td>
-                          <td>{{ $studentClass->year_id }}</td>
+                          <td>{{ $studentClass['year']->year_m }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form    style="display: inline;"   action="{{ route('studentclass.edit', $studentClass->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
@@ -54,10 +56,11 @@
                       </tbody>
                       <tfoot>
                         <th>اسم الطالب</th>
-                          <th>الفصل</th>
-                          <th>الصف</th>
-                          <th>السنة الدراسية</th>
-                          <th>الاعدادت</th>
+                        <th>المرحلة</th>
+                        <th>الفصل</th>
+                        <th>الصف</th>
+                        <th>السنة الدراسية</th>
+                        <th>الاعدادت</th>
                       </tfoot>
                     </table>
                   </div>

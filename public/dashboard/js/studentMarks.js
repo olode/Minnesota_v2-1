@@ -23,7 +23,7 @@ $("#class").change(function(){
           $("#student").append('<option > اختر </option>');
   
           $.each(data.students,function(key, val){
-            $("#student").append('<option value='+val.student.id+' >' + val.student.first_name + ' ' + val.student.second_name + ' ' + val.student.last_name +'</option>');
+            $("#student").append('<option value='+val.student.id+' >' + val.student.first_name + ' ' + val.student.second_name + ' ' + val.student.third_name + ' ' + val.student.last_name +'</option>');
           });
   
       }

@@ -13,7 +13,7 @@ class ClassInfo extends Model
 
     public function stage()
     {
-        return $this->belongsTo('App\Models\Stage');
+        return $this->belongsTo('App\Models\Stage', 'stage_id');
     }
     public function section()
     {
@@ -48,6 +48,12 @@ class ClassInfo extends Model
     public function lectures_attendance()
     {
         return $this->hasMany('App\Models\Lecture','class_id')->Select('id','class_id', 'date')->Where('date', date('Y-m-d'));
+    }
+
+
+    public function final_exams()
+    {
+        return $this->hasMany('App\Models\FinalExam','class_id');
     }
 
 

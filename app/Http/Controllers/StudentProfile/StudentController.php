@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\StudentProfile;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
@@ -29,7 +28,7 @@ class StudentController extends Controller
     {
 
        $arr = [];
-       $toatl_marks =[];
+       $total_marks =[];
        
        $student = Student::Find(Auth::user()->id);
        $semesters = Semester::Where('specialization_id', $student->specialization_id)->get();
@@ -39,7 +38,7 @@ class StudentController extends Controller
        }
 
        $taking_hors = array_sum($arr);
-       return view('student-profile.students.index', compact('student', 'taking_hors', 'toatl_marks'));
+       return view('student-profile.students.index', compact('student', 'taking_hors', 'total_marks'));
 
     }
 
@@ -63,10 +62,19 @@ class StudentController extends Controller
 
     public function studentSemesterMaterials($semester)
     {
-        $toatl_marks =[];
+
+        $total_marks =[];
         $student = Student::with(['student_classes'])->Find(Auth::user()->id);
-        $semester_materials = StudentClass::with(['marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
-        return view('student-profile.students.semesters',compact('student', 'semester_materials', 'toatl_marks'));
+        $semester_materials = StudentClass::with(['lectures.home_work.follow_up_home_work','quizzes', 'final_exams'])
+                                          ->Where('student_id', Auth::user()->id)
+                                          ->Where('semester_id', $semester)->get();
+        return view('student-profile.students.semesters',compact('student', 'semester_materials', 'total_marks'));
+
+
+        // $toatl_marks =[];
+        // $student = Student::with(['student_classes'])->Find(Auth::user()->id);
+        // $semester_materials = StudentClass::with(['marks'])->Where('student_id', Auth::user()->id)->Where('semester_id', $semester)->get();
+        // return view('student-profile.students.semesters',compact('student', 'semester_materials', 'toatl_marks'));
     }
 
     

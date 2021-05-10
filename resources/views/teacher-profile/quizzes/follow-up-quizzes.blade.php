@@ -5,7 +5,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
 
             <!-- Form repeater section start -->
        
@@ -87,8 +87,9 @@
                               <th>الرقم الجامعي</th>
                               <th>المرحلة</th>
                               <th>القسم</th>
-                              <th>الدرجة</th>
-                              <th>تعيين الدرجة</th>
+                              <th>عنوان الاختبار</th>
+                              <th>رصد الدرجة</th>
+                              <th>الدرجة المرصودة</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -98,25 +99,25 @@
                                 <td>{{ $student->special_student_id }}</td>
                                 <td>{{ $student->stage_name }}</td>
                                 <td>{{ $student->section_name }}</td>
-                                <td>
-                                    @foreach ($followUpQuizzes as $followUpQuizze)
-                                        @if ($student->id == $followUpQuizze->student_id && $quizze_id == $followUpQuizze->quizze_id)
-
-                                            {{ $followUpQuizze->mark }}
-                                            
-                                        @endif
+                                <td>{{$quizze->title}}</td>
+                                <td id="{{$student->id}}newMark">
+                                    @foreach($student->quizzes as $squizze)
+                                      @if($squizze->quizze_id == $quizze->id)
+                                        {{$squizze->mark}}
+                                      @endif
                                     @endforeach
                                 </td>
                                 <td>
                                   
-                                  <form style="display: inline;"  action="{{ route('followupquizze.store') }}" method="post">
+                                  <form id="form" style="display: inline;"  action="{{ route('followupquizze.store') }}" method="post">
                                     @csrf
-                                    <input type="hidden" value="{{ $quizze_id }}" name="quizze_id">
+                                    @method('post')
+                                    <input type="hidden" value="{{ $quizze->id }}" name="quizze_id">
                                     <input type="hidden" value="{{ $student->id }}" name="student_id">
                                     <input type="hidden" value="1" name="status">
                                     <div class="row">
                                       <div class="col-md-8">
-                                        <input type="text" name="mark" class="form-control" required>
+                                        <input id="{{ $student->id }}marks" type="text" name="mark" class="form-control">
                                       </div>
                                       <div class="col-md-3">
                                         <button type="submit" class="btn btn-success">حفظ</button>
@@ -133,8 +134,9 @@
                                 <th>الرقم الجامعي</th>
                                 <th>المرحلة</th>
                                 <th>القسم</th>
-                                <th>الدرجة</th>
-                                <th>تعيين الدرجة</th>
+                                <th>عنوان الاختبار</th>
+                                <th>رصد الدرجة</th>
+                                <th>الدرجة المرصودة</th>
                             </tr>
                           </tfoot>
                         </table>
@@ -156,40 +158,88 @@
         </div>
       </div>
 
-<script>
+  <script>
 
-    $("#class").change(function(){
-        class_id = $(this).val();
-        $("#quizze").text('');
+    $(document).on('submit','#form',function(event){
+
+      event.preventDefault();
+      var form = $(this);
+      var fors = form.serialize()
+      var spl = fors.split("&")
+      var splMark = spl[5].split("=")
+      var splStuId = spl[3].split("=")
+
+      if(splMark[1] == ""){
+
+        $('#'+splStuId[1]+'marks').css('border-color', 'red'); 
+
+      }else{
+
 
         $.ajax({
-        
-        url:'/get-class-quizze/'+ class_id,
-        type:'get',
-        dataType:'json',
-        success:function(data){
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize()
+          }).done(function(data) {
+          console.log(data)
+            $('#'+splStuId[1]+'marks').css('border-color', '#D4D4D4')
+            $('#'+splStuId[1]+'marks').val('')
+            $('#'+splStuId[1]+'newMark').text(data.new_mark)
+          
             
-          if(data.quizzes.length == 0){
-        
-              $("#quizze").append('<option > لا توجد معلومات </option>');
-              
-              if($("#class").val() == 'اختر'){
-                $("#quizze").text('');
-              }
-        
-          }else{
-        
-              $("#quizze").append('<option selected disabled >اختر</option>');
-        
-              $.each(data.quizzes,function(key, val){
-                $("#quizze").append('<option value='+val.id+' >' + val.title + '</option>');
-              });
-        
-          }
-        }
-        });
-    });
+          }).fail(function(data) {
+            // Optionally alert the user of an error here...
+          });
 
-</script>
+
+      }
+
+      
+    });
+  </script>
+
+
+  <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+  </script>
+  <script>
+
+      $("#class").change(function(){
+          class_id = $(this).val();
+          $("#quizze").text('');
+
+          $.ajax({
+          
+          url:'/get-class-quizze/'+ class_id,
+          type:'get',
+          dataType:'json',
+          success:function(data){
+              
+            if(data.quizzes.length == 0){
+          
+                $("#quizze").append('<option > لا توجد معلومات </option>');
+                
+                if($("#class").val() == 'اختر'){
+                  $("#quizze").text('');
+                }
+          
+            }else{
+          
+                $("#quizze").append('<option selected disabled >اختر</option>');
+          
+                $.each(data.quizzes,function(key, val){
+                  $("#quizze").append('<option value='+val.id+' >' + val.title + '</option>');
+                });
+          
+            }
+          }
+          });
+      });
+
+  </script>
 
 @endsection

@@ -22,6 +22,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('section.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الأقسام</i></a> 
                                         
                     </div>
                     <form  action="{{ route('section.store') }}" method="POST" class="form form-horizontal form-bordered">
@@ -29,10 +30,13 @@
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات القسم</h4>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput1">اسم القسم</label>
+                          <label class="col-md-3 label-control" for="projectinput1"> القسم</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput1" class="form-control" placeholder="اسم القسم"
+                            <input type="text" id="projectinput1" class="form-control" placeholder=" القسم"
                             name="name">
+                            @if($errors->first('name'))
+                               <div style="color:red;">{{$errors->first('name')}}</div>
+                            @endif
                           </div>
                         </div>
                         
@@ -41,6 +45,9 @@
                           <label class="col-md-3 label-control" for="projectinput2">نبذة عن القسم</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="نبذة عن القسم"name="info">
+                            @if($errors->first('info'))
+                               <div style="color:red;">{{$errors->first('info')}}</div>
+                            @endif
                           </div>
                         </div>
 
@@ -53,6 +60,9 @@
                             <option value="{{ $stage->id }}" >{{ $stage->name }}</option>
                             @endforeach
                           </select>
+                          @if($errors->first('stage_id'))
+                               <div style="color:red;">{{$errors->first('stage_id')}}</div>
+                            @endif
                           </div>
                         </div>
                       </div>

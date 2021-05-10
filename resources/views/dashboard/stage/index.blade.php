@@ -8,7 +8,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">عرض معلومات المرحلة</h4>
+                  <h4 class="card-title">عرض معلومات المراحل</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -22,9 +22,9 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors text-center">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors text-center">
                       <thead>
-                          <th>الاسم</th>
+                          <th>المرحلة</th>
                           <th>نبذة عن المرحلة</th>
                           <th>الفرع</th>
                           <th>الاعدادت</th>
@@ -36,7 +36,7 @@
                           <td>{{ $stage->info }}</td>
                           <td>{{ $stage['branch']->name }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form  style="display: inline;"  action="{{ route('stage.edit', $stage->id) }}" method="get">
                               {{ csrf_field() }}  
                               <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>
@@ -51,7 +51,7 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                        <th>الاسم</th>
+                        <th>المرحلة</th>
                         <th>نبذة عن المرحلة</th>
                         <th>الفرع</th>
                         <th>الاعدادت</th>

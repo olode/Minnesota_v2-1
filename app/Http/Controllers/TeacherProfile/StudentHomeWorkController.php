@@ -22,8 +22,8 @@ class StudentHomeWorkController extends Controller
      */
     public function index()
     {
-        $teacherId          =   Auth::guard('teacher')->user()->id;
-        $homeworks          =   HomeWork::where('teacher_id', $teacherId)->get();
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $homeworks = HomeWork::where('teacher_id', $teacherId)->get();
         return view('teacher-profile.homeworks.index', compact('homeworks'));
     }
     /**
@@ -33,8 +33,8 @@ class StudentHomeWorkController extends Controller
      */
     public function create()
     {
-        $teacherId          =   Auth::guard('teacher')->user()->id;
-        $stages             =   DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $stages = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
         return view('teacher-profile.homeworks.create', compact('stages'));
 
     }
@@ -49,28 +49,28 @@ class StudentHomeWorkController extends Controller
     {
         
         $request->validate([
-            'stage_id'             => ['required', 'integer', 'max:10'],
-            'section_id'           => ['required', 'integer', 'max:10'],
-            'class_id'             => ['required', 'integer', 'max:10'],
-            'lecture_id'           => ['required', 'integer', 'max:255'],
-            'due_date'             => ['required', 'date', 'max:255'],
-            'title'                => ['required', 'string', 'max:200'],
-            'info'                 => ['required'],
-            'full_mark'            => ['required', 'integer', 'max:255'],
+            'stage_id'=> ['required', 'integer'],
+            'section_id'=> ['required', 'integer'],
+            'class_id'=> ['required', 'integer'],
+            'lecture_id'=> ['required', 'integer'],
+            'due_date'=> ['required'],
+            'title'=> ['required', 'string', 'max:200'],
+            'info'=> ['required'],
+            'full_mark'=> ['required', 'integer'],
         ]);
 
-        $teacherId          =   Auth::guard('teacher')->user()->id;
+        $teacherId = Auth::guard('teacher')->user()->id;
 
         HomeWork::create([
-            'stage_id'             => $request['stage_id'],
-            'section_id'           => $request['section_id'],
-            'class_id'             => $request['class_id'],
-            'lecture_id'           => $request['lecture_id'],
-            'due_date'             => $request['due_date'],
-            'title'                => $request['title'],
-            'info'                 => $request['info'],
-            'full_mark'            => $request['full_mark'],
-            'teacher_id'           => $teacherId,
+            'stage_id' => $request['stage_id'],
+            'section_id' => $request['section_id'],
+            'class_id' => $request['class_id'],
+            'lecture_id' => $request['lecture_id'],
+            'due_date' => $request['due_date'],
+            'title' => $request['title'],
+            'info' => $request['info'],
+            'full_mark' => $request['full_mark'],
+            'teacher_id' => $teacherId,
         ]);
 
         return redirect('student-home-work');
@@ -96,9 +96,9 @@ class StudentHomeWorkController extends Controller
      */
     public function edit($id)
     {
-        $homework           =   HomeWork::findOrfail($id);
-        $teacherId          =   Auth::guard('teacher')->user()->id;
-        $stages             =   DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        $homework = HomeWork::findOrfail($id);
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $stages = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
         return view('teacher-profile.homeworks.edit', compact('stages', 'homework'));
     }
 

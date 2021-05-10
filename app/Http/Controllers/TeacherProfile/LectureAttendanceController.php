@@ -12,6 +12,7 @@ use App\Models\ClassInfo;
 use Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
 
 class LectureAttendanceController extends Controller
 {
@@ -56,13 +57,13 @@ class LectureAttendanceController extends Controller
     {
         //dd($request->all());
         $request->validate([
-            'class_id'                      => ['required', 'integer', 'max:255'],
-            'article_arrangement'           => ['required', 'string', 'max:255'],
-            'article_arrangement_number'    => ['required', 'integer', 'max:255'],
-            'date'                          => ['required', 'date', 'max:255'],
-            'title'                         => ['required', 'string', 'max:255'],
-            'mark'                          => ['required', 'integer', 'max:255'],
-            'about'                         => ['required'],
+            'class_id'=> ['required', 'integer', 'max:255'],
+            'article_arrangement'=> ['required', 'string', 'max:255'],
+            'article_arrangement_number'=> ['required', 'integer', 'max:255'],
+            'date'=> ['required', 'date', 'max:255'],
+            'title'=> ['required', 'string', 'max:255'],
+            'full_mark'=> ['required', 'integer', 'max:255'],
+            'about'=> ['nullable'],
         ]);
         
         $aboutneme = '';
@@ -76,13 +77,13 @@ class LectureAttendanceController extends Controller
 
         //dd($request->all());
         Lecture::create([
-            'class_id'                      => $request['class_id'],
-            'article_arrangement'           => $request['article_arrangement'],
-            'article_arrangement_number'    => $request['article_arrangement_number'],
-            'date'                          => $request['date'],
-            'title'                         => $request['title'],
-            'mark'                          => $request['mark'],
-            'about'                         => $aboutneme,
+            'class_id'=> $request['class_id'],
+            'article_arrangement'=> $request['article_arrangement'],
+            'article_arrangement_number'=> $request['article_arrangement_number'],
+            'date'=> $request['date'],
+            'title'=> $request['title'],
+            'full_mark'=> $request['full_mark'],
+            'about'=> $aboutneme,
         ]);
         return redirect('/lectures');
     }
@@ -142,20 +143,20 @@ class LectureAttendanceController extends Controller
     public function studentAttendance(Request $request)
     {
 
-        $teacherId          = Auth::guard('teacher')->user()->id;
-        $stages             = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
+        $teacherId = Auth::guard('teacher')->user()->id;
+        $stages = DB::table('view_teacher_classes')->select('stage_id', 'stage_name')->where('class_teacher_id', $teacherId)->get()->unique('stage_id');
         return view('teacher-profile.lectures-attendance.attendance', compact('stages'));
     }
     
 
     public function preparation(Request $request)
     {
+        // $request->validate([
+        //     'lecture_id'=> ['required', 'integer', 'max:20'],
+        //     'student_id'=> ['required', 'integer', 'max:30'],
+        //     'attendance'=> ['required', 'string', 'max:30'],
+        // ]);
         // dd($request->all());
-        $request->validate([
-            'lecture_id'      => ['required', 'integer', 'max:20'],
-            'student_id'      => ['required', 'integer', 'max:30'],
-            'attendance'      => ['required', 'string', 'max:30'],
-        ]);
             
         $studentCheck   = Attendance::where([
       
@@ -163,18 +164,25 @@ class LectureAttendanceController extends Controller
           ['student_id', '=', $request->student_id],
       
         ])->first();
+        
         // dd($studentCheck);
         if (empty($studentCheck)) {
       
             Attendance::create($request->all());
-          return redirect('/lecture-attendance');
-      
+        //   return redirect()->back();
+        //   return redirect('/lecture-attendance');
+            $status = $request->attendance;
+            return \compact('status');
+        
         } elseif (!empty($studentCheck)) {
       
           $followupfinalexam = Attendance::findOrfail($studentCheck->id);
           $followupfinalexam->update($request->all());
-              
-          return redirect('/lecture-attendance');
+        //   return redirect()->back()->withInput();
+              $stu_id =  $request->student_id;
+              $status = $request->attendance;
+              return \compact('status','stu_id');
+        //   return redirect('/lecture-attendance');
         }
     }
 

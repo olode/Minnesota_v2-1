@@ -13,7 +13,7 @@ class StudentClassController extends Controller
 {
   public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware(['auth', 'super-admin']);
     }
 
   /**
@@ -35,7 +35,7 @@ class StudentClassController extends Controller
   public function create()
   {
     $branches   = Branch::select('name', 'id')->get();
-    $semesters  = Semester::select('title', 'id')->get();
+    $semesters  = Semester::select('title', 'id', 'specialization_id')->get();
     $classes    = ClassInfo::select('name', 'id', 'material_id')->get();
     $years      = Year::all();
     return view('dashboard.student_classes/create', compact('branches', 'semesters', 'classes', 'years'));
@@ -55,7 +55,7 @@ class StudentClassController extends Controller
       'section_id'                 => ['required', 'integer', 'max:255'],
       'specialization_id'          => ['required', 'integer', 'max:255'],
       'semester_id'                => ['required', 'integer', 'max:255'],
-      'student_id'                 => ['required', 'integer', 'max:255'],
+      'student_id'                 => ['required', 'integer'],
       'class_id'                   => ['required', 'integer', 'max:255'],
       'year_id'                    => ['required', 'integer', 'max:255'],
 
@@ -106,6 +106,14 @@ class StudentClassController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'specialization_id'          => ['required', 'integer', 'max:255'],
+      'semester_id'                => ['required', 'integer', 'max:255'],
+      'student_id'                 => ['required', 'integer', 'max:255'],
+      'class_id'                   => ['required', 'integer', 'max:255'],
+      'year_id'                    => ['required', 'integer', 'max:255'],
+
+    ]);
 
     $studentClass = StudentClass::findOrfail($id);
     $studentClass->update([
@@ -132,7 +140,7 @@ class StudentClassController extends Controller
 
   public function getAjaxStudentClass($class_id)
    {
-       $students = StudentClass::with(['student:id,first_name,second_name,last_name'])->Where('class_id', $class_id)->get()->unique('student_id');
+       $students = StudentClass::with(['student:id,first_name,second_name,third_name,last_name'])->Where('class_id', $class_id)->get()->unique('student_id');
  
        if($students == null){
  

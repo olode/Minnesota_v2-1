@@ -4,7 +4,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
           <!-- Description -->
           <section id="description" class="card">
             <div class="card-header">
@@ -66,8 +66,8 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">درجات المحاضرة</label>
                           <div class="col-md-9">
-                            <input type="text" value="{{ $lecture->mark }}"  id="projectinput2" class="form-control" placeholder="المجوع الكلي  لدرجات هذه المحاضرة"
-                            name="mark">
+                            <input type="text" value="{{ $lecture->full_mark }}"  id="projectinput2" class="form-control" placeholder="المجوع الكلي  لدرجات هذه المحاضرة"
+                            name="full_mark">
                           </div>
                         </div>
                       </div>

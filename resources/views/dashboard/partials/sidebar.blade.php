@@ -4,20 +4,20 @@
           <li class=" nav-item"><a href="{{route('c-panel')}}"><i class="icon-home"></i><span class="menu-title" data-i18n="nav.scrumboard.main">الرئيسية</span></a>
             </li>
 
-            <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">المستخدمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
-              data-placement="right" data-original-title="Layouts"></i>
-            </li>
-            <li class=" nav-item"><a href="{{route('user.index')}}"><i class="icon-user"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة المستخدمين</span></a>
-              <ul class="menu-content">
-                <li ><a class="menu-item" href="{{route('user.index')}}" data-i18n="nav.dash.analytics">عرض</a>
-                </li>
-                <li><a class="menu-item" href="{{route('user.create')}}" data-i18n="nav.dash.project">اضافة</a>
-                </li>
-              </ul>
-            </li>
-
-
+            @can('super-admin')
+              <li class=" navigation-header">
+                <span data-i18n="nav.category.layouts">المستخدمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
+                data-placement="right" data-original-title="Layouts"></i>
+              </li>
+              <li class=" nav-item"><a href="{{route('user.index')}}"><i class="icon-user"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة المستخدمين</span></a>
+                <ul class="menu-content">
+                  <li ><a class="menu-item" href="{{route('user.index')}}" data-i18n="nav.dash.analytics">عرض</a>
+                  </li>
+                  <li><a class="menu-item" href="{{route('user.create')}}" data-i18n="nav.dash.project">اضافة</a>
+                  </li>
+                </ul>
+              </li>
+            @endcan
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الطلاب</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
@@ -30,7 +30,7 @@
                 </li>
               </ul>
             </li>
-
+            @can('super-admin')
             <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">المعلمين</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
@@ -41,11 +41,11 @@
                 </li>
                 <li><a class="menu-item" href="{{route('teacher.create')}}" data-i18n="nav.dash.project">اضافة</a>
                 </li>
-                <li><a class="menu-item" href="{{route('studentmark.create')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
+                {{--  <li><a class="menu-item" href="{{route('studentmark.create')}}" data-i18n="nav.dash.project">اضافة الدرجات</a>
                 </li>
               </li>
               <li><a class="menu-item" href="{{route('studentmark.index')}}" data-i18n="nav.dash.project">عرض درجات الطلاب</a>
-              </li>
+              </li>  --}}
               </ul>
             </li>
 
@@ -106,7 +106,7 @@
               <span data-i18n="nav.category.layouts">الفصول</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('semester.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الفصول</span></a>
+            <li class=" nav-item"><a href="{{route('semester.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الفصول (semesters)</span></a>
               <ul class="menu-content">
                 <li ><a class="menu-item" href="{{route('semester.index')}}" data-i18n="nav.dash.analytics">عرض</a>
                 </li>
@@ -131,7 +131,7 @@
               <span data-i18n="nav.category.layouts">الصفوف</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="{{route('class.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الصفوف</span></a>
+            <li class=" nav-item"><a href="{{route('class.index')}}"><i class="icon-layers"></i><span class="menu-title" data-i18n="nav.dash.main">  ادارة الصفوف (classes)</span></a>
               <ul class="menu-content">
                 <li ><a class="menu-item" href="{{route('class.index')}}" data-i18n="nav.dash.analytics">عرض</a>
                 </li>
@@ -159,7 +159,7 @@
               </ul>
             </li>
 
-
+            @endcan
             {{--  <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الاعلانات والتنبيهات</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>

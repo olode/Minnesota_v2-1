@@ -18,11 +18,12 @@
                       <li><a data-action="close"><i class="ft-x"></i></a></li>
                     </ul>
                   </div>
+                  
                 </div>
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                         <tr>
                           <th>الصورة</th>
@@ -41,7 +42,7 @@
                       <tbody style="text-align: center;">
                          @foreach ($users as $user)
                             <tr>
-                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar }}" alt=""></td>
+                                <td><img style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;" src="/uploads/users/avatars/{{ $user->avatar ? $user->avatar : 'defult.jpeg' }}" alt=""></td>
                                 <td>{{ $user->special_user_id }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->second_name }}</td>
@@ -63,7 +64,7 @@
                                     </form> 
                                   @endif
                                 </td>
-                                <td>
+                                <td  class="d-inline-flex">
                                   <form  style="display: inline;"  action="{{ route('user.edit', $user->id) }}" method="get">
                                     {{ csrf_field() }}
                                    <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  

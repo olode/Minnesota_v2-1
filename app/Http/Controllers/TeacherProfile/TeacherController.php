@@ -27,7 +27,8 @@ class TeacherController extends Controller
         $news = NewsAnnouncements::where('owner_id', $teacherId)
         ->where('owner_type', $ownerType)->get();
         $classes  =  ClassInfo::all()->where('teacher_id', $teacherId);
-        return view('teacher-profile.teachres.index', compact('news', 'classes'));
+        $classesCount   =   ClassInfo::where('teacher_id', $teacherId)->count();
+        return view('teacher-profile.teachres.index', compact('news', 'classes', 'classesCount'));
     }
 
     /**

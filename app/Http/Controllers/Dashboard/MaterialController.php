@@ -10,7 +10,7 @@ class MaterialController extends Controller
 {
   public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware(['auth', 'super-admin']);
     }
 
   /**
@@ -45,7 +45,7 @@ class MaterialController extends Controller
    */
   public function create()
   {
-    $sections   = Section::Select('id', 'name')->get();
+    $sections   = Section::Select('id', 'name', 'stage_id')->get();
     $materials  = Material::select('id', 'name')->get();
     return view('dashboard.materials.create', compact('sections', 'materials'));
   }
@@ -58,8 +58,7 @@ class MaterialController extends Controller
   public function store(Request $request)
   {
     //$idNumber = "IUM" . mt_rand(100000, 999999) . "M";
-    
-    // dd($request->all());
+   
     $request->validate([
 
       'code'                      => ['required', 'string', 'max:255'],
@@ -74,7 +73,6 @@ class MaterialController extends Controller
       'hours'                     => ['required', 'integer', 'max:255'],
       
     ]);
-    //dd($request->all());
 
     
     //This If is just to Give The right Value to "requirement"
@@ -121,7 +119,7 @@ class MaterialController extends Controller
   public function edit($id)
   {
     $material = Material::findOrfail($id);
-    $sections = Section::Select('id', 'name')->get();
+    $sections = Section::Select('id', 'name', 'stage_id')->get();
     $materials  = Material::select('id', 'name')->get();
     return view('dashboard.materials/edit', compact('materials', 'material', 'sections'));
   }
@@ -134,6 +132,23 @@ class MaterialController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+
+      'code'                      => ['required', 'string', 'max:255'],
+      'name'                      => ['required', 'string', 'max:255'],
+      'info'                      => ['required', 'string', 'max:255'],
+      'max_mark'                  => ['required', 'string', 'max:255'],
+      'max_students_number'       => ['required', 'integer', 'max:255'],
+      'section_id'                => ['required', 'integer', 'max:255'],
+      'specialization_id'         => ['required', 'integer', 'max:255'],
+      'optional'                  => ['required', 'integer', 'max:255'],
+      'requirement'               => ['max:255'],
+      'hours'                     => ['required', 'integer', 'max:255'],
+      
+    ]);
+    
+    
     $material = Material::findOrfail($id);
     $material->update($request->all());
 

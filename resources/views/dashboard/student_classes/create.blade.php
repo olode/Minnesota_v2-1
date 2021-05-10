@@ -22,9 +22,10 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('studentclass.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة تعينات الطلاب</i></a> 
                                         
                     </div>
-                    <form  action="{{ route('studentclass.store') }}" method="POST" class="form form-horizontal form-bordered">
+                    <form  action="{{ route('studentclass.store') }}" method="POST" class="form form-horizontal form-bordered basic-select2">
                       @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات التعيين </h4>
@@ -37,6 +38,9 @@
                                     <option class="form-control" value="{{$branch->id}}">{{ $branch->name }}</option>
                                 @endforeach
                             </select>
+                            @if($errors->first('branch_id'))
+                               <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                              @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -46,6 +50,9 @@
                                   
                                 
                               </select>
+                              @if($errors->first('stage_id'))
+                               <div style="color:red;">{{$errors->first('stage_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
@@ -55,53 +62,69 @@
                                   
                                 
                               </select>
+                              @if($errors->first('section_id'))
+                               <div style="color:red;">{{$errors->first('section_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
                               <label class="col-md-3 label-control"  for="">اختر التخصص</label>
                               <div class="col-md-9">
-                                <select class="form-control" name="specialization_id" id="specialization">
+                                <select class="select2 form-control" name="specialization_id" id="specialization">
                                     
                                   
                                 </select>
+                                @if($errors->first('specialization_id'))
+                               <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                              @endif
                               </div>
                           </div>
-                          <div class="form-group row">
+                          <div class="form-group row ">
                               <label class="col-md-3 label-control"  for="">اختر اسم الطالب</label>
                               <div class="col-md-9">
-                                <select class="form-control" name="student_id" id="student">
+                                <select class="select2 form-control" name="student_id" id="student">
                                    
 
                                 </select>
+                                @if($errors->first('student_id'))
+                               <div style="color:red;">{{$errors->first('student_id')}}</div>
+                              @endif
                               </div>
                           </div>
                           <div class="form-group row">
-                            <label class="col-md-3 label-control"  for="">اختر الفصل</label>
+                            <label class="col-md-3 label-control"  for="">اختر الفصل(المستوى)</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="semester_id" id="semester">
+                              <select class="select2 form-control" name="semester_id" id="semester">
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($semesters as $semester)
-                                  <option value="{{ $semester->id }}">{{ $semester->title }}</option>
+                                  <option value="{{ $semester->id }}">{{ $semester->title }}-{{$semester->specialization->name}}-{{$semester->specialization->section->name}}-{{$semester->specialization->section->stage->name}}</option>
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('semester_id'))
+                               <div style="color:red;">{{$errors->first('semester_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label class="col-md-3 label-control"  for="">اختر الصف</label>
+                            <label class="col-md-3 label-control"  for="">اختر الصف(class)</label>
                             <div class="col-md-9">
-                              <select class="form-control" name="class_id" id="class">
+                              <select class="select2 form-control" name="class_id" id="class">
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($classes as $class)
-                                  <option value="{{ $class->id }}">{{ $class->name }} - {{ $class['material']->name }}</option>
+                                  <option value="{{ $class->id }}">{{ $class->name }} - {{ $class['material']->name }} - {{ $class['material']->section->name }} - {{ $class['material']->section->stage->name }}</option>
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('class_id'))
+                               <div style="color:red;">{{$errors->first('class_id')}}</div>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row">
                             <label class="col-md-3 label-control"  for="">اختر السنة</label>
                             <div class="col-md-9">
+                            
                               <select class="form-control" name="year_id" id="year">
                                 <option value="" selected="" disabled="" >اختر</option>
                                 @foreach ($years as $year)
@@ -109,6 +132,9 @@
                                 @endforeach
                                 
                               </select>
+                              @if($errors->first('year_id'))
+                               <div style="color:red;">{{$errors->first('year_id')}}</div>
+                              @endif
                             </div>
                           </div>
                       </div>

@@ -38,9 +38,9 @@ class LoginController extends Controller
     }
 
     public function username()
-{
-    return 'id';
-}
+    {
+        return 'special_user_id';
+    }
 
     public function loginTeacherPortal(){
 

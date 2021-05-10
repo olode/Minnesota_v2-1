@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-
+Route::group(['middleware' => 'preventBackHistory'], function()
+{
+    
 
 Route::get('c-panel', 'HomeController@index')->name('c-panel');
 
@@ -79,28 +81,30 @@ Route::resource('teachermaterial', 'Dashboard\TeacherMateriasController');
 Route::resource('marktype', 'Dashboard\MarkTypeController');
 // Route::resource('schedule', 'Dashboard\ScheduleController');
 
+Route::get('get-b-c-data', 'General@get_b_c_data');
+Route::get('get-master-ata', 'General@get_master_data');
+Route::get('get-phd-data', 'General@get_phd_data');
+// ?table=&spe_1=&spe_2=&spe_3=&sec_1=&sec_2=&sec_3
+Route::get('get-student-data', 'General@get_student_data');
+Route::get('material-assign/{materialtable}', 'General@material_assing');
+Route::get('material-clean-duplicate-names/{materialTable}', 'General@clean_duplicate_names');
+Route::get('set-pass-key/{table_name}', 'General@set_pass_key');
 
+Route::get('set-final-exsam-marks/{table}', 'General@set_final_exsam_marks');
 
-
-
-Route::resource('student-profile','StudentProfile\StudentController');
-Route::post('get-in-class','StudentProfile\StudentController@getInClass')->name('get-in-class');
-Route::get('student-plan','StudentProfile\StudentController@studentPlan')->name('student-plan');
-Route::get('student-semester/{semester}/materials','StudentProfile\StudentController@studentSemesterMaterials')->name('student-semester-materials');
-Route::get('student-semesters','StudentProfile\StudentController@studentSemesters')->name('student-semesters');
-Route::get('student-shwo-marks','StudentProfile\StudentController@studentShowMarks')->name('student-shwo-marks');
-Route::get('student-shwo-materials','StudentProfile\StudentController@studentShowMaterials')->name('student-shwo-materials');
-
-
-Route::get('student-login',function(){
-
-    return view('student-profile.user.login');
-})->name('student-login');
+Route::get('clean-duplicate-student-class', 'General@clean_duplicate_student_class');
 
 
 
 
 
+Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->name('password.reset1');
+
+
+
+
+});
+Route::resource('/', 'Frontend\StudentController');
 
 
 
@@ -134,7 +138,7 @@ Route::get('add-mid-exam-marks','TeacherProfile\MarkController@addMidExamMarks')
 Route::get('add-final-exam-marks','TeacherProfile\MarkController@addFinalExamMarks')->name('add-final-exam-marks');
 
 Route::resource('follow-up-homework','TeacherProfile\FollowUpHomeworkController');
-Route::put('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkController@markUpdate')->name('homework-mark-update');
+Route::post('homework-mark-update/{id}', 'TeacherProfile\FollowUpHomeworkController@markUpdate')->name('homework-mark-update');
 
 Route::post('preparation-student', 'TeacherProfile\LectureAttendanceController@preparation')->name('preparation');
 
@@ -245,3 +249,11 @@ Route::post('get-students-to-attendance', 'TeacherProfile\TeacherAjaxController@
 Route::post('follow-up-homework-students', 'TeacherProfile\TeacherAjaxController@getHomeworkStudents')->name('follow-up-homework-students');
 Route::post('follow-up-quizze-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForQuizze')->name('follow-up-quizze-students');
 Route::post('follow-up-finalexam-students', 'TeacherProfile\TeacherAjaxController@getClassStudentsForFinalExam')->name('follow-up-finalexam-students');
+
+
+
+
+
+Route::get('get-stages-frontend/{branch_id}', 'Frontend\AjaxController@getAjaxStages');
+Route::get('get-section-frontend/{stage_id}', 'Frontend\AjaxController@getAjaxSections');
+Route::get('get-specialization-frontend/{section_id}', 'Frontend\AjaxController@getAjaxSpecializations');

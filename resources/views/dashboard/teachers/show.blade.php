@@ -3,16 +3,16 @@
 @section('content')
 <style>
     .heads{
-        background-color: #795abd;
+        background-color: #e5ecff;
         padding: 10px;
-        border: solid #4f52ff;
+        /* border: solid #4f52ff; */
         font-size: 20px;
     }
     .data{
-        background-color: #7e8484;
-        padding: 10px; font-size: 21px;
-        color: #f4f2ef;
-        border: solid cadetblue;
+        background-color: #b9bbbb;
+        padding: 10px;
+        font-size: 21px;
+        color: #ffffff;
     }
 </style>
  <!-- Column selectors table -->
@@ -24,7 +24,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h1 class="card-title">عرض معلومات الدكتور</h1>
+                  <h1 class="card-title">عرض معلومات المعلم</h1>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -39,6 +39,7 @@
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
                     <table class="table table-striped table-bordered dataex-html5-selectors">
+                  <a  href="{{route('teacher.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">رجوع الى الخلف</i></a> 
                       
                         <hr>
                         <div class="row" style="margin-bottom:45px">
@@ -89,7 +90,7 @@
                             <p class="data">{{ $data->passport_number }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">حالة الطالب</h3>
+                            <h3 class="heads">حالة المعلم</h3>
                             <p class="data">
                                 @if ($data->status === 1)
                                     {{"مفعل"}}
@@ -99,11 +100,11 @@
                             </p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class=""></h3>
-                            <p class=""></p>
+                            <h3 class="heads">الوصف الوظيفي</h3>
+                            <p class="data">{{ $data->job_description }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">صورة الطالب</h3>
+                            <h3 class="heads">صورة المعلم</h3>
                             <div style="width: 100%; height: 245px; background-size: contain;">
                                 <img src="/uploads/teachers/avatars/{{$data->avatar}}" onContextMenu="return false" onDragStart="return false" galleryimg="no" style="width: 100%; height: 100%; border: solid #4f52ff;" alt="">
                             </div>

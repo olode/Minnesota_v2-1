@@ -38,7 +38,7 @@
                           <td>يجب طباعت الناتج من جدول اخر</td>
                           <td>{{ $student->student_mark }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form  style="display: inline;"  action="{{ route('studentmark.edit', $student->id) }}" method="get">
                             {{ csrf_field() }}  
                             <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>

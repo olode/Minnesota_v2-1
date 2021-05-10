@@ -34,7 +34,13 @@ class Student extends Authenticatable
 
     public function student_classes()
     {
-        return $this->hasMany('App\Models\StudentClass');
+        return $this->hasMany('App\Models\StudentClass')->orderBy('semester_id','ASC');
+        
+    }
+
+    public function homeworks()
+    {
+        return $this->hasMany('App\Models\FollowUpHomework');
     }
 
 

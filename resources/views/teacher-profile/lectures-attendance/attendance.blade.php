@@ -5,7 +5,7 @@
 
 
 <div class="content-detached content-left">
-        <div class="content-body">
+        <div class="content-body" style="margin-left: 0px;">
 
          @include('teacher-profile.lectures-attendance.filter')
 
@@ -41,7 +41,7 @@
                                 <td>{{ $student->special_student_id }}</td>
                                 <td>{{ $student->stage_name }}</td>
                                 <td>{{ $student->section_name }}</td>
-                                <td>
+                                <td id="{{$student->id}}attendance">
                                   @foreach ($attendances as $attendance)
                                     @if ($student->id == $attendance->student_id && $lecture_id == $attendance->lecture_id)
 
@@ -52,23 +52,25 @@
                                 </td>
                                 <td>
                                   
-                                  <form style="display: inline;"  action="{{ route('preparation') }}" method="post">
+                                  <form id="form" style="display: inline;"  action="{{ route('preparation') }}" method="post">
                                     @csrf
+                                    {{ method_field('post') }}
                                     <input type="hidden" value="{{ $lecture_id }}" name="lecture_id">
                                     <input type="hidden" value="{{ $student->id }}" name="student_id">
                                     <div class="row">
                                       <div class="col-md-8">
                                         <div class="form-group">
-                                          <select class="form-control" name="attendance" id="">
+                                          <select class="form-control" name="attendance" id="{{$student->id}}select" required>
                                             <option selected disabled>اختر</option>
                                             <option value="present" >حاضر</option>
                                             <option value="absent" >غائب</option>
                                             <option value="excused" >مستأذن</option>
                                           </select>
+                                          
                                         </div>
                                       </div>
                                       <div class="col-md-3">
-                                        <button type="submit" class="btn btn-success">حفظ</button>
+                                        <button id="submit" type="submit" class="btn btn-success">حفظ</button>
                                       </div>
                                     </div>
                                   </form>
@@ -105,6 +107,49 @@
         </div>
       </div>
 
+<script>
 
+
+
+$(document).on('submit','#form',function(event){
+
+  event.preventDefault();
+  var form = $(this);
+  var fors = form.serialize()
+  var spl = fors.split("&")
+  var splStudId = spl[3].split("=")
+
+
+  selectedStatus = $('#'+splStudId[1]+'select').val()
+  if(selectedStatus == null){
+    $('#'+splStudId[1]+'select').css('color', '#C80000'); 
+    console.log(selectedStatus)
+
+  }else{
+
+
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize()
+      }).done(function(data) {
+        stu_status = $('#'+data.stu_id+'attendance').text(data.status)
+        $('#'+splStudId[1]+'select').css('color', 'black')
+        // Optionally alert the user of success here...
+        console.log(data);
+      }).fail(function(data) {
+        // Optionally alert the user of an error here...
+      });
+
+
+  }
+
+
+    
+
+
+  
+});
+  </script>
 
 @endsection

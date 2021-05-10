@@ -13,7 +13,8 @@ class SpecializationController extends Controller
 
   public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware(['auth']);
+      $this->middleware(['super-admin'])->except(['getAjaxSpecializations']);
     }
 
   /**
@@ -77,7 +78,7 @@ class SpecializationController extends Controller
       'number_of_optional_materials'              => ['required', 'integer', 'max:255'],
       'number_of_higher_levels'                   => ['required', 'integer', 'max:255'],
       'number_of_lower_levels'                    => ['required', 'integer', 'max:255'],
-      'total_hours'                               => ['required', 'integer', 'max:255'],
+      'total_hours'                               => ['required', 'integer'],
     ]);
 
     Specialization::create($request->all());
@@ -121,6 +122,25 @@ class SpecializationController extends Controller
    */
   public function update(Request $request, $id)
   {
+
+    $request->validate([
+      'name'                                      => ['required', 'string', 'max:255'],
+      'info'                                      => ['required', 'string', 'max:255'],
+      'max_student_number'                        => ['required', 'string', 'max:255'],
+      'section_id'                                => ['required', 'integer', 'max:255'],
+      'status'                                    => ['required', 'integer', 'max:255'],
+      'stage_id'                                  => ['required', 'integer', 'max:255'],
+      'branch_id'                                 => ['required', 'integer', 'max:255'],
+      'fees'                                      => ['required', 'string', 'max:255'],
+      'number_of_materials'                       => ['required', 'integer', 'max:255'],
+      'number_of_mandatory_materials'             => ['required', 'integer', 'max:255'],
+      'number_of_optional_materials'              => ['required', 'integer', 'max:255'],
+      'number_of_higher_levels'                   => ['required', 'integer', 'max:255'],
+      'number_of_lower_levels'                    => ['required', 'integer', 'max:255'],
+      'total_hours'                               => ['required', 'integer'],
+    ]);
+
+    
     $specialization = Specialization::findOrfail($id);
     $specialization->update($request->all());
 

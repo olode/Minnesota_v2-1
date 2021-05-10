@@ -3,8 +3,8 @@
 @section('content')
 
 
-
-        <section style="background: center; background-size: cover; background-image: url('dashboard/app-assets/images/backgrounds/background-color.jpg') " class="flexbox-container">
+<!-- style="background: center; background-size: cover; background-image: url('dashboard/app-assets/images/backgrounds/background-color.jpg') " -->
+        <section  class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="col-md-4 col-10 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
@@ -26,11 +26,13 @@
                       @csrf
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="الرقم التعريفي"
-                        name="id" required>
+                        name="special_user_id" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
+                        
                       </fieldset>
+                      <br>
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="password" class="form-control form-control-lg input-lg" id="user-password"
                         name="password" placeholder="أدخل كلمة المرور" required>
@@ -38,6 +40,11 @@
                           <i class="fa fa-key"></i>
                         </div>
                       </fieldset>
+                      @if ($errors->any())
+                          <div class="">
+                              <p class="text-center " style=" color:#de7e7e; font-weight: bold; "> تحقق من الرقم التعريفي أو كلمة المرور  </p>
+                          </div>
+                      @endif
                       {{--  <div class="form-group row">
                         <div class="col-md-6 col-12 text-center text-md-left">
                           <fieldset>

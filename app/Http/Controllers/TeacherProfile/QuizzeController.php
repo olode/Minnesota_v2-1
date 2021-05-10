@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class QuizzeController extends Controller 
 {
 
+  public function __construct()
+    {
+        $this->middleware('auth:teacher');
+    }
   /**
    * Display a listing of the resource.
    *
@@ -29,8 +33,8 @@ class QuizzeController extends Controller
    */
   public function create()
   {
-    $teacherId          = Auth::guard('teacher')->user()->id;
-    $classes            = ClassInfo::where('teacher_id', $teacherId)->get();
+    $teacherId= Auth::guard('teacher')->user()->id;
+    $classes= ClassInfo::where('teacher_id', $teacherId)->get();
     return view('teacher-profile.quizzes.create', compact('classes'));
   }
 
@@ -42,10 +46,10 @@ class QuizzeController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'class_id'          => ['required', 'integer', 'max:10'],
-      'date'              => ['required', 'date', 'max:10'],
-      'title'             => ['required', 'string', 'max:10'],
-      'full_mark'         => ['required', 'integer', 'max:255'],
+      'class_id'          => ['required', 'integer'],
+      'date'              => ['required', 'date'],
+      'title'             => ['required', 'string'],
+      'full_mark'         => ['required', 'integer'],
   ]);
 
   Quizze::create($request->all());

@@ -22,91 +22,101 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
-                                        
+                      <a  href="{{route('student.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة الطلاب</i></a> 
                     </div>
                     <form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data" class="form form-horizontal form-bordered">
                       @csrf
                       <div class="form-body">
                         <h4 class="form-section"><i class="ft-user"></i> معلومات شخصية</h4>
+                        @if(session()->has('success'))
+                            <div class="alert alert-success" id="successMessage">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput1">الإسم الاول</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput1" class="form-control" placeholder="الإسم الاول"
+                            <input type="text"  value="{{old('first_name')}}" id="projectinput1" class="form-control" placeholder="الإسم الاول"
                             name="first_name">
+                            @if($errors->first('first_name'))
+                               <div style="color:red;">{{$errors->first('first_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثاني</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
+                            <input type="text" value="{{old('second_name')}}" id="projectinput2" class="form-control" placeholder="الإسم الثاني"
                             name="second_name">
+                            @if($errors->first('second_name'))
+                               <div style="color:red;">{{$errors->first('second_name')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput2">الإسم الثالث</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            <input type="text" value="{{old('third_name')}}" id="projectinput2" class="form-control" placeholder="الإسم الثالث"
+                            name="third_name">
+                            @if($errors->first('third_name'))
+                               <div style="color:red;">{{$errors->first('third_name')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput2">الإسم الأخير</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('last_name')}}" id="projectinput2" class="form-control" placeholder="الإسم الأخير"
                             name="last_name">
+                            @if($errors->first('last_name'))
+                               <div style="color:red;">{{$errors->first('last_name')}}</div>
+                            @endif
                           </div>
                         </div>
+
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
+                          <label class="col-md-3 label-control" for="projectinput2">الرقم الجامعي</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="العنوان" 
-                            name="location">
+                            <input type="text" value="{{old('special_student_id')}}" id="projectinput2" class="form-control" placeholder="الرقم الجامعي"
+                            name="special_student_id">
+                            @if($errors->first('special_student_id'))
+                               <div style="color:red;">{{$errors->first('special_student_id')}}</div>
+                            @endif
                           </div>
                         </div>
+
+
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
+                          <label class="col-md-3 label-control" for="projectinput6">الجنس</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
-                            name="email">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
-                            name="phone_number">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">تاريخ الميلاد</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
-                            name="birthday">
+                            <select id="projectinput6" name="gender" class="form-control">
+                              <option selected="" disabled="">اختر الجنس</option>
+                              <option value="0">ذكر</option>
+                              <option value="1">أنثى</option>
+                            </select>
+                            @if($errors->first('gender'))
+                               <div style="color:red;">{{$errors->first('gender')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row last">
                           <label class="col-md-3 label-control" for="projectinput4">الجنسية</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="الجنسية" 
+                            <input type="text" value="{{old('nationality')}}" id="projectinput4" class="form-control" placeholder="الجنسية" 
                             name="nationality">
+                            @if($errors->first('nationality'))
+                               <div style="color:red;">{{$errors->first('nationality')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">الجنس</label>
+                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="gender" class="form-control">
-                              <option value="none" selected="" disabled="">اختر الجنس</option>
-                              <option value="0">ذكر</option>
-                              <option value="1">أنثى</option>
-                              <option value="2">غير ذلك</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
-                            name="password">
-                          </div>
-                        </div>
-                        <div class="form-group row last">
-                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
-                          <div class="col-md-9">
-                            <input type="file" id="projectinput4" class="form-control"  
-                            name="avatar">
+                            <input type="text" value="{{old('passport_number')}}" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
+                            name="passport_number">
+                            @if($errors->first('passport_number'))
+                               <div style="color:red;">{{$errors->first('passport_number')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -118,6 +128,9 @@
                                   <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                               @endforeach
                             </select>
+                            @if($errors->first('branch_id'))
+                               <div style="color:red;">{{$errors->first('branch_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -126,9 +139,12 @@
                             <select id="section" name="section_id" class="form-control">
                               <option selected="" disabled="">اختر القسم</option>
                               @foreach ($sections as $section)
-                                  <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                  <option value="{{ $section->id }}">{{ $section->stage->name }} - {{ $section->name }}</option>
                               @endforeach
                             </select>
+                            @if($errors->first('section_id'))
+                               <div style="color:red;">{{$errors->first('section_id')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -137,37 +153,112 @@
                             <select id="specialization" name="specialization_id" class="form-control">
                               
                             </select>
+                            @if($errors->first('specialization_id'))
+                               <div style="color:red;">{{$errors->first('specialization_id')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
+                          <div class="col-md-9">
+                            <select id="projectinput6" name="qualification" class="form-control">
+                              <option selected="" disabled="">اخر مؤهل علمي</option>
+                              <option value="1">ثانوي</option>
+                              <option value="2">دبلوم</option>
+                              <option value="3">بكالوريوس</option>
+                              <option value="4">ماجستير</option>
+                              <option value="5">دكتوراه</option>
+                            </select>
+                            @if($errors->first('qualification'))
+                               <div style="color:red;">{{$errors->first('qualification')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">نسبة التخرج</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('graduation_rate')}}" id="projectinput3" class="form-control" placeholder="نسبة التخرج" 
+                            name="graduation_rate">
+                            @if($errors->first('graduation_rate'))
+                               <div style="color:red;">{{$errors->first('graduation_rate')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">البريد الالكتروني</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('email')}}" id="projectinput3" class="form-control" placeholder="البريد الالكتروني" 
+                            name="email">
+                            @if($errors->first('email'))
+                               <div style="color:red;">{{$errors->first('email')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput3">العنوان</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('location')}}" id="projectinput3" class="form-control" placeholder="العنوان" 
+                            name="location">
+                            @if($errors->first('location'))
+                               <div style="color:red;">{{$errors->first('location')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">رقم الهاتف</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('phone_number')}}" id="projectinput4" class="form-control" placeholder="رقم الهاتف" 
+                            name="phone_number">
+                            @if($errors->first('phone_number'))
+                               <div style="color:red;">{{$errors->first('phone_number')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">تاريخ الميلاد</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('birthday')}}" id="projectinput4" class="form-control" placeholder="تاريخ الميلاد" 
+                            name="birthday">
+                            @if($errors->first('birthday'))
+                               <div style="color:red;">{{$errors->first('birthday')}}</div>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group row last">
+                          <label class="col-md-3 label-control" for="projectinput4">كلمة المرور</label>
+                          <div class="col-md-9">
+                            <input type="text" value="{{old('password')}}" id="projectinput4" class="form-control" placeholder="كلمة المرور" 
+                            name="password">
+                            @if($errors->first('password'))
+                               <div style="color:red;">{{$errors->first('password')}}</div>
+                            @endif
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">حالة الطالب</label>
                           <div class="col-md-9">
                             <select id="projectinput6" name="status" class="form-control">
-                              <option value="none" selected="" disabled="">الحالة</option>
+                              <option selected="" disabled="">الحالة</option>
                               <option value="0">غير مفعل</option>
                               <option value="1">مفعول</option>
                             </select>
+                            @if($errors->first('status'))
+                               <div style="color:red;">{{$errors->first('status')}}</div>
+                            @endif
                           </div>
                         </div>
                         <h4 class="form-section"><i class="ft-clipboard"></i> متطلبات</h4>
+
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput6">اخر مؤهل علمي</label>
+                          <label class="col-md-3 label-control" for="projectinput4">الصورة الشخصية</label>
                           <div class="col-md-9">
-                            <select id="projectinput6" name="qualification" class="form-control">
-                              <option value="none" selected="" disabled="">اخر مؤهل علمي</option>
-                              <option value="1">ثانوي</option>
-                              <option value="2">دبلوم</option>
-                              <option value="3">بكالوريوس</option>
-                              <option value="4">ماجستير</option>
-                              <option value="5">دكتورا</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">نسبة التخرج</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="نسبة التخرج" 
-                            name="graduation_rate">
+                            <label id="projectinput8" class="file center-block">
+                              <input type="file" id="projectinput4" name="avatar">
+                              @if($errors->first('avatar'))
+                               <div style="color:red;">{{$errors->first('avatar')}}</div>
+                              @endif
+                              <span class="file-custom"></span>
+                            </label>
                           </div>
                         </div>
                         <div class="form-group row">
@@ -177,13 +268,9 @@
                               <input type="file" id="file" name="qualification_image" >
                               <span class="file-custom"></span>
                             </label>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3">رقم الجواز</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="رقم الجواز" 
-                            name="passport_number">
+                              @if($errors->first('qualification_image'))
+                               <div style="color:red;">{{$errors->first('qualification_image')}}</div>
+                              @endif
                           </div>
                         </div>
                         <div class="form-group row">
@@ -191,6 +278,9 @@
                           <div class="col-md-9">
                             <label id="projectinput8" class="file center-block">
                               <input type="file" id="file" name="passport_image" >
+                              @if($errors->first('passport_image'))
+                               <div style="color:red;">{{$errors->first('passport_image')}}</div>
+                              @endif
                               <span class="file-custom"></span>
                             </label>
                           </div>
@@ -211,6 +301,9 @@
 @endsection
 @section('js')
 <script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
+<script>
+    $("#successMessage").delay(3200).fadeOut(3000);
+</script>
 @endsection
 
 

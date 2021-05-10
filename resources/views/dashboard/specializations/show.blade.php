@@ -2,17 +2,17 @@
 
 @section('content')
 <style>
-    .heads{
-        background-color: #795abd;
-        padding: 10px;
-        border: solid #4f52ff;
-        font-size: 16px;
-    }
-    .data{
-        background-color: #7e8484;
-        padding: 10px; font-size: 21px;
-        color: #f4f2ef;
-        border: solid cadetblue;
+  .heads{
+    background-color: #e5ecff;
+    padding: 10px;
+    /* border: solid #4f52ff; */
+    font-size: 20px;
+}
+.data{
+    background-color: #b9bbbb;
+    padding: 10px;
+    font-size: 21px;
+    color: #ffffff;
     }
 </style>
  <!-- Column selectors table -->
@@ -25,6 +25,8 @@
               <div class="card">
                 <div class="card-header">
                   <h1 class="card-title">عرض معلومات التخصص</h1>
+                  <a  href="{{route('specialization.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة التخصصات</i></a> 
+
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -47,12 +49,12 @@
                             <p class="data">{{ $data->name }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">نبذة عن التخصص</h3>
-                            <p class="data">{{ $data->info }}</p>
+                          <h3 class="heads">المرحلة</h3>
+                          <p class="data">{{ $data['section']->stage->name }}</p>
                         </div>
                         <div class="col col-md-2">
-                            <h3 class="heads">العدد الطلاب المسموح</h3>
-                            <p class="data">{{ $data->max_student_number }}</p>
+                            <h3 class="heads">نبذة عن التخصص</h3>
+                            <p class="data">{{ $data->info }}</p>
                         </div>
                         <div class="col col-md-2">
                             <h3 class="heads">رسوم المرحلة</h3>
@@ -99,6 +101,11 @@
 
                       <hr>
                       <div class="row" style="margin-bottom:45px">
+
+                        <div class="col col-md-2">
+                          <h3 class="heads">العدد الطلاب المسموح</h3>
+                          <p class="data">{{ $data->max_student_number }}</p>
+                      </div>
                         <div class="col col-md-2">
                             <h3 class="heads">حالة التخصص</h3>
                             <p class="data">

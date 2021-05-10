@@ -22,27 +22,26 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered dataex-html5-selectors">
+                    <table class="table  table-responsive table-bordered dataex-html5-selectors">
                       <thead>
-                          <th>الاسم</th>
+                          <th> القسم</th>
+                          <th> المرحلة</th>
                           <th>عدد الطلاب في القسم</th>
-                          <th>عدد المعلمين في القسم</th>
+                          <th>عدد الصفوف في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
-                          <th>اسم المرحلة</th>
                           <th>الاعدادت</th>
                       </thead>
                       <tbody>
                       @foreach ($sections as $section)
                         <tr>
                           <td>{{ $section->name }}</td>
-                          <td>٥٠</td>
-                          <td>٦</td>
-                          <td>٨</td>
+                          <td>{{ $section->student_count->count() }}</td>
+                          <td>{{ $section->classes_count->count() }}</td>
+                          <td>{{ $section->material_count->count() }}</td>
                           <td>{{ $section->info }}</td>
-                          <td>{{ $section['stage']->name }}</td>
                           
-                          <td>
+                          <td  class="d-inline-flex">
                             <form  style="display: inline;"   action="{{ route('section.edit', $section->id) }}" method="get">
                               {{ csrf_field() }}
                              <button style="border-radius: 25px;" class="btn btn-warning" type="submit">تعديل</button>  
@@ -57,12 +56,12 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                          <th>الاسم</th>
+                          <th>القسم</th>
+                          <th> المرحلة</th>
                           <th>عدد الطلاب في القسم</th>
-                          <th>عدد المعلمين في القسم</th>
+                          <th>عدد الصفوف في القسم</th>
                           <th>عدد المواد في القسم</th>
                           <th>نبذة عن القسم</th>
-                          <th>اسم المرحلة</th>
                           <th>الاعدادت</th>
                       </tfoot>
                     </table>

@@ -39,7 +39,7 @@ class StudentController extends Controller
     public function create()
     {
         $branches = Branch::Select('id', 'name')->where('status', 1)->get();
-        $sections = Section::Select('id', 'name')->get();
+        $sections = Section::Select('id', 'name', 'stage_id')->get();
         return view('dashboard.students/create', compact('branches', 'sections'));
     }
 
@@ -53,30 +53,29 @@ class StudentController extends Controller
     {
         $idNumber = "IUM" . mt_rand(100000, 999999) . "S";
         
-        //dd($request->all());
         $request->validate([
-
-            'special_student_id'         => ['string', 'max:255'],
-            'first_name'                 => ['string', 'max:255'],
-            'second_name'                => ['string', 'max:255'],
-            'last_name'                  => ['string', 'max:255'],
-            'location'                   => ['string', 'max:255'],
-            'email'                      => ['string', 'max:255'],
-            'phone_number'               => ['string', 'max:255'],
-            'password'                   => ['string', 'max:255'],
-            'avatar'                     => [],
-            'qualification'              => ['string', 'max:255'],
-            'qualification_image'        => [],
-            'passport_number'            => ['string', 'max:255'],
-            'passport_image'             => [],
-            'branch_id'                  => ['integer', 'max:255'],
-            'section_id'                 => ['integer', 'max:255'],
-            'specialization_id'          => ['integer', 'max:255'],
-            'status'                     => ['integer', 'max:255'],
-            'birthday'                   => ['string', 'max:255'],
-            'nationality'                => ['string', 'max:255'],
-            'gender'                     => ['string', 'max:255'],
-            'graduation_rate'            => ['string', 'max:255'],
+            'special_student_id'=> ['required','string', 'max:255'],
+            'first_name'=> ['required','string', 'max:255'],
+            'second_name'=> ['required','string', 'max:255'],
+            'third_name'=> ['required','string', 'max:255'],
+            'last_name'=> ['required','string', 'max:255'],
+            'location'=> ['required','string', 'max:255'],
+            'email'=> ['required','email', 'max:255'],
+            'phone_number'=> ['required','string', 'max:255'],
+            'password'=> ['required','string', 'max:255'],
+            'avatar'=> ['image:jpeg,png,jpg'],
+            'qualification'=> ['required','string', 'max:255'],
+            'qualification_image'=> ['image:jpeg,png,jpg'],
+            'passport_number'=> ['required','string', 'max:255'],
+            'passport_image'=> ['image:jpeg,png,jpg'],
+            'branch_id'=> ['required','integer', 'max:255'],
+            'section_id'=> ['required','integer', 'max:255'],
+            'specialization_id'=> ['required','integer', 'max:255'],
+            'status'=> ['required','integer', 'max:255'],
+            'birthday'=> ['required','string', 'max:255'],
+            'nationality'=> ['required','string', 'max:255'],
+            'gender'=> ['required','string', 'max:255'],
+            'graduation_rate'=> ['required','string', 'max:255'],
         ]);
 
 
@@ -87,6 +86,8 @@ class StudentController extends Controller
             Image::make($avatar)->save(public_path('/uploads/students/avatars/' . $filename));
             $avatarneme = $filename;
 
+        }else{
+            $avatarneme = 'default.png';
         }
 
         if(request()->hasFile('qualification_image')){
@@ -96,6 +97,8 @@ class StudentController extends Controller
             Image::make($qualifications)->save(public_path('/uploads/students/qualifications/' . $qualificationsname));
             $qualificationsneme = $qualificationsname;
 
+        }else{
+          $qualificationsneme = 'default.png';
         }
 
         if(request()->hasFile('passport_image')){
@@ -105,34 +108,38 @@ class StudentController extends Controller
             Image::make($passport)->save(public_path('/uploads/students/passports/' . $passportname));
             $passportneme = $passportname;
 
+        }else{
+          $passportneme = 'default.png';
         }
         
         Student::create([
-            'special_student_id'       => $idNumber,
-            'first_name'               => $request['first_name'],
-            'second_name'              => $request['second_name'],
-            'last_name'                => $request['last_name'],
-            'location'                 => $request['location'],
-            'email'                    => $request['email'],
-            'phone_number'             => $request['phone_number'],
-            'password'                 => Hash::make($request['password']),
-            'avatar'                   => $avatarneme,
-            'qualification'            => $request['qualification'],
-            'qualification_image'      => $qualificationsneme,
-            'passport_number'          => $request['passport_number'],
-            'passport_image'           => $passportneme,
-            'branch_id'                => $request['branch_id'],
-            'section_id'               => $request['section_id'],
-            'specialization_id'        => $request['specialization_id'],
-            'status'                   => $request['status'],
-            'birthday'                 => $request['birthday'],
-            'nationality'              => $request['nationality'],
-            'gender'                   => $request['gender'],
-            'graduation_rate'          => $request['graduation_rate'],
+            'special_student_id'=> $request['special_student_id'],
+            'first_name'=> $request['first_name'],
+            'second_name'=> $request['second_name'],
+            'third_name'=> $request['third_name'],
+            'last_name'=> $request['last_name'],
+            'location'=> $request['location'],
+            'email'=> $request['email'],
+            'phone_number'=> $request['phone_number'],
+            'password'=> Hash::make($request['password']),
+            'avatar'=> $avatarneme,
+            'qualification'=> $request['qualification'],
+            'qualification_image'=> $qualificationsneme,
+            'passport_number'=> $request['passport_number'],
+            'passport_image'=> $passportneme,
+            'branch_id'=> $request['branch_id'],
+            'section_id'=> $request['section_id'],
+            'specialization_id'=> $request['specialization_id'],
+            'status'=> $request['status'],
+            'birthday'=> $request['birthday'],
+            'nationality'=> $request['nationality'],
+            'gender'=> $request['gender'],
+            'graduation_rate'=> $request['graduation_rate'],
         ]);
         
         
-        return redirect('/student');
+        // return redirect('/student');
+        return redirect()->back()->with('success', '  تم حفظ بيانات الطالب  '.$request['first_name'].'  بنجاح  ');
     }
 
     /**
@@ -156,7 +163,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $branches = Branch::Select('id', 'name')->where('status', 1)->get();
-        $sections = Section::Select('id', 'name')->get();
+        $sections = Section::Select('id', 'name', 'stage_id')->get();
         $student = Student::findOrfail($id);
         return view('dashboard.students/edit', compact('student', 'branches', 'sections'));
     }
@@ -170,8 +177,92 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+      $request->validate([
+       
+        'first_name'                 => ['required','string', 'max:255'],
+        'second_name'                => ['required','string', 'max:255'],
+        'third_name'                 => ['required','string', 'max:255'],
+        'last_name'                  => ['required','string', 'max:255'],
+        'location'                   => ['required','string', 'max:255'],
+        'email'                      => ['required','email', 'max:255'],
+        'phone_number'               => ['required','string', 'max:255'],
+        'qualification'              => ['required','string', 'max:255'],
+        'passport_number'            => ['required','string', 'max:255'],
+        'branch_id'                  => ['required','integer', 'max:255'],
+        'section_id'                 => ['required','integer', 'max:255'],
+        'specialization_id'          => ['required','integer', 'max:255'],
+        'status'                     => ['required','integer', 'max:255'],
+        'birthday'                   => ['required','string', 'max:255'],
+        'nationality'                => ['required','string', 'max:255'],
+        'gender'                     => ['required','string', 'max:255'],
+        'graduation_rate'            => ['required','string', 'max:255'],
+    ]);
+
+    
         $student = Student::findOrfail($id);
-        $student->update($request->all());
+        $student->fill($request->except('avatar', 'qualification_image', 'passport_image'));
+
+        if(request()->hasFile('avatar')){
+
+          $avatar = request()->file('avatar');
+          $filename = time() .'.'. $avatar->getClientOriginalExtension();
+          Image::make($avatar)->save(public_path('/uploads/students/avatars/' . $filename));
+          $avatarneme = $filename;
+
+          $student->avatar = $avatarneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+      if(request()->hasFile('qualification_image')){
+
+          $qualifications = request()->file('qualification_image');
+          $qualificationsname = time() .'.'. $qualifications->getClientOriginalExtension();
+          Image::make($qualifications)->save(public_path('/uploads/students/qualifications/' . $qualificationsname));
+          $qualificationsneme = $qualificationsname;
+
+          $student->qualification_image = $qualificationsneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+      if(request()->hasFile('passport_image')){
+
+          $passport = request()->file('passport_image');
+          $passportname = time() .'.'. $passport->getClientOriginalExtension();
+          Image::make($passport)->save(public_path('/uploads/students/passports/' . $passportname));
+          $passportneme = $passportname;
+
+          $student->passport_image = $passportneme;
+          // Then we just save
+          $student->save();
+
+      }
+
+
+        $student->update([
+          'first_name'               => $request['first_name'],
+          'second_name'              => $request['second_name'],
+          'third_name'               => $request['third_name'],
+          'last_name'                => $request['last_name'],
+          'location'                 => $request['location'],
+          'email'                    => $request['email'],
+          'phone_number'             => $request['phone_number'],
+          'qualification'            => $request['qualification'],
+          'passport_number'          => $request['passport_number'],
+          'branch_id'                => $request['branch_id'],
+          'section_id'               => $request['section_id'],
+          'specialization_id'        => $request['specialization_id'],
+          'status'                   => $request['status'],
+          'birthday'                 => $request['birthday'],
+          'nationality'              => $request['nationality'],
+          'gender'                   => $request['gender'],
+          'graduation_rate'          => $request['graduation_rate'],
+      ]);
         
         return redirect('/student');
     }
@@ -240,7 +331,7 @@ class StudentController extends Controller
 
     public function getAjaxStudent($specialization_id)
    {
-       $students = Student::Select('id', 'first_name', 'second_name', 'last_name')->Where('specialization_id', $specialization_id)->get();
+       $students = Student::Select('id', 'first_name', 'second_name','third_name', 'last_name')->Where('specialization_id', $specialization_id)->get();
  
        if($students == null){
  

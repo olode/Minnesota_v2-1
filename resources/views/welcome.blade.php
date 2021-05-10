@@ -3,13 +3,14 @@
 
     <head>
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="الجامعة الاسلامية بولاية منيسوتا-الفرع الثالث">
+    <meta name="keywords" content="minnesota, ium-3, imu3, ium, جامعة منيسوتا, الجامعة الاسلامية بمنيسوتا, جامعة منيسوتا الاسلامية, الجامعة الاسلامية بولاية منيسوتا-الفرع الثالث, منيسوتا الفرع الثالث">
+    <!-- <meta name="author" content="PIXINVENT"> -->
 
-        <title>Elevator - Multipurpose Bootstrap Theme</title>
+        <title>الفرع الثالث بجامعة منيسوتا الاسلامية</title>
         <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="/frontend/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,9 +62,9 @@
                         </div>
                         
                         <div class="menu-item green">
-                            <a href="#portfolio-modal" data-toggle="modal">
-                                <i class="fa fa-file-photo-o"></i>
-                                <p>صور الجامعة</p>
+                            <a href="#contact-modal" data-toggle="modal">
+                                <i class="fa fa-plus"></i>
+                                <p>التسجيل في الجامعة</p>
                             </a>
                         </div>
                         
@@ -268,41 +269,9 @@
         
         
         
-        <!-- Start Portfolio Section -->
-        <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title text-center">
-                            <h3>Our Portfolio</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <img src="/frontend/images/portfolio/1.png" class="img-responsive" alt="...">
-                                <div class="portfolio-details text-center">
-                                    <h4>Project Name</h4>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                                                
-                    </div><!-- /.row -->
-                </div>
-                
-            </div>
-        </div>
-        <!-- End Portfolio Section -->
+        <!-- Start Contact Section -->
+        @include('frontend.students.create')
+        <!-- End Contact Section -->
         
         
         <!-- Start About Us Section -->
@@ -318,11 +287,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>About Us</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h1 style=" font-size: 100px;">قريباً</h1>
+                            <!-- <h3>About Us</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p> -->
                         </div>
                     </div>
-                    <div class="row">
+                    {{--<div class="row">
                         <div class="col-md-12">
                             <div class="about-text">
                                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. It has roots in a piece of classical Latin literature from 45 BC</p>
@@ -448,7 +418,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
                 
             </div>
@@ -469,11 +439,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Our Services</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h1 style=" font-size: 100px;">قريباً</h1>
+                            <!-- <h3>Our Services</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p> -->
                         </div>
                     </div>
-                    <div class="row">
+                    {{--<div class="row">
                         
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="feature-2">
@@ -542,12 +513,12 @@
                             </div>
                         </div><!-- /.col-md-4 -->
                         
-                    </div><!-- /.row -->
+                    </div>--}}<!-- /.row -->
                 </div>
                 
                 <div class="pricing-section">
                     <div class="container">
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="pricing-table">
                                     <div class="plan-name">
@@ -642,7 +613,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -664,11 +635,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Our Expert Team</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h1 style=" font-size: 100px;">قريباً</h1>
+                            <!-- <h3>Our Expert Team</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p> -->
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         
                         <div class="col-md-3 col-sm-6">
                             <div class="team-member">
@@ -806,7 +778,8 @@
                             </div>
                         </div>
                         
-                    </div><!-- /.row -->
+                    </div> -->
+                    <!-- /.row -->
                 </div>
                 
             </div>
@@ -827,43 +800,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Exclusive News</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h1 style=" font-size: 100px;">قريباً</h1>
+                            <!-- <h3>Exclusive News</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p> -->
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="latest-post">
-                                <img src="images/blog-01.jpg" class="img-responsive" alt="">
-                                <h4><a href="#">Standard Post with Image</a></h4>
-                                <div class="post-details">
-                                    <ul>
-                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
-                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
-                                        <li><i class="fa fa-tag"></i> Music</li>
-                                    </ul>
-                                </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="latest-post">
-                                <img src="images/blog-02.jpg" class="img-responsive" alt="">
-                                <h4><a href="#">Standard Post with Image</a></h4>
-                                <div class="post-details">
-                                    <ul>
-                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
-                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
-                                        <li><i class="fa fa-tag"></i> Music</li>
-                                    </ul>
-                                </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-                                
-                            </div>
-                        </div>
-                        
+
+                    <!-- <div class="row">
+ 
                         <div class="col-md-6">
                             <div class="latest-post">
                                 <img src="images/blog-03.jpg" class="img-responsive" alt="">
@@ -896,7 +840,7 @@
                             </div>
                         </div>
                         
-                    </div>
+                    </div> -->
                 </div>
                 
             </div>
@@ -1010,37 +954,17 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="container">
+          
+            <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Clients Speech About Us</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h1 style=" font-size: 100px;">قريباً</h1>
+                            <!-- <h3>Clients Speech About Us</h3> -->
+                            <!-- <p>Duis aute irure dolor in reprehenderit in voluptate</p> -->
                         </div>
                     </div>
-                    <div class="row">
-                        
-                        <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-1.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-2.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
+    
+                       <!-- {{--<div class="col-md-6">
                             <div class="testimonial">
                                 <img src="images/team/manage-3.png" class="img-responsive" alt="...">
                                 <h4>John Doe</h4>
@@ -1058,8 +982,8 @@
                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>--}}
+                         -->
                     </div><!--/.row -->
                     
                 </div>
@@ -1067,8 +991,10 @@
             </div>
         </div>
         <!-- End Testimonial Section -->
+        <script src="{{asset('dashboard/js/student.js')}}" type="text/javascript"></script>
 
 
     </body>
+    
     
 </html>

@@ -8,7 +8,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">عرض معلومات الفصل</h4>
+                  <h4 class="card-title">عرض معلومات الصفوف (classes)</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -22,7 +22,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <p class="card-text text-center"></p>
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-responsive table-bordered dataex-html5-selectors">
                       <thead>
                           <th>المرحلة</th>
                           <th>القسم</th>
@@ -45,7 +45,7 @@
                         <td>{{ $class->max_student }}</td>
                         <td>{{ $class->class_fee }}</td>
                         <td>{{ $class['year']->year_m }}</td>
-                        <td>
+                        <td  class="d-inline-flex">
                           <form   style="display: inline;"   action="{{ route('class.show', $class->id) }}" method="get">
                             {{ csrf_field() }}
                            <button style="border-radius: 25px;" class="btn btn-primary" type="submit">عرض التفاصيل</button>  

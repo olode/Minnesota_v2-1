@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Auth;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,12 @@ class Quizze extends Model
     public function class()
     {
         return $this->belongsTo('App\Models\ClassInfo');
+    }
+
+
+    public function quizze_mark()
+    {
+        return $this->hasOne('App\Models\FollowUpQuizze', 'quizze_id')->Where('student_id', Auth::user()->id);
     }
 
 }

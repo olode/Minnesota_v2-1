@@ -7,7 +7,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="bordered-layout-basic-form">تعديل بيانات الطالب</h4>
+                  <h4 class="card-title" id="bordered-layout-basic-form">تعديل بيانات المستخدم</h4>
                   <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -21,6 +21,7 @@
                 <div class="card-content collpase show">
                   <div class="card-body">
                     <div class="card-text">
+                      <a  href="{{route('user.index')}}" class="btn btn-primary"><i class="ft-corner-down-right">عرض قائمة المستخدمين</i></a> 
                                         
                     </div>
                     <form class="form form-horizontal form-bordered" action="{{ route('user.update', $data->id) }}" method="POST" enctype="multipart/form-data">
@@ -72,6 +73,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الفرع</label>
                           <div class="col-md-9">
+                            <input type="hidden" value="{{ $data->branch_id }}" name="branch_id">
                             <select id="projectinput6" name="branch_id" class="form-control">
                               @foreach ($branches as $branche)
                               <option value="{{$branche->id}}" @if ( $branche->id ===  $data->branch_id )  selected="" disabled="" @endif>{{ $branche->name }}</option> 
@@ -82,6 +84,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput6">الصلاحية</label>
                           <div class="col-md-9">
+                            <input type="hidden" value="{{ $data->role_id }}" name="role_id">
                             <select id="projectinput6" name="role_id" class="form-control">
                               @foreach ($roles as $role)
                               <option value="{{$role->id}}"@if ( $role->id ===  $data->role_id )  selected="" disabled="" @endif> {{ $role->name }} </option> 
