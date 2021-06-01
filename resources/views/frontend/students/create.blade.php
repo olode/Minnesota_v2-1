@@ -9,24 +9,28 @@
         
         <div class="container">
             <div class="row">
-                {{-- <div class="section-title text-center">
+                <div class="section-title text-center">
                     <h3>تسجيل بيانات طالب مستجد</h3>
                     <p>تسجيل البيانات لا يعني قبول الطالب في الجامعة في حال تم قبوله سوف تصله رسالة تبلغه بذلك</p>
-                </div> --}}
+                </div>
             </div>
             <div class="row" dir="rtl" >
                 <div class="col-md-12">
-                    <h1 class="text-center " style=" font-size: 100px;">قريبا</h1>
-                    {{-- <form action="{{ route('store') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
+                    <!-- <h1 class="text-center " style=" font-size: 100px;">قريبا</h1> -->
+                     <form action="{{ route('store.new.student') }}" method="POST"  enctype="multipart/form-data" name="sentMessage" id="contactForm" >
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="السم الأول" name="first_name" required data-validation-required-message="رجاء اكتب اسمك الأول">
+                                    <input type="text" class="form-control" placeholder="الاسم الأول" name="first_name" required data-validation-required-message="رجاء اكتب اسمك الأول">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="الاسم الثاني" name="second_name" required data-validation-required-message="رجاء اكتب اسمك الثاني">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="الاسم الثالث" name="third_name" required data-validation-required-message="رجاء اكتب اسمك الثالث">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
@@ -109,17 +113,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">الصورة الشخصية</label>
-                                    <input type="file" class="form-control" placeholder="" name="avatar" required data-validation-required-message="هذا الحقل مطلوب">
+                                    <input type="file" class="form-control" placeholder="" name="avatar"  data-validation-required-message="هذا الحقل مطلوب">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">صورة اخر مؤهل علمي</label>
-                                    <input type="file" class="form-control" placeholder="" name="qualification_image" required data-validation-required-message="هذا الحقل مطلوب">
+                                    <input type="file" class="form-control" placeholder="" name="qualification_image"  data-validation-required-message="هذا الحقل مطلوب">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">صورة جواز السفر</label>
-                                    <input type="file" class="form-control" value="" name="passport_image" required data-validation-required-message="هذا الحقل مطلوب">
+                                    <input type="file" class="form-control" value="" name="passport_image"  data-validation-required-message="هذا الحقل مطلوب">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             <div class="clearfix"></div>
@@ -127,7 +131,7 @@
                                 <input type="submit" class="btn btn-primary" value="إرسال البيانات" >
                             </div>
                         </div>
-                    </form> --}}
+                    </form>
                 </div>
             </div>
         </div>

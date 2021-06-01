@@ -75,7 +75,7 @@
                           <label class="col-md-3 label-control" for="projectinput2">درجة التكليف</label>
                           <div class="col-md-9">
                             <input type="text" id="projectinput2" class="form-control" placeholder="درجة التكليف"
-                            name="full_mark">
+                            name="full_mark" >
                           </div>
                         </div>
                         <div class="form-group row last">
@@ -107,6 +107,7 @@
       </div>
 
 <script>
+  
   $("#stage").change(function(){
     stage_id = $(this).val();
     $("#section").text('');

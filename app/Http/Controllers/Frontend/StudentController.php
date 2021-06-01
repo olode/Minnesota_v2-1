@@ -32,7 +32,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('frontend.students.create');
+        // return view('frontend.students.create');
     }
 
     /**
@@ -99,7 +99,7 @@ class StudentController extends Controller
         $password     = "1234567890";
         $status     = "0";
         
-        Student::create([
+        New_Student_Registration::create([
             'special_student_id'       => $idNumber,
             'first_name'               => $request['first_name'],
             'second_name'              => $request['second_name'],

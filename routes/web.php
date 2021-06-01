@@ -104,8 +104,9 @@ Route::get('reset_password/{id}', 'Auth\Student\ResetController@resetPage')->nam
 
 
 });
-Route::resource('/', 'Frontend\StudentController');
+Route::get('/', 'Frontend\HomeController@index');
 
+Route::post('/registration', 'Frontend\NewStudentRegistration@store')->name('store.new.student');
 
 
 

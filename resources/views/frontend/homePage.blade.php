@@ -269,9 +269,9 @@
         
         
         
-        <!-- Start Contact Section -->
+        <!-- Start New Student Registration Section -->
         @include('frontend.students.create')
-        <!-- End Contact Section -->
+        <!-- End New Student Registration Section -->
         
         
         <!-- Start About Us Section -->

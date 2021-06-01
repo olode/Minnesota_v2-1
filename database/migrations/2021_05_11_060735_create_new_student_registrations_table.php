@@ -2,15 +2,20 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateStudentsTable extends Migration {
-
-	public function up()
-	{
-		Schema::create('students', function(Blueprint $table) {
-			$table->increments('id', true);
+class CreateNewStudentRegistrationsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('new_student_registrations', function (Blueprint $table) {
+            $table->increments('id', true);
 			$table->timestamps();
-			$table->string('special_student_id');
 			$table->string('first_name', 200);
 			$table->string('second_name', 200);
 			$table->string('third_name', 200);
@@ -18,7 +23,6 @@ class CreateStudentsTable extends Migration {
 			$table->string('location', 200);
 			$table->string('email');
 			$table->string('phone_number', 200);
-			$table->string('password', 200);
 			$table->string('avatar');
 			$table->string('qualification', 200);
 			$table->string('qualification_image');
@@ -32,11 +36,16 @@ class CreateStudentsTable extends Migration {
 			$table->string('nationality');
 			$table->string('gender');
 			$table->string('graduation_rate');
-		});
-	}
+        });
+    }
 
-	public function down()
-	{
-		Schema::drop('students');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('new__student__registrations');
+    }
 }
